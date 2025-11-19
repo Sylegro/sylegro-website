@@ -1,307 +1,265 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
-  <title>Sylegro – Startseite</title>
+  <title>Sylegro – Professionelle Dienstleistungen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Google Font: Kiro -->
+  <link href="https://fonts.googleapis.com/css2?family=Kiro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    * { box-sizing: border-box; }
-
-    /* Links neutral (nicht lila / nicht unterstrichen) */
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: none;
+    * {
+      box-sizing: border-box;
     }
 
-    :root {
-      --sylegro-blue: #0063A5;
-      --sylegro-green: #17A863;
-      --bg-light: #f5f5f5;
-    }
-
-    /* Schrift (Kiro gewünscht, dann Fallbacks) */
     body {
-      font-family: "Kiro", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Arial, sans-serif;
+      font-family: "Kiro", sans-serif;
       margin: 0;
-      padding: 0;
-      background: var(--bg-light);
-      color: #111827;
+      background: #f5f6f7;
+      color: #0f172a;
+    }
+
+    /* Farbwerte */
+    :root {
+      --blue: #0063A5;
+      --green: #17A863;
     }
 
     /* HEADER */
     header {
-      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
+      background: linear-gradient(to right, var(--blue), var(--green));
+      padding: 20px 0;
       color: white;
-      padding: 18px 20px;
     }
 
     .header-inner {
       max-width: 1100px;
       margin: 0 auto;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo-area {
-      display: flex;
       align-items: center;
     }
 
-    /* Logo direkt auf dem Verlauf, ohne Bubble */
-    .logo-area img {
-      height: 120px;   /* Logo-Grösse anpassbar */
+    .logo img {
+      height: 85px;
       width: auto;
-      object-fit: contain;
       display: block;
-      filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.45));
-    }
-
-    /* Navigation */
-    nav {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 18px;
     }
 
     nav a {
       color: white;
-      font-size: 0.98rem;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 1.05rem;
       font-weight: 500;
-      opacity: 0.95;
-      position: relative;
-      padding-bottom: 4px;
+      transition: opacity .2s ease;
     }
 
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.9);
-      transition: width 0.2s ease-out;
-      border-radius: 999px;
-    }
-
-    nav a:hover::after {
-      width: 100%;
+    nav a:hover {
+      opacity: 0.75;
     }
 
     /* MAIN */
     main {
       max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 20px 32px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
-      gap: 22px;
-      align-items: stretch;      /* Karten gleich hoch */
-      margin-bottom: 20px;
-    }
-
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav {
-        justify-content: flex-start;
-      }
-    }
-
-    .card {
-      background: #ffffff;
+    /* Vision + Intro */
+    .intro-card {
+      background: white;
+      padding: 30px;
       border-radius: 18px;
-      padding: 22px 22px 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-      border-top: 4px solid var(--sylegro-blue);
-      height: 100%; /* innerhalb Grid volle Höhe */
+      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.06);
+      margin-bottom: 30px;
+      border-left: 5px solid var(--blue);
     }
 
-    h2, h3 { margin-top: 0; }
-
-    h2 {
-      font-size: 1.35rem;
-      margin-bottom: 10px;
-    }
-
-    p {
-      line-height: 1.6;
-      font-size: 0.98rem;
-    }
-
-    /* SLIDER */
-    .slider-inner {
-      position: relative;
-    }
-
-    .slider-image-wrapper {
-      position: relative;
-      overflow: hidden;
-      border-radius: 14px;
+    .intro-card p {
+      line-height: 1.65;
       margin-bottom: 12px;
     }
 
-    #service-image {
+    /* Slider */
+    .slider {
+      background: white;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.06);
+      border-left: 5px solid var(--green);
+      position: relative;
+    }
+
+    .slider img {
       width: 100%;
-      max-height: 280px;
+      height: 260px;
       object-fit: cover;
       border-radius: 14px;
-      opacity: 1;
-      transition: opacity 0.4s ease;
-      display: block;
     }
 
     .slider-title {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-top: 10px;
+      color: var(--blue);
     }
 
     .slider-text {
-      font-size: 0.95rem;
+      margin-top: 5px;
       color: #374151;
-      margin-bottom: 10px;
     }
 
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(6px);
+      border-radius: 50%;
+      padding: 8px 12px;
+      font-size: 1.4rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .arrow:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .arrow.left {
+      left: 15px;
+    }
+
+    .arrow.right {
+      right: 15px;
+    }
+
+    /* Slider dots */
     .slider-dots {
+      margin-top: 12px;
       display: flex;
       gap: 8px;
-      margin-top: 8px;
-      align-items: center;
     }
 
     .dot {
       width: 11px;
       height: 11px;
-      border-radius: 999px;
-      border: 1px solid #9ca3af;
+      border-radius: 50%;
+      background: #cbd5e1;
       cursor: pointer;
-      background: transparent;
-      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
     }
 
     .dot.active {
-      background: var(--sylegro-green);
-      border-color: var(--sylegro-green);
-      transform: scale(1.1);
+      background: var(--green);
     }
 
-    /* Slider-Pfeile */
-    .slider-nav {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-
-    .slider-arrow {
-      pointer-events: auto;
-      background: rgba(255, 255, 255, 0.9);
-      border: none;
-      border-radius: 999px;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
-      cursor: pointer;
-      font-size: 16px;
-      color: #374151;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    }
-
-    .slider-arrow:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
-      background: #ffffff;
-    }
-
-    /* KACHELN */
+    /* Kacheln */
     .quick-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 22px;
-      margin-top: 10px;
-      align-items: stretch; /* alle Kacheln gleich hoch */
     }
 
-    .quick-links .tile {
-      border-radius: 18px;
-      padding: 20px 20px 18px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-      background: linear-gradient(135deg,
-        rgba(0, 99, 165, 0.08),
-        rgba(23, 168, 99, 0.08)
-      );
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      transition: transform 0.18s ease, box-shadow 0.18s ease,
-                  background 0.18s ease, border-color 0.18s ease;
-      height: 100%;
+    .tile {
+      background: linear-gradient(to bottom right, rgba(0, 99, 165, 0.09), rgba(23, 168, 99, 0.09));
+      padding: 22px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transition: transform .25s ease, box-shadow .25s ease;
     }
 
-    .quick-links .tile h3 {
-      margin-bottom: 6px;
-      font-size: 1.05rem;
+    .tile:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
     }
 
-    .quick-links .tile p {
+    .tile h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: var(--blue);
+    }
+
+    .tile p {
       margin: 0;
-      font-size: 0.94rem;
-      color: #374151;
+      color: #475569;
+      line-height: 1.55;
     }
 
-    .quick-links .tile:hover {
+    .tile a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Was uns auszeichnet */
+    .excellence-section {
+      margin-top: 50px;
+      margin-bottom: 60px;
+    }
+
+    .excellence-section h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 25px;
+    }
+
+    .excellence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 35px;
+    }
+
+    .excellence-item {
+      background: white;
+      padding: 25px 22px;
+      border-radius: 16px;
+      border-left: 5px solid var(--green);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .excellence-item:hover {
       transform: translateY(-4px);
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
-      background: linear-gradient(135deg,
-        rgba(0, 99, 165, 0.14),
-        rgba(23, 168, 99, 0.16)
-      );
-      border-color: rgba(37, 99, 235, 0.3);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
     }
 
+    .excellence-item .icon {
+      font-size: 2rem;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .excellence-item h3 {
+      color: var(--blue);
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    /* FOOTER */
     footer {
       text-align: center;
-      padding: 18px 20px 26px;
-      font-size: 0.85rem;
-      color: #6b7280;
+      padding: 25px;
+      color: #64748b;
+      margin-top: 45px;
     }
   </style>
 </head>
+
 <body>
 
   <!-- HEADER -->
   <header>
     <div class="header-inner">
-      <div class="logo-area">
-        <!-- Logo-Datei: wir verwenden den einfachen Namen logo-header.jpg -->
-        <img src="logo-header.jpg" alt="Sylegro Logo mit Claim">
+      <div class="logo">
+        <img src="logo-header.jpg" alt="Sylegro Logo">
       </div>
 
       <nav>
-        <a href="index.html">Home</a>
+        <a href="index.html">Startseite</a>
         <a href="dienstleistungen.html">Dienstleistungen</a>
         <a href="ueber-uns.html">Über uns</a>
         <a href="jobs.html">Jobs</a>
@@ -310,175 +268,182 @@
     </div>
   </header>
 
-  <!-- MAIN -->
   <main>
 
-    <section class="grid">
-      <!-- Willkommen-Text (ohne H1) -->
-      <div class="card">
-        <p>
-          Sylegro, Ihr zuverlässiger Partner für professionelle Reinigungs- und Hauswartungsdienste.
-          Unser Name steht für Qualität, Flexibilität und transparente Lösungen, die individuell auf
-          Ihre Bedürfnisse zugeschnitten sind.
-        </p>
-        <p>
-          Mit klarem Fokus auf Unterhaltsreinigung, Spezialreinigung und Hauswartung bieten wir Ihnen
-          ein umfassendes Dienstleistungspaket, das höchsten Standards gerecht wird. Unser erfahrenes
-          Team sorgt dafür, dass Ihre Räumlichkeiten stets sauber, gepflegt und einladend sind – für ein
-          optimales Arbeits- und Wohnumfeld.
-        </p>
-      </div>
-
-      <!-- Slider -->
-      <div class="card slider">
-        <h2>Unsere Kernleistungen</h2>
-        <div class="slider-inner">
-          <div class="slider-image-wrapper">
-            <img id="service-image" src="" alt="Dienstleistung">
-            <div class="slider-nav">
-              <button class="slider-arrow" id="prev-slide">&#10094;</button>
-              <button class="slider-arrow" id="next-slide">&#10095;</button>
-            </div>
-          </div>
-          <div class="slider-title" id="service-title"></div>
-          <div class="slider-text" id="service-text"></div>
-          <div class="slider-dots" id="slider-dots"></div>
-        </div>
-      </div>
-    </section>
+    <!-- Intro / Firma -->
+    <div class="intro-card">
+      <p>
+        Sylegro, Ihr zuverlässiger Partner für professionelle Reinigungs- und Hauswartungsdienste.
+        Unser Name steht für Qualität, Flexibilität und transparente Lösungen, die individuell
+        auf Ihre Bedürfnisse zugeschnitten sind.
+      </p>
+      <p>
+        Mit klarem Fokus auf Unterhaltsreinigung, Spezialreinigung und Hauswartung bieten wir Ihnen
+        ein umfassendes Dienstleistungspaket, das höchsten Standards gerecht wird. Unser erfahrenes Team sorgt dafür,
+        dass Ihre Räumlichkeiten stets sauber, gepflegt und einladend sind – für ein optimales Arbeits- und Wohnumfeld.
+      </p>
+    </div>
 
     <!-- Vision -->
-    <section class="card">
+    <div class="intro-card">
       <h2>Unsere Vision</h2>
-      <p><strong>Wir gestalten die Zukunft der Gebäudereinigung – digital, nachhaltig und effizient.</strong></p>
       <p>
-        Mit innovativen Technologien, umweltfreundlichen Reinigungsmethoden und klar definierten Prozessen
-        setzen wir neue Massstäbe in der Branche. Unsere digitalen Lösungen sorgen für maximale Transparenz
-        und Effizienz, während nachhaltige Verfahren den Werterhalt Ihrer Immobilie sichern.
+        Wir gestalten die Zukunft der Gebäudereinigung – digital, nachhaltig und effizient.
       </p>
+      <p>
+        Mit innovativen Technologien, umweltfreundlichen Methoden und klar definierten Prozessen setzen wir neue Standards.
+        Unsere digitalen Lösungen bieten höchste Transparenz und Effizienz, während nachhaltige Verfahren den Werterhalt Ihrer
+        Immobilie sichern.
+      </p>
+    </div>
+
+    <!-- Was uns auszeichnet -->
+    <section class="excellence-section">
+      <h2>Was uns auszeichnet:</h2>
+
+      <div class="excellence-grid">
+
+        <div class="excellence-item">
+          <div class="icon">🏅</div>
+          <h3>Qualitätsorientiert</h3>
+          <p>
+            Wir garantieren Ihnen höchste Qualität durch bewährte Prozesse. Jedes Detail wird laufend optimiert.
+          </p>
+        </div>
+
+        <div class="excellence-item">
+          <div class="icon">💡</div>
+          <h3>Erfahrung & Know-How</h3>
+          <p>
+            Mit langjährigem Fachwissen bieten wir Lösungen, die auf bewährten Methoden und Weiterentwicklung basieren.
+          </p>
+        </div>
+
+        <div class="excellence-item">
+          <div class="icon">🔧</div>
+          <h3>Flexibel</h3>
+          <p>
+            Unsere Dienstleistungen passen sich Ihren Bedürfnissen an – zuverlässig & maßgeschneidert.
+          </p>
+        </div>
+
+        <div class="excellence-item">
+          <div class="icon">📄</div>
+          <h3>Transparent</h3>
+          <p>
+            Klare Kommunikation & vollständige Nachvollziehbarkeit aller Schritte – jederzeit.
+          </p>
+        </div>
+
+      </div>
     </section>
 
-    <!-- Kacheln / Quick Links -->
-    <section class="quick-links">
-      <a href="dienstleistungen.html">
-        <div class="tile">
-          <h3>Unsere Dienstleistungen</h3>
-          <p>Unterhaltsreinigung, Spezialreinigung &amp; Hauswartung im Überblick.</p>
-        </div>
-      </a>
+    <!-- Slider -->
+    <div class="slider">
 
-      <a href="ueber-uns.html">
-        <div class="tile">
+      <div class="arrow left" onclick="prevSlide()">‹</div>
+      <div class="arrow right" onclick="nextSlide()">›</div>
+
+      <img id="slide-img" src="" alt="">
+      <div class="slider-title" id="slide-title"></div>
+      <div class="slider-text" id="slide-text"></div>
+      <div class="slider-dots" id="slider-dots"></div>
+    </div>
+
+    <!-- Quicklinks -->
+    <section class="quick-links">
+
+      <div class="tile">
+        <a href="dienstleistungen.html">
+          <h3>Unsere Dienstleistungen</h3>
+          <p>Unterhaltsreinigung, Spezialreinigung & Hauswartung im Überblick.</p>
+        </a>
+      </div>
+
+      <div class="tile">
+        <a href="ueber-uns.html">
           <h3>Über uns</h3>
           <p>Die Menschen und Werte hinter Sylegro.</p>
-        </div>
-      </a>
+        </a>
+      </div>
 
-      <a href="jobs.html">
-        <div class="tile">
+      <div class="tile">
+        <a href="jobs.html">
           <h3>Jobs</h3>
           <p>Werde Teil unseres Teams.</p>
-        </div>
-      </a>
+        </a>
+      </div>
 
-      <a href="kontakt.html">
-        <div class="tile">
+      <div class="tile">
+        <a href="kontakt.html">
           <h3>Kontakt</h3>
           <p>Wir freuen uns auf Ihre Anfrage.</p>
-        </div>
-      </a>
+        </a>
+      </div>
+
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
     © Sylegro <span id="year"></span>
   </footer>
 
-  <!-- Slider-Logik -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const services = [
+    // Slider Data
+    const slides = [
       {
         title: "Unterhaltsreinigung",
-        text: "Regelmässige Reinigung von Büros, Liegenschaften und Gewerbeflächen – sauber, zuverlässig und strukturiert.",
+        text: "Regelmässige Reinigung für saubere, gepflegte und einladende Räume.",
         image: "Titelbildmitlogo.jpg"
       },
       {
         title: "Spezialreinigung",
-        text: "Tiefenreinigungen, Glas- und Fassadenreinigung, Bau- und Umzugsreinigung für besondere Anforderungen.",
+        text: "Tiefenreinigung & professionelle Spezialbehandlungen.",
         image: "AdobeStock_482143067.jpeg"
       },
       {
         title: "Hauswartung",
-        text: "Umfassende Betreuung Ihrer Liegenschaft: Technik, Pflege der Aussenanlagen und Werterhaltung aus einer Hand.",
+        text: "Umfassende Betreuung Ihrer Liegenschaft – Innen & Aussen.",
         image: "DSC_6486.JPG"
       }
     ];
 
-    const img = document.getElementById("service-image");
-    const title = document.getElementById("service-title");
-    const text = document.getElementById("service-text");
-    const dots = document.getElementById("slider-dots");
-    const prevBtn = document.getElementById("prev-slide");
-    const nextBtn = document.getElementById("next-slide");
+    let currentSlide = 0;
 
-    let current = 0;
+    function renderSlider() {
+      const s = slides[currentSlide];
+      document.getElementById("slide-img").src = s.image;
+      document.getElementById("slide-title").textContent = s.title;
+      document.getElementById("slide-text").textContent = s.text;
 
-    function renderDots() {
+      const dots = document.getElementById("slider-dots");
       dots.innerHTML = "";
-      services.forEach((_, i) => {
+      slides.forEach((_, i) => {
         const dot = document.createElement("div");
-        dot.className = "dot" + (i === current ? " active" : "");
-        dot.onclick = () => {
-          current = i;
-          updateSlider(true);
-        };
+        dot.className = "dot" + (i === currentSlide ? " active" : "");
+        dot.onclick = () => { currentSlide = i; renderSlider(); };
         dots.appendChild(dot);
       });
     }
 
-    function updateSlider(withFade) {
-      const s = services[current];
-
-      if (withFade) {
-        img.style.opacity = 0;
-        setTimeout(() => {
-          img.src = s.image;
-          img.alt = s.title;
-          title.textContent = s.title;
-          text.textContent = s.text;
-          renderDots();
-          img.style.opacity = 1;
-        }, 200);
-      } else {
-        img.src = s.image;
-        img.alt = s.title;
-        title.textContent = s.title;
-        text.textContent = s.text;
-        renderDots();
-      }
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      renderSlider();
     }
 
-    prevBtn.addEventListener("click", () => {
-      current = (current - 1 + services.length) % services.length;
-      updateSlider(true);
-    });
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      renderSlider();
+    }
 
-    nextBtn.addEventListener("click", () => {
-      current = (current + 1) % services.length;
-      updateSlider(true);
-    });
+    setInterval(nextSlide, 5000); // automatische Rotation
 
-    setInterval(() => {
-      current = (current + 1) % services.length;
-      updateSlider(true);
-    }, 6000);
-
-    updateSlider(false);
+    renderSlider();
   </script>
 
 </body>
+
 </html>
