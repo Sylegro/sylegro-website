@@ -1,132 +1,207 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sylegro – Startseite</title>
+
+  <style>
+    @font-face {
+      font-family: 'Kiro';
+      src: url('Kiro-Regular.ttf');
+    }
+
+    * { box-sizing: border-box; }
+
+    :root {
+      --sylegro-green: #17A863;
+      --sylegro-blue: #0063A5;
+    }
+
+    body {
+      margin: 0;
+      background: #f5f5f5;
+      font-family: 'Kiro', sans-serif;
+      color: #1a1a1a;
+    }
+
+    /* HEADER */
+    header {
+      background: white;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      border-bottom: 3px solid var(--sylegro-green);
+    }
+
+    header img {
+      height: 120px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* GRID */
+    .grid {
+      max-width: 1250px;
+      margin: 50px auto;
+      display: grid;
+      grid-template-columns: 1.7fr 1.3fr;
+      gap: 40px;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      border-top: 5px solid var(--sylegro-green);
+    }
+
+    /* SLIDER LINKS */
+    .slider img {
+      width: 100%;
+      max-height: 420px;
+      border-radius: 16px;
+      object-fit: cover;
+    }
+
+    .slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      font-size: 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .slide-btn:hover {
+      background: var(--sylegro-green);
+      color: white;
+    }
+
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
+
+    .slider-wrapper {
+      position: relative;
+    }
+
+    .slider-title {
+      margin: 12px 0 4px;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .slider-text {
+      color: #444;
+      font-size: 1rem;
+    }
+
+    /* DOTS */
+    .slider-dots {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--sylegro-green);
+      cursor: pointer;
+    }
+    .dot.active {
+      background: var(--sylegro-green);
+    }
+
+    /* TEXTBEREICH */
+    .textcard p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .vision-title {
+      font-size: 1.4rem;
+      color: var(--sylegro-green);
+      margin-top: 25px;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo-header.jpg" alt="Sylegro Logo">
+</header>
+
 <main>
-  <section class="grid swapped">
+  <section class="grid">
     
-    <!-- LINKER BEREICH: GROSSER DIENSTLEISTUNGS-SLIDER -->
-    <div class="card slider large-slider">
-      <h2 class="section-title">Unsere Kernleistungen</h2>
-      
+    <!-- LINKER BEREICH – Slider -->
+    <div class="card slider">
+      <h2 style="margin-top:0;">Unsere Kernleistungen</h2>
+
       <div class="slider-wrapper">
-        <button class="slide-btn prev">&#10094;</button>
-
-        <img id="service-image" src="" alt="Dienstleistung">
-
-        <button class="slide-btn next">&#10095;</button>
+        <button class="slide-btn prev-btn">&#10094;</button>
+        <img id="service-image" src="">
+        <button class="slide-btn next-btn">&#10095;</button>
       </div>
 
       <div class="slider-title" id="service-title"></div>
       <div class="slider-text" id="service-text"></div>
-
       <div class="slider-dots" id="slider-dots"></div>
     </div>
 
-    <!-- RECHTER BEREICH: Unternehmensbeschreibung -->
+    <!-- RECHTER BEREICH – Text -->
     <div class="card textcard">
-      <p class="intro-text">
-        <strong>Sylegro</strong>, Ihr zuverlässiger Partner für professionelle Reinigungs- 
-        und Hauswartungsdienste. Unser Name steht für Qualität, Flexibilität und 
-        transparente Lösungen, die individuell auf Ihre Bedürfnisse zugeschnitten sind.
-      </p>
 
-      <p>
-        Mit klarem Fokus auf Unterhaltsreinigung, Spezialreinigung und Hauswartung 
-        bieten wir Ihnen ein umfassendes Dienstleistungspaket, das höchsten Standards 
-        gerecht wird. Unser erfahrenes Team sorgt dafür, dass Ihre Räumlichkeiten stets 
-        sauber, gepflegt und einladend sind – für ein optimales Arbeits- und Wohnumfeld.
-      </p>
+      <p><strong>Sylegro</strong>, Ihr zuverlässiger Partner für professionelle Reinigungs-
+      und Hauswartungsdienste. Unser Name steht für Qualität, Flexibilität und 
+      transparente Lösungen, die individuell auf Ihre Bedürfnisse zugeschnitten sind.</p>
+
+      <p>Mit klarem Fokus auf Unterhaltsreinigung, Spezialreinigung und Hauswartung 
+      bieten wir Ihnen ein umfassendes Dienstleistungspaket, das höchsten Standards 
+      gerecht wird. Unser erfahrenes Team sorgt dafür, dass Ihre Räumlichkeiten stets 
+      sauber, gepflegt und einladend sind – für ein optimales Arbeits- und Wohnumfeld.</p>
 
       <h3 class="vision-title">Unsere Vision</h3>
 
-      <p>
-        Wir gestalten die Zukunft der Gebäudereinigung: digital, nachhaltig und effizient.  
-        Mit innovativen Technologien, umweltfreundlichen Reinigungsmethoden und klar 
-        definierten Prozessen setzen wir neue Massstäbe. Unsere digitalen Lösungen sorgen 
-        für maximale Transparenz, während nachhaltige Verfahren den Werterhalt Ihrer 
-        Immobilie sichern.
-      </p>
+      <p>Wir gestalten die Zukunft der Gebäudereinigung: digital, nachhaltig und effizient.
+      Mit innovativen Technologien, umweltfreundlichen Reinigungsmethoden und klar 
+      definierten Prozessen setzen wir neue Massstäbe. Unsere digitalen Lösungen sorgen 
+      für maximale Transparenz, während nachhaltige Verfahren den Werterhalt Ihrer 
+      Immobilie sichern.</p>
+
     </div>
 
   </section>
 </main>
 
-<style>
-  .grid.swapped {
-    display: grid;
-    grid-template-columns: 1.7fr 1.3fr;
-    gap: 26px;
-    align-items: stretch;
-    margin-top: 40px;
-  }
-
-  /* Slider größer */
-  .large-slider img {
-    max-height: 410px;
-    border-radius: 18px;
-    object-fit: cover;
-  }
-
-  .slider-wrapper {
-    position: relative;
-  }
-
-  .slide-btn {
-    position: absolute;
-    top: 45%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.85);
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 22px;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  }
-
-  .slide-btn.prev { left: 12px; }
-  .slide-btn.next { right: 12px; }
-
-  .slide-btn:hover {
-    background: var(--sylegro-green);
-    color: #fff;
-  }
-
-  /* Textkarte */
-  .textcard {
-    padding: 35px;
-    font-size: 1.1rem;
-    line-height: 1.65;
-  }
-
-  .intro-text {
-    font-size: 1.15rem;
-    margin-bottom: 16px;
-  }
-
-  .vision-title {
-    margin-top: 28px;
-    font-size: 1.3rem;
-    color: var(--sylegro-green);
-  }
-
-  /* Mobile */
-  @media (max-width: 900px) {
-    .grid.swapped {
-      grid-template-columns: 1fr;
-    }
-    .slide-btn { display: none; }
-  }
-</style>
-
 <script>
   const services = [
     {
       title: "Unterhaltsreinigung",
-      text: "Regelmässige Reinigung für Büro, Gewerbe und private Räume – zuverlässig, gründlich und flexibel.",
+      text: "Regelmässige Reinigung für Büro, Gewerbe und Private – zuverlässig & flexibel.",
       image: "Titelbildmitlogo.jpg"
     },
     {
       title: "Spezialreinigung",
-      text: "Tiefenreinigungen, Glas- und Fassadenreinigung, Baureinigung sowie Umzugsreinigungen.",
+      text: "Tiefenreinigung, Glas- & Fassadenreinigung, Baureinigung und mehr.",
       image: "AdobeStock_482143067.jpeg"
     },
     {
@@ -137,39 +212,41 @@
   ];
 
   let current = 0;
+
   const imgEl = document.getElementById("service-image");
   const titleEl = document.getElementById("service-title");
   const textEl = document.getElementById("service-text");
   const dotsContainer = document.getElementById("slider-dots");
 
   function updateSlider() {
-    const service = services[current];
-    imgEl.src = service.image;
-    imgEl.alt = service.title;
-    titleEl.textContent = service.title;
-    textEl.textContent = service.text;
+    imgEl.src = services[current].image;
+    titleEl.textContent = services[current].title;
+    textEl.textContent = services[current].text;
     renderDots();
   }
 
   function renderDots() {
     dotsContainer.innerHTML = "";
-    services.forEach((_, index) => {
+    services.forEach((_, i) => {
       const dot = document.createElement("div");
-      dot.className = "dot" + (index === current ? " active" : "");
-      dot.onclick = () => { current = index; updateSlider(); };
+      dot.className = "dot" + (i === current ? " active" : "");
+      dot.onclick = () => { current = i; updateSlider(); };
       dotsContainer.appendChild(dot);
     });
   }
 
-  document.querySelector(".next").onclick = () => {
+  document.querySelector(".next-btn").onclick = () => {
     current = (current + 1) % services.length;
     updateSlider();
   };
 
-  document.querySelector(".prev").onclick = () => {
+  document.querySelector(".prev-btn").onclick = () => {
     current = (current - 1 + services.length) % services.length;
     updateSlider();
   };
 
   updateSlider();
 </script>
+
+</body>
+</html>
