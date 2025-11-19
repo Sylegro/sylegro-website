@@ -405,6 +405,11 @@
       transform: translateY(0);
     }
 
+    /* Ohne Animation (für Scroll nach oben) */
+    .reveal-no-anim {
+      transition: none !important;
+    }
+
     /* Abschluss-Banner über ganze Seite */
     .experience-banner {
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
@@ -707,15 +712,38 @@
 
     updateSlider(false);
 
-    /* Scroll-Reveal mit wiederholter Animation */
+    /* Scrollrichtung bestimmen */
+    let lastScrollY = window.scrollY;
+    let scrollDirection = 'down';
+
+    window.addEventListener('scroll', () => {
+      const currentY = window.scrollY;
+      scrollDirection = currentY > lastScrollY ? 'down' : 'up';
+      lastScrollY = currentY;
+    });
+
+    /* Scroll-Reveal – Animation nur beim Runterscrollen */
     const revealElements = document.querySelectorAll('.reveal');
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        const el = entry.target;
+
         if (entry.isIntersecting) {
-          entry.target.classList.add('reveal-visible');
+          if (scrollDirection === 'down') {
+            // mit Animation erscheinen
+            el.classList.remove('reveal-no-anim');
+            el.classList.add('reveal-visible');
+          } else {
+            // beim Hochscrollen ohne Animation anzeigen
+            el.classList.add('reveal-no-anim');
+            el.classList.add('reveal-visible');
+            // Transition wieder aktivieren für das nächste Mal von unten
+            setTimeout(() => el.classList.remove('reveal-no-anim'), 100);
+          }
         } else {
-          entry.target.classList.remove('reveal-visible');
+          // aus dem Viewport -> Zustand zurücksetzen
+          el.classList.remove('reveal-visible');
         }
       });
     }, {
