@@ -4,222 +4,220 @@
   <meta charset="UTF-8" />
   <title>Sylegro – Startseite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<style>
-  * {
-    box-sizing: border-box;
-  }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-  /* 1. Deine Markenfarben – nur hier ändern */
-  :root {
-    --sylegro-blue: #0063A5;   /* Blau */
-    --sylegro-green: #17A863;  /* Grün */
-  }
+    /* Markenfarben – nur hier ändern, falls nötig */
+    :root {
+      --sylegro-blue: #0063A5;   /* Blau */
+      --sylegro-green: #17A863;  /* Grün */
+    }
 
-  body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f5f5f5;
-    color: #111827;
-  }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #111827;
+    }
 
-  /* Header & Navigation */
-  header {
-    /* Verlauf von links nach rechts */
-    background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
-    color: white;
-    padding: 16px 20px;
-  }
-  .header-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  .logo-area {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .logo-area img {
-    height: 48px;
-    width: 48px;
-    object-fit: contain;
-    border-radius: 8px;
-    background: white;
-  }
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-  }
-  .logo-text span:first-child {
-    font-weight: 600;
-    font-size: 1.2rem;
-  }
-  .logo-text span:last-child {
-    font-size: 0.85rem;
-    opacity: 0.9;
-  }
+    /* Header & Navigation */
+    header {
+      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
+      color: white;
+      padding: 16px 20px;
+    }
+    .header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-area img {
+      height: 48px;
+      width: 48px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: white;
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .logo-text span:first-child {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    .logo-text span:last-child {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
 
-  nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 16px;
-    font-size: 0.95rem;
-  }
-  nav a:hover {
-    text-decoration: underline;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-
-  /* Layout */
-  main {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
-    gap: 20px;
-    align-items: flex-start;
-  }
-  @media (max-width: 800px) {
-    .grid {
-      grid-template-columns: 1fr;
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 16px;
+      font-size: 0.95rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
     nav {
-      justify-content: flex-start;
-      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
-    nav a {
-      margin-left: 0;
-      margin-right: 12px;
+
+    /* Layout */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
     }
-  }
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 20px;
+      align-items: flex-start;
+    }
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        justify-content: flex-start;
+        margin-top: 8px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 12px;
+      }
+    }
 
-  .card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    border-top: 4px solid var(--sylegro-blue); /* farbiger Akzent oben */
-  }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border-top: 4px solid var(--sylegro-blue);
+    }
 
-  h1, h2, h3 {
-    margin-top: 0;
-  }
+    h1, h2, h3 {
+      margin-top: 0;
+    }
 
-  /* Slider */
-  .slider {
-    position: relative;
-    text-align: left;
-  }
-  .slider img {
-    width: 100%;
-    max-height: 260px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 12px;
-  }
-  .slider-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .slider-text {
-    font-size: 0.95rem;
-    color: #374151;
-  }
-  .slider-dots {
-    margin-top: 10px;
-    display: flex;
-    gap: 6px;
-  }
-  .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 1px solid #9ca3af;
-    cursor: pointer;
-  }
-  .dot.active {
-    background: var(--sylegro-green); /* aktiver Punkt in deiner Farbe */
-    border-color: var(--sylegro-green);
-  }
+    /* Slider */
+    .slider {
+      position: relative;
+      text-align: left;
+    }
+    .slider img {
+      width: 100%;
+      max-height: 260px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .slider-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .slider-text {
+      font-size: 0.95rem;
+      color: #374151;
+    }
+    .slider-dots {
+      margin-top: 10px;
+      display: flex;
+      gap: 6px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid #9ca3af;
+      cursor: pointer;
+    }
+    .dot.active {
+      background: var(--sylegro-green);
+      border-color: var(--sylegro-green);
+    }
 
-  /* Kacheln auf der Startseite */
-  .quick-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-  }
-  .quick-links a {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-  }
-  .quick-links .tile {
-    background: white;
-    border-radius: 12px;
-    padding: 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
-  }
-  .quick-links .tile:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    /* leichter Verlauf beim Hover */
-    background: linear-gradient(to right, rgba(0,99,165,0.08), rgba(23,168,99,0.08));
-  }
-  .quick-links h3 {
-    margin-bottom: 6px;
-    font-size: 1rem;
-  }
-  .quick-links p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #4b5563;
-  }
+    /* Kacheln auf der Startseite */
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .quick-links a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    .quick-links .tile {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+    }
+    .quick-links .tile:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: linear-gradient(to right, rgba(0,99,165,0.08), rgba(23,168,99,0.08));
+    }
+    .quick-links h3 {
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+    .quick-links p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
 
-  footer {
-    text-align: center;
-    font-size: 0.8rem;
-    color: #6b7280;
-    padding: 20px;
-  }
-</style>
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6b7280;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
- <header>
-  <div class="header-inner">
-    <div class="logo-area">
-      <img src="1-logo-verlauf-grün-blau-rgb (1).jpg" alt="Sylegro Logo">
-      <div class="logo-text">
-        <span>Sylegro</span>
-        <span>Professionelle Dienstleistungen – zuverlässig, persönlich, unkompliziert.</span>
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <img src="logo.jpg" alt="Sylegro Logo">
+        <div class="logo-text">
+          <span>Sylegro</span>
+          <span>Professionelle Dienstleistungen – zuverlässig, persönlich, unkompliziert.</span>
+        </div>
       </div>
+      <nav>
+        <a href="index.html">Startseite</a>
+        <a href="dienstleistungen.html">Dienstleistungen</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
     </div>
-    <nav>
-      <a href="index.html">Startseite</a>
-      <a href="dienstleistungen.html">Dienstleistungen</a>
-      <a href="ueber-uns.html">Über uns</a>
-      <a href="jobs.html">Jobs</a>
-      <a href="kontakt.html">Kontakt.html</a>
-    </nav>
-  </div>
-</header>
+  </header>
+
   <main>
     <section class="grid">
-      <!-- Unternehmensbeschreibung -->
       <div class="card">
         <h1>Willkommen bei Sylegro</h1>
         <p>
@@ -233,7 +231,6 @@
         </p>
       </div>
 
-      <!-- Slider mit rotierenden Dienstleistungen -->
       <div class="card slider">
         <h2>Unsere Dienstleistungen</h2>
         <img id="service-image" src="" alt="Dienstleistung">
@@ -243,7 +240,6 @@
       </div>
     </section>
 
-    <!-- Kacheln zu den Unterseiten -->
     <section class="quick-links">
       <a href="dienstleistungen.html">
         <div class="tile">
@@ -265,7 +261,7 @@
       </a>
       <a href="kontakt.html">
         <div class="tile">
-          <h3>Kontakt.html</h3>
+          <h3>Kontakt</h3>
           <p>So erreichst du uns – ganz unkompliziert.</p>
         </div>
       </a>
@@ -279,7 +275,6 @@
     </script>
   </footer>
 
-  <!-- Einfache Slider-Logik -->
   <script>
     const services = [
       {
@@ -328,13 +323,11 @@
       renderDots();
     }
 
-    // alle 5 Sekunden weiterschalten
     setInterval(() => {
       current = (current + 1) % services.length;
       updateSlider();
     }, 5000);
 
-    // Initial anzeigen
     updateSlider();
   </script>
 </body>
