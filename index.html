@@ -33,11 +33,12 @@
       text-decoration: none;
     }
 
-    /* HEADER */
+    /* HEADER: weiss, grosses Logo */
     header {
-      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
-      color: white;
+      background: #ffffff;
+      color: #0f172a;
       padding: 18px 20px;
+      border-bottom: 4px solid var(--sylegro-blue);
     }
 
     .header-inner {
@@ -50,11 +51,10 @@
     }
 
     .logo-area img {
-      height: 150px; /* LOGO GROSSER */
+      height: 190px; /* Logo deutlich grösser */
       width: auto;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.5));
     }
 
     nav {
@@ -65,7 +65,7 @@
     }
 
     nav a {
-      color: white;
+      color: var(--sylegro-blue);
       font-size: 0.98rem;
       font-weight: 500;
       position: relative;
@@ -79,7 +79,7 @@
       bottom: 0;
       width: 0;
       height: 2px;
-      background: rgba(255,255,255,0.9);
+      background: var(--sylegro-green);
       border-radius: 999px;
       transition: width .18s ease-out;
     }
@@ -259,6 +259,18 @@
       height: 100%;
     }
 
+    /* Erste Kachel – stärkerer Farbverlauf & weisse Schrift */
+    .quick-links .tile:first-child {
+      background: linear-gradient(135deg, var(--sylegro-blue), var(--sylegro-green));
+      border-color: rgba(15, 23, 42, 0.15);
+      color: #ffffff;
+    }
+
+    .quick-links .tile:first-child h3,
+    .quick-links .tile:first-child p {
+      color: #ffffff;
+    }
+
     .quick-links .tile:hover {
       transform: translateY(-4px);
       box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
@@ -267,6 +279,10 @@
         rgba(23, 168, 99, 0.16)
       );
       border-color: rgba(37, 99, 235, 0.3);
+    }
+
+    .quick-links .tile:first-child:hover {
+      background: linear-gradient(135deg, var(--sylegro-blue), var(--sylegro-green));
     }
 
     .quick-links h3 {
@@ -280,31 +296,54 @@
       color: #374151;
     }
 
-    /* WAS UNS AUSZEICHNET */
+    /* Überschrift "Was uns auszeichnet" */
     .excellence-card {
       margin-top: 10px;
     }
 
+    /* Was uns auszeichnet – 2 Spalten, je 2 untereinander */
     .excellence-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 32px;
       margin-top: 16px;
     }
 
+    @media (max-width: 800px) {
+      .excellence-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .excellence-item {
-      padding: 10px 6px 0 6px;
-      border-left: 3px solid var(--sylegro-green);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding-top: 6px;
     }
 
-    .excellence-item h3 {
+    .excellence-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--sylegro-blue);
+      color: var(--sylegro-blue);
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .excellence-content h3 {
       margin-top: 0;
-      margin-bottom: 6px;
-      color: var(--sylegro-green);
-      font-size: 1.1rem;
+      margin-bottom: 4px;
+      color: var(--sylegro-blue);
+      font-size: 1.05rem;
     }
 
-    .excellence-item p {
+    .excellence-content p {
       margin: 0;
       color: #4b5563;
       font-size: 0.95rem;
@@ -385,38 +424,53 @@
       </p>
     </section>
 
-    <!-- Was uns auszeichnet (ohne Emojis) -->
+    <!-- Was uns auszeichnet -->
     <section class="card excellence-card">
       <h2>Was uns auszeichnet</h2>
       <div class="excellence-grid">
         <div class="excellence-item">
-          <h3>Qualitätsorientiert</h3>
-          <p>
-            Wir garantieren Ihnen die gewünschte Qualität durch unser bewährtes Qualitätsmanagement. 
-            Jedes Detail wird kontinuierlich überprüft und optimiert, um Ergebnisse zu liefern, 
-            die Ihre Erwartungen übertreffen.
-          </p>
+          <div class="excellence-icon">Q</div>
+          <div class="excellence-content">
+            <h3>Qualitätsorientiert</h3>
+            <p>
+              Wir garantieren Ihnen die gewünschte Qualität durch unser bewährtes Qualitätsmanagement.
+              Jedes Detail wird kontinuierlich überprüft und optimiert, um Ergebnisse zu liefern, die Ihre
+              Erwartungen übertreffen.
+            </p>
+          </div>
         </div>
+
         <div class="excellence-item">
-          <h3>Erfahrung &amp; Know-How</h3>
-          <p>
-            Mit langjähriger Erfahrung und fundiertem Fachwissen garantieren wir Ihnen professionelle 
-            Lösungen, die auf bewährten Methoden und stetiger Weiterentwicklung basieren.
-          </p>
+          <div class="excellence-icon">E</div>
+          <div class="excellence-content">
+            <h3>Erfahrung &amp; Know-How</h3>
+            <p>
+              Mit langjähriger Erfahrung und fundiertem Fachwissen garantieren wir Ihnen professionelle
+              Lösungen, die auf bewährten Methoden und stetiger Weiterentwicklung basieren.
+            </p>
+          </div>
         </div>
+
         <div class="excellence-item">
-          <h3>Flexibel</h3>
-          <p>
-            Unsere Dienstleistungen sind so flexibel wie Ihre Bedürfnisse. Wir passen uns Ihren 
-            Anforderungen an und bieten massgeschneiderte Lösungen, wann immer Sie sie benötigen.
-          </p>
+          <div class="excellence-icon">F</div>
+          <div class="excellence-content">
+            <h3>Flexibel</h3>
+            <p>
+              Unsere Dienstleistungen sind so flexibel wie Ihre Bedürfnisse. Wir passen uns Ihren
+              Anforderungen an und bieten massgeschneiderte Lösungen, wann immer Sie sie benötigen.
+            </p>
+          </div>
         </div>
+
         <div class="excellence-item">
-          <h3>Transparent</h3>
-          <p>
-            Wir legen grossen Wert auf klare Kommunikation. Sie wissen immer genau, wie wir arbeiten, 
-            warum wir bestimmte Massnahmen ergreifen und wie diese zu den besten Ergebnissen führen.
-          </p>
+          <div class="excellence-icon">T</div>
+          <div class="excellence-content">
+            <h3>Transparent</h3>
+            <p>
+              Wir legen grossen Wert auf klare Kommunikation. Sie wissen immer genau, wie wir arbeiten,
+              warum wir bestimmte Massnahmen ergreifen und wie diese zu den besten Ergebnissen führen.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -482,11 +536,6 @@
     const title = document.getElementById("service-title");
     const text = document.getElementById("service-text");
     const dots = document.getElementById("slider-dots");
-    const prevBtn = document.getElementById("prev-slide");
-    const nextBtn = document.getElementById("next-slide");
-
-    const prev = document.getElementById("prev-slide");
-    const next = document.getElementById("next-slide");
 
     let current = 0;
 
