@@ -9,14 +9,23 @@
       box-sizing: border-box;
     }
 
-    /* Markenfarben – nur hier ändern, falls nötig */
+    /* Falls ihr später eine Kiro-Webfont-Datei habt, z.B. fonts/Kiro.woff2:
+    @font-face {
+      font-family: "Kiro";
+      src: url("fonts/Kiro.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    */
+
     :root {
-      --sylegro-blue: #0063A5;   /* Blau */
-      --sylegro-green: #17A863;  /* Grün */
+      --sylegro-blue: #0063A5;
+      --sylegro-green: #17A863;
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-family: "Kiro", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f5f5f5;
@@ -43,11 +52,12 @@
       gap: 12px;
     }
     .logo-area img {
-      height: 48px;
-      width: 48px;
+      height: 52px;
+      width: 52px;
       object-fit: contain;
-      border-radius: 8px;
+      border-radius: 12px;
       background: white;
+      padding: 4px;
     }
     .logo-text {
       display: flex;
@@ -62,6 +72,12 @@
       opacity: 0.9;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
     nav a {
       color: white;
       text-decoration: none;
@@ -70,12 +86,6 @@
     }
     nav a:hover {
       text-decoration: underline;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: flex-end;
     }
 
     /* Layout */
@@ -155,7 +165,7 @@
       border-color: var(--sylegro-green);
     }
 
-    /* Kacheln auf der Startseite */
+    /* Kacheln zu Unterseiten */
     .quick-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -172,11 +182,13 @@
       padding: 16px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+      border-top: 3px solid transparent;
     }
     .quick-links .tile:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      background: linear-gradient(to right, rgba(0,99,165,0.08), rgba(23,168,99,0.08));
+      background: linear-gradient(to right, rgba(0,99,165,0.06), rgba(23,168,99,0.06));
+      border-top-color: var(--sylegro-green);
     }
     .quick-links h3 {
       margin-bottom: 6px;
@@ -203,11 +215,11 @@
         <img src="logo.jpg" alt="Sylegro Logo">
         <div class="logo-text">
           <span>Sylegro</span>
-          <span>Professionelle Dienstleistungen – zuverlässig, persönlich, unkompliziert.</span>
+          <span>Reinigung & Hauswartung – digital, nachhaltig, effizient.</span>
         </div>
       </div>
       <nav>
-        <a href="index.html">Startseite</a>
+        <a href="index.html">Home</a>
         <a href="dienstleistungen.html">Dienstleistungen</a>
         <a href="ueber-uns.html">Über uns</a>
         <a href="jobs.html">Jobs</a>
@@ -218,21 +230,25 @@
 
   <main>
     <section class="grid">
+      <!-- Willkommen-Text -->
       <div class="card">
-        <h1>Willkommen bei Sylegro</h1>
+        <h1>Herzlich willkommen bei Sylegro</h1>
         <p>
-          Hier kannst du den Text über das Unternehmen einfügen: Wer ist Sylegro, welche
-          Werte stehen im Vordergrund, was macht euch besonders. Schreib hier in 3–6 Sätzen,
-          was ihr anbietet und wie ihr euren Kundinnen und Kunden weiterhelft.
+          Herzlich willkommen bei Sylegro, Ihrem zuverlässigen Partner für professionelle
+          Reinigungs- und Hauswartungsdienste. Unser Name steht für Qualität, Flexibilität
+          und transparente Lösungen, die individuell auf Ihre Bedürfnisse zugeschnitten sind.
         </p>
         <p>
-          Zum Beispiel: „Wir begleiten unsere Kunden von der ersten Idee bis zur
-          Umsetzung und legen Wert auf eine offene, unkomplizierte Zusammenarbeit.“
+          Mit klarem Fokus auf Unterhaltsreinigung, Spezialreinigung und Hauswartung
+          bieten wir Ihnen ein umfassendes Dienstleistungspaket, das höchsten Standards
+          gerecht wird. Unser erfahrenes Team sorgt dafür, dass Ihre Räumlichkeiten stets
+          sauber, gepflegt und einladend sind – für ein optimales Arbeits- und Wohnumfeld.
         </p>
       </div>
 
+      <!-- Slider: drei Haupt-Dienstleistungen -->
       <div class="card slider">
-        <h2>Unsere Dienstleistungen</h2>
+        <h2>Unsere Kernleistungen</h2>
         <img id="service-image" src="" alt="Dienstleistung">
         <div class="slider-title" id="service-title"></div>
         <div class="slider-text" id="service-text"></div>
@@ -240,29 +256,42 @@
       </div>
     </section>
 
+    <!-- Vision -->
+    <section class="card">
+      <h2>Unsere Vision</h2>
+      <p><strong>Wir gestalten die Zukunft der Gebäudereinigung – digital, nachhaltig und effizient.</strong></p>
+      <p>
+        Mit innovativen Technologien, umweltfreundlichen Reinigungsmethoden und klar
+        definierten Prozessen setzen wir neue Massstäbe in der Branche. Unsere digitalen
+        Lösungen sorgen für maximale Transparenz und Effizienz, während nachhaltige Verfahren
+        den Werterhalt Ihrer Immobilie sichern.
+      </p>
+    </section>
+
+    <!-- Kacheln zu Unterseiten -->
     <section class="quick-links">
       <a href="dienstleistungen.html">
         <div class="tile">
-          <h3>Dienstleistungen</h3>
-          <p>Überblick über alle Angebote von Sylegro.</p>
+          <h3>Unsere Dienstleistungen</h3>
+          <p>Unterhaltsreinigung, Spezialreinigung und Hauswartung im Überblick.</p>
         </div>
       </a>
       <a href="ueber-uns.html">
         <div class="tile">
           <h3>Über uns</h3>
-          <p>Mehr über die Menschen und die Geschichte hinter Sylegro.</p>
+          <p>Die Geschichte hinter Sylegro – Erfahrung, Werte und Team.</p>
         </div>
       </a>
       <a href="jobs.html">
         <div class="tile">
           <h3>Jobs</h3>
-          <p>Offene Stellen und Infos für Bewerber:innen.</p>
+          <p>Mehr als nur ein Job – werde Teil unseres Teams.</p>
         </div>
       </a>
       <a href="kontakt.html">
         <div class="tile">
           <h3>Kontakt</h3>
-          <p>So erreichst du uns – ganz unkompliziert.</p>
+          <p>Haben Sie Fragen? Wir freuen uns auf Ihre Nachricht.</p>
         </div>
       </a>
     </section>
@@ -275,22 +304,23 @@
     </script>
   </footer>
 
+  <!-- Slider-Logik -->
   <script>
     const services = [
       {
-        title: "Dienstleistung 1",
-        text: "Kurze Beschreibung von Dienstleistung 1. Hier kannst du später konkret werden.",
-        image: "https://via.placeholder.com/800x260?text=Dienstleistung+1"
+        title: "Unterhaltsreinigung",
+        text: "Sauberkeit mit System: Tägliche oder periodische Reinigung von Büros, Schulen, Verkaufsflächen und mehr – effizient, zuverlässig und nachhaltig.",
+        image: "https://via.placeholder.com/800x260?text=Unterhaltsreinigung"
       },
       {
-        title: "Dienstleistung 2",
-        text: "Kurze Beschreibung von Dienstleistung 2. Was bringt sie euren Kunden?",
-        image: "https://via.placeholder.com/800x260?text=Dienstleistung+2"
+        title: "Spezialreinigung",
+        text: "Tiefenreinigung, Fenster- und Fassadenreinigung, Baureinigung und mehr – für Bereiche, in denen eine herkömmliche Reinigung nicht ausreicht.",
+        image: "https://via.placeholder.com/800x260?text=Spezialreinigung"
       },
       {
-        title: "Dienstleistung 3",
-        text: "Kurze Beschreibung von Dienstleistung 3. Wofür eignet sie sich besonders?",
-        image: "https://via.placeholder.com/800x260?text=Dienstleistung+3"
+        title: "Hauswartung",
+        text: "Technische Kontrollen, Pflege von Innen- und Aussenanlagen, Winterdienst und laufende Betreuung – Ihre Immobilie in besten Händen.",
+        image: "https://via.placeholder.com/800x260?text=Hauswartung"
       }
     ];
 
