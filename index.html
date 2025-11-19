@@ -50,7 +50,7 @@
     }
 
     .logo-area img {
-      height: 150px; /* LOGO GROSSER */
+      height: 220px;  /* ⬅️ LOGO GROSSER GEMACHT */
       width: auto;
       object-fit: contain;
       display: block;
@@ -115,7 +115,7 @@
         justify-content: flex-start;
       }
 
-      /* auf kleinen Screens 1 Spalte für Was uns auszeichnet */
+      /* auf kleinen Screens 1 Spalte */
       .excellence-grid {
         grid-template-columns: 1fr;
       }
@@ -292,8 +292,7 @@
 
     .excellence-grid {
       display: grid;
-      /* feste 2 Spalten -> Flexibel unter Erfahrung & rechts von Transparent */
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2×2 Raster */
       gap: 24px;
       margin-top: 16px;
     }
@@ -331,7 +330,8 @@
   <header>
     <div class="header-inner">
       <div class="logo-area">
-        <img src="logo-header.jpg" alt="Sylegro Logo mit Claim">
+        <!-- ⬅️ NEUES LOGO EINGEBAUT -->
+        <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo mit Claim">
       </div>
 
       <nav>
@@ -347,7 +347,7 @@
   <!-- MAIN -->
   <main>
 
-    <!-- Grid: Slider + Text (getauscht) -->
+    <!-- Grid: Slider links + Text rechts -->
     <section class="grid">
       <!-- Slider links -->
       <div class="card slider">
@@ -364,7 +364,7 @@
         <div class="slider-dots" id="slider-dots"></div>
       </div>
 
-      <!-- Willkommen-Text rechts -->
+      <!-- Text rechts -->
       <div class="card">
         <p>
           Sylegro, Ihr zuverlässiger Partner für professionelle Reinigungs- und Hauswartungsdienste.
@@ -397,34 +397,22 @@
       <div class="excellence-grid">
         <div class="excellence-item">
           <h3>Qualitätsorientiert</h3>
-          <p>
-            Wir garantieren Ihnen die gewünschte Qualität durch unser bewährtes Qualitätsmanagement. 
-            Jedes Detail wird kontinuierlich überprüft und optimiert, um Ergebnisse zu liefern, 
-            die Ihre Erwartungen übertreffen.
-          </p>
+          <p>Wir garantieren Ihnen die gewünschte Qualität durch unser bewährtes Qualitätsmanagement.</p>
         </div>
+
         <div class="excellence-item">
           <h3>Erfahrung &amp; Know-How</h3>
-          <p>
-            Mit langjähriger Erfahrung und fundiertem Fachwissen garantieren wir Ihnen professionelle 
-            Lösungen, die auf bewährten Methoden und stetiger Weiterentwicklung basieren.
-          </p>
+          <p>Mit langjähriger Erfahrung und fundiertem Fachwissen garantieren wir professionelle Lösungen.</p>
         </div>
-        <!-- Transparent zuerst in Reihe 2 -->
+
         <div class="excellence-item">
           <h3>Transparent</h3>
-          <p>
-            Wir legen grossen Wert auf klare Kommunikation. Sie wissen immer genau, wie wir arbeiten, 
-            warum wir bestimmte Massnahmen ergreifen und wie diese zu den besten Ergebnissen führen.
-          </p>
+          <p>Wir legen grossen Wert auf klare Kommunikation und volle Nachvollziehbarkeit unserer Abläufe.</p>
         </div>
-        <!-- Flexibel rechts von Transparent (Reihe 2, Spalte 2) -->
+
         <div class="excellence-item">
           <h3>Flexibel</h3>
-          <p>
-            Unsere Dienstleistungen sind so flexibel wie Ihre Bedürfnisse. Wir passen uns Ihren 
-            Anforderungen an und bieten massgeschneiderte Lösungen, wann immer Sie sie benötigen.
-          </p>
+          <p>Unsere Dienstleistungen sind so flexibel wie Ihre Bedürfnisse – jederzeit anpassbar und effizient.</p>
         </div>
       </div>
     </section>
@@ -471,17 +459,17 @@
     const services = [
       {
         title: "Unterhaltsreinigung",
-        text: "Regelmässige Reinigung von Büros, Liegenschaften und Gewerbeflächen – sauber, zuverlässig und strukturiert.",
+        text: "Regelmässige Reinigung von Büros, Liegenschaften und Gewerbeflächen – sauber und zuverlässig.",
         image: "Titelbildmitlogo.jpg"
       },
       {
         title: "Spezialreinigung",
-        text: "Tiefenreinigungen, Glas- und Fassadenreinigung, Bau- und Umzugsreinigung für besondere Anforderungen.",
+        text: "Tiefenreinigungen, Glas- und Fassadenreinigung, Bau- und Umzugsreinigung.",
         image: "AdobeStock_482143067.jpeg"
       },
       {
         title: "Hauswartung",
-        text: "Umfassende Betreuung Ihrer Liegenschaft: Technik, Pflege der Aussenanlagen und Werterhaltung aus einer Hand.",
+        text: "Technik, Pflege der Aussenanlagen und Werterhaltung aus einer Hand.",
         image: "DSC_6486.JPG"
       }
     ];
