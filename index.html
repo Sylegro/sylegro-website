@@ -405,6 +405,26 @@
       transform: translateY(0);
     }
 
+    /* Abschluss-Banner über ganze Seite */
+    .experience-banner {
+      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
+      color: #ffffff;
+      padding: 18px 20px;
+      text-align: center;
+    }
+
+    .experience-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .experience-inner p {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
     footer {
       text-align: center;
       padding: 18px 20px 26px;
@@ -594,6 +614,13 @@
 
   </main>
 
+  <!-- Abschluss-Banner über ganze Breite -->
+  <section class="experience-banner reveal">
+    <div class="experience-inner">
+      <p>Unser Team verzeichnet gemeinsam über 50 Jahre Reinigungserfahrung</p>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     © Sylegro <span id="year"></span>
@@ -680,14 +707,15 @@
 
     updateSlider(false);
 
-    /* Scroll-Reveal mit IntersectionObserver */
+    /* Scroll-Reveal mit wiederholter Animation */
     const revealElements = document.querySelectorAll('.reveal');
 
-    const observer = new IntersectionObserver((entries, obs) => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('reveal-visible');
-          obs.unobserve(entry.target); // nur einmal animieren
+        } else {
+          entry.target.classList.remove('reveal-visible');
         }
       });
     }, {
