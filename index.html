@@ -5,209 +5,303 @@
   <title>Sylegro – Startseite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; }
+
+    /* Links neutral (nicht lila / nicht unterstrichen) */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: none;
     }
 
-    /* Markenfarben – nur hier ändern, falls nötig */
     :root {
-      --sylegro-blue: #0063A5;   /* Blau */
-      --sylegro-green: #17A863;  /* Grün */
+      --sylegro-blue: #0063A5;
+      --sylegro-green: #17A863;
+      --bg-light: #f5f5f5;
     }
 
+    /* Schrift (Kiro gewünscht, dann Fallbacks) */
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-family: "Kiro", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f5f5f5;
+      background: var(--bg-light);
       color: #111827;
     }
 
-    /* Header & Navigation */
+    /* HEADER */
     header {
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
       color: white;
-      padding: 16px 20px;
+      padding: 18px 20px;
     }
+
     .header-inner {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
     }
+
     .logo-area {
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-    .logo-area img {
-      height: 48px;
-      width: 48px;
-      object-fit: contain;
-      border-radius: 8px;
-      background: white;
-    }
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-    .logo-text span:first-child {
-      font-weight: 600;
-      font-size: 1.2rem;
-    }
-    .logo-text span:last-child {
-      font-size: 0.85rem;
-      opacity: 0.9;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 16px;
-      font-size: 0.95rem;
+    /* Logo direkt auf dem Verlauf, ohne Bubble */
+    .logo-area img {
+      height: 120px;   /* Logo-Grösse anpassbar */
+      width: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.45));
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
+
+    /* Navigation */
     nav {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
       justify-content: flex-end;
+      gap: 18px;
     }
 
-    /* Layout */
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
+    nav a {
+      color: white;
+      font-size: 0.98rem;
+      font-weight: 500;
+      opacity: 0.95;
+      position: relative;
+      padding-bottom: 4px;
     }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.9);
+      transition: width 0.2s ease-out;
+      border-radius: 999px;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 20px 32px;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
-      gap: 20px;
-      align-items: flex-start;
+      gap: 22px;
+      align-items: stretch;      /* Karten gleich hoch */
+      margin-bottom: 20px;
     }
-    @media (max-width: 800px) {
+
+    @media (max-width: 900px) {
       .grid {
         grid-template-columns: 1fr;
       }
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
       nav {
         justify-content: flex-start;
-        margin-top: 8px;
-      }
-      nav a {
-        margin-left: 0;
-        margin-right: 12px;
       }
     }
 
     .card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 22px 22px 20px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
       border-top: 4px solid var(--sylegro-blue);
+      height: 100%; /* innerhalb Grid volle Höhe */
     }
 
-    h1, h2, h3 {
-      margin-top: 0;
+    h2, h3 { margin-top: 0; }
+
+    h2 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
     }
 
-    /* Slider */
-    .slider {
+    p {
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+
+    /* SLIDER */
+    .slider-inner {
       position: relative;
-      text-align: left;
     }
-    .slider img {
-      width: 100%;
-      max-height: 260px;
-      object-fit: cover;
-      border-radius: 10px;
+
+    .slider-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
       margin-bottom: 12px;
     }
+
+    #service-image {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 14px;
+      opacity: 1;
+      transition: opacity 0.4s ease;
+      display: block;
+    }
+
     .slider-title {
       font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 4px;
     }
+
     .slider-text {
       font-size: 0.95rem;
       color: #374151;
+      margin-bottom: 10px;
     }
+
     .slider-dots {
-      margin-top: 10px;
       display: flex;
-      gap: 6px;
+      gap: 8px;
+      margin-top: 8px;
+      align-items: center;
     }
+
     .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
       border: 1px solid #9ca3af;
       cursor: pointer;
+      background: transparent;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
     }
+
     .dot.active {
       background: var(--sylegro-green);
       border-color: var(--sylegro-green);
+      transform: scale(1.1);
     }
 
-    /* Kacheln auf der Startseite */
+    /* Slider-Pfeile */
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .slider-arrow {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 999px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+      cursor: pointer;
+      font-size: 16px;
+      color: #374151;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .slider-arrow:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
+      background: #ffffff;
+    }
+
+    /* KACHELN */
     .quick-links {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      margin-top: 10px;
+      align-items: stretch; /* alle Kacheln gleich hoch */
     }
-    .quick-links a {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
+
     .quick-links .tile {
-      background: white;
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+      border-radius: 18px;
+      padding: 20px 20px 18px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      background: linear-gradient(135deg,
+        rgba(0, 99, 165, 0.08),
+        rgba(23, 168, 99, 0.08)
+      );
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      transition: transform 0.18s ease, box-shadow 0.18s ease,
+                  background 0.18s ease, border-color 0.18s ease;
+      height: 100%;
     }
-    .quick-links .tile:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      background: linear-gradient(to right, rgba(0,99,165,0.08), rgba(23,168,99,0.08));
-    }
-    .quick-links h3 {
+
+    .quick-links .tile h3 {
       margin-bottom: 6px;
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
-    .quick-links p {
+
+    .quick-links .tile p {
       margin: 0;
-      font-size: 0.9rem;
-      color: #4b5563;
+      font-size: 0.94rem;
+      color: #374151;
+    }
+
+    .quick-links .tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+      background: linear-gradient(135deg,
+        rgba(0, 99, 165, 0.14),
+        rgba(23, 168, 99, 0.16)
+      );
+      border-color: rgba(37, 99, 235, 0.3);
     }
 
     footer {
       text-align: center;
-      font-size: 0.8rem;
+      padding: 18px 20px 26px;
+      font-size: 0.85rem;
       color: #6b7280;
-      padding: 20px;
     }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
     <div class="header-inner">
       <div class="logo-area">
-        <img src="logo.jpg" alt="Sylegro Logo">
-        <div class="logo-text">
-          <span>Sylegro</span>
-          <span>Professionelle Dienstleistungen – zuverlässig, persönlich, unkompliziert.</span>
-        </div>
+        <!-- Logo-Datei: wir verwenden den einfachen Namen logo-header.jpg -->
+        <img src="logo-header.jpg" alt="Sylegro Logo mit Claim">
       </div>
+
       <nav>
-        <a href="index.html">Startseite</a>
+        <a href="index.html">Home</a>
         <a href="dienstleistungen.html">Dienstleistungen</a>
         <a href="ueber-uns.html">Über uns</a>
         <a href="jobs.html">Jobs</a>
@@ -216,119 +310,175 @@
     </div>
   </header>
 
+  <!-- MAIN -->
   <main>
+
     <section class="grid">
+      <!-- Willkommen-Text (ohne H1) -->
       <div class="card">
-        <h1>Willkommen bei Sylegro</h1>
         <p>
-          Hier kannst du den Text über das Unternehmen einfügen: Wer ist Sylegro, welche
-          Werte stehen im Vordergrund, was macht euch besonders. Schreib hier in 3–6 Sätzen,
-          was ihr anbietet und wie ihr euren Kundinnen und Kunden weiterhelft.
+          Sylegro, Ihr zuverlässiger Partner für professionelle Reinigungs- und Hauswartungsdienste.
+          Unser Name steht für Qualität, Flexibilität und transparente Lösungen, die individuell auf
+          Ihre Bedürfnisse zugeschnitten sind.
         </p>
         <p>
-          Zum Beispiel: „Wir begleiten unsere Kunden von der ersten Idee bis zur
-          Umsetzung und legen Wert auf eine offene, unkomplizierte Zusammenarbeit.“
+          Mit klarem Fokus auf Unterhaltsreinigung, Spezialreinigung und Hauswartung bieten wir Ihnen
+          ein umfassendes Dienstleistungspaket, das höchsten Standards gerecht wird. Unser erfahrenes
+          Team sorgt dafür, dass Ihre Räumlichkeiten stets sauber, gepflegt und einladend sind – für ein
+          optimales Arbeits- und Wohnumfeld.
         </p>
       </div>
 
+      <!-- Slider -->
       <div class="card slider">
-        <h2>Unsere Dienstleistungen</h2>
-        <img id="service-image" src="" alt="Dienstleistung">
-        <div class="slider-title" id="service-title"></div>
-        <div class="slider-text" id="service-text"></div>
-        <div class="slider-dots" id="slider-dots"></div>
+        <h2>Unsere Kernleistungen</h2>
+        <div class="slider-inner">
+          <div class="slider-image-wrapper">
+            <img id="service-image" src="" alt="Dienstleistung">
+            <div class="slider-nav">
+              <button class="slider-arrow" id="prev-slide">&#10094;</button>
+              <button class="slider-arrow" id="next-slide">&#10095;</button>
+            </div>
+          </div>
+          <div class="slider-title" id="service-title"></div>
+          <div class="slider-text" id="service-text"></div>
+          <div class="slider-dots" id="slider-dots"></div>
+        </div>
       </div>
     </section>
 
+    <!-- Vision -->
+    <section class="card">
+      <h2>Unsere Vision</h2>
+      <p><strong>Wir gestalten die Zukunft der Gebäudereinigung – digital, nachhaltig und effizient.</strong></p>
+      <p>
+        Mit innovativen Technologien, umweltfreundlichen Reinigungsmethoden und klar definierten Prozessen
+        setzen wir neue Massstäbe in der Branche. Unsere digitalen Lösungen sorgen für maximale Transparenz
+        und Effizienz, während nachhaltige Verfahren den Werterhalt Ihrer Immobilie sichern.
+      </p>
+    </section>
+
+    <!-- Kacheln / Quick Links -->
     <section class="quick-links">
       <a href="dienstleistungen.html">
         <div class="tile">
-          <h3>Dienstleistungen</h3>
-          <p>Überblick über alle Angebote von Sylegro.</p>
+          <h3>Unsere Dienstleistungen</h3>
+          <p>Unterhaltsreinigung, Spezialreinigung &amp; Hauswartung im Überblick.</p>
         </div>
       </a>
+
       <a href="ueber-uns.html">
         <div class="tile">
           <h3>Über uns</h3>
-          <p>Mehr über die Menschen und die Geschichte hinter Sylegro.</p>
+          <p>Die Menschen und Werte hinter Sylegro.</p>
         </div>
       </a>
+
       <a href="jobs.html">
         <div class="tile">
           <h3>Jobs</h3>
-          <p>Offene Stellen und Infos für Bewerber:innen.</p>
+          <p>Werde Teil unseres Teams.</p>
         </div>
       </a>
+
       <a href="kontakt.html">
         <div class="tile">
           <h3>Kontakt</h3>
-          <p>So erreichst du uns – ganz unkompliziert.</p>
+          <p>Wir freuen uns auf Ihre Anfrage.</p>
         </div>
       </a>
     </section>
+
   </main>
 
+  <!-- FOOTER -->
   <footer>
     © Sylegro <span id="year"></span>
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
   </footer>
 
+  <!-- Slider-Logik -->
   <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
     const services = [
       {
-        title: "Dienstleistung 1",
-        text: "Kurze Beschreibung von Dienstleistung 1. Hier kannst du später konkret werden.",
-        image: "https://via.placeholder.com/800x260?text=Dienstleistung+1"
+        title: "Unterhaltsreinigung",
+        text: "Regelmässige Reinigung von Büros, Liegenschaften und Gewerbeflächen – sauber, zuverlässig und strukturiert.",
+        image: "Titelbildmitlogo.jpg"
       },
       {
-        title: "Dienstleistung 2",
-        text: "Kurze Beschreibung von Dienstleistung 2. Was bringt sie euren Kunden?",
-        image: "https://via.placeholder.com/800x260?text=Dienstleistung+2"
+        title: "Spezialreinigung",
+        text: "Tiefenreinigungen, Glas- und Fassadenreinigung, Bau- und Umzugsreinigung für besondere Anforderungen.",
+        image: "AdobeStock_482143067.jpeg"
       },
       {
-        title: "Dienstleistung 3",
-        text: "Kurze Beschreibung von Dienstleistung 3. Wofür eignet sie sich besonders?",
-        image: "https://via.placeholder.com/800x260?text=Dienstleistung+3"
+        title: "Hauswartung",
+        text: "Umfassende Betreuung Ihrer Liegenschaft: Technik, Pflege der Aussenanlagen und Werterhaltung aus einer Hand.",
+        image: "DSC_6486.JPG"
       }
     ];
 
-    const imgEl = document.getElementById("service-image");
-    const titleEl = document.getElementById("service-title");
-    const textEl = document.getElementById("service-text");
-    const dotsContainer = document.getElementById("slider-dots");
+    const img = document.getElementById("service-image");
+    const title = document.getElementById("service-title");
+    const text = document.getElementById("service-text");
+    const dots = document.getElementById("slider-dots");
+    const prevBtn = document.getElementById("prev-slide");
+    const nextBtn = document.getElementById("next-slide");
 
     let current = 0;
 
     function renderDots() {
-      dotsContainer.innerHTML = "";
-      services.forEach((_, index) => {
+      dots.innerHTML = "";
+      services.forEach((_, i) => {
         const dot = document.createElement("div");
-        dot.className = "dot" + (index === current ? " active" : "");
-        dot.addEventListener("click", () => {
-          current = index;
-          updateSlider();
-        });
-        dotsContainer.appendChild(dot);
+        dot.className = "dot" + (i === current ? " active" : "");
+        dot.onclick = () => {
+          current = i;
+          updateSlider(true);
+        };
+        dots.appendChild(dot);
       });
     }
 
-    function updateSlider() {
-      const service = services[current];
-      imgEl.src = service.image;
-      imgEl.alt = service.title;
-      titleEl.textContent = service.title;
-      textEl.textContent = service.text;
-      renderDots();
+    function updateSlider(withFade) {
+      const s = services[current];
+
+      if (withFade) {
+        img.style.opacity = 0;
+        setTimeout(() => {
+          img.src = s.image;
+          img.alt = s.title;
+          title.textContent = s.title;
+          text.textContent = s.text;
+          renderDots();
+          img.style.opacity = 1;
+        }, 200);
+      } else {
+        img.src = s.image;
+        img.alt = s.title;
+        title.textContent = s.title;
+        text.textContent = s.text;
+        renderDots();
+      }
     }
+
+    prevBtn.addEventListener("click", () => {
+      current = (current - 1 + services.length) % services.length;
+      updateSlider(true);
+    });
+
+    nextBtn.addEventListener("click", () => {
+      current = (current + 1) % services.length;
+      updateSlider(true);
+    });
 
     setInterval(() => {
       current = (current + 1) % services.length;
-      updateSlider();
-    }, 5000);
+      updateSlider(true);
+    }, 6000);
 
-    updateSlider();
+    updateSlider(false);
   </script>
+
 </body>
 </html>
