@@ -405,11 +405,6 @@
       transform: translateY(0);
     }
 
-    /* Ohne Animation (für Scroll nach oben) */
-    .reveal-no-anim {
-      transition: none !important;
-    }
-
     /* Abschluss-Banner über ganze Seite */
     .experience-banner {
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
@@ -478,7 +473,7 @@
         <div class="slider-dots" id="slider-dots"></div>
       </div>
 
-      <!-- Willkommen-Text – neue milchige Kachel -->
+      <!-- Willkommen-Text – milchige Kachel -->
       <div class="card welcome-card reveal">
         <div class="welcome-inner">
           <h3 class="welcome-subtitle">Ihr Partner für gepflegte Räume</h3>
@@ -722,28 +717,17 @@
       lastScrollY = currentY;
     });
 
-    /* Scroll-Reveal – Animation nur beim Runterscrollen */
+    /* Scroll-Reveal – Animation nur beim Runterscrollen, einmalig */
     const revealElements = document.querySelectorAll('.reveal');
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         const el = entry.target;
 
-        if (entry.isIntersecting) {
-          if (scrollDirection === 'down') {
-            // mit Animation erscheinen
-            el.classList.remove('reveal-no-anim');
-            el.classList.add('reveal-visible');
-          } else {
-            // beim Hochscrollen ohne Animation anzeigen
-            el.classList.add('reveal-no-anim');
-            el.classList.add('reveal-visible');
-            // Transition wieder aktivieren für das nächste Mal von unten
-            setTimeout(() => el.classList.remove('reveal-no-anim'), 100);
-          }
-        } else {
-          // aus dem Viewport -> Zustand zurücksetzen
-          el.classList.remove('reveal-visible');
+        if (entry.isIntersecting && scrollDirection === 'down') {
+          el.classList.add('reveal-visible');
+          // nach der ersten Animation nicht mehr beobachten -> kein „Springen“
+          obs.unobserve(el);
         }
       });
     }, {
