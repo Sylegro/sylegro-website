@@ -176,7 +176,7 @@
       object-fit: cover;
       border-radius: 14px;
       opacity: 1;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.4s ease;
       display: block;
     }
 
@@ -393,6 +393,18 @@
       font-weight: 600;
     }
 
+    /* Scroll-Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     footer {
       text-align: center;
       padding: 18px 20px 26px;
@@ -427,7 +439,7 @@
     <!-- Grid: Slider links, Text rechts -->
     <section class="grid">
       <!-- Slider -->
-      <div class="card slider">
+      <div class="card slider reveal">
         <h2>Unsere Kernleistungen</h2>
         <div class="slider-image-wrapper">
           <img id="service-image" src="" alt="Dienstleistung">
@@ -442,7 +454,7 @@
       </div>
 
       <!-- Willkommen-Text – neue milchige Kachel -->
-      <div class="card welcome-card">
+      <div class="card welcome-card reveal">
         <div class="welcome-inner">
           <h3 class="welcome-subtitle">Ihr Partner für gepflegte Räume</h3>
           <p>
@@ -456,7 +468,7 @@
     </section>
 
     <!-- Vision -->
-    <section class="card">
+    <section class="card reveal">
       <h2>Unsere Vision</h2>
       <p><strong>Wir gestalten die Zukunft der Gebäudereinigung – digital, nachhaltig und effizient.</strong></p>
       <p>
@@ -467,7 +479,7 @@
     </section>
 
     <!-- Was uns auszeichnet -->
-    <section class="card excellence-card">
+    <section class="card excellence-card reveal">
       <h2>Was uns auszeichnet</h2>
       <div class="excellence-grid">
         <!-- 1 -->
@@ -527,7 +539,7 @@
     </section>
 
     <!-- Qualität – zweispaltige Kachel -->
-    <section class="card quality-split-card">
+    <section class="card quality-split-card reveal">
       <div class="quality-image-side"></div>
 
       <div class="quality-text-side">
@@ -554,25 +566,25 @@
 
     <!-- Quick Links -->
     <section class="quick-links">
-      <a href="dienstleistungen.html">
+      <a href="dienstleistungen.html" class="reveal">
         <div class="tile">
           <h3>Unsere Dienstleistungen</h3>
           <p>Unterhaltsreinigung, Spezialreinigung &amp; Hauswartung im Überblick.</p>
         </div>
       </a>
-      <a href="ueber-uns.html">
+      <a href="ueber-uns.html" class="reveal">
         <div class="tile">
           <h3>Über uns</h3>
           <p>Die Menschen und Werte hinter Sylegro.</p>
         </div>
       </a>
-      <a href="jobs.html">
+      <a href="jobs.html" class="reveal">
         <div class="tile">
           <h3>Jobs</h3>
           <p>Werde Teil unseres Teams.</p>
         </div>
       </a>
-      <a href="kontakt.html">
+      <a href="kontakt.html" class="reveal">
         <div class="tile">
           <h3>Kontakt</h3>
           <p>Wir freuen uns auf Ihre Anfrage.</p>
@@ -587,7 +599,7 @@
     © Sylegro <span id="year"></span>
   </footer>
 
-  <!-- Slider-Logik -->
+  <!-- Slider- & Animations-Logik -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -667,6 +679,22 @@
     }, 6000);
 
     updateSlider(false);
+
+    /* Scroll-Reveal mit IntersectionObserver */
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          obs.unobserve(entry.target); // nur einmal animieren
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    revealElements.forEach(el => observer.observe(el));
   </script>
 
 </body>
