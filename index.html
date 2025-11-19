@@ -2,118 +2,264 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Sylegro – Dienstleistungen</title>
+  <title>Sylegro – Startseite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f5f5f5;
-      color: #222;
+      color: #111827;
     }
+
+    /* Header & Navigation */
     header {
       background: #111827;
       color: white;
-      padding: 30px 20px;
-      text-align: center;
+      padding: 16px 20px;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
+    .header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
-    header p {
-      margin: 8px 0 0;
-      opacity: 0.85;
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
+    .logo-area img {
+      height: 48px;
+      width: 48px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: white;
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .logo-text span:first-child {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    .logo-text span:last-child {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 16px;
+      font-size: 0.95rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    /* Layout */
     main {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
     }
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 20px;
+      align-items: flex-start;
+    }
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        justify-content: flex-start;
+        margin-top: 8px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 12px;
+      }
+    }
+
     .card {
       background: white;
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 20px;
       margin-bottom: 20px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
-    h2 {
+
+    h1, h2, h3 {
       margin-top: 0;
     }
-    ul {
-      padding-left: 20px;
+
+    /* Slider */
+    .slider {
+      position: relative;
+      text-align: left;
     }
-    .contact {
+    .slider img {
+      width: 100%;
+      max-height: 260px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .slider-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .slider-text {
+      font-size: 0.95rem;
+      color: #374151;
+    }
+    .slider-dots {
+      margin-top: 10px;
       display: flex;
-      flex-direction: column;
-      gap: 5px;
+      gap: 6px;
     }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid #9ca3af;
+      cursor: pointer;
+    }
+    .dot.active {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+    }
+
+    /* „Kacheln“ auf der Startseite */
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .quick-links a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    .quick-links .tile {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+    .quick-links .tile:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .quick-links h3 {
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+    .quick-links p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
     footer {
       text-align: center;
       font-size: 0.8rem;
-      color: #666;
+      color: #6b7280;
       padding: 20px;
-    }
-    a {
-      color: #1d4ed8;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    @media (min-width: 700px) {
-      .columns {
-        display: flex;
-        gap: 20px;
-      }
-      .columns .card {
-        flex: 1;
-      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Sylegro</h1>
-    <p>Professionelle Dienstleistungen – zuverlässig, persönlich, unkompliziert.</p>
+    <div class="header-inner">
+      <div class="logo-area">
+        <!-- Logo: später eigenes Bild hochladen, Pfad hier anpassen -->
+        <img src="https://via.placeholder.com/80x80?text=Logo" alt="Sylegro Logo">
+        <div class="logo-text">
+          <span>Sylegro</span>
+          <span>Professionelle Dienstleistungen – zuverlässig, persönlich, unkompliziert.</span>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">Startseite</a>
+        <a href="dienstleistungen.html">Dienstleistungen</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="card">
-      <h2>Über Sylegro</h2>
-      <p>
-        Hier kannst du einen kurzen Text über dein Unternehmen einfügen:
-        wer ihr seid, was euch wichtig ist und was euch ausmacht.
-      </p>
+    <section class="grid">
+      <!-- Unternehmensbeschreibung -->
+      <div class="card">
+        <h1>Willkommen bei Sylegro</h1>
+        <p>
+          Hier kannst du den Text über das Unternehmen einfügen: Wer ist Sylegro, welche
+          Werte stehen im Vordergrund, was macht euch besonders. Schreib hier in 3–6 Sätzen,
+          was ihr anbietet und wie ihr euren Kundinnen und Kunden weiterhelft.
+        </p>
+        <p>
+          Zum Beispiel: „Wir begleiten unsere Kunden von der ersten Idee bis zur
+          Umsetzung und legen Wert auf eine offene, unkomplizierte Zusammenarbeit.“
+        </p>
+      </div>
+
+      <!-- Slider mit rotierenden Dienstleistungen -->
+      <div class="card slider">
+        <h2>Unsere Dienstleistungen</h2>
+        <img id="service-image" src="" alt="Dienstleistung">
+        <div class="slider-title" id="service-title"></div>
+        <div class="slider-text" id="service-text"></div>
+        <div class="slider-dots" id="slider-dots"></div>
+      </div>
     </section>
 
-    <div class="columns">
-      <section class="card">
-        <h2>Leistungen</h2>
-        <ul>
-          <li>Leistung 1 – kurz beschrieben</li>
-          <li>Leistung 2 – kurz beschrieben</li>
-          <li>Leistung 3 – kurz beschrieben</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Zielgruppe</h2>
-        <p>
-          Beschreibe hier, für wen die Angebote gedacht sind:
-          Privatkunden, Firmen, bestimmte Branchen etc.
-        </p>
-      </section>
-    </div>
-
-    <section class="card">
-      <h2>Kontakt</h2>
-      <div class="contact">
-        <span>E-Mail: <a href="mailto:info@sylegro.ch">info@sylegro.ch</a></span>
-        <span>Telefon: +41 79 000 00 00</span>
-        <span>Ort: Schweiz</span>
-      </div>
+    <!-- Kacheln zu den Unterseiten -->
+    <section class="quick-links">
+      <a href="dienstleistungen.html">
+        <div class="tile">
+          <h3>Dienstleistungen</h3>
+          <p>Überblick über alle Angebote von Sylegro.</p>
+        </div>
+      </a>
+      <a href="ueber-uns.html">
+        <div class="tile">
+          <h3>Über uns</h3>
+          <p>Mehr über die Menschen und die Geschichte hinter Sylegro.</p>
+        </div>
+      </a>
+      <a href="jobs.html">
+        <div class="tile">
+          <h3>Jobs</h3>
+          <p>Offene Stellen und Infos für Bewerber:innen.</p>
+        </div>
+      </a>
+      <a href="kontakt.html">
+        <div class="tile">
+          <h3>Kontakt</h3>
+          <p>So erreichst du uns – ganz unkompliziert.</p>
+        </div>
+      </a>
     </section>
   </main>
 
@@ -123,5 +269,64 @@
       document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </footer>
+
+  <!-- Einfache Slider-Logik -->
+  <script>
+    const services = [
+      {
+        title: "Dienstleistung 1",
+        text: "Kurze Beschreibung von Dienstleistung 1. Hier kannst du später konkret werden.",
+        image: "https://via.placeholder.com/800x260?text=Dienstleistung+1"
+      },
+      {
+        title: "Dienstleistung 2",
+        text: "Kurze Beschreibung von Dienstleistung 2. Was bringt sie euren Kunden?",
+        image: "https://via.placeholder.com/800x260?text=Dienstleistung+2"
+      },
+      {
+        title: "Dienstleistung 3",
+        text: "Kurze Beschreibung von Dienstleistung 3. Wofür eignet sie sich besonders?",
+        image: "https://via.placeholder.com/800x260?text=Dienstleistung+3"
+      }
+    ];
+
+    const imgEl = document.getElementById("service-image");
+    const titleEl = document.getElementById("service-title");
+    const textEl = document.getElementById("service-text");
+    const dotsContainer = document.getElementById("slider-dots");
+
+    let current = 0;
+
+    function renderDots() {
+      dotsContainer.innerHTML = "";
+      services.forEach((_, index) => {
+        const dot = document.createElement("div");
+        dot.className = "dot" + (index === current ? " active" : "");
+        dot.addEventListener("click", () => {
+          current = index;
+          updateSlider();
+        });
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    function updateSlider() {
+      const service = services[current];
+      imgEl.src = service.image;
+      imgEl.alt = service.title;
+      titleEl.textContent = service.title;
+      textEl.textContent = service.text;
+      renderDots();
+    }
+
+    // alle 5 Sekunden weiterschalten
+    setInterval(() => {
+      current = (current + 1) % services.length;
+      updateSlider();
+    }, 5000);
+
+    // Initial anzeigen
+    updateSlider();
+  </script>
 </body>
 </html>
