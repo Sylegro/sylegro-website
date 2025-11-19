@@ -5,11 +5,9 @@
   <title>Sylegro – Startseite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    /* Basis-Links: nicht lila, nicht unterstrichen */
+    /* Basis-Links: neutral, nicht lila/unterstrichen */
     a {
       color: inherit;
       text-decoration: none;
@@ -24,7 +22,7 @@
       --bg-light: #f5f5f5;
     }
 
-    /* Schrift (Kiro als Wunschschrift, dann Fallbacks) */
+    /* Schrift (Kiro gewünscht, dann Fallbacks) */
     body {
       font-family: "Kiro", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", Arial, sans-serif;
@@ -67,7 +65,7 @@
     }
 
     .logo-bubble img {
-      height: 110px;   /* Logo-Grösse */
+      height: 120px;   /* Logo grösser */
       width: auto;
       object-fit: contain;
       display: block;
@@ -83,7 +81,7 @@
     }
 
     nav a {
-      color: white;          /* explizit weiss im Header */
+      color: white;
       font-size: 0.98rem;
       font-weight: 500;
       opacity: 0.95;
@@ -107,7 +105,7 @@
       width: 100%;
     }
 
-    /* MAIN LAYOUT */
+    /* MAIN */
     main {
       max-width: 1100px;
       margin: 0 auto;
@@ -118,7 +116,7 @@
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
       gap: 22px;
-      align-items: flex-start;
+      align-items: stretch;      /* Karten gleich hoch */
       margin-bottom: 20px;
     }
 
@@ -142,16 +140,10 @@
       margin-bottom: 20px;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
       border-top: 4px solid var(--sylegro-blue);
+      height: 100%; /* innerhalb Grid volle Höhe */
     }
 
-    h1, h2, h3 {
-      margin-top: 0;
-    }
-
-    h1 {
-      font-size: 1.6rem;
-      margin-bottom: 12px;
-    }
+    h2, h3 { margin-top: 0; }
 
     h2 {
       font-size: 1.35rem;
@@ -163,13 +155,26 @@
       font-size: 0.98rem;
     }
 
-    /* SLIDER-BEREICH */
-    .slider img {
+    /* SLIDER */
+    .slider-inner {
+      position: relative;
+    }
+
+    .slider-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      margin-bottom: 12px;
+    }
+
+    #service-image {
       width: 100%;
       max-height: 280px;
       object-fit: cover;
       border-radius: 14px;
-      margin-bottom: 12px;
+      opacity: 1;
+      transition: opacity 0.4s ease;
+      display: block;
     }
 
     .slider-title {
@@ -188,6 +193,7 @@
       display: flex;
       gap: 8px;
       margin-top: 8px;
+      align-items: center;
     }
 
     .dot {
@@ -206,12 +212,48 @@
       transform: scale(1.1);
     }
 
-    /* KACHELN / QUICK LINKS */
+    /* Slider-Pfeile */
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none; /* nur Buttons klickbar */
+    }
+
+    .slider-arrow {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 999px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+      cursor: pointer;
+      font-size: 16px;
+      color: #374151;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .slider-arrow:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
+      background: #ffffff;
+    }
+
+    /* KACHELN */
     .quick-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 22px;
       margin-top: 10px;
+      align-items: stretch; /* alle Kacheln gleich hoch */
     }
 
     .quick-links .tile {
@@ -225,6 +267,7 @@
       border: 1px solid rgba(148, 163, 184, 0.25);
       transition: transform 0.18s ease, box-shadow 0.18s ease,
                   background 0.18s ease, border-color 0.18s ease;
+      height: 100%;
     }
 
     .quick-links .tile h3 {
@@ -262,9 +305,9 @@
   <header>
     <div class="header-inner">
       <div class="logo-area">
-        <!-- ⬇ HIER das neue Logo: Dateiname ggf. anpassen (z.B. logo-mit-claim-rgb.png) -->
         <div class="logo-bubble">
-          <img src="logo-mit-claim.png" alt="Sylegro Logo mit Claim">
+          <!-- Dateiname muss exakt zu deiner Datei passen -->
+          <img src="logo-mit-claim-verlauf-grün-blau-rgb.jpg" alt="Sylegro Logo mit Claim">
         </div>
       </div>
 
@@ -282,13 +325,12 @@
   <main>
 
     <section class="grid">
-      <!-- Willkommen-Text -->
+      <!-- Willkommen-Text ohne H1 -->
       <div class="card">
-        <h1>Herzlich willkommen bei Sylegro</h1>
         <p>
-          Herzlich willkommen bei Sylegro, Ihrem zuverlässigen Partner für professionelle
-          Reinigungs- und Hauswartungsdienste. Unser Name steht für Qualität, Flexibilität
-          und transparente Lösungen, die individuell auf Ihre Bedürfnisse zugeschnitten sind.
+          Sylegro, Ihr zuverlässiger Partner für professionelle Reinigungs- und Hauswartungsdienste.
+          Unser Name steht für Qualität, Flexibilität und transparente Lösungen, die individuell auf
+          Ihre Bedürfnisse zugeschnitten sind.
         </p>
         <p>
           Mit klarem Fokus auf Unterhaltsreinigung, Spezialreinigung und Hauswartung bieten wir Ihnen
@@ -301,10 +343,18 @@
       <!-- Slider -->
       <div class="card slider">
         <h2>Unsere Kernleistungen</h2>
-        <img id="service-image" src="" alt="Dienstleistung">
-        <div class="slider-title" id="service-title"></div>
-        <div class="slider-text" id="service-text"></div>
-        <div class="slider-dots" id="slider-dots"></div>
+        <div class="slider-inner">
+          <div class="slider-image-wrapper">
+            <img id="service-image" src="" alt="Dienstleistung">
+            <div class="slider-nav">
+              <button class="slider-arrow" id="prev-slide">&#10094;</button>
+              <button class="slider-arrow" id="next-slide">&#10095;</button>
+            </div>
+          </div>
+          <div class="slider-title" id="service-title"></div>
+          <div class="slider-text" id="service-text"></div>
+          <div class="slider-dots" id="slider-dots"></div>
+        </div>
       </div>
     </section>
 
@@ -383,6 +433,8 @@
     const title = document.getElementById("service-title");
     const text = document.getElementById("service-text");
     const dots = document.getElementById("slider-dots");
+    const prevBtn = document.getElementById("prev-slide");
+    const nextBtn = document.getElementById("next-slide");
 
     let current = 0;
 
@@ -393,27 +445,51 @@
         dot.className = "dot" + (i === current ? " active" : "");
         dot.onclick = () => {
           current = i;
-          updateSlider();
+          updateSlider(true);
         };
         dots.appendChild(dot);
       });
     }
 
-    function updateSlider() {
+    function updateSlider(withFade) {
       const s = services[current];
-      img.src = s.image;
-      img.alt = s.title;
-      title.textContent = s.title;
-      text.textContent = s.text;
-      renderDots();
+
+      if (withFade) {
+        img.style.opacity = 0;
+        setTimeout(() => {
+          img.src = s.image;
+          img.alt = s.title;
+          title.textContent = s.title;
+          text.textContent = s.text;
+          renderDots();
+          img.style.opacity = 1;
+        }, 200);
+      } else {
+        img.src = s.image;
+        img.alt = s.title;
+        title.textContent = s.title;
+        text.textContent = s.text;
+        renderDots();
+      }
     }
+
+    prevBtn.addEventListener("click", () => {
+      current = (current - 1 + services.length) % services.length;
+      updateSlider(true);
+    });
+
+    nextBtn.addEventListener("click", () => {
+      current = (current + 1) % services.length;
+      updateSlider(true);
+    });
 
     setInterval(() => {
       current = (current + 1) % services.length;
-      updateSlider();
-    }, 5000);
+      updateSlider(true);
+    }, 6000); // etwas ruhiger
 
-    updateSlider();
+    // Initial anzeigen ohne Fade
+    updateSlider(false);
   </script>
 
 </body>
