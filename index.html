@@ -135,7 +135,7 @@
     /* Nur der Text in der rechten Kachel wird etwas nach unten versetzt */
     @media (min-width: 900px) {
       .welcome-inner {
-        padding-top: 24px; /* bei Bedarf anpassen */
+        padding-top: 24px; /* leichte Ausrichtung zum Bild */
       }
     }
 
@@ -337,6 +337,27 @@
       font-size: 0.95rem;
     }
 
+    /* Willkommen-Kachel: milchig & mehr Luft */
+    .card.welcome-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(6px);
+      padding: 36px 40px;
+      border-top: 4px solid var(--sylegro-green);
+    }
+
+    .welcome-inner {
+      max-width: 90%;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .welcome-subtitle {
+      color: var(--sylegro-green);
+      font-weight: 600;
+      font-size: 1.22rem;
+      margin-bottom: 18px;
+    }
+
     /* Qualität – zweispaltige Kachel */
     .quality-split-card {
       display: grid;
@@ -420,19 +441,15 @@
         <div class="slider-dots" id="slider-dots"></div>
       </div>
 
-      <!-- Willkommen-Text -->
-      <div class="card">
+      <!-- Willkommen-Text – neue milchige Kachel -->
+      <div class="card welcome-card">
         <div class="welcome-inner">
+          <h3 class="welcome-subtitle">Ihr Partner für gepflegte Räume</h3>
           <p>
-            Sylegro, Ihr zuverlässiger Partner für professionelle Reinigungs- und Hauswartungsdienste.
-            Unser Name steht für Qualität, Flexibilität und transparente Lösungen, die individuell auf
-            Ihre Bedürfnisse zugeschnitten sind.
+            Sylegro steht für professionelle Reinigung, Hauswartung und Lösungen, die sich nahtlos an Ihre Bedürfnisse anpassen.
           </p>
           <p>
-            Mit klarem Fokus auf Unterhaltsreinigung, Spezialreinigung und Hauswartung bieten wir Ihnen
-            ein umfassendes Dienstleistungspaket, das höchsten Standards gerecht wird. Unser erfahrenes
-            Team sorgt dafür, dass Ihre Räumlichkeiten stets sauber, gepflegt und einladend sind – für ein
-            optimales Arbeits- und Wohnumfeld.
+            Unser Team sorgt dafür, dass Ihre Räume dauerhaft gepflegt, einladend und repräsentativ bleiben – für ein angenehmes Arbeits- und Wohnumfeld.
           </p>
         </div>
       </div>
