@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sylegro – Dienstleistungen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; color: #111827; }
+    header { background: #111827; color: white; padding: 16px 20px; }
+    .header-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-area img { height: 40px; width: 40px; object-fit: contain; border-radius: 8px; background: white; }
+    .logo-text span:first-child { font-weight: 600; }
+    .logo-text span:last-child { font-size: 0.8rem; opacity: 0.9; }
+    nav a { color: white; text-decoration: none; margin-left: 16px; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    nav { display: flex; flex-wrap: wrap; justify-content: flex-end; }
+    @media (max-width: 800px) { .header-inner { flex-direction: column; align-items: flex-start; } nav { justify-content: flex-start; } nav a { margin-left: 0; margin-right: 12px; } }
+    main { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+    h1, h2 { margin-top: 0; }
+    ul { padding-left: 20px; }
+    footer { text-align: center; font-size: 0.8rem; color: #6b7280; padding: 20px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <img src="https://via.placeholder.com/80x80?text=Logo" alt="Sylegro Logo">
+        <div class="logo-text">
+          <span>Sylegro</span>
+          <span>Professionelle Dienstleistungen – zuverlässig, persönlich, unkompliziert.</span>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">Startseite</a>
+        <a href="dienstleistungen.html">Dienstleistungen</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1>Unsere Dienstleistungen</h1>
+      <p>Hier kannst du alle Leistungen von Sylegro genauer beschreiben.</p>
+    </div>
+
+    <div class="card">
+      <h2>Dienstleistung 1</h2>
+      <p>Genaue Beschreibung von Dienstleistung 1: Ablauf, Nutzen, für wen sie geeignet ist.</p>
+    </div>
+
+    <div class="card">
+      <h2>Dienstleistung 2</h2>
+      <p>Genaue Beschreibung von Dienstleistung 2.</p>
+    </div>
+
+    <div class="card">
+      <h2>Dienstleistung 3</h2>
+      <p>Genaue Beschreibung von Dienstleistung 3.</p>
+    </div>
+  </main>
+
+  <footer>
+    © Sylegro <span id="year"></span>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+</body>
+</html>
