@@ -153,6 +153,9 @@
       .excellence-grid {
         grid-template-columns: 1fr;
       }
+      .quality-split-card {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* SLIDER */
@@ -334,11 +337,27 @@
       font-size: 0.95rem;
     }
 
-    /* Qualität-Kachel */
-    .quality-card {
-      background: #f4fbf7;
+    /* Qualität – zweispaltige Kachel */
+    .quality-split-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
       border-top-color: var(--sylegro-green);
+      padding: 0;              /* Card-Padding überschreiben */
+      overflow: hidden;
       margin-top: 20px;
+    }
+
+    .quality-image-side {
+      background-image: url("nuno-silva-Rcsa_Rg77Tc-unsplash (1).jpg");
+      background-size: cover;
+      background-position: center;
+      min-height: 260px;
+    }
+
+    .quality-text-side {
+      padding: 26px 28px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(6px);
     }
 
     .quality-lead {
@@ -490,40 +509,30 @@
       </div>
     </section>
 
-    <!-- Qualität -->
-    <section class="card quality-card">
-      <h2>Qualität</h2>
+    <!-- Qualität – zweispaltige Kachel -->
+    <section class="card quality-split-card">
+      <div class="quality-image-side"></div>
 
-      <p class="quality-lead"><strong>Weil Qualität kein Zufall ist</strong></p>
+      <div class="quality-text-side">
+        <h2>Qualität</h2>
 
-      <p>
-        Um höchste Qualität zu gewährleisten, setzen wir auf klar definierte Prozesse, bewährte Standards und
-        den gezielten Einsatz modernster Technik. Durch regelmässige Schulungen und den Einsatz effizienter
-        Arbeitsmethoden stellen wir sicher, dass unsere Dienstleistungen stets auf höchstem Niveau erbracht
-        werden.
-      </p>
+        <p class="quality-lead"><strong>Weil Qualität kein Zufall ist</strong></p>
 
-      <span class="quality-highlight">
-        Für spürbar bessere Ergebnisse und langfristige Werterhaltung Ihrer Immobilie.
-      </span>
+        <p>
+          Wir arbeiten mit klaren Prozessen, modernen Methoden und regelmässigen Schulungen, damit unsere
+          Dienstleistungen zuverlässig und auf hohem Niveau erbracht werden.
+        </p>
 
-      <p>
-        Unser Handeln richtet sich voll und ganz nach den Bedürfnissen unserer Kunden: Wir reagieren schnell
-        und effizient auf individuelle Wünsche und passen unsere Leistungen entsprechend an. Ihre Zufriedenheit
-        ist unser wichtigster Erfolgsindikator. Regelmässige Zufriedenheitsanalysen, Qualitätskontrollen und
-        gemeinsame Rundgänge ermöglichen es uns, direkt auf Feedback zu reagieren und unsere Standards
-        kontinuierlich zu verbessern.
-      </p>
+        <span class="quality-highlight">
+          Für spürbar bessere Ergebnisse und nachhaltigen Werterhalt.
+        </span>
 
-      <p>
-        Dabei steht die Sicherheit und das Wohlbefinden unserer Mitarbeitenden im Fokus.
-      </p>
-
-      <p>
-        Durch strikte Richtlinien und Massnahmen der Arbeitssicherheit und Gesundheit schaffen wir ein
-        Arbeitsumfeld, in dem sich jeder sicher und wertgeschätzt fühlt. So stellen wir sicher, dass unser Team
-        motiviert und engagiert bleibt und unsere Kunden auf höchstem Niveau betreut.
-      </p>
+        <p>
+          Wir reagieren schnell auf individuelle Bedürfnisse und verbessern unsere Arbeit laufend durch
+          Feedback und Kontrollen. Die Sicherheit und das Wohlbefinden unseres Teams haben dabei höchste
+          Priorität.
+        </p>
+      </div>
     </section>
 
     <!-- Quick Links -->
