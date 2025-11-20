@@ -64,6 +64,7 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 20px;
+      position: relative;
     }
 
     nav a {
@@ -88,6 +89,50 @@
 
     nav a:hover::after {
       width: 100%;
+    }
+
+    /* Dropdown für Dienstleistungen */
+    .nav-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      color: #0f172a;
+      padding: 8px 0;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+      min-width: 220px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+      z-index: 20;
+    }
+
+    .submenu a {
+      display: block;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      color: #111827;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .submenu a:hover {
+      background: rgba(0, 99, 165, 0.06);
+      color: var(--sylegro-blue);
+    }
+
+    .nav-item.has-submenu:hover .submenu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
     /* MAIN LAYOUT */
@@ -445,7 +490,16 @@
 
       <nav>
         <a href="index.html">Startseite</a>
-        <a href="dienstleistungen.html">Dienstleistungen</a>
+
+        <div class="nav-item has-submenu">
+          <a href="dienstleistungen.html">Dienstleistungen</a>
+          <div class="submenu">
+            <a href="unterhaltsreinigung.html">Unterhaltsreinigung</a>
+            <a href="spezialreinigung.html">Spezialreinigung</a>
+            <a href="hauswartung.html">Hauswartung</a>
+          </div>
+        </div>
+
         <a href="ueber-uns.html">Über uns</a>
         <a href="jobs.html">Jobs</a>
         <a href="kontakt.html">Kontakt</a>
@@ -644,7 +698,7 @@
       {
         title: "Hauswartung",
         text: "Umfassende Betreuung Ihrer Liegenschaft: Technik, Pflege der Aussenanlagen und Werterhaltung aus einer Hand.",
-        image: "DSC_6486.JPG"
+        image: "Gartenarbeit.jpg"
       }
     ];
 
