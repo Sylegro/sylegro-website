@@ -119,6 +119,7 @@
       font-size: 0.95rem;
       color: #111827;
       text-decoration: none;
+      white-space: nowrap;
     }
 
     .submenu a:hover {
@@ -227,16 +228,16 @@
       background-position: center;
     }
 
-    /* 👇 Bildzuordnung über die Position der Links */
-    .services-section > .service-link:nth-of-type(1) .service-image {
+    /* Bilder für die drei Kacheln */
+    .service-row:nth-child(1) .service-image {
       background-image: url("Titelbildmitlogo.jpg");
     }
 
-    .services-section > .service-link:nth-of-type(2) .service-image {
+    .service-row:nth-child(2) .service-image {
       background-image: url("AdobeStock_482143067.jpeg");
     }
 
-    .services-section > .service-link:nth-of-type(3) .service-image {
+    .service-row:nth-child(3) .service-image {
       background-image: url("Gartenarbeit.jpg");
     }
 
@@ -245,6 +246,40 @@
       .service-row:nth-child(even) {
         grid-template-columns: 1fr;
       }
+    }
+
+    /* Phasen-Kacheln */
+    .process-container {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+    }
+
+    .process-box {
+      background: linear-gradient(135deg, #0a69a4, #21a96b);
+      padding: 18px 16px;
+      border-radius: 14px;
+      text-align: center;
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .process-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+    }
+
+    .process-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .process-sub {
+      font-size: 0.95rem;
+      line-height: 1.4;
     }
 
     /* Scroll-Reveal */
@@ -299,12 +334,14 @@
   <!-- MAIN -->
   <main>
 
+    <!-- Intro -->
     <section class="card intro-card reveal">
       <h1>Unsere Dienstleistungen</h1>
       <p>Wir bieten massgeschneiderte Lösungen für Unternehmen und Privatkunden, um höchste Sauberkeit und den langfristigen Werterhalt Ihrer Immobilie zu gewährleisten.</p>
       <p>So schaffen wir ein gepflegtes Umfeld, damit Sie sich auf das Wesentliche konzentrieren können.</p>
     </section>
 
+    <!-- Dienstleistungskacheln -->
     <section class="services-section">
 
       <!-- Unterhaltsreinigung -->
@@ -340,6 +377,33 @@
         </article>
       </a>
 
+    </section>
+
+    <!-- Phasen-Kacheln -->
+    <section class="card reveal">
+      <h2>Ablauf unserer Zusammenarbeit</h2>
+
+      <div class="process-container">
+        <div class="process-box">
+          <div class="process-title">Phase 1</div>
+          <div class="process-sub">Erstkontakt und Beratung</div>
+        </div>
+
+        <div class="process-box">
+          <div class="process-title">Phase 2</div>
+          <div class="process-sub">Planung und Angebotserstellung</div>
+        </div>
+
+        <div class="process-box">
+          <div class="process-title">Phase 3</div>
+          <div class="process-sub">Implementierung und Einführung</div>
+        </div>
+
+        <div class="process-box">
+          <div class="process-title">Phase 4</div>
+          <div class="process-sub">Betreuung und Qualitätssicherung</div>
+        </div>
+      </div>
     </section>
 
   </main>
