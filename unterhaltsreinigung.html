@@ -204,7 +204,9 @@
       border-radius: 14px;
       overflow: hidden;
       min-height: 150px;
-      background: #d1d5db; /* Platzhalter-Hintergrund */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
     }
 
@@ -226,13 +228,6 @@
       color: #f9fafb;
       font-size: 1.05rem;
       font-weight: 500;
-    }
-
-    .area-tile--plain {
-      background: #e5e7eb;
-    }
-    .area-tile--plain::before {
-      background: rgba(0,0,0,0.08);
     }
 
     /* CTA */
@@ -348,37 +343,37 @@
       <h2>Unser Einsatzgebiet umfasst:</h2>
 
       <div class="area-grid">
-        <div class="area-tile">
+        <div class="area-tile" style="background-image: url('Büro.jpg');">
           <div class="area-tile-inner">
             Büro- und Verwaltungsgebäude
           </div>
         </div>
 
-        <div class="area-tile">
+        <div class="area-tile" style="background-image: url('Schule.jpg');">
           <div class="area-tile-inner">
             Schulen und Universitäten
           </div>
         </div>
 
-        <div class="area-tile">
+        <div class="area-tile" style="background-image: url('Einkaufen.jpg');">
           <div class="area-tile-inner">
             Einkaufszentren und Verkaufslokale
           </div>
         </div>
 
-        <div class="area-tile">
+        <div class="area-tile" style="background-image: url('Klinik.jpg');">
           <div class="area-tile-inner">
             Kliniken und Arztpraxen
           </div>
         </div>
 
-        <div class="area-tile">
+        <div class="area-tile" style="background-image: url('Produktion.jpg');">
           <div class="area-tile-inner">
             Produktions- und Industrieflächen
           </div>
         </div>
 
-        <div class="area-tile area-tile--plain">
+        <div class="area-tile" style="background-image: url('freundliches Reinigen (1).jpg');">
           <div class="area-tile-inner">
             Und vieles mehr.
           </div>
