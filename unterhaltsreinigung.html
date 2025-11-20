@@ -203,7 +203,7 @@
       position: relative;
       border-radius: 14px;
       overflow: hidden;
-      min-height: 210px; /* grösser gemacht */
+      min-height: 210px; /* grösser */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -230,15 +230,18 @@
       font-weight: 500;
     }
 
-    /* Gradient-Info unterhalb der Kacheln */
+    /* Gradient-Info (3-Zeiler zentriert) */
     .gradient-info-card {
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
       color: #ffffff;
       border-top-color: rgba(255,255,255,0.7);
+      text-align: center;
     }
 
     .gradient-info-card p {
-      margin-bottom: 6px;
+      margin: 3px 0;          /* sehr kleiner Abstand */
+      line-height: 1.25;      /* kompakt, aber lesbar */
+      font-size: 0.98rem;
     }
 
     /* CTA */
@@ -392,7 +395,7 @@
       </div>
     </section>
 
-    <!-- kurzer 3-Zeiler mit Farbverlauf -->
+    <!-- 3-Zeiler mit Farbverlauf, zentriert -->
     <section class="card gradient-info-card reveal">
       <p>Regelmässige Unterhaltsreinigung schützt Oberflächen und verlängert die Lebensdauer Ihrer Infrastruktur.</p>
       <p>Dank klarer Prozesse und geschulten Mitarbeitenden bleiben Büros, Verkehrsflächen und Sanitäranlagen zuverlässig sauber.</p>
