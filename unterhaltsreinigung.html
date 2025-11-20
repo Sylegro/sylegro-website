@@ -1,1 +1,439 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sylegro – Unterhaltsreinigung</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- Schrift Kiro -->
+  <link href="https://fonts.googleapis.com/css2?family=Kiro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --sylegro-blue: #0063A5;
+      --sylegro-green: #17A863;
+      --bg-light: #f5f5f5;
+    }
+
+    body {
+      font-family: "Kiro", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg-light);
+      color: #0f172a;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
+      color: white;
+      padding: 8px 20px;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo-area img {
+      height: 220px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.5));
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      position: relative;
+    }
+
+    nav a {
+      color: white;
+      font-size: 0.98rem;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 3px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 999px;
+      transition: width .18s ease-out;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Dropdown für Dienstleistungen */
+    .nav-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      color: #0f172a;
+      padding: 8px 0;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+      min-width: 220px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+      z-index: 20;
+    }
+
+    .submenu a {
+      display: block;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      color: #111827;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .submenu a:hover {
+      background: rgba(0, 99, 165, 0.06);
+      color: var(--sylegro-blue);
+    }
+
+    .nav-item.has-submenu:hover .submenu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 20px 32px;
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 0.98rem;
+      margin-bottom: 10px;
+    }
+
+    /* Karten allgemein */
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 24px 24px 22px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      border-top: 4px solid var(--sylegro-blue);
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
+      border-top-color: var(--sylegro-green);
+    }
+
+    .hero-card h1 {
+      margin-bottom: 4px;
+    }
+
+    .hero-subtitle {
+      color: var(--sylegro-blue);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    /* Einsatzgebiet */
+    .area-card h2 {
+      color: var(--sylegro-green);
+      margin-bottom: 16px;
+    }
+
+    .area-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .area-tile {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 150px;
+      background: #d1d5db; /* Platzhalter-Hintergrund */
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+    }
+
+    .area-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+    }
+
+    .area-tile-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12px;
+      color: #f9fafb;
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    /* letzte Kachel neutral grau ohne Bildgefühl */
+    .area-tile--plain {
+      background: #e5e7eb;
+    }
+    .area-tile--plain::before {
+      background: rgba(0,0,0,0.08);
+    }
+
+    /* CTA */
+    .cta-card {
+      background: #ffffff;
+      border-top-color: var(--sylegro-green);
+    }
+
+    .cta-card h2 {
+      color: var(--sylegro-blue);
+      margin-bottom: 14px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 6px 22px;
+      border-radius: 999px;
+      background: var(--sylegro-green);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.98rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+      background: #139255;
+    }
+
+    /* Scroll-Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px 20px 26px;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    @media (max-width: 700px) {
+      .cta-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo mit Claim">
+      </div>
+
+      <nav>
+        <a href="index.html">Startseite</a>
+
+        <div class="nav-item has-submenu">
+          <a href="dienstleistungen.html">Dienstleistungen</a>
+          <div class="submenu">
+            <a href="unterhaltsreinigung.html">Unterhaltsreinigung</a>
+            <a href="spezialreinigung.html">Spezialreinigung</a>
+            <a href="hauswartung.html">Hauswartung</a>
+          </div>
+        </div>
+
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- Hero / Einleitung -->
+    <section class="card hero-card reveal">
+      <h1>Unterhaltsreinigung</h1>
+      <h2 class="hero-subtitle">Sauberkeit, auf die Sie sich verlassen können</h2>
+      <p>
+        Sauberkeit mit System: Unsere Fachkräfte sorgen täglich für gepflegte und hygienische Räume –
+        mit umweltfreundlichen Reinigungsmitteln und modernster Technik.
+      </p>
+    </section>
+
+    <!-- Einsatzgebiet -->
+    <section class="card area-card reveal">
+      <h2>Unser Einsatzgebiet umfasst:</h2>
+
+      <div class="area-grid">
+        <div class="area-tile">
+          <div class="area-tile-inner">
+            Büro- und Verwaltungsgebäude
+          </div>
+        </div>
+
+        <div class="area-tile">
+          <div class="area-tile-inner">
+            Schulen und Universitäten
+          </div>
+        </div>
+
+        <div class="area-tile">
+          <div class="area-tile-inner">
+            Einkaufszentren und Verkaufslokale
+          </div>
+        </div>
+
+        <div class="area-tile">
+          <div class="area-tile-inner">
+            Kliniken und Arztpraxen
+          </div>
+        </div>
+
+        <div class="area-tile">
+          <div class="area-tile-inner">
+            Produktions- und Industrieflächen
+          </div>
+        </div>
+
+        <div class="area-tile area-tile--plain">
+          <div class="area-tile-inner">
+            Und vieles mehr.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="card cta-card reveal">
+      <h2>Effizient, Nachhaltig &amp; Massgeschneidert</h2>
+
+      <div class="cta-row">
+        <span>Kontaktieren Sie uns</span>
+        <a href="kontakt.html">
+          <button class="cta-button" type="button">Jetzt</button>
+        </a>
+        <span>und verlangen Sie ein kostenloses Angebot.</span>
+      </div>
+
+      <p>Wir freuen uns auf Sie!</p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © Sylegro <span id="year"></span>
+  </footer>
+
+  <!-- Scroll-Reveal Logik -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    let lastScrollY = window.scrollY;
+    let scrollDirection = 'down';
+
+    window.addEventListener('scroll', () => {
+      const currentY = window.scrollY;
+      scrollDirection = currentY > lastScrollY ? 'down' : 'up';
+      lastScrollY = currentY;
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && scrollDirection === 'down') {
+          entry.target.classList.add('reveal-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
