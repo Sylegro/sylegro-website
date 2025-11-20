@@ -228,16 +228,16 @@
       background-position: center;
     }
 
-    /* Bilder für die drei Kacheln */
-    .service-row:nth-child(1) .service-image {
+    /* Bilder sicher korrekt zugeordnet */
+    .services-section a:nth-of-type(1) .service-image {
       background-image: url("Titelbildmitlogo.jpg");
     }
 
-    .service-row:nth-child(2) .service-image {
+    .services-section a:nth-of-type(2) .service-image {
       background-image: url("AdobeStock_482143067.jpeg");
     }
 
-    .service-row:nth-child(3) .service-image {
+    .services-section a:nth-of-type(3) .service-image {
       background-image: url("Gartenarbeit.jpg");
     }
 
@@ -257,7 +257,6 @@
     }
 
     .process-box {
-      background: linear-gradient(135deg, #0a69a4, #21a96b);
       padding: 18px 16px;
       border-radius: 14px;
       text-align: center;
@@ -280,6 +279,22 @@
     .process-sub {
       font-size: 0.95rem;
       line-height: 1.4;
+    }
+
+    .phase-1 {
+      background: #0063A5; /* Blau */
+    }
+
+    .phase-2 {
+      background: #4ca3dd; /* Hellblau */
+    }
+
+    .phase-3 {
+      background: #6fd59b; /* Hellgrün */
+    }
+
+    .phase-4 {
+      background: #17A863; /* Grün */
     }
 
     /* Scroll-Reveal */
@@ -384,22 +399,22 @@
       <h2>Ablauf unserer Zusammenarbeit</h2>
 
       <div class="process-container">
-        <div class="process-box">
+        <div class="process-box phase-1">
           <div class="process-title">Phase 1</div>
           <div class="process-sub">Erstkontakt und Beratung</div>
         </div>
 
-        <div class="process-box">
+        <div class="process-box phase-2">
           <div class="process-title">Phase 2</div>
           <div class="process-sub">Planung und Angebotserstellung</div>
         </div>
 
-        <div class="process-box">
+        <div class="process-box phase-3">
           <div class="process-title">Phase 3</div>
           <div class="process-sub">Implementierung und Einführung</div>
         </div>
 
-        <div class="process-box">
+        <div class="process-box phase-4">
           <div class="process-title">Phase 4</div>
           <div class="process-sub">Betreuung und Qualitätssicherung</div>
         </div>
