@@ -196,14 +196,14 @@
     .area-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      gap: 22px;
     }
 
     .area-tile {
       position: relative;
       border-radius: 14px;
       overflow: hidden;
-      min-height: 150px;
+      min-height: 210px; /* grösser gemacht */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -228,6 +228,17 @@
       color: #f9fafb;
       font-size: 1.05rem;
       font-weight: 500;
+    }
+
+    /* Gradient-Info unterhalb der Kacheln */
+    .gradient-info-card {
+      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
+      color: #ffffff;
+      border-top-color: rgba(255,255,255,0.7);
+    }
+
+    .gradient-info-card p {
+      margin-bottom: 6px;
     }
 
     /* CTA */
@@ -334,7 +345,7 @@
       <p>
         Sauberkeit mit System: Unsere Fachkräfte sorgen täglich für gepflegte und hygienische Räume –
         mit umweltfreundlichen Reinigungsmitteln und modernster Technik schaffen wir eine Umgebung,
-        in der sich Ihre Mitarbeiter wohlfühlen, Besucher beeindruckt sind und alles professionell gepflegt bleibt.
+        in der sich Ihre Mitarbeitenden wohlfühlen, Besuchende beeindruckt sind und alles professionell gepflegt bleibt.
       </p>
     </section>
 
@@ -379,6 +390,13 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- kurzer 3-Zeiler mit Farbverlauf -->
+    <section class="card gradient-info-card reveal">
+      <p>Regelmässige Unterhaltsreinigung schützt Oberflächen und verlängert die Lebensdauer Ihrer Infrastruktur.</p>
+      <p>Dank klarer Prozesse und geschulten Mitarbeitenden bleiben Büros, Verkehrsflächen und Sanitäranlagen zuverlässig sauber.</p>
+      <p>So schaffen Sie ein gepflegtes Umfeld, in dem sich Mitarbeitende und Besuchende rundum wohlfühlen.</p>
     </section>
 
     <!-- CTA -->
