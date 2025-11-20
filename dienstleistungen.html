@@ -62,6 +62,7 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 20px;
+      position: relative;
     }
 
     nav a {
@@ -86,6 +87,54 @@
 
     nav a:hover::after {
       width: 100%;
+    }
+
+    /* Dropdown für Dienstleistungen */
+    .nav-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-item > a {
+      padding-bottom: 3px;
+    }
+
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      color: #0f172a;
+      padding: 8px 0;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+      min-width: 220px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+      z-index: 20;
+    }
+
+    .submenu a {
+      display: block;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      color: #111827;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .submenu a:hover {
+      background: rgba(0, 99, 165, 0.06);
+      color: var(--sylegro-blue);
+    }
+
+    .nav-item.has-submenu:hover .submenu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
     /* MAIN LAYOUT */
@@ -149,6 +198,12 @@
       margin-top: 10px;
     }
 
+    .service-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
     .service-row {
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
@@ -158,10 +213,17 @@
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
       background: #ffffff;
       border-top: 4px solid var(--sylegro-blue);
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
     .service-row:nth-child(even) {
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    }
+
+    .service-link:hover .service-row {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
     }
 
     .service-text {
@@ -180,7 +242,6 @@
 
     .service-text p {
       margin-bottom: 6px;
-      color: #f9fafb; /* wird gleich überschrieben für besseren Kontrast in grün? -> wir lassen weiss Hintergrund */
       color: #4b5563;
     }
 
@@ -252,7 +313,16 @@
 
       <nav>
         <a href="index.html">Startseite</a>
-        <a href="dienstleistungen.html">Dienstleistungen</a>
+
+        <div class="nav-item has-submenu">
+          <a href="dienstleistungen.html">Dienstleistungen</a>
+          <div class="submenu">
+            <a href="unterhaltsreinigung.html">Unterhaltsreinigung</a>
+            <a href="spezialreinigung.html">Spezialreinigung</a>
+            <a href="hauswartung.html">Hauswartung</a>
+          </div>
+        </div>
+
         <a href="ueber-uns.html">Über uns</a>
         <a href="jobs.html">Jobs</a>
         <a href="kontakt.html">Kontakt</a>
@@ -281,43 +351,49 @@
     <section class="services-section">
 
       <!-- Kachel 1: Text links, Bild rechts -->
-      <article class="service-row reveal">
-        <div class="service-text">
-          <h2>Unterhaltsreinigung</h2>
-          <p>
-            Mit durchdachten Reinigungslösungen sorgen wir für eine hygienische, gepflegte Umgebung –
-            effizient, nachhaltig und genau auf Ihre Anforderungen abgestimmt.
-          </p>
-        </div>
-        <div class="service-image"></div>
-      </article>
+      <a class="service-link reveal" href="unterhaltsreinigung.html">
+        <article class="service-row">
+          <div class="service-text">
+            <h2>Unterhaltsreinigung</h2>
+            <p>
+              Mit durchdachten Reinigungslösungen sorgen wir für eine hygienische, gepflegte Umgebung –
+              effizient, nachhaltig und genau auf Ihre Anforderungen abgestimmt.
+            </p>
+          </div>
+          <div class="service-image"></div>
+        </article>
+      </a>
 
       <!-- Kachel 2: Bild links, Text rechts -->
-      <article class="service-row reveal">
-        <div class="service-image"></div>
-        <div class="service-text">
-          <h2>Spezialreinigung</h2>
-          <p>
-            Manche Bereiche erfordern mehr als eine herkömmliche Reinigung.
-            Unsere geschulten Spezialreiniger bewältigen selbst die anspruchsvollsten Herausforderungen.
-            So bringen wir Ihre Räume wieder in Bestform und erhalten ihren Wert langfristig.
-          </p>
-        </div>
-      </article>
+      <a class="service-link reveal" href="spezialreinigung.html">
+        <article class="service-row">
+          <div class="service-image"></div>
+          <div class="service-text">
+            <h2>Spezialreinigung</h2>
+            <p>
+              Manche Bereiche erfordern mehr als eine herkömmliche Reinigung.
+              Unsere geschulten Spezialreiniger bewältigen selbst die anspruchsvollsten Herausforderungen.
+              So bringen wir Ihre Räume wieder in Bestform und erhalten ihren Wert langfristig.
+            </p>
+          </div>
+        </article>
+      </a>
 
       <!-- Kachel 3: Text links, Bild rechts -->
-      <article class="service-row reveal">
-        <div class="service-text">
-          <h2>Hauswartung</h2>
-          <p>
-            Mit unserem Hauswartungsservice bieten wir Ihnen eine umfassende Betreuung,
-            die weit über den üblichen Standard hinausgeht. Wir kümmern uns proaktiv um Ihre Immobilie,
-            erkennen Probleme frühzeitig und sorgen für einen reibungslosen Betrieb.
-            Ihre Liegenschaft bleibt gepflegt, funktional und einladend.
-          </p>
-        </div>
-        <div class="service-image"></div>
-      </article>
+      <a class="service-link reveal" href="hauswartung.html">
+        <article class="service-row">
+          <div class="service-text">
+            <h2>Hauswartung</h2>
+            <p>
+              Mit unserem Hauswartungsservice bieten wir Ihnen eine umfassende Betreuung,
+              die weit über den üblichen Standard hinausgeht. Wir kümmern uns proaktiv um Ihre Immobilie,
+              erkennen Probleme frühzeitig und sorgen für einen reibungslosen Betrieb.
+              Ihre Liegenschaft bleibt gepflegt, funktional und einladend.
+            </p>
+          </div>
+          <div class="service-image"></div>
+        </article>
+      </a>
 
     </section>
 
