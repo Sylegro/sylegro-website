@@ -96,10 +96,6 @@
       align-items: center;
     }
 
-    .nav-item > a {
-      padding-bottom: 3px;
-    }
-
     .submenu {
       position: absolute;
       top: 100%;
@@ -123,7 +119,6 @@
       font-size: 0.95rem;
       color: #111827;
       text-decoration: none;
-      white-space: nowrap;
     }
 
     .submenu a:hover {
@@ -137,7 +132,7 @@
       transform: translateY(0);
     }
 
-    /* MAIN LAYOUT */
+    /* MAIN */
     main {
       max-width: 1100px;
       margin: 0 auto;
@@ -162,7 +157,6 @@
     p {
       line-height: 1.6;
       font-size: 0.98rem;
-      margin-top: 0;
       margin-bottom: 10px;
     }
 
@@ -182,15 +176,7 @@
       border-top-color: var(--sylegro-green);
     }
 
-    .intro-text {
-      max-width: 90%;
-    }
-
-    .intro-text p {
-      margin-bottom: 12px;
-    }
-
-    /* Dienstleistungs-Kacheln (längliche Rows) */
+    /* Dienstleistungs-Kacheln */
     .services-section {
       display: flex;
       flex-direction: column;
@@ -207,10 +193,8 @@
     .service-row {
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 0;
       border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
       background: #ffffff;
       border-top: 4px solid var(--sylegro-blue);
       cursor: pointer;
@@ -228,9 +212,6 @@
 
     .service-text {
       padding: 24px 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(6px);
     }
@@ -240,18 +221,13 @@
       color: var(--sylegro-blue);
     }
 
-    .service-text p {
-      margin-bottom: 6px;
-      color: #4b5563;
-    }
-
     .service-image {
-      min-height: 220px;
+      min-height: 240px;
       background-size: cover;
       background-position: center;
     }
 
-    /* Bilder wie auf der Startseite */
+    /* 🔥 Neue Bilder gesetzt */
     .service-row:nth-child(1) .service-image {
       background-image: url("Titelbildmitlogo.jpg");
     }
@@ -261,27 +237,17 @@
     }
 
     .service-row:nth-child(3) .service-image {
-      background-image: url("DSC_6486.JPG");
+      background-image: url("Gartenarbeit.jpg");
     }
 
-    /* auf kleineren Screens untereinander */
     @media (max-width: 900px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        justify-content: flex-start;
-      }
-
       .service-row,
       .service-row:nth-child(even) {
         grid-template-columns: 1fr;
       }
     }
 
-    /* Scroll-Reveal Animation */
+    /* Scroll-Reveal */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -333,63 +299,42 @@
   <!-- MAIN -->
   <main>
 
-    <!-- Intro -->
     <section class="card intro-card reveal">
-      <div class="intro-text">
-        <h1>Unsere Dienstleistungen</h1>
-        <p>
-          Wir bieten massgeschneiderte Lösungen für Unternehmen und Privatkunden, um höchste Sauberkeit
-          und den langfristigen Werterhalt Ihrer Immobilie zu gewährleisten.
-        </p>
-        <p>
-          So schaffen wir ein gepflegtes Umfeld, damit Sie sich auf das Wesentliche konzentrieren können.
-        </p>
-      </div>
+      <h1>Unsere Dienstleistungen</h1>
+      <p>Wir bieten massgeschneiderte Lösungen für Unternehmen und Privatkunden, um höchste Sauberkeit und den langfristigen Werterhalt Ihrer Immobilie zu gewährleisten.</p>
+      <p>So schaffen wir ein gepflegtes Umfeld, damit Sie sich auf das Wesentliche konzentrieren können.</p>
     </section>
 
-    <!-- Dienstleistungs-Kacheln -->
     <section class="services-section">
 
-      <!-- Kachel 1: Text links, Bild rechts -->
+      <!-- Unterhaltsreinigung -->
       <a class="service-link reveal" href="unterhaltsreinigung.html">
         <article class="service-row">
           <div class="service-text">
             <h2>Unterhaltsreinigung</h2>
-            <p>
-              Mit durchdachten Reinigungslösungen sorgen wir für eine hygienische, gepflegte Umgebung –
-              effizient, nachhaltig und genau auf Ihre Anforderungen abgestimmt.
-            </p>
+            <p>Mit durchdachten Reinigungslösungen sorgen wir für eine hygienische, gepflegte Umgebung – effizient, nachhaltig und genau auf Ihre Anforderungen abgestimmt.</p>
           </div>
           <div class="service-image"></div>
         </article>
       </a>
 
-      <!-- Kachel 2: Bild links, Text rechts -->
+      <!-- Spezialreinigung -->
       <a class="service-link reveal" href="spezialreinigung.html">
         <article class="service-row">
           <div class="service-image"></div>
           <div class="service-text">
             <h2>Spezialreinigung</h2>
-            <p>
-              Manche Bereiche erfordern mehr als eine herkömmliche Reinigung.
-              Unsere geschulten Spezialreiniger bewältigen selbst die anspruchsvollsten Herausforderungen.
-              So bringen wir Ihre Räume wieder in Bestform und erhalten ihren Wert langfristig.
-            </p>
+            <p>Manche Bereiche erfordern mehr als eine herkömmliche Reinigung. Unsere Spezialreiniger bewältigen selbst anspruchsvollste Herausforderungen und bringen Ihre Räume wieder in Bestform.</p>
           </div>
         </article>
       </a>
 
-      <!-- Kachel 3: Text links, Bild rechts -->
+      <!-- Hauswartung -->
       <a class="service-link reveal" href="hauswartung.html">
         <article class="service-row">
           <div class="service-text">
             <h2>Hauswartung</h2>
-            <p>
-              Mit unserem Hauswartungsservice bieten wir Ihnen eine umfassende Betreuung,
-              die weit über den üblichen Standard hinausgeht. Wir kümmern uns proaktiv um Ihre Immobilie,
-              erkennen Probleme frühzeitig und sorgen für einen reibungslosen Betrieb.
-              Ihre Liegenschaft bleibt gepflegt, funktional und einladend.
-            </p>
+            <p>Mit unserem Hauswartungsservice kümmern wir uns proaktiv um Ihre Immobilie, erkennen Probleme frühzeitig und sorgen für einen reibungslosen, gepflegten und funktionalen Betrieb.</p>
           </div>
           <div class="service-image"></div>
         </article>
@@ -399,16 +344,13 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
     © Sylegro <span id="year"></span>
   </footer>
 
-  <!-- Animations-Logik -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    /* Scrollrichtung bestimmen */
     let lastScrollY = window.scrollY;
     let scrollDirection = 'down';
 
@@ -418,21 +360,16 @@
       lastScrollY = currentY;
     });
 
-    /* Scroll-Reveal – Animation nur beim Runterscrollen, einmalig */
     const revealElements = document.querySelectorAll('.reveal');
 
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
-        const el = entry.target;
-
         if (entry.isIntersecting && scrollDirection === 'down') {
-          el.classList.add('reveal-visible');
-          obs.unobserve(el); // nur einmal animieren
+          entry.target.classList.add('reveal-visible');
+          obs.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.15
-    });
+    }, { threshold: 0.15 });
 
     revealElements.forEach(el => observer.observe(el));
   </script>
