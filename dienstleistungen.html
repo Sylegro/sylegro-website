@@ -180,6 +180,7 @@
 
     .service-text p {
       margin-bottom: 6px;
+      color: #f9fafb; /* wird gleich überschrieben für besseren Kontrast in grün? -> wir lassen weiss Hintergrund */
       color: #4b5563;
     }
 
@@ -189,16 +190,17 @@
       background-position: center;
     }
 
+    /* Bilder wie auf der Startseite */
     .service-row:nth-child(1) .service-image {
-      background-image: url("dienstleistung-1.jpg"); /* Platzhalter */
+      background-image: url("Titelbildmitlogo.jpg");
     }
 
     .service-row:nth-child(2) .service-image {
-      background-image: url("dienstleistung-2.jpg"); /* Platzhalter */
+      background-image: url("AdobeStock_482143067.jpeg");
     }
 
     .service-row:nth-child(3) .service-image {
-      background-image: url("dienstleistung-3.jpg"); /* Platzhalter */
+      background-image: url("DSC_6486.JPG");
     }
 
     /* auf kleineren Screens untereinander */
@@ -282,8 +284,10 @@
       <article class="service-row reveal">
         <div class="service-text">
           <h2>Unterhaltsreinigung</h2>
-          <p><!-- Platzhalter: hier kommen später Ihre Texte zur Unterhaltsreinigung hin. --></p>
-          <p><!-- z.B. Büroreinigung, Treppenhäuser, Sanitärbereiche usw. --></p>
+          <p>
+            Mit durchdachten Reinigungslösungen sorgen wir für eine hygienische, gepflegte Umgebung –
+            effizient, nachhaltig und genau auf Ihre Anforderungen abgestimmt.
+          </p>
         </div>
         <div class="service-image"></div>
       </article>
@@ -293,8 +297,11 @@
         <div class="service-image"></div>
         <div class="service-text">
           <h2>Spezialreinigung</h2>
-          <p><!-- Platzhalter: hier kommen später Ihre Texte zur Spezialreinigung hin. --></p>
-          <p><!-- z.B. Bau- und Umzugsreinigung, Glas- und Fassadenreinigung usw. --></p>
+          <p>
+            Manche Bereiche erfordern mehr als eine herkömmliche Reinigung.
+            Unsere geschulten Spezialreiniger bewältigen selbst die anspruchsvollsten Herausforderungen.
+            So bringen wir Ihre Räume wieder in Bestform und erhalten ihren Wert langfristig.
+          </p>
         </div>
       </article>
 
@@ -302,8 +309,12 @@
       <article class="service-row reveal">
         <div class="service-text">
           <h2>Hauswartung</h2>
-          <p><!-- Platzhalter: hier kommen später Ihre Texte zur Hauswartung hin. --></p>
-          <p><!-- z.B. Technischer Dienst, Umgebungspflege, Winterdienst, Kleinreparaturen usw. --></p>
+          <p>
+            Mit unserem Hauswartungsservice bieten wir Ihnen eine umfassende Betreuung,
+            die weit über den üblichen Standard hinausgeht. Wir kümmern uns proaktiv um Ihre Immobilie,
+            erkennen Probleme frühzeitig und sorgen für einen reibungslosen Betrieb.
+            Ihre Liegenschaft bleibt gepflegt, funktional und einladend.
+          </p>
         </div>
         <div class="service-image"></div>
       </article>
@@ -340,8 +351,7 @@
 
         if (entry.isIntersecting && scrollDirection === 'down') {
           el.classList.add('reveal-visible');
-          // nach der ersten Animation nicht mehr beobachten
-          obs.unobserve(el);
+          obs.unobserve(el); // nur einmal animieren
         }
       });
     }, {
