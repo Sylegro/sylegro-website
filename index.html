@@ -4,23 +4,23 @@
   <meta charset="UTF-8" />
   <title>Sylegro – Startseite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+ 
   <!-- Schrift Kiro -->
   <link href="https://fonts.googleapis.com/css2?family=Kiro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- Icons für "Was uns auszeichnet" -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+ 
   <style>
     * {
       box-sizing: border-box;
     }
-
+ 
     :root {
       --sylegro-blue: #0063A5;
       --sylegro-green: #17A863;
       --bg-light: #f5f5f5;
     }
-
+ 
     body {
       font-family: "Kiro", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", Arial, sans-serif;
@@ -29,53 +29,82 @@
       background: var(--bg-light);
       color: #0f172a;
     }
-
+ 
     a {
       color: inherit;
       text-decoration: none;
     }
-
-    /* HEADER */
-    header {
-      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
-      color: white;
-      padding: 8px 20px; /* etwas schmaler */
+ 
+    /* ===================== */
+    /* VIDEO HERO HEADER     */
+    /* ===================== */
+    .video-hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 500px;
+      overflow: hidden;
     }
-
-    .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
+ 
+    .video-hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+ 
+    /* Dunkler Overlay damit alles lesbar bleibt */
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+ 
+    /* NAVIGATION über dem Video */
+    .video-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      padding: 16px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(6px);
     }
-
-    .logo-area img {
-      height: 220px;
+ 
+    .video-nav .logo-area img {
+      height: 80px;
       width: auto;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.5));
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
     }
-
-    nav {
+ 
+    .video-nav nav {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 24px;
       position: relative;
     }
-
-    nav a {
+ 
+    .video-nav nav a {
       color: white;
       font-size: 0.98rem;
       font-weight: 500;
       position: relative;
       padding-bottom: 3px;
+      text-decoration: none;
     }
-
-    nav a::after {
+ 
+    .video-nav nav a::after {
       content: "";
       position: absolute;
       left: 0;
@@ -86,18 +115,18 @@
       border-radius: 999px;
       transition: width .18s ease-out;
     }
-
-    nav a:hover::after {
+ 
+    .video-nav nav a:hover::after {
       width: 100%;
     }
-
-    /* Dropdown für Dienstleistungen */
+ 
+    /* Dropdown */
     .nav-item {
       position: relative;
       display: flex;
       align-items: center;
     }
-
+ 
     .submenu {
       position: absolute;
       top: 100%;
@@ -114,7 +143,7 @@
       transition: opacity 0.18s ease-out, transform 0.18s ease-out;
       z-index: 20;
     }
-
+ 
     .submenu a {
       display: block;
       padding: 8px 16px;
@@ -123,25 +152,117 @@
       text-decoration: none;
       white-space: nowrap;
     }
-
+ 
     .submenu a:hover {
       background: rgba(0, 99, 165, 0.06);
       color: var(--sylegro-blue);
     }
-
+ 
     .nav-item.has-submenu:hover .submenu {
       opacity: 1;
       pointer-events: auto;
       transform: translateY(0);
     }
-
-    /* MAIN LAYOUT */
+ 
+    /* Hero-Text in der Mitte */
+    .video-hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      text-align: center;
+      color: #ffffff;
+      padding: 20px;
+      width: 100%;
+      max-width: 800px;
+    }
+ 
+    .video-hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.15;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+ 
+    .video-hero-content p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 28px;
+      line-height: 1.6;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+    }
+ 
+    .hero-btn {
+      display: inline-block;
+      background: var(--sylegro-green);
+      color: #ffffff;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 6px 20px rgba(23, 168, 99, 0.4);
+    }
+ 
+    .hero-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(23, 168, 99, 0.5);
+    }
+ 
+    /* Scroll-Pfeil unten */
+    .scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.85rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      animation: bounce 2s infinite;
+    }
+ 
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+ 
+    /* Mobile Navigation */
+    @media (max-width: 900px) {
+      .video-nav {
+        padding: 12px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .video-nav .logo-area img {
+        height: 55px;
+      }
+      .video-hero-content h1 {
+        font-size: 2rem;
+      }
+      .video-hero-content p {
+        font-size: 1rem;
+      }
+    }
+ 
+    /* ===================== */
+    /* REST DER SEITE        */
+    /* ===================== */
+ 
     main {
       max-width: 1100px;
       margin: 0 auto;
       padding: 24px 20px 32px;
     }
-
+ 
     .grid {
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
@@ -149,7 +270,7 @@
       align-items: stretch;
       margin-bottom: 24px;
     }
-
+ 
     .card {
       background: #ffffff;
       border-radius: 18px;
@@ -159,41 +280,33 @@
       border-top: 4px solid var(--sylegro-blue);
       height: 100%;
     }
-
+ 
     h1, h2, h3 {
       margin-top: 0;
       font-weight: 600;
     }
-
+ 
     h2 {
       font-size: 1.35rem;
       margin-bottom: 10px;
     }
-
+ 
     p {
       line-height: 1.6;
       font-size: 0.98rem;
       margin-top: 0;
       margin-bottom: 10px;
     }
-
-    /* Nur der Text in der rechten Kachel wird etwas nach unten versetzt */
+ 
     @media (min-width: 900px) {
       .welcome-inner {
-        padding-top: 24px; /* leichte Ausrichtung zum Bild */
+        padding-top: 24px;
       }
     }
-
+ 
     @media (max-width: 900px) {
       .grid {
         grid-template-columns: 1fr;
-      }
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav {
-        justify-content: flex-start;
       }
       .excellence-grid {
         grid-template-columns: 1fr;
@@ -202,19 +315,17 @@
         grid-template-columns: 1fr;
       }
     }
-
+ 
     /* SLIDER */
-    .slider {
-      position: relative;
-    }
-
+    .slider { position: relative; }
+ 
     .slider-image-wrapper {
       position: relative;
       overflow: hidden;
       border-radius: 14px;
       margin-bottom: 12px;
     }
-
+ 
     #service-image {
       width: 100%;
       max-height: 280px;
@@ -224,27 +335,27 @@
       transition: opacity 0.4s ease;
       display: block;
     }
-
+ 
     .slider-title {
       font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 4px;
       color: var(--sylegro-blue);
     }
-
+ 
     .slider-text {
       font-size: 0.95rem;
       color: #374151;
       margin-bottom: 10px;
     }
-
+ 
     .slider-dots {
       display: flex;
       gap: 8px;
       margin-top: 8px;
       align-items: center;
     }
-
+ 
     .dot {
       width: 11px;
       height: 11px;
@@ -254,14 +365,13 @@
       background: transparent;
       transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
     }
-
+ 
     .dot.active {
       background: var(--sylegro-green);
       border-color: var(--sylegro-green);
       transform: scale(1.1);
     }
-
-    /* Slider-Pfeile */
+ 
     .slider-nav {
       position: absolute;
       top: 50%;
@@ -272,7 +382,7 @@
       transform: translateY(-50%);
       pointer-events: none;
     }
-
+ 
     .slider-arrow {
       pointer-events: auto;
       background: rgba(255, 255, 255, 0.9);
@@ -289,14 +399,14 @@
       color: #374151;
       transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }
-
+ 
     .slider-arrow:hover {
       transform: translateY(-1px);
       box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
       background: #ffffff;
     }
-
-    /* QUICK LINKS / KACHELN */
+ 
+    /* QUICK LINKS */
     .quick-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -304,54 +414,37 @@
       margin-top: 10px;
       align-items: stretch;
     }
-
+ 
     .quick-links .tile {
       border-radius: 18px;
       padding: 20px 20px 18px;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-      background: linear-gradient(135deg,
-        rgba(0, 99, 165, 0.08),
-        rgba(23, 168, 99, 0.08)
-      );
+      background: linear-gradient(135deg, rgba(0,99,165,0.08), rgba(23,168,99,0.08));
       border: 1px solid rgba(148, 163, 184, 0.25);
-      transition: transform 0.18s ease, box-shadow 0.18s ease,
-                  background 0.18s ease, border-color 0.18s ease;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
       height: 100%;
     }
-
+ 
     .quick-links .tile:hover {
       transform: translateY(-4px);
       box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
-      background: linear-gradient(135deg,
-        rgba(0, 99, 165, 0.14),
-        rgba(23, 168, 99, 0.16)
-      );
+      background: linear-gradient(135deg, rgba(0,99,165,0.14), rgba(23,168,99,0.16));
       border-color: rgba(37, 99, 235, 0.3);
     }
-
-    .quick-links h3 {
-      margin-bottom: 6px;
-      font-size: 1.05rem;
-    }
-
-    .quick-links p {
-      margin: 0;
-      font-size: 0.94rem;
-      color: #374151;
-    }
-
+ 
+    .quick-links h3 { margin-bottom: 6px; font-size: 1.05rem; }
+    .quick-links p { margin: 0; font-size: 0.94rem; color: #374151; }
+ 
     /* WAS UNS AUSZEICHNET */
-    .excellence-card {
-      margin-top: 10px;
-    }
-
+    .excellence-card { margin-top: 10px; }
+ 
     .excellence-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(260px, 1fr)); /* 2x2 */
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
       gap: 24px;
       margin-top: 16px;
     }
-
+ 
     .excellence-item {
       display: flex;
       gap: 10px;
@@ -359,7 +452,7 @@
       padding: 10px 6px 0 6px;
       border-left: 3px solid var(--sylegro-green);
     }
-
+ 
     .excellence-icon {
       flex: 0 0 auto;
       margin-top: 2px;
@@ -368,108 +461,94 @@
       width: 24px;
       text-align: center;
     }
-
+ 
     .excellence-text h3 {
       margin-top: 0;
       margin-bottom: 6px;
       color: var(--sylegro-green);
       font-size: 1.1rem;
     }
-
-    .excellence-text p {
-      margin: 0;
-      color: #4b5563;
-      font-size: 0.95rem;
-    }
-
-    /* Willkommen-Kachel: milchig & mehr Luft */
+ 
+    .excellence-text p { margin: 0; color: #4b5563; font-size: 0.95rem; }
+ 
+    /* WILLKOMMEN KACHEL */
     .card.welcome-card {
       background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(6px);
       padding: 36px 40px;
       border-top: 4px solid var(--sylegro-green);
     }
-
-    .welcome-inner {
-      max-width: 90%;
-      margin: 0 auto;
-      line-height: 1.75;
-    }
-
+ 
+    .welcome-inner { max-width: 90%; margin: 0 auto; line-height: 1.75; }
+ 
     .welcome-subtitle {
       color: var(--sylegro-green);
       font-weight: 600;
       font-size: 1.22rem;
       margin-bottom: 18px;
     }
-
-    /* Qualität – zweispaltige Kachel */
+ 
+    /* QUALITÄT */
     .quality-split-card {
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
       border-top-color: var(--sylegro-green);
-      padding: 0;              /* Card-Padding überschreiben */
+      padding: 0;
       overflow: hidden;
       margin-top: 20px;
     }
-
+ 
     .quality-image-side {
       background-image: url("nuno-silva-Rcsa_Rg77Tc-unsplash (1).jpg");
       background-size: cover;
       background-position: center;
       min-height: 260px;
     }
-
+ 
     .quality-text-side {
       padding: 26px 28px;
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(6px);
     }
-
-    .quality-lead {
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
+ 
+    .quality-lead { font-weight: 700; margin-bottom: 8px; }
+ 
     .quality-highlight {
       display: block;
       margin: 12px 0 16px;
       color: var(--sylegro-green);
       font-weight: 600;
     }
-
-    /* Scroll-Reveal Animation */
+ 
+    /* SCROLL REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
+ 
     .reveal-visible {
       opacity: 1;
       transform: translateY(0);
     }
-
-    /* Abschluss-Banner über ganze Seite */
+ 
+    /* BANNER */
     .experience-banner {
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
       color: #ffffff;
       padding: 18px 20px;
       text-align: center;
     }
-
-    .experience-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
+ 
+    .experience-inner { max-width: 1100px; margin: 0 auto; }
+ 
     .experience-inner p {
       margin: 0;
       font-size: 1.4rem;
       font-weight: 600;
       letter-spacing: 0.02em;
     }
-
+ 
     footer {
       text-align: center;
       padding: 18px 20px 26px;
@@ -478,19 +557,29 @@
     }
   </style>
 </head>
-
+ 
 <body>
-
-  <!-- HEADER -->
-  <header>
-    <div class="header-inner">
+ 
+  <!-- ================================ -->
+  <!-- VIDEO HERO HEADER                -->
+  <!-- ================================ -->
+  <div class="video-hero">
+ 
+    <!-- Video -->
+    <video autoplay muted loop playsinline>
+      <source src="video-header-sylegro.mp4" type="video/mp4">
+    </video>
+ 
+    <!-- Dunkler Overlay -->
+    <div class="video-overlay"></div>
+ 
+    <!-- Navigation -->
+    <div class="video-nav">
       <div class="logo-area">
         <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo mit Claim">
       </div>
-
       <nav>
         <a href="index.html">Startseite</a>
-
         <div class="nav-item has-submenu">
           <a href="dienstleistungen.html">Dienstleistungen</a>
           <div class="submenu">
@@ -499,20 +588,30 @@
             <a href="hauswartung.html">Hauswartung</a>
           </div>
         </div>
-
         <a href="ueber-uns.html">Über uns</a>
         <a href="jobs.html">Jobs</a>
         <a href="kontakt.html">Kontakt</a>
       </nav>
     </div>
-  </header>
-
-  <!-- MAIN -->
+ 
+    <!-- Hero Text -->
+    <div class="video-hero-content">
+      <h1>Professionelle Facility Services<br>in der Schweiz</h1>
+      <p>Reinigung, Hauswartung und Spezialservices –<br>zuverlässig, nachhaltig und massgeschneidert.</p>
+      <a href="kontakt.html" class="hero-btn">Kostenloses Angebot anfragen</a>
+    </div>
+ 
+    <!-- Scroll Hinweis -->
+    <div class="scroll-hint">
+      <span>↓ Mehr entdecken</span>
+    </div>
+ 
+  </div>
+ 
+  <!-- MAIN INHALT (alles wie vorher) -->
   <main>
-
-    <!-- Grid: Slider links, Text rechts -->
+ 
     <section class="grid">
-      <!-- Slider -->
       <div class="card slider reveal">
         <h2>Unsere Kernleistungen</h2>
         <div class="slider-image-wrapper">
@@ -526,270 +625,159 @@
         <div class="slider-text" id="service-text"></div>
         <div class="slider-dots" id="slider-dots"></div>
       </div>
-
-      <!-- Willkommen-Text – milchige Kachel -->
+ 
       <div class="card welcome-card reveal">
         <div class="welcome-inner">
           <h3 class="welcome-subtitle">Ihr Partner für gepflegte Räume</h3>
-          <p>
-            Sylegro steht für professionelle Reinigung, Hauswartung und Lösungen, die sich nahtlos an Ihre Bedürfnisse anpassen.
-          </p>
-          <p>
-            Unser Team sorgt dafür, dass Ihre Räume dauerhaft gepflegt, einladend und repräsentativ bleiben – für ein angenehmes Arbeits- und Wohnumfeld.
-          </p>
+          <p>Sylegro steht für professionelle Reinigung, Hauswartung und Lösungen, die sich nahtlos an Ihre Bedürfnisse anpassen.</p>
+          <p>Unser Team sorgt dafür, dass Ihre Räume dauerhaft gepflegt, einladend und repräsentativ bleiben – für ein angenehmes Arbeits- und Wohnumfeld.</p>
         </div>
       </div>
     </section>
-
-    <!-- Vision -->
+ 
     <section class="card reveal">
       <h2>Unsere Vision</h2>
       <p><strong>Wir gestalten die Zukunft der Gebäudereinigung – digital, nachhaltig und effizient.</strong></p>
-      <p>
-        Mit innovativen Technologien, umweltfreundlichen Reinigungsmethoden und klar definierten Prozessen
-        setzen wir neue Massstäbe in der Branche. Unsere digitalen Lösungen sorgen für maximale Transparenz
-        und Effizienz, während nachhaltige Verfahren den Werterhalt Ihrer Immobilie sichern.
-      </p>
+      <p>Mit innovativen Technologien, umweltfreundlichen Reinigungsmethoden und klar definierten Prozessen setzen wir neue Massstäbe in der Branche. Unsere digitalen Lösungen sorgen für maximale Transparenz und Effizienz, während nachhaltige Verfahren den Werterhalt Ihrer Immobilie sichern.</p>
     </section>
-
-    <!-- Was uns auszeichnet -->
+ 
     <section class="card excellence-card reveal">
       <h2>Was uns auszeichnet</h2>
       <div class="excellence-grid">
-        <!-- 1 -->
         <div class="excellence-item">
-          <div class="excellence-icon">
-            <i class="fa-solid fa-medal" aria-hidden="true"></i>
-          </div>
+          <div class="excellence-icon"><i class="fa-solid fa-medal" aria-hidden="true"></i></div>
           <div class="excellence-text">
             <h3>Qualitätsorientiert</h3>
-            <p>
-              Wir garantieren Ihnen die gewünschte Qualität durch unser bewährtes Qualitätsmanagement.
-              Jedes Detail wird kontinuierlich überprüft und optimiert, um Ergebnisse zu liefern, die Ihre
-              Erwartungen übertreffen.
-            </p>
+            <p>Wir garantieren Ihnen die gewünschte Qualität durch unser bewährtes Qualitätsmanagement. Jedes Detail wird kontinuierlich überprüft und optimiert, um Ergebnisse zu liefern, die Ihre Erwartungen übertreffen.</p>
           </div>
         </div>
-        <!-- 2 -->
         <div class="excellence-item">
-          <div class="excellence-icon">
-            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
-          </div>
+          <div class="excellence-icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
           <div class="excellence-text">
             <h3>Erfahrung &amp; Know-How</h3>
-            <p>
-              Mit langjähriger Erfahrung und fundiertem Fachwissen garantieren wir Ihnen professionelle
-              Lösungen, die auf bewährten Methoden und stetiger Weiterentwicklung basieren.
-            </p>
+            <p>Mit langjähriger Erfahrung und fundiertem Fachwissen garantieren wir Ihnen professionelle Lösungen, die auf bewährten Methoden und stetiger Weiterentwicklung basieren.</p>
           </div>
         </div>
-        <!-- 3 -->
         <div class="excellence-item">
-          <div class="excellence-icon">
-            <i class="fa-solid fa-eye" aria-hidden="true"></i>
-          </div>
+          <div class="excellence-icon"><i class="fa-solid fa-eye" aria-hidden="true"></i></div>
           <div class="excellence-text">
             <h3>Transparent</h3>
-            <p>
-              Wir legen grossen Wert auf klare Kommunikation. Sie wissen immer genau, wie wir arbeiten,
-              warum wir bestimmte Massnahmen ergreifen und wie diese zu den besten Ergebnissen führen.
-            </p>
+            <p>Wir legen grossen Wert auf klare Kommunikation. Sie wissen immer genau, wie wir arbeiten, warum wir bestimmte Massnahmen ergreifen und wie diese zu den besten Ergebnissen führen.</p>
           </div>
         </div>
-        <!-- 4 -->
         <div class="excellence-item">
-          <div class="excellence-icon">
-            <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
-          </div>
+          <div class="excellence-icon"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i></div>
           <div class="excellence-text">
             <h3>Flexibel</h3>
-            <p>
-              Unsere Dienstleistungen sind so flexibel wie Ihre Bedürfnisse. Wir passen uns Ihren
-              Anforderungen an und bieten massgeschneiderte Lösungen, wann immer Sie sie benötigen.
-            </p>
+            <p>Unsere Dienstleistungen sind so flexibel wie Ihre Bedürfnisse. Wir passen uns Ihren Anforderungen an und bieten massgeschneiderte Lösungen, wann immer Sie sie benötigen.</p>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Qualität – zweispaltige Kachel -->
+ 
     <section class="card quality-split-card reveal">
       <div class="quality-image-side"></div>
-
       <div class="quality-text-side">
         <h2>Qualität</h2>
-
         <p class="quality-lead"><strong>Weil Qualität kein Zufall ist</strong></p>
-
-        <p>
-          Wir arbeiten mit klaren Prozessen, modernen Methoden und regelmässigen Schulungen, damit unsere
-          Dienstleistungen zuverlässig und auf hohem Niveau erbracht werden.
-        </p>
-
-        <span class="quality-highlight">
-          Für spürbar bessere Ergebnisse und nachhaltigen Werterhalt.
-        </span>
-
-        <p>
-          Wir reagieren schnell auf individuelle Bedürfnisse und verbessern unsere Arbeit laufend durch
-          Feedback und Kontrollen. Die Sicherheit und das Wohlbefinden unseres Teams haben dabei höchste
-          Priorität.
-        </p>
+        <p>Wir arbeiten mit klaren Prozessen, modernen Methoden und regelmässigen Schulungen, damit unsere Dienstleistungen zuverlässig und auf hohem Niveau erbracht werden.</p>
+        <span class="quality-highlight">Für spürbar bessere Ergebnisse und nachhaltigen Werterhalt.</span>
+        <p>Wir reagieren schnell auf individuelle Bedürfnisse und verbessern unsere Arbeit laufend durch Feedback und Kontrollen. Die Sicherheit und das Wohlbefinden unseres Teams haben dabei höchste Priorität.</p>
       </div>
     </section>
-
-    <!-- Quick Links -->
+ 
     <section class="quick-links">
       <a href="dienstleistungen.html" class="reveal">
-        <div class="tile">
-          <h3>Unsere Dienstleistungen</h3>
-          <p>Unterhaltsreinigung, Spezialreinigung &amp; Hauswartung im Überblick.</p>
-        </div>
+        <div class="tile"><h3>Unsere Dienstleistungen</h3><p>Unterhaltsreinigung, Spezialreinigung &amp; Hauswartung im Überblick.</p></div>
       </a>
       <a href="ueber-uns.html" class="reveal">
-        <div class="tile">
-          <h3>Über uns</h3>
-          <p>Die Menschen und Werte hinter Sylegro.</p>
-        </div>
+        <div class="tile"><h3>Über uns</h3><p>Die Menschen und Werte hinter Sylegro.</p></div>
       </a>
       <a href="jobs.html" class="reveal">
-        <div class="tile">
-          <h3>Jobs</h3>
-          <p>Werde Teil unseres Teams.</p>
-        </div>
+        <div class="tile"><h3>Jobs</h3><p>Werde Teil unseres Teams.</p></div>
       </a>
       <a href="kontakt.html" class="reveal">
-        <div class="tile">
-          <h3>Kontakt</h3>
-          <p>Wir freuen uns auf Ihre Anfrage.</p>
-        </div>
+        <div class="tile"><h3>Kontakt</h3><p>Wir freuen uns auf Ihre Anfrage.</p></div>
       </a>
     </section>
-
+ 
   </main>
-
-  <!-- Abschluss-Banner über ganze Breite -->
+ 
   <section class="experience-banner reveal">
     <div class="experience-inner">
       <p>Unser Team verzeichnet gemeinsam über 50 Jahre Reinigungserfahrung</p>
     </div>
   </section>
-
-  <!-- FOOTER -->
+ 
   <footer>
     © Sylegro <span id="year"></span>
   </footer>
-
-  <!-- Slider- & Animations-Logik -->
+ 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
+ 
     const services = [
-      {
-        title: "Unterhaltsreinigung",
-        text: "Regelmässige Reinigung von Büros, Liegenschaften und Gewerbeflächen – sauber, zuverlässig und strukturiert.",
-        image: "Titelbildmitlogo.jpg"
-      },
-      {
-        title: "Spezialreinigung",
-        text: "Tiefenreinigungen, Glas- und Fassadenreinigung, Bau- und Umzugsreinigung für besondere Anforderungen.",
-        image: "AdobeStock_482143067.jpeg"
-      },
-      {
-        title: "Hauswartung",
-        text: "Umfassende Betreuung Ihrer Liegenschaft: Technik, Pflege der Aussenanlagen und Werterhaltung aus einer Hand.",
-        image: "Gartenarbeit.jpg"
-      }
+      { title: "Unterhaltsreinigung", text: "Regelmässige Reinigung von Büros, Liegenschaften und Gewerbeflächen – sauber, zuverlässig und strukturiert.", image: "Titelbildmitlogo.jpg" },
+      { title: "Spezialreinigung", text: "Tiefenreinigungen, Glas- und Fassadenreinigung, Bau- und Umzugsreinigung für besondere Anforderungen.", image: "AdobeStock_482143067.jpeg" },
+      { title: "Hauswartung", text: "Umfassende Betreuung Ihrer Liegenschaft: Technik, Pflege der Aussenanlagen und Werterhaltung aus einer Hand.", image: "Gartenarbeit.jpg" }
     ];
-
+ 
     const img = document.getElementById("service-image");
     const title = document.getElementById("service-title");
     const text = document.getElementById("service-text");
     const dots = document.getElementById("slider-dots");
-
     let current = 0;
-
+ 
     function renderDots() {
       dots.innerHTML = "";
       services.forEach((_, i) => {
         const dot = document.createElement("div");
         dot.className = "dot" + (i === current ? " active" : "");
-        dot.onclick = () => {
-          current = i;
-          updateSlider(true);
-        };
+        dot.onclick = () => { current = i; updateSlider(true); };
         dots.appendChild(dot);
       });
     }
-
+ 
     function updateSlider(withFade) {
       const s = services[current];
-
       if (withFade) {
         img.style.opacity = 0;
         setTimeout(() => {
-          img.src = s.image;
-          img.alt = s.title;
-          title.textContent = s.title;
-          text.textContent = s.text;
-          renderDots();
-          img.style.opacity = 1;
+          img.src = s.image; img.alt = s.title;
+          title.textContent = s.title; text.textContent = s.text;
+          renderDots(); img.style.opacity = 1;
         }, 200);
       } else {
-        img.src = s.image;
-        img.alt = s.title;
-        title.textContent = s.title;
-        text.textContent = s.text;
+        img.src = s.image; img.alt = s.title;
+        title.textContent = s.title; text.textContent = s.text;
         renderDots();
       }
     }
-
-    document.getElementById("prev-slide").addEventListener("click", () => {
-      current = (current - 1 + services.length) % services.length;
-      updateSlider(true);
-    });
-
-    document.getElementById("next-slide").addEventListener("click", () => {
-      current = (current + 1) % services.length;
-      updateSlider(true);
-    });
-
-    setInterval(() => {
-      current = (current + 1) % services.length;
-      updateSlider(true);
-    }, 6000);
-
+ 
+    document.getElementById("prev-slide").addEventListener("click", () => { current = (current - 1 + services.length) % services.length; updateSlider(true); });
+    document.getElementById("next-slide").addEventListener("click", () => { current = (current + 1) % services.length; updateSlider(true); });
+    setInterval(() => { current = (current + 1) % services.length; updateSlider(true); }, 6000);
     updateSlider(false);
-
-    /* Scrollrichtung bestimmen */
+ 
     let lastScrollY = window.scrollY;
     let scrollDirection = 'down';
-
     window.addEventListener('scroll', () => {
       const currentY = window.scrollY;
       scrollDirection = currentY > lastScrollY ? 'down' : 'up';
       lastScrollY = currentY;
     });
-
-    /* Scroll-Reveal – Animation nur beim Runterscrollen, einmalig */
+ 
     const revealElements = document.querySelectorAll('.reveal');
-
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
-        const el = entry.target;
-
         if (entry.isIntersecting && scrollDirection === 'down') {
-          el.classList.add('reveal-visible');
-          // nach der ersten Animation nicht mehr beobachten -> kein „Springen“
-          obs.unobserve(el);
+          entry.target.classList.add('reveal-visible');
+          obs.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.15
-    });
-
+    }, { threshold: 0.15 });
     revealElements.forEach(el => observer.observe(el));
   </script>
-
+ 
 </body>
 </html>
