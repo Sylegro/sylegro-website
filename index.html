@@ -272,10 +272,7 @@
       line-height: 1.2;
     }
 
-    .kernleistungen-title em {
-      font-style: italic;
-      color: var(--sylegro-blue);
-    }
+    .kernleistungen-title em { font-style: italic; color: var(--sylegro-blue); }
 
     .kernleistungen-desc {
       font-size: 1rem;
@@ -314,7 +311,7 @@
 
     .kachel:hover .kachel-img { transform: scale(1.05); }
 
-    /* Normaler dunkler Gradient unten */
+    /* Normaler dunkler Gradient */
     .kachel-overlay {
       position: absolute;
       inset: 0;
@@ -324,11 +321,16 @@
 
     .kachel:hover .kachel-overlay { opacity: 0; }
 
-    /* Grüner Hover-Layer von unten nach oben */
+    /* Grüner Hover-Layer – transparent oben, sichtbar unten */
     .kachel-hover-layer {
       position: absolute;
       inset: 0;
-      background: rgba(23, 168, 99, 0.82);
+      background: linear-gradient(to top,
+        rgba(23, 168, 99, 0.97) 0%,
+        rgba(23, 168, 99, 0.85) 35%,
+        rgba(23, 168, 99, 0.3) 65%,
+        rgba(23, 168, 99, 0.0) 100%
+      );
       opacity: 0;
       display: flex;
       flex-direction: column;
@@ -349,7 +351,7 @@
     }
 
     .kachel-hover-text {
-      color: rgba(255,255,255,0.92);
+      color: rgba(255,255,255,0.95);
       font-size: 1rem;
       line-height: 1.6;
       margin: 0;
@@ -630,7 +632,6 @@
 
       <div class="kernleistungen-grid">
 
-        <!-- Unterhaltsreinigung -->
         <a class="kachel" href="unterhaltsreinigung.html">
           <div class="kachel-img" style="background-image: url('UHR_Dame_mit_Logo.jpg');"></div>
           <div class="kachel-overlay"></div>
@@ -643,7 +644,6 @@
           </div>
         </a>
 
-        <!-- Spezialreinigung -->
         <a class="kachel" href="spezialreinigung.html">
           <div class="kachel-img" style="background-image: url('Foto_SR_Eldin.JPG');"></div>
           <div class="kachel-overlay"></div>
@@ -656,7 +656,6 @@
           </div>
         </a>
 
-        <!-- Hauswartung -->
         <a class="kachel" href="hauswartung.html">
           <div class="kachel-img" style="background-image: url('HW_Foto_Aleks.jpg');"></div>
           <div class="kachel-overlay"></div>
