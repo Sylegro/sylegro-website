@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link href="https://fonts.googleapis.com/css2?family=Kiro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     * { box-sizing: border-box; }
@@ -19,8 +19,7 @@
 
     body {
       font-family: "Kiro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       background: var(--bg-light);
       color: #0f172a;
     }
@@ -139,9 +138,7 @@
       50% { transform: translateX(-50%) translateY(8px); }
     }
 
-    /* ========================= */
-    /* HERO TEXT + STATS         */
-    /* ========================= */
+    /* HERO */
     .hero-section {
       background: #ffffff;
       padding: 60px 40px 50px;
@@ -157,11 +154,7 @@
       flex-wrap: wrap;
     }
 
-    /* Linke Seite – Text */
-    .hero-left {
-      flex: 1;
-      min-width: 300px;
-    }
+    .hero-left { flex: 1; min-width: 300px; }
 
     .hero-title {
       font-size: 3.2rem;
@@ -171,10 +164,7 @@
       margin: 0 0 20px 0;
     }
 
-    .hero-title em {
-      font-style: italic;
-      color: var(--sylegro-green);
-    }
+    .hero-title em { font-style: italic; color: var(--sylegro-green); }
 
     .hero-subtitle {
       font-size: 1.05rem;
@@ -183,11 +173,7 @@
       margin: 0 0 32px 0;
     }
 
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
 
     .btn-green {
       background: var(--sylegro-green);
@@ -202,10 +188,7 @@
       box-shadow: 0 6px 20px rgba(23,168,99,0.3);
     }
 
-    .btn-green:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(23,168,99,0.4);
-    }
+    .btn-green:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(23,168,99,0.4); }
 
     .btn-outline {
       background: transparent;
@@ -220,19 +203,9 @@
       transition: border-color 0.15s ease, transform 0.15s ease;
     }
 
-    .btn-outline:hover {
-      border-color: var(--sylegro-blue);
-      transform: translateY(-2px);
-    }
+    .btn-outline:hover { border-color: var(--sylegro-blue); transform: translateY(-2px); }
 
-    /* Rechte Seite – Stats */
-    .hero-right {
-      flex: 1;
-      min-width: 280px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+    .hero-right { flex: 1; min-width: 280px; }
 
     .stats-grid {
       display: grid;
@@ -249,10 +222,7 @@
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
-    .stat-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(15,23,42,0.1);
-    }
+    .stat-box:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(15,23,42,0.1); }
 
     .stat-number {
       font-size: 2.4rem;
@@ -269,6 +239,113 @@
       color: #6b7280;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+    }
+
+    /* ========================= */
+    /* KERNLEISTUNGEN KACHELN    */
+    /* ========================= */
+    .kernleistungen-section {
+      background: #ffffff;
+      padding: 60px 40px;
+      width: 100%;
+    }
+
+    .kernleistungen-header {
+      margin-bottom: 40px;
+    }
+
+    .kernleistungen-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--sylegro-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .kernleistungen-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+
+    .kernleistungen-title em {
+      font-style: italic;
+      color: var(--sylegro-blue);
+    }
+
+    .kernleistungen-desc {
+      font-size: 1rem;
+      color: #4b5563;
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0;
+    }
+
+    .kernleistungen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .kachel {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      height: 420px;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .kachel:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15,23,42,0.18); }
+
+    .kachel-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.4s ease;
+    }
+
+    .kachel:hover .kachel-img { transform: scale(1.05); }
+
+    .kachel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5,20,40,0.85) 0%, rgba(5,20,40,0.2) 50%, transparent 100%);
+    }
+
+    .kachel-content {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      padding: 24px;
+      color: #ffffff;
+    }
+
+    .kachel-badge {
+      display: inline-block;
+      background: var(--sylegro-green);
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .kachel-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.2;
     }
 
     /* MAIN */
@@ -296,8 +373,8 @@
       height: 100%;
     }
 
-    h1, h2, h3 { margin-top: 0; font-weight: 600; }
-    h2 { font-size: 1.35rem; margin-bottom: 10px; }
+    h2 { font-size: 1.35rem; margin-bottom: 10px; margin-top: 0; font-weight: 600; }
+    h3 { margin-top: 0; font-weight: 600; }
     p { line-height: 1.6; font-size: 0.98rem; margin-top: 0; margin-bottom: 10px; }
 
     @media (min-width: 900px) { .welcome-inner { padding-top: 24px; } }
@@ -310,7 +387,8 @@
       .quality-split-card { grid-template-columns: 1fr; }
       .hero-inner { flex-direction: column; }
       .hero-title { font-size: 2.2rem; }
-      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .kernleistungen-grid { grid-template-columns: 1fr; }
+      .kachel { height: 300px; }
     }
 
     .slider { position: relative; }
@@ -323,13 +401,9 @@
     }
 
     #service-image {
-      width: 100%;
-      max-height: 280px;
-      object-fit: cover;
-      border-radius: 14px;
-      opacity: 1;
-      transition: opacity 0.4s ease;
-      display: block;
+      width: 100%; max-height: 280px;
+      object-fit: cover; border-radius: 14px;
+      opacity: 1; transition: opacity 0.4s ease; display: block;
     }
 
     .slider-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; color: var(--sylegro-blue); }
@@ -340,8 +414,7 @@
       width: 11px; height: 11px;
       border-radius: 999px;
       border: 1px solid #9ca3af;
-      cursor: pointer;
-      background: transparent;
+      cursor: pointer; background: transparent;
       transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
     }
 
@@ -350,8 +423,7 @@
     .slider-nav {
       position: absolute;
       top: 50%; left: 0; right: 0;
-      display: flex;
-      justify-content: space-between;
+      display: flex; justify-content: space-between;
       transform: translateY(-50%);
       pointer-events: none;
     }
@@ -359,14 +431,11 @@
     .slider-arrow {
       pointer-events: auto;
       background: rgba(255,255,255,0.9);
-      border: none;
-      border-radius: 999px;
+      border: none; border-radius: 999px;
       width: 30px; height: 30px;
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 4px 10px rgba(15,23,42,0.15);
-      cursor: pointer;
-      font-size: 16px;
-      color: #374151;
+      cursor: pointer; font-size: 16px; color: #374151;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
@@ -375,14 +444,11 @@
     .quick-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 22px;
-      margin-top: 10px;
-      align-items: stretch;
+      gap: 22px; margin-top: 10px; align-items: stretch;
     }
 
     .quick-links .tile {
-      border-radius: 18px;
-      padding: 20px 20px 18px;
+      border-radius: 18px; padding: 20px 20px 18px;
       box-shadow: 0 8px 24px rgba(15,23,42,0.06);
       background: linear-gradient(135deg, rgba(0,99,165,0.08), rgba(23,168,99,0.08));
       border: 1px solid rgba(148,163,184,0.25);
@@ -405,14 +471,11 @@
     .excellence-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 16px;
+      gap: 24px; margin-top: 16px;
     }
 
     .excellence-item {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
+      display: flex; gap: 10px; align-items: flex-start;
       padding: 10px 6px 0 6px;
       border-left: 3px solid var(--sylegro-green);
     }
@@ -435,16 +498,12 @@
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
       border-top-color: var(--sylegro-green);
-      padding: 0;
-      overflow: hidden;
-      margin-top: 20px;
+      padding: 0; overflow: hidden; margin-top: 20px;
     }
 
     .quality-image-side {
       background-image: url("nuno-silva-Rcsa_Rg77Tc-unsplash (1).jpg");
-      background-size: cover;
-      background-position: center;
-      min-height: 260px;
+      background-size: cover; background-position: center; min-height: 260px;
     }
 
     .quality-text-side { padding: 26px 28px; background: rgba(255,255,255,0.9); backdrop-filter: blur(6px); }
@@ -456,9 +515,7 @@
 
     .experience-banner {
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
-      color: #ffffff;
-      padding: 18px 20px;
-      text-align: center;
+      color: #ffffff; padding: 18px 20px; text-align: center;
     }
 
     .experience-inner { max-width: 1100px; margin: 0 auto; }
@@ -504,18 +561,14 @@
   <!-- HERO TEXT + STATS -->
   <div class="hero-section reveal">
     <div class="hero-inner">
-
-      <!-- Links: Text & Buttons -->
       <div class="hero-left">
         <h1 class="hero-title">Sauberkeit, auf<br>die Sie sich <em>verlassen</em><br>können.</h1>
-        <p class="hero-subtitle">Professionelle Reinigung, Hauswartung und Facility Services – massgeschneidert für Ihr Unternehmen.</p>
+        <p class="hero-subtitle">Professionelle Reinigung, Hauswartung und Facility Services – massgeschneidert für Ihr Unternehmen. Über 50 Jahre gebündeltes Know-how.</p>
         <div class="hero-buttons">
           <a href="kontakt.html" class="btn-green">Kostenloses Angebot ↗</a>
           <a href="dienstleistungen.html" class="btn-outline">Unsere Leistungen</a>
         </div>
       </div>
-
-      <!-- Rechts: Stats mit Zähl-Animation -->
       <div class="hero-right">
         <div class="stats-grid">
           <div class="stat-box">
@@ -532,6 +585,48 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- KERNLEISTUNGEN KACHELN -->
+  <div class="kernleistungen-section reveal">
+    <div class="kernleistungen-header">
+      <span class="kernleistungen-label">Was wir bieten</span>
+      <h2 class="kernleistungen-title">Unsere <em>Kernleistungen</em></h2>
+      <p class="kernleistungen-desc">Von der täglichen Unterhaltsreinigung bis zur anspruchsvollen Spezialreinigung – wir bieten massgeschneiderte Lösungen für jede Anforderung.</p>
+    </div>
+
+    <div class="kernleistungen-grid">
+
+      <!-- Unterhaltsreinigung -->
+      <a class="kachel" href="unterhaltsreinigung.html">
+        <div class="kachel-img" style="background-image: url('UHR_Dame_mit_Logo.jpg');"></div>
+        <div class="kachel-overlay"></div>
+        <div class="kachel-content">
+          <span class="kachel-badge">Täglich</span>
+          <h3 class="kachel-title">Unterhaltsreinigung</h3>
+        </div>
+      </a>
+
+      <!-- Spezialreinigung -->
+      <a class="kachel" href="spezialreinigung.html">
+        <div class="kachel-img" style="background-image: url('Foto_SR_Eldin.jpg');"></div>
+        <div class="kachel-overlay"></div>
+        <div class="kachel-content">
+          <span class="kachel-badge">Auf Anfrage</span>
+          <h3 class="kachel-title">Spezialreinigung</h3>
+        </div>
+      </a>
+
+      <!-- Hauswartung -->
+      <a class="kachel" href="hauswartung.html">
+        <div class="kachel-img" style="background-image: url('HW_Foto_Aleks.jpg');"></div>
+        <div class="kachel-overlay"></div>
+        <div class="kachel-content">
+          <span class="kachel-badge">Ganzjährig</span>
+          <h3 class="kachel-title">Hauswartung</h3>
+        </div>
+      </a>
 
     </div>
   </div>
@@ -637,14 +732,11 @@
     </div>
   </section>
 
-  <footer>
-    © Sylegro <span id="year"></span>
-  </footer>
+  <footer>© Sylegro <span id="year"></span></footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // SLIDER
     const services = [
       { title: "Unterhaltsreinigung", text: "Regelmässige Reinigung von Büros, Liegenschaften und Gewerbeflächen – sauber, zuverlässig und strukturiert.", image: "Titelbildmitlogo.jpg" },
       { title: "Spezialreinigung", text: "Tiefenreinigungen, Glas- und Fassadenreinigung, Bau- und Umzugsreinigung für besondere Anforderungen.", image: "AdobeStock_482143067.jpeg" },
@@ -692,22 +784,16 @@
     function animateCounter(el) {
       const target = parseInt(el.getAttribute("data-target"));
       const suffix = el.getAttribute("data-suffix") || "";
-      const duration = 2000;
       const steps = 60;
-      const stepTime = duration / steps;
-      let current = 0;
-
+      const stepTime = 2000 / steps;
+      let count = 0;
       const timer = setInterval(() => {
-        current += target / steps;
-        if (current >= target) {
-          current = target;
-          clearInterval(timer);
-        }
-        el.textContent = Math.floor(current) + suffix;
+        count += target / steps;
+        if (count >= target) { count = target; clearInterval(timer); }
+        el.textContent = Math.floor(count) + suffix;
       }, stepTime);
     }
 
-    // SCROLL REVEAL + COUNTER TRIGGER
     let lastScrollY = window.scrollY;
     let scrollDirection = 'down';
     window.addEventListener('scroll', () => {
