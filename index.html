@@ -146,7 +146,8 @@
     }
 
     .hero-inner {
-      max-width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -241,17 +242,16 @@
       letter-spacing: 0.08em;
     }
 
-    /* ========================= */
-    /* KERNLEISTUNGEN KACHELN    */
-    /* ========================= */
+    /* KERNLEISTUNGEN */
     .kernleistungen-section {
       background: #ffffff;
       padding: 60px 40px;
       width: 100%;
     }
 
-    .kernleistungen-header {
-      margin-bottom: 40px;
+    .kernleistungen-inner {
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
     .kernleistungen-label {
@@ -282,7 +282,7 @@
       color: #4b5563;
       line-height: 1.6;
       max-width: 500px;
-      margin: 0;
+      margin: 0 0 40px 0;
     }
 
     .kernleistungen-grid {
@@ -295,7 +295,7 @@
       border-radius: 20px;
       overflow: hidden;
       position: relative;
-      height: 420px;
+      height: 550px;
       cursor: pointer;
       text-decoration: none;
       display: block;
@@ -373,8 +373,8 @@
       height: 100%;
     }
 
-    h2 { font-size: 1.35rem; margin-bottom: 10px; margin-top: 0; font-weight: 600; }
-    h3 { margin-top: 0; font-weight: 600; }
+    h1, h2, h3 { margin-top: 0; font-weight: 600; }
+    h2 { font-size: 1.35rem; margin-bottom: 10px; }
     p { line-height: 1.6; font-size: 0.98rem; margin-top: 0; margin-bottom: 10px; }
 
     @media (min-width: 900px) { .welcome-inner { padding-top: 24px; } }
@@ -563,7 +563,7 @@
     <div class="hero-inner">
       <div class="hero-left">
         <h1 class="hero-title">Sauberkeit, auf<br>die Sie sich <em>verlassen</em><br>können.</h1>
-        <p class="hero-subtitle">Professionelle Reinigung, Hauswartung und Facility Services – massgeschneidert für Ihr Unternehmen. Über 50 Jahre gebündeltes Know-how.</p>
+        <p class="hero-subtitle">Professionelle Reinigung, Hauswartung und Facility Services – massgeschneidert für Ihr Unternehmen.</p>
         <div class="hero-buttons">
           <a href="kontakt.html" class="btn-green">Kostenloses Angebot ↗</a>
           <a href="dienstleistungen.html" class="btn-outline">Unsere Leistungen</a>
@@ -590,50 +590,42 @@
 
   <!-- KERNLEISTUNGEN KACHELN -->
   <div class="kernleistungen-section reveal">
-    <div class="kernleistungen-header">
+    <div class="kernleistungen-inner">
       <span class="kernleistungen-label">Was wir bieten</span>
       <h2 class="kernleistungen-title">Unsere <em>Kernleistungen</em></h2>
       <p class="kernleistungen-desc">Von der täglichen Unterhaltsreinigung bis zur anspruchsvollen Spezialreinigung – wir bieten massgeschneiderte Lösungen für jede Anforderung.</p>
-    </div>
 
-    <div class="kernleistungen-grid">
-
-      <!-- Unterhaltsreinigung -->
-      <a class="kachel" href="unterhaltsreinigung.html">
-        <div class="kachel-img" style="background-image: url('UHR_Dame_mit_Logo.jpg');"></div>
-        <div class="kachel-overlay"></div>
-        <div class="kachel-content">
-          <span class="kachel-badge">Täglich</span>
-          <h3 class="kachel-title">Unterhaltsreinigung</h3>
-        </div>
-      </a>
-
-      <!-- Spezialreinigung -->
-      <a class="kachel" href="spezialreinigung.html">
-        <div class="kachel-img" style="background-image: url('Foto_SR_Eldin.JPG');"></div>
-        <div class="kachel-overlay"></div>
-        <div class="kachel-content">
-          <span class="kachel-badge">Auf Anfrage</span>
-          <h3 class="kachel-title">Spezialreinigung</h3>
-        </div>
-      </a>
-
-      <!-- Hauswartung -->
-      <a class="kachel" href="hauswartung.html">
-        <div class="kachel-img" style="background-image: url('HW_Foto_Aleks.jpg');"></div>
-        <div class="kachel-overlay"></div>
-        <div class="kachel-content">
-          <span class="kachel-badge">Ganzjährig</span>
-          <h3 class="kachel-title">Hauswartung</h3>
-        </div>
-      </a>
-
+      <div class="kernleistungen-grid">
+        <a class="kachel" href="unterhaltsreinigung.html">
+          <div class="kachel-img" style="background-image: url('UHR_Dame_mit_Logo.jpg');"></div>
+          <div class="kachel-overlay"></div>
+          <div class="kachel-content">
+            <span class="kachel-badge">Täglich</span>
+            <h3 class="kachel-title">Unterhaltsreinigung</h3>
+          </div>
+        </a>
+        <a class="kachel" href="spezialreinigung.html">
+          <div class="kachel-img" style="background-image: url('Foto_SR_Eldin.jpg');"></div>
+          <div class="kachel-overlay"></div>
+          <div class="kachel-content">
+            <span class="kachel-badge">Auf Anfrage</span>
+            <h3 class="kachel-title">Spezialreinigung</h3>
+          </div>
+        </a>
+        <a class="kachel" href="hauswartung.html">
+          <div class="kachel-img" style="background-image: url('HW_Foto_Aleks.jpg');"></div>
+          <div class="kachel-overlay"></div>
+          <div class="kachel-content">
+            <span class="kachel-badge">Ganzjährig</span>
+            <h3 class="kachel-title">Hauswartung</h3>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
   <!-- MAIN -->
   <main>
-
     <section class="grid">
       <div class="card slider reveal">
         <h2>Unsere Kernleistungen</h2>
@@ -723,7 +715,6 @@
         <div class="tile"><h3>Kontakt</h3><p>Wir freuen uns auf Ihre Anfrage.</p></div>
       </a>
     </section>
-
   </main>
 
   <section class="experience-banner reveal">
@@ -780,7 +771,6 @@
     setInterval(() => { current = (current + 1) % services.length; updateSlider(true); }, 6000);
     updateSlider(false);
 
-    // ZÄHL-ANIMATION
     function animateCounter(el) {
       const target = parseInt(el.getAttribute("data-target"));
       const suffix = el.getAttribute("data-suffix") || "";
