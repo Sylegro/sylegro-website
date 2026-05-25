@@ -215,15 +215,15 @@
     }
 
     .stat-box {
-      background: #0063A5;
+      background: var(--sylegro-blue);
       border-radius: 16px;
       padding: 24px 16px;
       text-align: center;
-      border: 1px solid #0063A5;
+      border: 1px solid var(--sylegro-blue);
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
-    .stat-box:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(15,23,42,0.1); }
+    .stat-box:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(15,23,42,0.2); }
 
     .stat-number {
       font-size: 2.4rem;
@@ -314,32 +314,65 @@
 
     .kachel:hover .kachel-img { transform: scale(1.05); }
 
+    /* Normaler dunkler Gradient unten */
     .kachel-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(to top, rgba(5,20,40,0.85) 0%, rgba(5,20,40,0.2) 50%, transparent 100%);
+      transition: opacity 0.35s ease;
     }
 
+    .kachel:hover .kachel-overlay { opacity: 0; }
+
+    /* Grüner Hover-Layer von unten nach oben */
+    .kachel-hover-layer {
+      position: absolute;
+      inset: 0;
+      background: rgba(23, 168, 99, 0.82);
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px 28px;
+      transition: opacity 0.35s ease;
+    }
+
+    .kachel:hover .kachel-hover-layer { opacity: 1; }
+
+    .kachel-hover-title {
+      color: #ffffff;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+      transform: translateY(12px);
+      transition: transform 0.35s ease;
+    }
+
+    .kachel-hover-text {
+      color: rgba(255,255,255,0.92);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+      transform: translateY(12px);
+      transition: transform 0.35s ease 0.05s;
+    }
+
+    .kachel:hover .kachel-hover-title,
+    .kachel:hover .kachel-hover-text {
+      transform: translateY(0);
+    }
+
+    /* Titel unten ohne Hover */
     .kachel-content {
       position: absolute;
       bottom: 0;
       left: 0; right: 0;
       padding: 24px;
       color: #ffffff;
+      transition: opacity 0.35s ease;
     }
 
-    .kachel-badge {
-      display: inline-block;
-      background: var(--sylegro-green);
-      color: #ffffff;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 4px 12px;
-      border-radius: 999px;
-      margin-bottom: 10px;
-    }
+    .kachel:hover .kachel-content { opacity: 0; }
 
     .kachel-title {
       font-size: 1.5rem;
@@ -596,30 +629,46 @@
       <p class="kernleistungen-desc">Von der täglichen Unterhaltsreinigung bis zur anspruchsvollen Spezialreinigung – wir bieten massgeschneiderte Lösungen für jede Anforderung.</p>
 
       <div class="kernleistungen-grid">
+
+        <!-- Unterhaltsreinigung -->
         <a class="kachel" href="unterhaltsreinigung.html">
           <div class="kachel-img" style="background-image: url('UHR_Dame_mit_Logo.jpg');"></div>
           <div class="kachel-overlay"></div>
+          <div class="kachel-hover-layer">
+            <h3 class="kachel-hover-title">Unterhaltsreinigung</h3>
+            <p class="kachel-hover-text">Regelmässige Reinigung von Büros, Schulen, Kliniken und Gewerbeflächen – hygienisch, zuverlässig und effizient.</p>
+          </div>
           <div class="kachel-content">
-            <span class="kachel-badge">Täglich</span>
             <h3 class="kachel-title">Unterhaltsreinigung</h3>
           </div>
         </a>
+
+        <!-- Spezialreinigung -->
         <a class="kachel" href="spezialreinigung.html">
           <div class="kachel-img" style="background-image: url('Foto_SR_Eldin.JPG');"></div>
           <div class="kachel-overlay"></div>
+          <div class="kachel-hover-layer">
+            <h3 class="kachel-hover-title">Spezialreinigung</h3>
+            <p class="kachel-hover-text">Fassaden-, Glas- und Tiefenreinigung für besondere Anforderungen – professionell, gründlich und auf Ihre Bedürfnisse abgestimmt.</p>
+          </div>
           <div class="kachel-content">
-            <span class="kachel-badge">Auf Anfrage</span>
             <h3 class="kachel-title">Spezialreinigung</h3>
           </div>
         </a>
+
+        <!-- Hauswartung -->
         <a class="kachel" href="hauswartung.html">
           <div class="kachel-img" style="background-image: url('HW_Foto_Aleks.jpg');"></div>
           <div class="kachel-overlay"></div>
+          <div class="kachel-hover-layer">
+            <h3 class="kachel-hover-title">Hauswartung</h3>
+            <p class="kachel-hover-text">Ganzjährige Betreuung Ihrer Liegenschaft – Gartenpflege, Technik und Werterhaltung aus einer Hand.</p>
+          </div>
           <div class="kachel-content">
-            <span class="kachel-badge">Ganzjährig</span>
             <h3 class="kachel-title">Hauswartung</h3>
           </div>
         </a>
+
       </div>
     </div>
   </div>
