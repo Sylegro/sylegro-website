@@ -1,3 +1,7 @@
+
+
+raw
+Index · HTML
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -35,76 +39,47 @@
       text-decoration: none;
     }
  
-    /* ===================== */
-    /* VIDEO HERO HEADER     */
-    /* ===================== */
-    .video-hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      min-height: 500px;
-      overflow: hidden;
+    /* HEADER */
+    header {
+      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
+      color: white;
+      padding: 8px 20px;
     }
  
-    .video-hero video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
- 
-    /* Dunkler Overlay damit alles lesbar bleibt */
-    .video-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      z-index: 1;
-    }
- 
-    /* NAVIGATION über dem Video */
-    .video-nav {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 3;
-      padding: 16px 40px;
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(6px);
+      gap: 20px;
     }
  
-    .video-nav .logo-area img {
-      height: 80px;
+    .logo-area img {
+      height: 220px;
       width: auto;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+      filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.5));
     }
  
-    .video-nav nav {
+    nav {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 24px;
+      gap: 20px;
       position: relative;
     }
  
-    .video-nav nav a {
+    nav a {
       color: white;
       font-size: 0.98rem;
       font-weight: 500;
       position: relative;
       padding-bottom: 3px;
-      text-decoration: none;
     }
  
-    .video-nav nav a::after {
+    nav a::after {
       content: "";
       position: absolute;
       left: 0;
@@ -116,11 +91,10 @@
       transition: width .18s ease-out;
     }
  
-    .video-nav nav a:hover::after {
+    nav a:hover::after {
       width: 100%;
     }
  
-    /* Dropdown */
     .nav-item {
       position: relative;
       display: flex;
@@ -164,52 +138,21 @@
       transform: translateY(0);
     }
  
-    /* Hero-Text in der Mitte */
-    .video-hero-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      text-align: center;
-      color: #ffffff;
-      padding: 20px;
+    /* ===================== */
+    /* VIDEO SECTION         */
+    /* ===================== */
+    .video-section {
       width: 100%;
-      max-width: 800px;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
     }
  
-    .video-hero-content h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      line-height: 1.15;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
-    }
- 
-    .video-hero-content p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      margin-bottom: 28px;
-      line-height: 1.6;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.3);
-    }
- 
-    .hero-btn {
-      display: inline-block;
-      background: var(--sylegro-green);
-      color: #ffffff;
-      padding: 14px 32px;
-      border-radius: 999px;
-      font-size: 1rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      box-shadow: 0 6px 20px rgba(23, 168, 99, 0.4);
-    }
- 
-    .hero-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(23, 168, 99, 0.5);
+    .video-section video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
  
     /* Scroll-Pfeil unten */
@@ -218,45 +161,18 @@
       bottom: 28px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 3;
-      color: rgba(255,255,255,0.75);
-      font-size: 0.85rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
       animation: bounce 2s infinite;
     }
  
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
+      50% { transform: translateX(-50%) translateY(8px); }
     }
  
-    /* Mobile Navigation */
-    @media (max-width: 900px) {
-      .video-nav {
-        padding: 12px 20px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      .video-nav .logo-area img {
-        height: 55px;
-      }
-      .video-hero-content h1 {
-        font-size: 2rem;
-      }
-      .video-hero-content p {
-        font-size: 1rem;
-      }
-    }
- 
-    /* ===================== */
-    /* REST DER SEITE        */
-    /* ===================== */
- 
+    /* MAIN LAYOUT */
     main {
       max-width: 1100px;
       margin: 0 auto;
@@ -307,6 +223,13 @@
     @media (max-width: 900px) {
       .grid {
         grid-template-columns: 1fr;
+      }
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        justify-content: flex-start;
       }
       .excellence-grid {
         grid-template-columns: 1fr;
@@ -406,7 +329,6 @@
       background: #ffffff;
     }
  
-    /* QUICK LINKS */
     .quick-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -435,7 +357,6 @@
     .quick-links h3 { margin-bottom: 6px; font-size: 1.05rem; }
     .quick-links p { margin: 0; font-size: 0.94rem; color: #374151; }
  
-    /* WAS UNS AUSZEICHNET */
     .excellence-card { margin-top: 10px; }
  
     .excellence-grid {
@@ -471,7 +392,6 @@
  
     .excellence-text p { margin: 0; color: #4b5563; font-size: 0.95rem; }
  
-    /* WILLKOMMEN KACHEL */
     .card.welcome-card {
       background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(6px);
@@ -488,7 +408,6 @@
       margin-bottom: 18px;
     }
  
-    /* QUALITÄT */
     .quality-split-card {
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
@@ -520,7 +439,6 @@
       font-weight: 600;
     }
  
-    /* SCROLL REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -532,7 +450,6 @@
       transform: translateY(0);
     }
  
-    /* BANNER */
     .experience-banner {
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
       color: #ffffff;
@@ -560,21 +477,9 @@
  
 <body>
  
-  <!-- ================================ -->
-  <!-- VIDEO HERO HEADER                -->
-  <!-- ================================ -->
-  <div class="video-hero">
- 
-    <!-- Video -->
-    <video autoplay muted loop playsinline>
-      <source src="video-header-sylegro.mp4" type="video/mp4">
-    </video>
- 
-    <!-- Dunkler Overlay -->
-    <div class="video-overlay"></div>
- 
-    <!-- Navigation -->
-    <div class="video-nav">
+  <!-- HEADER (unverändert) -->
+  <header>
+    <div class="header-inner">
       <div class="logo-area">
         <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo mit Claim">
       </div>
@@ -593,22 +498,17 @@
         <a href="kontakt.html">Kontakt</a>
       </nav>
     </div>
+  </header>
  
-    <!-- Hero Text -->
-    <div class="video-hero-content">
-      <h1>Professionelle Facility Services<br>in der Schweiz</h1>
-      <p>Reinigung, Hauswartung und Spezialservices –<br>zuverlässig, nachhaltig und massgeschneidert.</p>
-      <a href="kontakt.html" class="hero-btn">Kostenloses Angebot anfragen</a>
-    </div>
- 
-    <!-- Scroll Hinweis -->
-    <div class="scroll-hint">
-      <span>↓ Mehr entdecken</span>
-    </div>
- 
+  <!-- NEU: VIDEO über gesamte Breite -->
+  <div class="video-section">
+    <video autoplay muted loop playsinline>
+      <source src="video-header-sylegro.mp4" type="video/mp4">
+    </video>
+    <div class="scroll-hint">↓ Mehr entdecken</div>
   </div>
  
-  <!-- MAIN INHALT (alles wie vorher) -->
+  <!-- MAIN (alles unverändert von deiner Schwester) -->
   <main>
  
     <section class="grid">
