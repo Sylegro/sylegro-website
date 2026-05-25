@@ -44,11 +44,11 @@
     }
 
     .logo-area img {
-      height: 200px;
+      height: 80px;
       width: auto;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.5));
+      filter: drop-shadow(0 6px 16px rgba(15,23,42,0.5));
     }
 
     nav {
@@ -88,7 +88,7 @@
       color: #0f172a;
       padding: 8px 0;
       border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+      box-shadow: 0 10px 25px rgba(15,23,42,0.18);
       min-width: 220px;
       opacity: 0;
       pointer-events: none;
@@ -102,16 +102,13 @@
       padding: 8px 16px;
       font-size: 0.95rem;
       color: #111827;
-      text-decoration: none;
       white-space: nowrap;
     }
 
     .submenu a:hover { background: rgba(0,99,165,0.06); color: var(--sylegro-blue); }
 
     .nav-item.has-submenu:hover .submenu {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
+      opacity: 1; pointer-events: auto; transform: translateY(0);
     }
 
     /* VIDEO */
@@ -123,16 +120,13 @@
     }
 
     .video-section video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
     }
 
     .scroll-hint {
       position: absolute;
-      bottom: 28px;
-      left: 50%;
+      bottom: 28px; left: 50%;
       transform: translateX(-50%);
       color: rgba(255,255,255,0.85);
       font-size: 0.9rem;
@@ -146,17 +140,27 @@
     }
 
     /* ========================= */
-    /* HERO TEXT SECTION         */
+    /* HERO TEXT + STATS         */
     /* ========================= */
-    .hero-text-section {
+    .hero-section {
       background: #ffffff;
       padding: 60px 40px 50px;
-      max-width: 100%;
+      width: 100%;
     }
 
-    .hero-text-inner {
-      max-width: 1100px;
-      margin: 0 auto;
+    .hero-inner {
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    /* Linke Seite – Text */
+    .hero-left {
+      flex: 1;
+      min-width: 300px;
     }
 
     .hero-title {
@@ -173,10 +177,9 @@
     }
 
     .hero-subtitle {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: #4b5563;
       line-height: 1.7;
-      max-width: 520px;
       margin: 0 0 32px 0;
     }
 
@@ -184,7 +187,6 @@
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 50px;
     }
 
     .btn-green {
@@ -195,8 +197,6 @@
       font-size: 1rem;
       font-weight: 600;
       font-family: "Kiro", sans-serif;
-      border: none;
-      cursor: pointer;
       text-decoration: none;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
       box-shadow: 0 6px 20px rgba(23,168,99,0.3);
@@ -216,7 +216,6 @@
       font-weight: 600;
       font-family: "Kiro", sans-serif;
       border: 2px solid #d1d5db;
-      cursor: pointer;
       text-decoration: none;
       transition: border-color 0.15s ease, transform 0.15s ease;
     }
@@ -226,32 +225,46 @@
       transform: translateY(-2px);
     }
 
-    /* STATS */
-    .stats-row {
+    /* Rechte Seite – Stats */
+    .hero-right {
+      flex: 1;
+      min-width: 280px;
       display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      flex-wrap: wrap;
     }
 
     .stat-box {
       background: #f8fafc;
-      border-radius: 14px;
-      padding: 18px 28px;
+      border-radius: 16px;
+      padding: 24px 16px;
       text-align: center;
       border: 1px solid #e2e8f0;
-      min-width: 140px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(15,23,42,0.1);
     }
 
     .stat-number {
-      font-size: 2rem;
+      font-size: 2.4rem;
       font-weight: 700;
       color: var(--sylegro-blue);
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      line-height: 1;
     }
 
     .stat-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
       color: #6b7280;
       text-transform: uppercase;
@@ -295,8 +308,9 @@
       nav { justify-content: flex-start; }
       .excellence-grid { grid-template-columns: 1fr; }
       .quality-split-card { grid-template-columns: 1fr; }
+      .hero-inner { flex-direction: column; }
       .hero-title { font-size: 2.2rem; }
-      .stats-row { gap: 10px; }
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     .slider { position: relative; }
@@ -353,10 +367,10 @@
       cursor: pointer;
       font-size: 16px;
       color: #374151;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .slider-arrow:hover { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(15,23,42,0.18); background: #ffffff; }
+    .slider-arrow:hover { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(15,23,42,0.18); }
 
     .quick-links {
       display: grid;
@@ -415,7 +429,6 @@
     }
 
     .welcome-inner { max-width: 90%; margin: 0 auto; line-height: 1.75; }
-
     .welcome-subtitle { color: var(--sylegro-green); font-weight: 600; font-size: 1.22rem; margin-bottom: 18px; }
 
     .quality-split-card {
@@ -489,32 +502,41 @@
   </div>
 
   <!-- HERO TEXT + STATS -->
-  <div class="hero-text-section reveal">
-    <div class="hero-text-inner">
-      <h1 class="hero-title">Sauberkeit, auf<br>die Sie sich <em>verlassen</em><br>können.</h1>
-      <p class="hero-subtitle">Professionelle Reinigung, Hauswartung und Facility Services – massgeschneidert für Ihr Unternehmen. Über 50 Jahre gebündeltes Know-how.</p>
-      <div class="hero-buttons">
-        <a href="kontakt.html" class="btn-green">Kostenloses Angebot ↗</a>
-        <a href="dienstleistungen.html" class="btn-outline">Unsere Leistungen</a>
-      </div>
-      <div class="stats-row">
-        <div class="stat-box">
-          <span class="stat-number">50+</span>
-          <span class="stat-label">Jahre Erfahrung</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-number">20+</span>
-          <span class="stat-label">Kunden</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-number">1000+</span>
-          <span class="stat-label">m² gereinigte Fläche</span>
+  <div class="hero-section reveal">
+    <div class="hero-inner">
+
+      <!-- Links: Text & Buttons -->
+      <div class="hero-left">
+        <h1 class="hero-title">Sauberkeit, auf<br>die Sie sich <em>verlassen</em><br>können.</h1>
+        <p class="hero-subtitle">Professionelle Reinigung, Hauswartung und Facility Services – massgeschneidert für Ihr Unternehmen. Über 50 Jahre gebündeltes Know-how.</p>
+        <div class="hero-buttons">
+          <a href="kontakt.html" class="btn-green">Kostenloses Angebot ↗</a>
+          <a href="dienstleistungen.html" class="btn-outline">Unsere Leistungen</a>
         </div>
       </div>
+
+      <!-- Rechts: Stats mit Zähl-Animation -->
+      <div class="hero-right">
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-number" data-target="50" data-suffix="+">0</span>
+            <span class="stat-label">Jahre Erfahrung</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number" data-target="20" data-suffix="+">0</span>
+            <span class="stat-label">Kunden</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number" data-target="1000" data-suffix="+">0</span>
+            <span class="stat-label">m² gereinigte Fläche</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- MAIN (alles unverändert) -->
+  <!-- MAIN -->
   <main>
 
     <section class="grid">
@@ -622,6 +644,7 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    // SLIDER
     const services = [
       { title: "Unterhaltsreinigung", text: "Regelmässige Reinigung von Büros, Liegenschaften und Gewerbeflächen – sauber, zuverlässig und strukturiert.", image: "Titelbildmitlogo.jpg" },
       { title: "Spezialreinigung", text: "Tiefenreinigungen, Glas- und Fassadenreinigung, Bau- und Umzugsreinigung für besondere Anforderungen.", image: "AdobeStock_482143067.jpeg" },
@@ -629,8 +652,8 @@
     ];
 
     const img = document.getElementById("service-image");
-    const title = document.getElementById("service-title");
-    const text = document.getElementById("service-text");
+    const titleEl = document.getElementById("service-title");
+    const textEl = document.getElementById("service-text");
     const dots = document.getElementById("slider-dots");
     let current = 0;
 
@@ -650,12 +673,12 @@
         img.style.opacity = 0;
         setTimeout(() => {
           img.src = s.image; img.alt = s.title;
-          title.textContent = s.title; text.textContent = s.text;
+          titleEl.textContent = s.title; textEl.textContent = s.text;
           renderDots(); img.style.opacity = 1;
         }, 200);
       } else {
         img.src = s.image; img.alt = s.title;
-        title.textContent = s.title; text.textContent = s.text;
+        titleEl.textContent = s.title; textEl.textContent = s.text;
         renderDots();
       }
     }
@@ -665,6 +688,26 @@
     setInterval(() => { current = (current + 1) % services.length; updateSlider(true); }, 6000);
     updateSlider(false);
 
+    // ZÄHL-ANIMATION
+    function animateCounter(el) {
+      const target = parseInt(el.getAttribute("data-target"));
+      const suffix = el.getAttribute("data-suffix") || "";
+      const duration = 2000;
+      const steps = 60;
+      const stepTime = duration / steps;
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += target / steps;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = Math.floor(current) + suffix;
+      }, stepTime);
+    }
+
+    // SCROLL REVEAL + COUNTER TRIGGER
     let lastScrollY = window.scrollY;
     let scrollDirection = 'down';
     window.addEventListener('scroll', () => {
@@ -674,6 +717,9 @@
     });
 
     const revealElements = document.querySelectorAll('.reveal');
+    const counterElements = document.querySelectorAll('.stat-number[data-target]');
+    const animatedCounters = new Set();
+
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && scrollDirection === 'down') {
@@ -682,7 +728,18 @@
         }
       });
     }, { threshold: 0.15 });
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animatedCounters.has(entry.target)) {
+          animatedCounters.add(entry.target);
+          animateCounter(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
     revealElements.forEach(el => observer.observe(el));
+    counterElements.forEach(el => counterObserver.observe(el));
   </script>
 
 </body>
