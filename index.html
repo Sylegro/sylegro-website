@@ -657,6 +657,158 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal-visible { opacity: 1; transform: translateY(0); }
 
+    /* REZENSIONEN */
+    .rezensionen-section {
+      background: #ffffff;
+      padding: 70px 40px;
+      width: 100%;
+    }
+
+    .rezensionen-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .rez-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--sylegro-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .rez-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 14px 0;
+    }
+
+    .rez-title em { font-style: italic; color: var(--sylegro-blue); }
+
+    .rez-stars-total {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .rez-stars { color: #FBBC04; font-size: 1.4rem; letter-spacing: 2px; }
+    .rez-score { font-size: 1.2rem; font-weight: 700; color: #0f172a; }
+    .rez-count { font-size: 0.95rem; color: #6b7280; }
+
+    .rez-karussell-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+    }
+
+    .rez-arrow {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      color: #374151;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+      box-shadow: 0 2px 8px rgba(15,23,42,0.08);
+    }
+
+    .rez-arrow:hover {
+      background: var(--sylegro-blue);
+      color: #ffffff;
+      border-color: var(--sylegro-blue);
+      transform: scale(1.08);
+    }
+
+    .rez-karussell {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .rez-card {
+      display: none;
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 28px 32px;
+      border: 1px solid #e2e8f0;
+      text-align: left;
+      transition: box-shadow 0.2s;
+      animation: fadeInCard 0.4s ease;
+    }
+
+    .rez-card.active { display: block; }
+
+    @keyframes fadeInCard {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .rez-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .rez-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .rez-name { font-size: 1rem; font-weight: 600; color: #0f172a; }
+    .rez-badge { font-size: 0.78rem; color: #6b7280; margin-top: 2px; }
+
+    .rez-google-logo {
+      height: 20px;
+      width: auto;
+      margin-left: auto;
+      opacity: 0.7;
+    }
+
+    .rez-sterne { color: #FBBC04; font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 12px; }
+
+    .rez-text {
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .rez-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .rez-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #d1d5db;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+    }
+
+    .rez-dot.active {
+      background: var(--sylegro-blue);
+      transform: scale(1.2);
+    }
+
     .experience-banner {
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
       color: #ffffff; padding: 18px 20px; text-align: center;
@@ -821,6 +973,113 @@
     </div>
   </div>
 
+  <!-- REZENSIONEN -->
+  <div class="rezensionen-section reveal">
+    <div class="rezensionen-inner">
+      <span class="rez-label">Was unsere Kunden sagen</span>
+      <h2 class="rez-title">Google <em>Rezensionen</em></h2>
+      <div class="rez-stars-total">
+        <span class="rez-stars">★★★★★</span>
+        <span class="rez-score">5.0</span>
+        <span class="rez-count">· 9 Rezensionen</span>
+      </div>
+      <div class="rez-karussell-wrapper">
+        <button class="rez-arrow rez-prev" id="rezPrev">&#10094;</button>
+        <div class="rez-karussell" id="rezKarussell">
+
+          <div class="rez-card active">
+            <div class="rez-header">
+              <div class="rez-avatar" style="background:#EA4335;">R</div>
+              <div><div class="rez-name">Rahela Barisic</div><div class="rez-badge">Local Guide · 25 Rezensionen</div></div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
+            </div>
+            <div class="rez-sterne">★★★★★</div>
+            <p class="rez-text">Ich bin sehr zufrieden mit dem Reinigungsservice. Die Arbeit wurde sorgfältig und zuverlässig erledigt, und man merkt, dass das Team mit Herzblut dabei ist.</p>
+          </div>
+
+          <div class="rez-card">
+            <div class="rez-header">
+              <div class="rez-avatar" style="background:#34A853;">S</div>
+              <div><div class="rez-name">Sea Beändli</div><div class="rez-badge">3 Rezensionen</div></div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
+            </div>
+            <div class="rez-sterne">★★★★★</div>
+            <p class="rez-text">Super Preisleistungsverhältnis und wird in bester Qualität ausgeführt. Die Mitarbeiter haben es Top gemacht und waren auch sehr freundlich & natürlich auch respektvoll. :)</p>
+          </div>
+
+          <div class="rez-card">
+            <div class="rez-header">
+              <div class="rez-avatar" style="background:#9C27B0;">E</div>
+              <div><div class="rez-name">Elias Lehner</div><div class="rez-badge">4 Rezensionen</div></div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
+            </div>
+            <div class="rez-sterne">★★★★★</div>
+          </div>
+
+          <div class="rez-card">
+            <div class="rez-header">
+              <div class="rez-avatar" style="background:#FF5722;">K</div>
+              <div><div class="rez-name">Küng Natalie</div><div class="rez-badge">1 Rezension</div></div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
+            </div>
+            <div class="rez-sterne">★★★★★</div>
+            <p class="rez-text">Wir sind sehr zufrieden mit der Zusammenarbeit mit Ihnen und hoffen auf weitere Unterstützung von Ihnen! Sehr zuvorkommend, freundlich und verlässlich!</p>
+          </div>
+
+          <div class="rez-card">
+            <div class="rez-header">
+              <div class="rez-avatar" style="background:#9C27B0;">E</div>
+              <div><div class="rez-name">Eray Erdogan</div><div class="rez-badge">1 Rezension</div></div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
+            </div>
+            <div class="rez-sterne">★★★★★</div>
+            <p class="rez-text">Sehr gut und zuverlässig! Die Arbeit hat meine Erwartungen bei weitem übertroffen. Definitiv empfehlenswert.</p>
+          </div>
+
+          <div class="rez-card">
+            <div class="rez-header">
+              <div class="rez-avatar" style="background:#0063A5;">2</div>
+              <div><div class="rez-name">23curver</div><div class="rez-badge">13 Rezensionen</div></div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
+            </div>
+            <div class="rez-sterne">★★★★★</div>
+          </div>
+
+          <div class="rez-card">
+            <div class="rez-header">
+              <div class="rez-avatar" style="background:#17A863;">R</div>
+              <div><div class="rez-name">Robin Kälin</div><div class="rez-badge">2 Rezensionen</div></div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
+            </div>
+            <div class="rez-sterne">★★★★★</div>
+          </div>
+
+          <div class="rez-card">
+            <div class="rez-header">
+              <div class="rez-avatar" style="background:#FF9800;">A</div>
+              <div><div class="rez-name">Alen Hofmann</div><div class="rez-badge">1 Rezension</div></div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
+            </div>
+            <div class="rez-sterne">★★★★★</div>
+            <p class="rez-text">Sehr professionelle Arbeit. Bin mit euren Diensten sehr zufrieden. Werde euch zukünftig noch brauchen und weiter empfehlen.</p>
+          </div>
+
+          <div class="rez-card">
+            <div class="rez-header">
+              <div class="rez-avatar" style="background:#34A853;">S</div>
+              <div><div class="rez-name">Sabrina Musse</div><div class="rez-badge">1 Rezension</div></div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
+            </div>
+            <div class="rez-sterne">★★★★★</div>
+          </div>
+
+        </div>
+        <button class="rez-arrow rez-next" id="rezNext">&#10095;</button>
+      </div>
+      <div class="rez-dots" id="rezDots"></div>
+    </div>
+  </div>
+
   <!-- MAIN -->
   <main>
     <section class="grid">
@@ -923,6 +1182,31 @@
   <footer>© Sylegro <span id="year"></span></footer>
 
   <script>
+    // REZENSIONEN KARUSSELL
+    const rezCards = document.querySelectorAll('.rez-card');
+    const rezDotsContainer = document.getElementById('rezDots');
+    let rezCurrent = 0;
+
+    rezCards.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'rez-dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToRez(i);
+      rezDotsContainer.appendChild(dot);
+    });
+
+    function goToRez(index) {
+      rezCards[rezCurrent].classList.remove('active');
+      document.querySelectorAll('.rez-dot')[rezCurrent].classList.remove('active');
+      rezCurrent = (index + rezCards.length) % rezCards.length;
+      rezCards[rezCurrent].classList.add('active');
+      document.querySelectorAll('.rez-dot')[rezCurrent].classList.add('active');
+    }
+
+    document.getElementById('rezPrev').addEventListener('click', () => goToRez(rezCurrent - 1));
+    document.getElementById('rezNext').addEventListener('click', () => goToRez(rezCurrent + 1));
+
+    setInterval(() => goToRez(rezCurrent + 1), 5000);
+
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // PULL-TO-REFRESH: Seite neu laden wenn ganz oben und weiter nach oben gezogen
