@@ -385,7 +385,7 @@
 
     /* WARUM SYLEGRO */
     .warum-section {
-      background: var(--bg-light);
+      background: linear-gradient(135deg, #003d6b 0%, #0063A5 45%, #17A863 100%);
       padding: 80px 40px;
       width: 100%;
     }
@@ -407,50 +407,13 @@
       object-fit: cover;
       border-radius: 20px;
       display: block;
-      box-shadow: 0 20px 50px rgba(15,23,42,0.15);
-    }
-
-    .warum-badge {
-      position: absolute;
-      bottom: 30px;
-      left: -20px;
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 10px 30px rgba(15,23,42,0.15);
-    }
-
-    .warum-badge-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--sylegro-green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-    }
-
-    .warum-badge-num {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #0f172a;
-      line-height: 1;
-    }
-
-    .warum-badge-label {
-      font-size: 0.8rem;
-      color: #6b7280;
-      margin-top: 2px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
     }
 
     .warum-label {
       font-size: 0.8rem;
       font-weight: 700;
-      color: var(--sylegro-green);
+      color: rgba(255,255,255,0.7);
       text-transform: uppercase;
       letter-spacing: 0.12em;
       margin-bottom: 12px;
@@ -460,16 +423,19 @@
     .warum-title {
       font-size: 2.8rem;
       font-weight: 700;
-      color: #0f172a;
+      color: #ffffff;
       line-height: 1.15;
       margin: 0 0 20px 0;
     }
 
-    .warum-title em { font-style: italic; color: var(--sylegro-green); }
+    .warum-title em {
+      font-style: italic;
+      color: rgba(255,255,255,0.75);
+    }
 
     .warum-desc {
       font-size: 1.1rem;
-      color: #4b5563;
+      color: rgba(255,255,255,0.85);
       line-height: 1.7;
       margin: 0 0 36px 0;
     }
@@ -479,35 +445,52 @@
     .warum-item { display: flex; gap: 16px; align-items: flex-start; }
 
     .warum-icon {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 12px;
-      background: rgba(23,168,99,0.12);
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 22px;
       flex-shrink: 0;
       margin-top: 2px;
+      cursor: default;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    /* Icon Animationen */
+    .warum-icon.icon-medal:hover { transform: rotate(15deg) scale(1.2); background: rgba(255,255,255,0.25); }
+    .warum-icon.icon-plant:hover { transform: translateY(-5px) scale(1.15); background: rgba(255,255,255,0.25); }
+    .warum-icon.icon-flex:hover { transform: rotate(180deg) scale(1.1); background: rgba(255,255,255,0.25); }
+    .warum-icon.icon-eye .eye-span { display: inline-block; }
+    .warum-icon.icon-eye:hover .eye-span { animation: blink 0.5s ease; }
+
+    @keyframes blink {
+      0%   { transform: scaleY(1); }
+      30%  { transform: scaleY(0.05); }
+      60%  { transform: scaleY(0.05); }
+      100% { transform: scaleY(1); }
     }
 
     .warum-item-title {
       font-size: 1.05rem;
       font-weight: 700;
-      color: #0f172a;
+      color: #ffffff;
       margin: 0 0 4px 0;
     }
 
     .warum-item-text {
       font-size: 0.95rem;
-      color: #4b5563;
+      color: rgba(255,255,255,0.8);
       line-height: 1.55;
       margin: 0;
     }
 
     @media (max-width: 900px) {
       .warum-inner { grid-template-columns: 1fr; gap: 40px; }
-      .warum-badge { left: 10px; }
       .warum-title { font-size: 2rem; }
     }
 
@@ -801,13 +784,6 @@
     <div class="warum-inner">
       <div class="warum-left">
         <img src="sauberes-open_office.jpg" alt="Gepflegtes Büro" class="warum-main-img">
-        <div class="warum-badge">
-          <div class="warum-badge-icon">⭐</div>
-          <div>
-            <div class="warum-badge-num">50+</div>
-            <div class="warum-badge-label">Jahre Erfahrung</div>
-          </div>
-        </div>
       </div>
       <div class="warum-right">
         <span class="warum-label">Warum Sylegro</span>
@@ -815,28 +791,28 @@
         <p class="warum-desc">Wir arbeiten mit klaren Prozessen, modernen Methoden und geschulten Mitarbeitenden – für spürbar bessere Ergebnisse.</p>
         <div class="warum-liste">
           <div class="warum-item">
-            <div class="warum-icon">🏅</div>
+            <div class="warum-icon icon-medal">🏅</div>
             <div>
               <p class="warum-item-title">Qualitätsorientiert</p>
               <p class="warum-item-text">Bewährtes Qualitätsmanagement mit kontinuierlicher Überprüfung und Optimierung jedes Details.</p>
             </div>
           </div>
           <div class="warum-item">
-            <div class="warum-icon">🌱</div>
+            <div class="warum-icon icon-plant">🌱</div>
             <div>
               <p class="warum-item-title">Nachhaltig &amp; umweltbewusst</p>
               <p class="warum-item-text">Umweltfreundliche Reinigungsmittel und nachhaltige Verfahren zum Schutz Ihrer Immobilie.</p>
             </div>
           </div>
           <div class="warum-item">
-            <div class="warum-icon">🔄</div>
+            <div class="warum-icon icon-flex">🔄</div>
             <div>
               <p class="warum-item-title">Flexibel &amp; massgeschneidert</p>
               <p class="warum-item-text">Wir passen uns Ihren Anforderungen an – wann und wie Sie uns benötigen.</p>
             </div>
           </div>
           <div class="warum-item">
-            <div class="warum-icon">👁️</div>
+            <div class="warum-icon icon-eye"><span class="eye-span">👁️</span></div>
             <div>
               <p class="warum-item-title">Transparent &amp; verlässlich</p>
               <p class="warum-item-text">Klare Kommunikation, faire Preise und zuverlässige Ausführung – immer.</p>
