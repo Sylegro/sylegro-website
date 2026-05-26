@@ -42,6 +42,11 @@
       gap: 20px;
     }
 
+    /* Logo klickbar als Link zur Startseite */
+    .logo-area {
+      cursor: pointer;
+    }
+
     .logo-area img {
       height: 80px;
       width: auto;
@@ -378,9 +383,7 @@
       line-height: 1.2;
     }
 
-    /* ========================= */
-    /* WARUM SYLEGRO             */
-    /* ========================= */
+    /* WARUM SYLEGRO */
     .warum-section {
       background: var(--bg-light);
       padding: 80px 40px;
@@ -396,10 +399,7 @@
       align-items: center;
     }
 
-    /* Linke Seite – Bild */
-    .warum-left {
-      position: relative;
-    }
+    .warum-left { position: relative; }
 
     .warum-main-img {
       width: 100%;
@@ -410,7 +410,6 @@
       box-shadow: 0 20px 50px rgba(15,23,42,0.15);
     }
 
-    /* Badge mit 50+ */
     .warum-badge {
       position: absolute;
       bottom: 30px;
@@ -448,9 +447,6 @@
       margin-top: 2px;
     }
 
-    /* Rechte Seite – Text */
-    .warum-right {}
-
     .warum-label {
       font-size: 0.8rem;
       font-weight: 700;
@@ -469,10 +465,7 @@
       margin: 0 0 20px 0;
     }
 
-    .warum-title em {
-      font-style: italic;
-      color: var(--sylegro-green);
-    }
+    .warum-title em { font-style: italic; color: var(--sylegro-green); }
 
     .warum-desc {
       font-size: 1.1rem;
@@ -481,17 +474,9 @@
       margin: 0 0 36px 0;
     }
 
-    .warum-liste {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+    .warum-liste { display: flex; flex-direction: column; gap: 20px; }
 
-    .warum-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
+    .warum-item { display: flex; gap: 16px; align-items: flex-start; }
 
     .warum-icon {
       width: 46px;
@@ -708,9 +693,10 @@
   <!-- HEADER -->
   <header>
     <div class="header-inner">
-      <div class="logo-area">
-        <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo mit Claim">
-      </div>
+      <!-- Logo klickbar → Startseite -->
+      <a href="index.html" class="logo-area">
+        <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo – zur Startseite">
+      </a>
       <nav>
         <a href="index.html">Startseite</a>
         <div class="nav-item has-submenu">
@@ -813,8 +799,6 @@
   <!-- WARUM SYLEGRO -->
   <div class="warum-section reveal">
     <div class="warum-inner">
-
-      <!-- Links: Bild mit Badge -->
       <div class="warum-left">
         <img src="sauberes-open_office.jpg" alt="Gepflegtes Büro" class="warum-main-img">
         <div class="warum-badge">
@@ -825,13 +809,10 @@
           </div>
         </div>
       </div>
-
-      <!-- Rechts: Text & Liste -->
       <div class="warum-right">
         <span class="warum-label">Warum Sylegro</span>
         <h2 class="warum-title">Qualität ist<br>kein <em>Zufall</em></h2>
         <p class="warum-desc">Wir arbeiten mit klaren Prozessen, modernen Methoden und geschulten Mitarbeitenden – für spürbar bessere Ergebnisse.</p>
-
         <div class="warum-liste">
           <div class="warum-item">
             <div class="warum-icon">🏅</div>
@@ -863,7 +844,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -971,6 +951,44 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    // PULL-TO-REFRESH: Seite neu laden wenn ganz oben und weiter nach oben gezogen
+    let touchStartY = 0;
+    let isPulling = false;
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+      const touchY = e.touches[0].clientY;
+      const diff = touchY - touchStartY;
+      if (window.scrollY === 0 && diff > 80) {
+        isPulling = true;
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchend', () => {
+      if (isPulling) {
+        isPulling = false;
+        window.location.reload();
+      }
+    });
+
+    // Desktop: Mausrad nach oben wenn ganz oben → Seite neu laden
+    let wheelUpCount = 0;
+    window.addEventListener('wheel', (e) => {
+      if (window.scrollY === 0 && e.deltaY < 0) {
+        wheelUpCount++;
+        if (wheelUpCount >= 3) {
+          wheelUpCount = 0;
+          window.location.reload();
+        }
+      } else {
+        wheelUpCount = 0;
+      }
+    });
+
+    // SLIDER
     const services = [
       { title: "Unterhaltsreinigung", text: "Regelmässige Reinigung von Büros, Liegenschaften und Gewerbeflächen – sauber, zuverlässig und strukturiert.", image: "Titelbildmitlogo.jpg" },
       { title: "Spezialreinigung", text: "Tiefenreinigungen, Glas- und Fassadenreinigung, Bau- und Umzugsreinigung für besondere Anforderungen.", image: "AdobeStock_482143067.jpeg" },
@@ -1014,6 +1032,7 @@
     setInterval(() => { current = (current + 1) % services.length; updateSlider(true); }, 6000);
     updateSlider(false);
 
+    // ZÄHL-ANIMATION
     function animateCounter(el) {
       const target = parseInt(el.getAttribute("data-target"));
       const suffix = el.getAttribute("data-suffix") || "";
@@ -1027,6 +1046,7 @@
       }, stepTime);
     }
 
+    // SCROLL REVEAL
     let lastScrollY = window.scrollY;
     let scrollDirection = 'down';
     window.addEventListener('scroll', () => {
