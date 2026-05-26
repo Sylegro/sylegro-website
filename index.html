@@ -809,15 +809,138 @@
       transform: scale(1.2);
     }
 
-    .experience-banner {
+    /* CTA BANNER */
+    .cta-banner {
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
-      color: #ffffff; padding: 18px 20px; text-align: center;
+      padding: 70px 60px;
+      width: 100%;
     }
 
-    .experience-inner { max-width: 1600px; margin: 0 auto; }
-    .experience-inner p { margin: 0; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.02em; }
+    .cta-banner-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+    }
 
-    footer { text-align: center; padding: 18px 20px 26px; font-size: 0.85rem; color: #6b7280; }
+    .cta-banner-title {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+
+    .cta-banner-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      margin: 0 0 36px 0;
+      line-height: 1.6;
+    }
+
+    .cta-banner-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: var(--sylegro-blue);
+      padding: 16px 36px;
+      border-radius: 999px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      font-family: "Kiro", sans-serif;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .cta-banner-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: #111827;
+      color: #ffffff;
+      padding: 56px 60px 0;
+    }
+
+    .footer-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1.5fr;
+      gap: 40px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-logo {
+      height: 50px;
+      width: auto;
+      display: block;
+      margin-bottom: 20px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-address {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin: 0 0 14px 0;
+    }
+
+    .footer-contact {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding-top: 4px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--sylegro-green); }
+
+    .footer-claim {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .footer-claim p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0;
+      font-style: italic;
+    }
+
+    .footer-bottom {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+
+    .footer-bottom p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-claim { justify-content: flex-start; }
+      .cta-banner { padding: 50px 30px; }
+      .cta-banner-title { font-size: 1.8rem; }
+    }
   </style>
 </head>
 
@@ -1173,13 +1296,39 @@
     </section>
   </main>
 
-  <section class="experience-banner reveal">
-    <div class="experience-inner">
-      <p>Unser Team verzeichnet gemeinsam über 50 Jahre Reinigungserfahrung</p>
+  <!-- CTA BANNER -->
+  <section class="cta-banner reveal">
+    <div class="cta-banner-inner">
+      <div class="cta-banner-left">
+        <h2 class="cta-banner-title">Bereit für ein saubereres Morgen?</h2>
+        <p class="cta-banner-sub">Kontaktieren Sie uns für ein kostenloses, unverbindliches Angebot.</p>
+        <a href="kontakt.html" class="cta-banner-btn">Jetzt Angebot anfragen →</a>
+      </div>
     </div>
   </section>
 
-  <footer>© Sylegro <span id="year"></span></footer>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col footer-brand">
+        <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo" class="footer-logo">
+        <p class="footer-address">Turbistrasse 17<br>6280 Hochdorf</p>
+        <p class="footer-contact">+41 41 555 88 58<br>info@sylegro.ch</p>
+      </div>
+      <div class="footer-col footer-links">
+        <a href="dienstleistungen.html">Dienstleistungen</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+      <div class="footer-col footer-claim">
+        <p>Ihr Partner für Facility Services</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> sylegro</p>
+    </div>
+  </footer>
 
   <script>
     // REZENSIONEN KARUSSELL
@@ -1205,7 +1354,7 @@
     document.getElementById('rezPrev').addEventListener('click', () => goToRez(rezCurrent - 1));
     document.getElementById('rezNext').addEventListener('click', () => goToRez(rezCurrent + 1));
 
-    setInterval(() => goToRez(rezCurrent + 1), 5000);
+    setInterval(() => goToRez(rezCurrent + 1), 8000);
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
