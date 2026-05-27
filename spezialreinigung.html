@@ -156,31 +156,42 @@
 
     /* INTRO BEREICH */
     .page-intro {
-      background: #ffffff;
-      padding: 50px 60px;
+      background: #0f172a;
+      padding: 60px 60px;
       width: 100%;
     }
 
     .page-intro-inner {
       max-width: 1200px;
       margin: 0 auto;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
       align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      flex-wrap: wrap;
     }
 
-    .page-intro-text {
-      flex: 1;
-      min-width: 280px;
+    .page-intro-left {}
+
+    .page-intro-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.25;
+      margin: 0;
     }
+
+    .page-intro-title em {
+      font-style: italic;
+      color: var(--sylegro-green);
+    }
+
+    .page-intro-right {}
 
     .page-intro-sub {
-      font-size: 1.05rem;
-      color: #4b5563;
-      line-height: 1.75;
-      margin: 0;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+      margin: 0 0 28px 0;
     }
 
     .page-intro-btn {
@@ -193,13 +204,16 @@
       font-weight: 600;
       font-family: "Kiro", sans-serif;
       text-decoration: none;
-      white-space: nowrap;
-      flex-shrink: 0;
       transition: transform 0.15s, box-shadow 0.15s;
-      box-shadow: 0 6px 20px rgba(23,168,99,0.3);
+      box-shadow: 0 6px 20px rgba(23,168,99,0.25);
     }
 
     .page-intro-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(23,168,99,0.4); }
+
+    @media (max-width: 900px) {
+      .page-intro-inner { grid-template-columns: 1fr; gap: 30px; }
+      .page-intro { padding: 50px 24px; }
+    }
 
     /* LEISTUNGEN */
     .leistungen-section {
@@ -252,7 +266,7 @@
       border-radius: 16px;
       padding: 28px 24px;
       border: 1px solid #e2e8f0;
-      border-top: 3px solid var(--sylegro-green);
+      border-top: 3px solid var(--sylegro-blue);
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
@@ -519,10 +533,13 @@
   <!-- INTRO TEXT + BUTTON -->
   <div class="page-intro">
     <div class="page-intro-inner">
-      <div class="page-intro-text">
-        <p class="page-intro-sub">Von der Fassade bis zur Tiefenreinigung – wir übernehmen anspruchsvolle Reinigungsaufgaben mit professioneller Ausrüstung und dem nötigen Know-how.</p>
+      <div class="page-intro-left">
+        <h2 class="page-intro-title">Ihre Immobilie verdient<br><em>besondere Pflege</em></h2>
       </div>
-      <a href="kontakt.html" class="page-intro-btn">Kostenloses Angebot anfragen →</a>
+      <div class="page-intro-right">
+        <p class="page-intro-sub">Manche Bereiche verlangen nach mehr als nur einer herkömmlichen Reinigung. Unsere Spezialreinigung sorgt dafür, dass auch die schwierigsten und anspruchsvollsten Aufgaben professionell und gründlich erledigt werden.</p>
+        <a href="kontakt.html" class="page-intro-btn">Kostenloses Angebot anfragen →</a>
+      </div>
     </div>
   </div>
 
