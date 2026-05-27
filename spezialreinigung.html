@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>Sylegro – Spezialreinigung</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <link href="https://fonts.googleapis.com/css2?family=Kiro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -25,6 +24,7 @@
 
     a { color: inherit; text-decoration: none; }
 
+    /* HEADER */
     header {
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
       color: white;
@@ -32,16 +32,18 @@
     }
 
     .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 100%;
+      padding: 0 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
     }
 
+    .logo-area { cursor: pointer; }
+
     .logo-area img {
-      height: 220px;
+      height: 80px;
       width: auto;
       object-fit: contain;
       display: block;
@@ -52,13 +54,13 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 40px;
       position: relative;
     }
 
     nav a {
       color: white;
-      font-size: 0.98rem;
+      font-size: 1.1rem;
       font-weight: 500;
       position: relative;
       padding-bottom: 3px;
@@ -108,165 +110,396 @@
       opacity: 1; pointer-events: auto; transform: translateY(0);
     }
 
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 20px 32px;
+    /* PAGE HERO IMAGE */
+    .page-hero-img {
+      width: 100%;
+      height: 60vh;
+      position: relative;
+      overflow: hidden;
     }
 
-    h1, h2, h3 { margin-top: 0; font-weight: 600; }
-    h1 { font-size: 1.9rem; margin-bottom: 10px; }
-    h2 { font-size: 1.4rem; margin-bottom: 10px; }
-    p { line-height: 1.6; font-size: 0.98rem; margin-bottom: 10px; }
+    .page-hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-    .card {
+    .page-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.1) 100%);
+    }
+
+    .page-hero-title-wrap {
+      position: absolute;
+      bottom: 40px;
+      left: 60px;
+    }
+
+    .page-hero-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+      display: block;
+      opacity: 0;
+      animation: slideInLeft 0.7s ease 0.2s forwards;
+    }
+
+    .page-hero-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.2;
+      opacity: 0;
+      animation: slideInLeft 0.7s ease 0.4s forwards;
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-60px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* INTRO BEREICH */
+    .page-intro {
       background: #ffffff;
-      border-radius: 18px;
-      padding: 24px 24px 22px;
-      margin-bottom: 24px;
-      box-shadow: 0 8px 24px rgba(15,23,42,0.06);
-      border-top: 4px solid var(--sylegro-blue);
+      padding: 50px 60px;
+      width: 100%;
     }
 
-    .hero-card {
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(6px);
-      border-top-color: var(--sylegro-green);
+    .page-intro-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
     }
 
-    .hero-subtitle {
-      color: var(--sylegro-blue);
+    .page-intro-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .page-intro-sub {
+      font-size: 1.05rem;
+      color: #4b5563;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .page-intro-btn {
+      display: inline-block;
+      background: var(--sylegro-green);
+      color: #ffffff;
+      padding: 13px 28px;
+      border-radius: 999px;
+      font-size: 1rem;
       font-weight: 600;
-      margin-bottom: 12px;
+      font-family: "Kiro", sans-serif;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 6px 20px rgba(23,168,99,0.3);
     }
 
-    /* Leistungen Grid */
+    .page-intro-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(23,168,99,0.4); }
+
+    /* LEISTUNGEN */
+    .leistungen-section {
+      background: #ffffff;
+      padding: 70px 60px;
+      width: 100%;
+    }
+
+    .leistungen-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--sylegro-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 12px 0;
+      line-height: 1.2;
+    }
+
+    .section-title em { font-style: italic; color: var(--sylegro-blue); }
+
+    .section-desc {
+      font-size: 1rem;
+      color: #4b5563;
+      line-height: 1.7;
+      margin: 0 0 48px 0;
+      max-width: 560px;
+    }
+
     .leistungen-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin-top: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
 
-    .leistung-item {
-      background: var(--bg-light);
-      border-radius: 14px;
-      padding: 20px;
-      border-left: 4px solid var(--sylegro-green);
+    .leistung-card {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 28px 24px;
+      border: 1px solid #e2e8f0;
+      border-top: 3px solid var(--sylegro-green);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .leistung-item h3 {
-      color: var(--sylegro-blue);
-      font-size: 1.05rem;
-      margin-bottom: 6px;
+    .leistung-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(15,23,42,0.1);
     }
 
-    .leistung-item p {
-      margin: 0;
-      font-size: 0.93rem;
+    .leistung-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .leistung-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 8px 0;
+    }
+
+    .leistung-text {
+      font-size: 0.9rem;
       color: #4b5563;
+      line-height: 1.6;
+      margin: 0;
     }
 
-    /* Einsatzgebiet Tiles */
-    .area-card h2 { color: var(--sylegro-green); margin-bottom: 16px; }
+    /* EINSATZGEBIETE */
+    .einsatz-section {
+      background: var(--bg-light);
+      padding: 70px 60px;
+      width: 100%;
+    }
 
-    .area-grid {
+    .einsatz-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .einsatz-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
     }
 
-    .area-tile {
+    .einsatz-tile {
       position: relative;
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden;
-      min-height: 210px;
+      height: 200px;
       background-size: cover;
       background-position: center;
-      box-shadow: 0 6px 16px rgba(15,23,42,0.08);
+      cursor: default;
     }
 
-    .area-tile::before {
+    .einsatz-tile::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(15,23,42,0.45);
+      background: linear-gradient(to top, rgba(5,20,40,0.75) 0%, rgba(5,20,40,0.1) 60%, transparent 100%);
     }
 
-    .area-tile-inner {
+    .einsatz-tile-label {
       position: absolute;
-      inset: 0;
+      bottom: 18px;
+      left: 20px;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    /* ABLAUF */
+    .ablauf-section {
+      background: #ffffff;
+      padding: 70px 60px;
+      width: 100%;
+    }
+
+    .ablauf-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .ablauf-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .ablauf-step {
+      text-align: center;
+      padding: 28px 16px;
+      background: #f8fafc;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      position: relative;
+    }
+
+    .ablauf-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--sylegro-blue);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 12px;
-      color: #f9fafb;
-      font-size: 1.05rem;
-      font-weight: 500;
+      margin: 0 auto 14px;
     }
 
-    .gradient-info-card {
+    .ablauf-icon { font-size: 1.6rem; margin-bottom: 10px; display: block; }
+    .ablauf-title { font-size: 0.95rem; font-weight: 700; color: #0f172a; margin: 0 0 6px 0; }
+    .ablauf-text { font-size: 0.85rem; color: #6b7280; line-height: 1.5; margin: 0; }
+
+    /* CTA BANNER */
+    .cta-banner {
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
+      padding: 70px 60px;
+      width: 100%;
+    }
+
+    .cta-banner-inner { max-width: 1200px; margin: 0 auto; }
+
+    .cta-banner-title {
+      font-size: 2rem;
+      font-weight: 700;
       color: #ffffff;
-      border-top-color: rgba(255,255,255,0.7);
-      text-align: center;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
     }
 
-    .gradient-info-card p {
-      margin: 3px 0;
-      line-height: 1.25;
-      font-size: 0.98rem;
+    .cta-banner-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+      margin: 0 0 36px 0;
+      line-height: 1.6;
     }
 
-    .cta-card { border-top-color: var(--sylegro-green); }
-    .cta-card h2 { color: var(--sylegro-blue); margin-bottom: 14px; }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .cta-button {
+    .cta-banner-btn {
       display: inline-block;
-      padding: 6px 22px;
+      background: #ffffff;
+      color: var(--sylegro-blue);
+      padding: 14px 32px;
       border-radius: 999px;
-      background: var(--sylegro-green);
-      color: #ffffff;
+      font-size: 1rem;
       font-weight: 600;
-      font-size: 0.98rem;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      font-family: "Kiro", sans-serif;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
 
-    .cta-button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(15,23,42,0.18);
-      background: #139255;
+    .cta-banner-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
+
+    /* FOOTER */
+    .site-footer {
+      background: #111827;
+      color: #ffffff;
+      padding: 56px 60px 0;
     }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1.5fr;
+      gap: 40px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-logo { height: 50px; width: auto; display: block; margin-bottom: 20px; filter: brightness(0) invert(1); }
+    .footer-address { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0 0 14px 0; }
+    .footer-contact { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0; }
+
+    .footer-links { display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
+    .footer-links a { color: rgba(255,255,255,0.85); font-size: 1rem; text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--sylegro-green); }
+
+    .footer-partner-badge {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 7px;
+      margin-top: 8px;
+      background: rgba(23,168,99,0.1);
+      border: 1px solid rgba(23,168,99,0.3);
+      border-radius: 999px;
+      padding: 6px 14px !important;
+      font-size: 0.78rem !important;
+      color: rgba(255,255,255,0.7) !important;
+      transition: background 0.2s, border-color 0.2s !important;
+    }
+
+    .footer-partner-badge:hover {
+      background: rgba(23,168,99,0.2) !important;
+      border-color: var(--sylegro-green) !important;
+      color: #ffffff !important;
+    }
+
+    .footer-claim { display: flex; align-items: center; justify-content: flex-end; }
+    .footer-claim p { font-size: 1rem; color: rgba(255,255,255,0.7); margin: 0; font-style: italic; }
+
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 20px 0; }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.4); margin: 0; }
 
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal-visible { opacity: 1; transform: translateY(0); }
 
-    footer { text-align: center; padding: 18px 20px 26px; font-size: 0.85rem; color: #6b7280; }
-
-    @media (max-width: 700px) {
-      .cta-row { flex-direction: column; align-items: flex-start; }
+    @media (max-width: 900px) {
+      .header-inner { flex-direction: column; align-items: flex-start; padding: 0 20px; }
+      nav { justify-content: flex-start; gap: 20px; }
+      .page-hero { padding: 50px 24px; }
+      .leistungen-section, .einsatz-section, .ablauf-section, .cta-banner { padding: 50px 24px; }
+      .leistungen-grid { grid-template-columns: 1fr; }
+      .einsatz-grid { grid-template-columns: 1fr 1fr; }
+      .ablauf-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-claim { justify-content: flex-start; }
+      .site-footer { padding: 40px 24px 0; }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="header-inner">
-      <div class="logo-area">
-        <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo mit Claim">
-      </div>
+      <a href="index.html" class="logo-area">
+        <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo">
+      </a>
       <nav>
         <a href="index.html">Startseite</a>
         <div class="nav-item has-submenu">
@@ -284,103 +517,180 @@
     </div>
   </header>
 
-  <main>
+  <!-- HERO BILD -->
+  <div class="page-hero-img">
+    <img src="Fassadenreiniger.jpeg" alt="Spezialreinigung Sylegro">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-title-wrap">
+      <span class="page-hero-label">Dienstleistungen</span>
+      <h1 class="page-hero-title">Spezialreinigung</h1>
+    </div>
+  </div>
 
-    <section class="card hero-card reveal">
-      <h1>Spezialreinigung</h1>
-      <h2 class="hero-subtitle">Wenn normale Reinigung nicht reicht</h2>
-      <p>Manche Situationen verlangen mehr als eine routinemässige Reinigung. Unser Spezialreinigungsteam bewältigt anspruchsvollste Herausforderungen – mit professioneller Ausrüstung, gezielten Methoden und dem nötigen Know-how, um Ihre Räume und Flächen wieder in einwandfreiem Zustand zu hinterlassen.</p>
-    </section>
+  <!-- INTRO TEXT + BUTTON -->
+  <div class="page-intro">
+    <div class="page-intro-inner">
+      <div class="page-intro-text">
+        <p class="page-intro-sub">Von der Fassade bis zur Tiefenreinigung – wir übernehmen anspruchsvolle Reinigungsaufgaben mit professioneller Ausrüstung und dem nötigen Know-how.</p>
+      </div>
+      <a href="kontakt.html" class="page-intro-btn">Kostenloses Angebot anfragen →</a>
+    </div>
+  </div>
 
-    <section class="card reveal">
-      <h2>Unsere Spezialleistungen</h2>
+  <!-- LEISTUNGEN -->
+  <div class="leistungen-section reveal">
+    <div class="leistungen-inner">
+      <span class="section-label">Was wir anbieten</span>
+      <h2 class="section-title">Unsere <em>Spezialleistungen</em></h2>
+      <p class="section-desc">Für jede Anforderung die passende Lösung – mit Präzision, modernen Methoden und einem Team das weiss was es tut.</p>
+
       <div class="leistungen-grid">
-        <div class="leistung-item">
-          <h3>Fassadenreinigung</h3>
-          <p>Professionelle Reinigung von Gebäudefassaden – schonend, gründlich und mit modernster Technik.</p>
+        <div class="leistung-card">
+          <span class="leistung-icon">🏗️</span>
+          <p class="leistung-title">Fassadenreinigung</p>
+          <p class="leistung-text">Professionelle Reinigung von Gebäudefassaden – schonend, gründlich und mit modernster Technik.</p>
         </div>
-        <div class="leistung-item">
-          <h3>Glasreinigung</h3>
-          <p>Streifenfreie Reinigung von Fenstern, Glasfronten und Wintergärten – innen und aussen.</p>
+        <div class="leistung-card">
+          <span class="leistung-icon">🪟</span>
+          <p class="leistung-title">Glasreinigung</p>
+          <p class="leistung-text">Streifenfreie Reinigung von Fenstern, Glasfronten und Wintergärten – innen und aussen.</p>
         </div>
-        <div class="leistung-item">
-          <h3>Baureinigung</h3>
-          <p>Endreinigung nach Bau- und Renovationsarbeiten – damit Ihr neues Objekt sofort bezogen werden kann.</p>
+        <div class="leistung-card">
+          <span class="leistung-icon">🏚️</span>
+          <p class="leistung-title">Baureinigung</p>
+          <p class="leistung-text">Endreinigung nach Bau- und Renovationsarbeiten – damit Ihr Objekt sofort bezugsbereit ist.</p>
         </div>
-        <div class="leistung-item">
-          <h3>Umzugsreinigung</h3>
-          <p>Gründliche Reinigung bei Ein- und Auszug – für eine makellose Übergabe der Liegenschaft.</p>
+        <div class="leistung-card">
+          <span class="leistung-icon">📦</span>
+          <p class="leistung-title">Umzugsreinigung</p>
+          <p class="leistung-text">Gründliche Reinigung bei Ein- und Auszug – für eine makellose Übergabe der Liegenschaft.</p>
         </div>
-        <div class="leistung-item">
-          <h3>Tiefenreinigung</h3>
-          <p>Intensive Reinigung schwer zugänglicher Stellen, Fugen, Geräte und Bereiche mit besonderem Hygienestandard.</p>
+        <div class="leistung-card">
+          <span class="leistung-icon">🔬</span>
+          <p class="leistung-title">Tiefenreinigung</p>
+          <p class="leistung-text">Intensive Reinigung schwer zugänglicher Stellen, Fugen, Geräte und Bereiche mit besonderem Hygienestandard.</p>
         </div>
-        <div class="leistung-item">
-          <h3>Auf Anfrage</h3>
-          <p>Haben Sie eine besondere Anforderung? Wir finden eine Lösung – kontaktieren Sie uns einfach.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="card area-card reveal">
-      <h2>Unser Einsatzgebiet umfasst:</h2>
-      <div class="area-grid">
-        <div class="area-tile" style="background-image: url('AdobeStock_482143067.jpeg');">
-          <div class="area-tile-inner">Fassaden & Gebäude</div>
-        </div>
-        <div class="area-tile" style="background-image: url('Büro.jpg');">
-          <div class="area-tile-inner">Büros & Gewerbeflächen</div>
-        </div>
-        <div class="area-tile" style="background-image: url('Produktion.jpg');">
-          <div class="area-tile-inner">Industrie & Produktion</div>
-        </div>
-        <div class="area-tile" style="background-image: url('Klinik.jpg');">
-          <div class="area-tile-inner">Kliniken & Praxen</div>
-        </div>
-        <div class="area-tile" style="background-image: url('Einkaufen.jpg');">
-          <div class="area-tile-inner">Einkaufszentren</div>
-        </div>
-        <div class="area-tile" style="background-image: url('Foto_SR_Eldin.JPG');">
-          <div class="area-tile-inner">Und vieles mehr</div>
+        <div class="leistung-card">
+          <span class="leistung-icon">💬</span>
+          <p class="leistung-title">Auf Anfrage</p>
+          <p class="leistung-text">Haben Sie eine besondere Anforderung? Wir finden eine Lösung – kontaktieren Sie uns einfach.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <section class="card gradient-info-card reveal">
-      <p>Spezialreinigung schützt Ihre Immobilie und verlängert die Lebensdauer von Oberflächen und Materialien.</p>
-      <p>Mit geschultem Personal und professioneller Ausrüstung erzielen wir Ergebnisse, die Standard-Reinigung nicht erreicht.</p>
-      <p>Verlassen Sie sich auf Sylegro – für Sauberkeit auf höchstem Niveau, auch in anspruchsvollen Situationen.</p>
-    </section>
+  <!-- EINSATZGEBIETE -->
+  <div class="einsatz-section reveal">
+    <div class="einsatz-inner">
+      <span class="section-label">Wo wir tätig sind</span>
+      <h2 class="section-title">Unsere <em>Einsatzgebiete</em></h2>
+      <p class="section-desc">Wir reinigen überall dort, wo besondere Anforderungen gelten – von der Industrie bis zur Klinik.</p>
 
-    <section class="card cta-card reveal">
-      <h2>Professionell, Gründlich &amp; Zuverlässig</h2>
-      <div class="cta-row">
-        <span>Kontaktieren Sie uns</span>
-        <a href="kontakt.html">
-          <button class="cta-button" type="button">Jetzt</button>
+      <div class="einsatz-grid">
+        <div class="einsatz-tile" style="background-image: url('AdobeStock_482143067.jpeg');">
+          <div class="einsatz-tile-label">Fassaden & Gebäude</div>
+        </div>
+        <div class="einsatz-tile" style="background-image: url('Büro.jpg');">
+          <div class="einsatz-tile-label">Büros & Gewerbe</div>
+        </div>
+        <div class="einsatz-tile" style="background-image: url('Produktion.jpg');">
+          <div class="einsatz-tile-label">Industrie & Produktion</div>
+        </div>
+        <div class="einsatz-tile" style="background-image: url('Klinik.jpg');">
+          <div class="einsatz-tile-label">Kliniken & Praxen</div>
+        </div>
+        <div class="einsatz-tile" style="background-image: url('Einkaufen.jpg');">
+          <div class="einsatz-tile-label">Einkaufszentren</div>
+        </div>
+        <div class="einsatz-tile" style="background-image: url('Foto_SR_Eldin.JPG');">
+          <div class="einsatz-tile-label">Und vieles mehr</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABLAUF -->
+  <div class="ablauf-section reveal">
+    <div class="ablauf-inner">
+      <span class="section-label">So einfach geht's</span>
+      <h2 class="section-title">Unser <em>Ablauf</em></h2>
+      <p class="section-desc">Von der ersten Anfrage bis zur fertigen Reinigung – unkompliziert, transparent und zuverlässig.</p>
+
+      <div class="ablauf-grid">
+        <div class="ablauf-step">
+          <div class="ablauf-num">1</div>
+          <span class="ablauf-icon">📋</span>
+          <p class="ablauf-title">Anfrage</p>
+          <p class="ablauf-text">Sie kontaktieren uns mit Ihrem Anliegen – per Formular, Telefon oder E-Mail.</p>
+        </div>
+        <div class="ablauf-step">
+          <div class="ablauf-num">2</div>
+          <span class="ablauf-icon">🤝</span>
+          <p class="ablauf-title">Beratung</p>
+          <p class="ablauf-text">Wir besichtigen das Objekt und erstellen ein kostenloses, individuelles Angebot.</p>
+        </div>
+        <div class="ablauf-step">
+          <div class="ablauf-num">3</div>
+          <span class="ablauf-icon">🧹</span>
+          <p class="ablauf-title">Umsetzung</p>
+          <p class="ablauf-text">Unser Team führt die Reinigung professionell und termingerecht durch.</p>
+        </div>
+        <div class="ablauf-step">
+          <div class="ablauf-num">4</div>
+          <span class="ablauf-icon">✅</span>
+          <p class="ablauf-title">Abnahme</p>
+          <p class="ablauf-text">Gemeinsame Kontrolle – erst wenn Sie zufrieden sind, ist unsere Arbeit getan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-banner reveal">
+    <div class="cta-banner-inner">
+      <h2 class="cta-banner-title">Bereit für ein saubereres Morgen?</h2>
+      <p class="cta-banner-sub">Kontaktieren Sie uns für ein kostenloses, unverbindliches Angebot.</p>
+      <a href="kontakt.html" class="cta-banner-btn">Jetzt Angebot anfragen →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col footer-brand">
+        <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo" class="footer-logo">
+        <p class="footer-address">Turbistrasse 17<br>6280 Hochdorf</p>
+        <p class="footer-contact">+41 41 555 88 58<br>info@sylegro.ch</p>
+      </div>
+      <div class="footer-col footer-links">
+        <a href="dienstleistungen.html">Dienstleistungen</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://my.top-offerten.ch/companies/5775/link-partnership" target="_blank" class="footer-partner-badge">
+          🏅 Verifiziert auf top-offerten.ch
         </a>
-        <span>und verlangen Sie ein kostenloses Angebot.</span>
       </div>
-      <p>Wir freuen uns auf Sie!</p>
-    </section>
-
-  </main>
-
-  <footer>© Sylegro <span id="year"></span></footer>
+      <div class="footer-col footer-claim">
+        <p>Ihr Partner für Facility Services</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> sylegro</p>
+    </div>
+  </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
     let lastScrollY = window.scrollY;
     let scrollDirection = 'down';
-
     window.addEventListener('scroll', () => {
       const currentY = window.scrollY;
       scrollDirection = currentY > lastScrollY ? 'down' : 'up';
       lastScrollY = currentY;
     });
 
-    const revealElements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && scrollDirection === 'down') {
@@ -388,9 +698,9 @@
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1 });
 
-    revealElements.forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 
 </body>
