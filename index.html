@@ -767,6 +767,28 @@
     .footer-links a { color: rgba(255,255,255,0.85); font-size: 1rem; text-decoration: none; transition: color 0.15s; }
     .footer-links a:hover { color: var(--sylegro-green); }
 
+    .footer-partner-badge {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 7px;
+      margin-top: 8px;
+      background: rgba(23,168,99,0.1);
+      border: 1px solid rgba(23,168,99,0.3);
+      border-radius: 999px;
+      padding: 6px 14px !important;
+      font-size: 0.78rem !important;
+      color: rgba(255,255,255,0.7) !important;
+      transition: background 0.2s, border-color 0.2s !important;
+    }
+
+    .footer-partner-badge:hover {
+      background: rgba(23,168,99,0.2) !important;
+      border-color: var(--sylegro-green) !important;
+      color: #ffffff !important;
+    }
+
+    .footer-partner-icon { font-size: 0.9rem; }
+
     .footer-claim { display: flex; align-items: center; justify-content: flex-end; }
     .footer-claim p { font-size: 1rem; color: rgba(255,255,255,0.7); margin: 0; font-style: italic; }
 
@@ -1092,6 +1114,10 @@
         <a href="ueber-uns.html">Über uns</a>
         <a href="jobs.html">Jobs</a>
         <a href="kontakt.html">Kontakt</a>
+        <a href="https://my.top-offerten.ch/companies/5775/link-partnership" target="_blank" class="footer-partner-badge">
+          <span class="footer-partner-icon">🏅</span>
+          Verifiziert auf top-offerten.ch
+        </a>
       </div>
       <div class="footer-col footer-claim">
         <p>Ihr Partner für Facility Services</p>
