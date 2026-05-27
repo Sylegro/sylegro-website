@@ -342,25 +342,25 @@
 
     .vn-slide {
       display: none;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 60px;
       align-items: center;
       animation: fadeInCard 0.45s ease;
     }
 
     .vn-slide.active { display: grid; }
 
-    /* BILDER ÜBERLAPPEND */
+    /* BILDER ÜBERLAPPEND – mehr Abstand damit Vorher besser sichtbar */
     .vn-bilder {
       position: relative;
-      height: 320px;
+      height: 360px;
     }
 
     .vn-bild-wrap {
       position: absolute;
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
     }
 
     .vn-bild-wrap img {
@@ -370,19 +370,21 @@
       display: block;
     }
 
+    /* Vorher-Bild: oben links, grösser */
     .vn-bild-hinten {
-      width: 75%;
-      height: 240px;
+      width: 72%;
+      height: 230px;
       top: 0; left: 0;
       z-index: 1;
     }
 
+    /* Nachher-Bild: unten rechts, leicht überlappend aber mit Abstand */
     .vn-bild-vorne {
-      width: 70%;
-      height: 220px;
+      width: 68%;
+      height: 215px;
       bottom: 0; right: 0;
       z-index: 2;
-      border: 3px solid #0f172a;
+      border: 4px solid #0f172a;
     }
 
     .vn-tag {
@@ -398,8 +400,8 @@
     }
 
     .vn-tag-vor {
-      background: rgba(15,23,42,0.75);
-      color: rgba(255,255,255,0.85);
+      background: rgba(15,23,42,0.8);
+      color: rgba(255,255,255,0.9);
     }
 
     .vn-tag-nach {
@@ -408,8 +410,6 @@
     }
 
     /* TEXT RECHTS */
-    .vn-text {}
-
     .vn-nummer {
       font-size: 0.75rem;
       font-weight: 700;
@@ -430,32 +430,9 @@
     .vn-desc {
       font-size: 0.95rem;
       color: rgba(255,255,255,0.65);
-      line-height: 1.7;
-      margin: 0 0 24px 0;
+      line-height: 1.75;
+      margin: 0;
     }
-
-    .vn-details {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .vn-detail {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .vn-detail:last-child { border-bottom: none; }
-
-    .vn-detail-label {
-      color: rgba(255,255,255,0.4);
-      font-weight: 500;
-    }
-
-    .vn-detail span:last-child { color: #ffffff; font-weight: 500; }
 
     .vn-dots {
       display: flex;
@@ -480,7 +457,7 @@
 
     @media (max-width: 900px) {
       .vn-slide.active { grid-template-columns: 1fr; }
-      .vn-bilder { height: 260px; }
+      .vn-bilder { height: 280px; }
       .vorher-nachher-section { padding: 50px 24px; }
     }
 
@@ -794,75 +771,98 @@
         <!-- KARTEN -->
         <div class="vn-karussell" id="vnKarussell">
 
-          <!-- Slide 1 -->
+          <!-- Slide 1: Fensterreinigung -->
           <div class="vn-slide active">
             <div class="vn-bilder">
               <div class="vn-bild-wrap vn-bild-hinten">
                 <span class="vn-tag vn-tag-vor">Vorher</span>
-                <img src="AdobeStock_482143067.jpeg" alt="Vorher">
+                <img src="Fensterreinigung-vorher.jpeg" alt="Fenster vorher">
               </div>
               <div class="vn-bild-wrap vn-bild-vorne">
                 <span class="vn-tag vn-tag-nach">Nachher</span>
-                <img src="sauberes-open_office.jpg" alt="Nachher">
+                <img src="Fensterreinigung-nachher.jpeg" alt="Fenster nachher">
               </div>
             </div>
             <div class="vn-text">
-              <span class="vn-nummer">01 / 03</span>
-              <h3 class="vn-title">Fassadenreinigung –<br>wie neu in einem Tag</h3>
-              <p class="vn-desc">Diese stark verschmutzte Metallfassade wurde mit unserem Hochdruckverfahren in einem einzigen Arbeitstag vollständig gereinigt. Das Ergebnis spricht für sich – strahlend sauber, ohne Rückstände.</p>
-              <div class="vn-details">
-                <div class="vn-detail"><span class="vn-detail-label">Objekt</span><span>Gewerbegebäude</span></div>
-                <div class="vn-detail"><span class="vn-detail-label">Leistung</span><span>Fassadenreinigung</span></div>
-                <div class="vn-detail"><span class="vn-detail-label">Dauer</span><span>1 Tag</span></div>
-              </div>
+              <span class="vn-nummer">01 / 05</span>
+              <h3 class="vn-title">Fensterreinigung –<br>kristallklar statt trüb</h3>
+              <p class="vn-desc">Stark verschmutzte Fenster mit Kalkablagerungen, Staub und Witterungsspuren werden von uns streifenfrei und schonend gereinigt. Das Ergebnis: maximale Durchsicht und ein gepflegtes Erscheinungsbild.</p>
             </div>
           </div>
 
-          <!-- Slide 2 -->
+          <!-- Slide 2: Storenreinigung -->
           <div class="vn-slide">
             <div class="vn-bilder">
               <div class="vn-bild-wrap vn-bild-hinten">
                 <span class="vn-tag vn-tag-vor">Vorher</span>
-                <img src="Produktion.jpg" alt="Vorher">
+                <img src="Storenreinigung-vorher.jpeg" alt="Storen vorher">
               </div>
               <div class="vn-bild-wrap vn-bild-vorne">
                 <span class="vn-tag vn-tag-nach">Nachher</span>
-                <img src="Büro.jpg" alt="Nachher">
+                <img src="Storenreinigung-nachher.JPG" alt="Storen nachher">
               </div>
             </div>
             <div class="vn-text">
-              <span class="vn-nummer">02 / 03</span>
-              <h3 class="vn-title">Baureinigung –<br>bezugsbereit in Rekordzeit</h3>
-              <p class="vn-desc">Nach dem Umbau war der Boden mit Baustaub, Farbresten und Schmutz bedeckt. Nach unserer Baureinigung war das Objekt innerhalb von zwei Tagen vollständig bezugsbereit.</p>
-              <div class="vn-details">
-                <div class="vn-detail"><span class="vn-detail-label">Objekt</span><span>Bürogebäude</span></div>
-                <div class="vn-detail"><span class="vn-detail-label">Leistung</span><span>Baureinigung</span></div>
-                <div class="vn-detail"><span class="vn-detail-label">Dauer</span><span>2 Tage</span></div>
-              </div>
+              <span class="vn-nummer">02 / 05</span>
+              <h3 class="vn-title">Storenreinigung –<br>wie frisch ab Werk</h3>
+              <p class="vn-desc">Storen und Jalousien sammeln über die Zeit Staub, Pollen und Schmutz. Mit unserer schonenden Reinigungsmethode erstrahlen sie wieder in neuem Glanz – ohne Beschädigung des Materials.</p>
             </div>
           </div>
 
-          <!-- Slide 3 -->
+          <!-- Slide 3: Boden Fettfleck -->
           <div class="vn-slide">
             <div class="vn-bilder">
               <div class="vn-bild-wrap vn-bild-hinten">
                 <span class="vn-tag vn-tag-vor">Vorher</span>
-                <img src="Gartenarbeit.jpg" alt="Vorher">
+                <img src="Boden-Fettfleck-vorher.PNG" alt="Boden vorher">
               </div>
               <div class="vn-bild-wrap vn-bild-vorne">
                 <span class="vn-tag vn-tag-nach">Nachher</span>
-                <img src="Foto_SR_Eldin.JPG" alt="Nachher">
+                <img src="Boden-Fettfleck-nachher.PNG" alt="Boden nachher">
               </div>
             </div>
             <div class="vn-text">
-              <span class="vn-nummer">03 / 03</span>
-              <h3 class="vn-title">Graffiti-Entfernung –<br>spurlos beseitigt</h3>
-              <p class="vn-desc">Grossflächige Graffiti an einer Aussenwand wurden mit unserem spezialisierten Verfahren vollständig und materialschonend entfernt. Die Wand erstrahlt wieder im Originalzustand.</p>
-              <div class="vn-details">
-                <div class="vn-detail"><span class="vn-detail-label">Objekt</span><span>Wohnliegenschaft</span></div>
-                <div class="vn-detail"><span class="vn-detail-label">Leistung</span><span>Graffiti-Entfernung</span></div>
-                <div class="vn-detail"><span class="vn-detail-label">Dauer</span><span>4 Stunden</span></div>
+              <span class="vn-nummer">03 / 05</span>
+              <h3 class="vn-title">Tiefenreinigung Boden –<br>Fettflecken vollständig entfernt</h3>
+              <p class="vn-desc">Hartnäckige Fettflecken auf Industrieböden sind eine echte Herausforderung. Mit unseren Spezialreinigungsmitteln und der richtigen Technik entfernen wir auch tiefeingedrungene Verschmutzungen rückstandslos.</p>
+            </div>
+          </div>
+
+          <!-- Slide 4: Moosreinigung -->
+          <div class="vn-slide">
+            <div class="vn-bilder">
+              <div class="vn-bild-wrap vn-bild-hinten">
+                <span class="vn-tag vn-tag-vor">Vorher</span>
+                <img src="Moosreinigung-vorher.jpeg" alt="Moos vorher">
               </div>
+              <div class="vn-bild-wrap vn-bild-vorne">
+                <span class="vn-tag vn-tag-nach">Nachher</span>
+                <img src="Moosreinigung-nachher.jpeg" alt="Moos nachher">
+              </div>
+            </div>
+            <div class="vn-text">
+              <span class="vn-nummer">04 / 05</span>
+              <h3 class="vn-title">Moosreinigung –<br>Flächen sicher befreit</h3>
+              <p class="vn-desc">Moos und Algenbelag auf Terrassen, Wegen und Fassaden sind nicht nur unschön – sie können Oberflächen dauerhaft schädigen. Wir entfernen organische Ablagerungen gründlich und schützen die Fläche nachhaltig.</p>
+            </div>
+          </div>
+
+          <!-- Slide 5: Fenstersims -->
+          <div class="vn-slide">
+            <div class="vn-bilder">
+              <div class="vn-bild-wrap vn-bild-hinten">
+                <span class="vn-tag vn-tag-vor">Vorher</span>
+                <img src="Fenstersims-vorher.jpeg" alt="Fenstersims vorher">
+              </div>
+              <div class="vn-bild-wrap vn-bild-vorne">
+                <span class="vn-tag vn-tag-nach">Nachher</span>
+                <img src="fenstersims-nachher.jpeg" alt="Fenstersims nachher">
+              </div>
+            </div>
+            <div class="vn-text">
+              <span class="vn-nummer">05 / 05</span>
+              <h3 class="vn-title">Fenstersims –<br>makellos sauber</h3>
+              <p class="vn-desc">Fenstersimse werden durch Regen, Staub und Vogelkot stark beansprucht. Unsere gezielte Reinigung entfernt hartnäckige Ablagerungen und sorgt für ein gepflegtes Gesamtbild Ihres Gebäudes.</p>
             </div>
           </div>
 
