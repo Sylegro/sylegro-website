@@ -333,25 +333,33 @@
     .form-success {
       display: none;
       text-align: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
+      min-height: 300px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .form-success-icon {
-      font-size: 3rem;
-      margin-bottom: 16px;
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: var(--sylegro-green);
+      line-height: 1;
     }
 
     .form-success h3 {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--sylegro-green);
-      margin: 0 0 8px 0;
+      margin: 0 0 10px 0;
     }
 
     .form-success p {
       font-size: 0.95rem;
       color: #6b7280;
       margin: 0;
+      line-height: 1.6;
     }
 
     /* CTA BANNER */
@@ -534,8 +542,8 @@
 
       <!-- RECHTS: Formular -->
       <div class="kontakt-form-wrap">
-        <p class="form-title">Nachricht senden</p>
-        <p class="form-sub">Füllen Sie das Formular aus – wir melden uns innerhalb von 24 Stunden.</p>
+        <p class="form-title" id="formTitle">Nachricht senden</p>
+        <p class="form-sub" id="formSubtitle">Füllen Sie das Formular aus – wir melden uns innerhalb von 24 Stunden.</p>
 
         <div id="formContainer">
           <div class="form-grid">
@@ -586,9 +594,13 @@
         </div>
 
         <div class="form-success" id="formSuccess">
-          <div class="form-success-icon">✅</div>
+          <div class="form-success-icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 34L26 48L52 18" stroke="#17A863" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <h3>Vielen Dank!</h3>
-          <p>Ihre Nachricht ist bei uns eingegangen. Wir melden uns so schnell wie möglich bei Ihnen.</p>
+          <p>Ihre Nachricht ist bei uns eingegangen.<br>Wir melden uns so schnell wie möglich bei Ihnen.</p>
         </div>
       </div>
 
@@ -656,7 +668,10 @@
       }
 
       document.getElementById('formContainer').style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
+      document.getElementById('formTitle').style.display = 'none';
+      document.getElementById('formSubtitle').style.display = 'none';
+      const success = document.getElementById('formSuccess');
+      success.style.display = 'flex';
     }
 
     let lastScrollY = window.scrollY;
