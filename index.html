@@ -473,6 +473,116 @@
       nav { justify-content: flex-start; }
     }
 
+    /* ÜBER UNS VORSCHAU */
+    .ueber-uns-section {
+      background: #0f172a;
+      padding: 80px 60px;
+      width: 100%;
+    }
+
+    .ueber-uns-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .ueber-uns-left {}
+
+    .ueber-uns-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--sylegro-green);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .ueber-uns-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+      margin: 0 0 20px 0;
+    }
+
+    .ueber-uns-title em {
+      font-style: italic;
+      color: var(--sylegro-green);
+    }
+
+    .ueber-uns-text {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.75;
+      margin: 0 0 32px 0;
+    }
+
+    .ueber-uns-btn {
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.3);
+      color: #ffffff;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: "Kiro", sans-serif;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .ueber-uns-btn:hover {
+      border-color: var(--sylegro-green);
+      background: rgba(23,168,99,0.1);
+    }
+
+    .ueber-uns-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .ueber-uns-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 24px 20px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .ueber-uns-card:hover {
+      background: rgba(23,168,99,0.08);
+      border-color: rgba(23,168,99,0.3);
+    }
+
+    .ueber-uns-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .ueber-uns-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 6px 0;
+    }
+
+    .ueber-uns-card-text {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .ueber-uns-inner { grid-template-columns: 1fr; gap: 40px; }
+      .ueber-uns-title { font-size: 1.6rem; }
+    }
+
     /* REZENSIONEN */
     .rezensionen-section {
       background: #ffffff;
@@ -823,6 +933,43 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ÜBER UNS VORSCHAU -->
+  <div class="ueber-uns-section reveal">
+    <div class="ueber-uns-inner">
+
+      <div class="ueber-uns-left">
+        <span class="ueber-uns-label">Über uns</span>
+        <h2 class="ueber-uns-title">Menschen, die sich<br>wirklich <em>kümmern</em></h2>
+        <p class="ueber-uns-text">Hinter Sylegro steckt ein Team mit Leidenschaft für Sauberkeit, Verlässlichkeit und echten Beziehungen zu unseren Kunden. Wir sind nicht einfach ein Reinigungsunternehmen – wir sind Ihr Partner.</p>
+        <a href="ueber-uns.html" class="ueber-uns-btn">Mehr über uns erfahren →</a>
+      </div>
+
+      <div class="ueber-uns-right">
+        <div class="ueber-uns-card">
+          <span class="ueber-uns-card-icon">🤝</span>
+          <p class="ueber-uns-card-title">Persönlich</p>
+          <p class="ueber-uns-card-text">Direkter Kontakt, kurze Wege, echte Ansprechpersonen.</p>
+        </div>
+        <div class="ueber-uns-card">
+          <span class="ueber-uns-card-icon">📍</span>
+          <p class="ueber-uns-card-title">Lokal verwurzelt</p>
+          <p class="ueber-uns-card-text">Wir kennen die Region und sind schnell vor Ort.</p>
+        </div>
+        <div class="ueber-uns-card">
+          <span class="ueber-uns-card-icon">💪</span>
+          <p class="ueber-uns-card-title">Erfahren</p>
+          <p class="ueber-uns-card-text">Über 50 Jahre gebündeltes Know-how im Team.</p>
+        </div>
+        <div class="ueber-uns-card">
+          <span class="ueber-uns-card-icon">♻️</span>
+          <p class="ueber-uns-card-title">Nachhaltig</p>
+          <p class="ueber-uns-card-text">Umweltfreundliche Mittel und bewusster Ressourceneinsatz.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
