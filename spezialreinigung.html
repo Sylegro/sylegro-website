@@ -295,6 +295,195 @@
       margin: 0;
     }
 
+    /* VORHER / NACHHER KARUSSELL */
+    .vorher-nachher-section {
+      background: #0f172a;
+      padding: 70px 60px;
+      width: 100%;
+    }
+
+    .vorher-nachher-section .section-label { color: rgba(255,255,255,0.5); }
+    .vorher-nachher-section .section-title { color: #ffffff; }
+    .vorher-nachher-section .section-title em { color: var(--sylegro-green); }
+    .vorher-nachher-section .section-desc { color: rgba(255,255,255,0.6); }
+
+    .vorher-nachher-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .vn-karussell-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .vn-arrow {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      color: #ffffff;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s, border-color 0.15s, transform 0.15s;
+    }
+
+    .vn-arrow:hover {
+      background: var(--sylegro-green);
+      border-color: var(--sylegro-green);
+      transform: scale(1.08);
+    }
+
+    .vn-karussell { flex: 1; overflow: hidden; }
+
+    .vn-slide {
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      animation: fadeInCard 0.45s ease;
+    }
+
+    .vn-slide.active { display: grid; }
+
+    /* BILDER ÜBERLAPPEND */
+    .vn-bilder {
+      position: relative;
+      height: 320px;
+    }
+
+    .vn-bild-wrap {
+      position: absolute;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+
+    .vn-bild-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .vn-bild-hinten {
+      width: 75%;
+      height: 240px;
+      top: 0; left: 0;
+      z-index: 1;
+    }
+
+    .vn-bild-vorne {
+      width: 70%;
+      height: 220px;
+      bottom: 0; right: 0;
+      z-index: 2;
+      border: 3px solid #0f172a;
+    }
+
+    .vn-tag {
+      position: absolute;
+      top: 10px; left: 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      z-index: 3;
+    }
+
+    .vn-tag-vor {
+      background: rgba(15,23,42,0.75);
+      color: rgba(255,255,255,0.85);
+    }
+
+    .vn-tag-nach {
+      background: var(--sylegro-green);
+      color: #ffffff;
+    }
+
+    /* TEXT RECHTS */
+    .vn-text {}
+
+    .vn-nummer {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--sylegro-green);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .vn-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 16px 0;
+      line-height: 1.3;
+    }
+
+    .vn-desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin: 0 0 24px 0;
+    }
+
+    .vn-details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .vn-detail {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .vn-detail:last-child { border-bottom: none; }
+
+    .vn-detail-label {
+      color: rgba(255,255,255,0.4);
+      font-weight: 500;
+    }
+
+    .vn-detail span:last-child { color: #ffffff; font-weight: 500; }
+
+    .vn-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .vn-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .vn-dot.active {
+      background: var(--sylegro-green);
+      transform: scale(1.3);
+    }
+
+    @media (max-width: 900px) {
+      .vn-slide.active { grid-template-columns: 1fr; }
+      .vn-bilder { height: 260px; }
+      .vorher-nachher-section { padding: 50px 24px; }
+    }
+
     /* EINSATZGEBIETE */
     .einsatz-section {
       background: var(--bg-light);
@@ -590,6 +779,104 @@
     </div>
   </div>
 
+  <!-- VORHER / NACHHER KARUSSELL -->
+  <div class="vorher-nachher-section reveal">
+    <div class="vorher-nachher-inner">
+      <span class="section-label">Unsere Arbeit spricht für sich</span>
+      <h2 class="section-title">Vorher & <em>Nachher</em></h2>
+      <p class="section-desc">Sehen Sie selbst – was wir versprechen, halten wir auch.</p>
+
+      <div class="vn-karussell-wrapper">
+
+        <!-- PFEIL LINKS -->
+        <button class="vn-arrow vn-prev" id="vnPrev">&#10094;</button>
+
+        <!-- KARTEN -->
+        <div class="vn-karussell" id="vnKarussell">
+
+          <!-- Slide 1 -->
+          <div class="vn-slide active">
+            <div class="vn-bilder">
+              <div class="vn-bild-wrap vn-bild-hinten">
+                <span class="vn-tag vn-tag-vor">Vorher</span>
+                <img src="AdobeStock_482143067.jpeg" alt="Vorher">
+              </div>
+              <div class="vn-bild-wrap vn-bild-vorne">
+                <span class="vn-tag vn-tag-nach">Nachher</span>
+                <img src="sauberes-open_office.jpg" alt="Nachher">
+              </div>
+            </div>
+            <div class="vn-text">
+              <span class="vn-nummer">01 / 03</span>
+              <h3 class="vn-title">Fassadenreinigung –<br>wie neu in einem Tag</h3>
+              <p class="vn-desc">Diese stark verschmutzte Metallfassade wurde mit unserem Hochdruckverfahren in einem einzigen Arbeitstag vollständig gereinigt. Das Ergebnis spricht für sich – strahlend sauber, ohne Rückstände.</p>
+              <div class="vn-details">
+                <div class="vn-detail"><span class="vn-detail-label">Objekt</span><span>Gewerbegebäude</span></div>
+                <div class="vn-detail"><span class="vn-detail-label">Leistung</span><span>Fassadenreinigung</span></div>
+                <div class="vn-detail"><span class="vn-detail-label">Dauer</span><span>1 Tag</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="vn-slide">
+            <div class="vn-bilder">
+              <div class="vn-bild-wrap vn-bild-hinten">
+                <span class="vn-tag vn-tag-vor">Vorher</span>
+                <img src="Produktion.jpg" alt="Vorher">
+              </div>
+              <div class="vn-bild-wrap vn-bild-vorne">
+                <span class="vn-tag vn-tag-nach">Nachher</span>
+                <img src="Büro.jpg" alt="Nachher">
+              </div>
+            </div>
+            <div class="vn-text">
+              <span class="vn-nummer">02 / 03</span>
+              <h3 class="vn-title">Baureinigung –<br>bezugsbereit in Rekordzeit</h3>
+              <p class="vn-desc">Nach dem Umbau war der Boden mit Baustaub, Farbresten und Schmutz bedeckt. Nach unserer Baureinigung war das Objekt innerhalb von zwei Tagen vollständig bezugsbereit.</p>
+              <div class="vn-details">
+                <div class="vn-detail"><span class="vn-detail-label">Objekt</span><span>Bürogebäude</span></div>
+                <div class="vn-detail"><span class="vn-detail-label">Leistung</span><span>Baureinigung</span></div>
+                <div class="vn-detail"><span class="vn-detail-label">Dauer</span><span>2 Tage</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="vn-slide">
+            <div class="vn-bilder">
+              <div class="vn-bild-wrap vn-bild-hinten">
+                <span class="vn-tag vn-tag-vor">Vorher</span>
+                <img src="Gartenarbeit.jpg" alt="Vorher">
+              </div>
+              <div class="vn-bild-wrap vn-bild-vorne">
+                <span class="vn-tag vn-tag-nach">Nachher</span>
+                <img src="Foto_SR_Eldin.JPG" alt="Nachher">
+              </div>
+            </div>
+            <div class="vn-text">
+              <span class="vn-nummer">03 / 03</span>
+              <h3 class="vn-title">Graffiti-Entfernung –<br>spurlos beseitigt</h3>
+              <p class="vn-desc">Grossflächige Graffiti an einer Aussenwand wurden mit unserem spezialisierten Verfahren vollständig und materialschonend entfernt. Die Wand erstrahlt wieder im Originalzustand.</p>
+              <div class="vn-details">
+                <div class="vn-detail"><span class="vn-detail-label">Objekt</span><span>Wohnliegenschaft</span></div>
+                <div class="vn-detail"><span class="vn-detail-label">Leistung</span><span>Graffiti-Entfernung</span></div>
+                <div class="vn-detail"><span class="vn-detail-label">Dauer</span><span>4 Stunden</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- PFEIL RECHTS -->
+        <button class="vn-arrow vn-next" id="vnNext">&#10095;</button>
+      </div>
+
+      <!-- DOTS -->
+      <div class="vn-dots" id="vnDots"></div>
+    </div>
+  </div>
+
   <!-- EINSATZGEBIETE -->
   <div class="einsatz-section reveal">
     <div class="einsatz-inner">
@@ -694,6 +981,31 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    // VORHER/NACHHER KARUSSELL
+    const vnSlides = document.querySelectorAll('.vn-slide');
+    const vnDotsContainer = document.getElementById('vnDots');
+    let vnCurrent = 0;
+
+    vnSlides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'vn-dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToVn(i);
+      vnDotsContainer.appendChild(dot);
+    });
+
+    function goToVn(index) {
+      vnSlides[vnCurrent].classList.remove('active');
+      document.querySelectorAll('.vn-dot')[vnCurrent].classList.remove('active');
+      vnCurrent = (index + vnSlides.length) % vnSlides.length;
+      vnSlides[vnCurrent].classList.add('active');
+      document.querySelectorAll('.vn-dot')[vnCurrent].classList.add('active');
+    }
+
+    document.getElementById('vnPrev').addEventListener('click', () => goToVn(vnCurrent - 1));
+    document.getElementById('vnNext').addEventListener('click', () => goToVn(vnCurrent + 1));
+    setInterval(() => goToVn(vnCurrent + 1), 8000);
+
+    // SCROLL REVEAL
     let lastScrollY = window.scrollY;
     let scrollDirection = 'down';
     window.addEventListener('scroll', () => {
