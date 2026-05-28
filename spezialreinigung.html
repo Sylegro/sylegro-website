@@ -461,6 +461,233 @@
       .vorher-nachher-section { padding: 50px 24px; }
     }
 
+    /* SCHUTZBEHANDLUNGEN */
+    .schutz-section {
+      background: var(--bg-light);
+      padding: 70px 60px;
+      width: 100%;
+    }
+
+    .schutz-inner-top {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+    }
+
+    .schutz-cards {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .schutz-card {
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(15,23,42,0.07);
+      border: 1px solid #e2e8f0;
+    }
+
+    .schutz-card-split {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+    }
+
+    .schutz-card-img {
+      background-size: cover;
+      background-position: center;
+      min-height: 400px;
+    }
+
+    .schutz-card-side {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .schutz-card-header {
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .schutz-card-blue { background: var(--sylegro-blue); }
+    .schutz-card-green { background: var(--sylegro-green); }
+
+    .schutz-card-icon { font-size: 2rem; flex-shrink: 0; }
+
+    .schutz-card-tag {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 3px;
+    }
+
+    .schutz-card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .schutz-card-body {
+      padding: 24px 28px;
+    }
+
+    .schutz-card-desc {
+      font-size: 0.95rem;
+      color: #4b5563;
+      line-height: 1.7;
+      margin: 0 0 20px 0;
+    }
+
+    .schutz-anwendung { margin-bottom: 20px; }
+
+    .schutz-anwendung-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .schutz-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .schutz-tag-pill {
+      background: #f1f5f9;
+      color: #374151;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .schutz-vorteile {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 18px;
+    }
+
+    .schutz-vorteile li {
+      font-size: 0.9rem;
+      color: #374151;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .schutz-vorteile li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--sylegro-green);
+      font-weight: 700;
+    }
+
+    /* Gemeinsame Vorteile */
+    .schutz-gemeinsam {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .schutz-gemeinsam-item {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 22px 20px;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid var(--sylegro-blue);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .schutz-gemeinsam-item:nth-child(even) {
+      border-left-color: var(--sylegro-green);
+    }
+
+    .schutz-gemeinsam-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(15,23,42,0.08);
+    }
+
+    .schutz-gem-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 6px 0;
+    }
+
+    .schutz-gem-text {
+      font-size: 0.82rem;
+      color: #6b7280;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* CTA */
+    .schutz-cta {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
+      border-radius: 16px;
+      padding: 30px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .schutz-cta-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .schutz-cta-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: var(--sylegro-blue);
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: "Kiro", sans-serif;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    .schutz-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+    @media (max-width: 900px) {
+      .schutz-card-split { grid-template-columns: 1fr; }
+      .schutz-card-img { min-height: 220px; }
+      .schutz-gemeinsam { grid-template-columns: 1fr 1fr; }
+      .schutz-section { padding: 50px 24px; }
+      .schutz-cta { flex-direction: column; text-align: center; }
+    }
+
     /* EINSATZGEBIETE */
     .einsatz-section {
       background: var(--bg-light);
@@ -875,6 +1102,110 @@
       <!-- DOTS -->
       <div class="vn-dots" id="vnDots"></div>
     </div>
+  </div>
+
+  <!-- SCHUTZBEHANDLUNGEN -->
+  <div class="schutz-section reveal">
+    <div class="schutz-inner-top">
+      <span class="section-label">Schutzbehandlungen</span>
+      <h2 class="section-title">Reinigen. Schützen. <em>Werterhalt.</em></h2>
+      <p class="section-desc">Eine professionelle Reinigung ist der erste Schritt – der zweite ist der nachhaltige Schutz. Mit zertifizierten Schutzsystemen verlängern wir die Lebensdauer Ihrer Oberflächen und reduzieren langfristig den Unterhaltsaufwand.</p>
+    </div>
+
+    <div class="schutz-cards">
+
+      <!-- FASSADENSCHUTZ: Bild links, Text rechts -->
+      <div class="schutz-card schutz-card-split">
+        <div class="schutz-card-img" style="background-image: url('AdobeStock_482143067.jpeg');"></div>
+        <div class="schutz-card-side">
+          <div class="schutz-card-header schutz-card-blue">
+            <div>
+              <span class="schutz-card-tag">Für Fassaden & Aussenflächen</span>
+              <h3 class="schutz-card-title">Fassadenschutz & Versiegelung</h3>
+            </div>
+          </div>
+          <div class="schutz-card-body">
+            <p class="schutz-card-desc">Fassaden sind täglich Witterung, Schmutz und Umwelteinflüssen ausgesetzt. Unsere Schutzsysteme bilden eine unsichtbare Barriere – die Fläche bleibt länger sauber, und zukünftige Reinigungen werden deutlich einfacher.</p>
+            <div class="schutz-anwendung">
+              <span class="schutz-anwendung-label">Geeignet für:</span>
+              <div class="schutz-tags-row">
+                <span class="schutz-tag-pill">Aluminium</span>
+                <span class="schutz-tag-pill">Metall</span>
+                <span class="schutz-tag-pill">Naturstein</span>
+                <span class="schutz-tag-pill">Beton & Mörtel</span>
+                <span class="schutz-tag-pill">Organisch beschichtete Oberflächen</span>
+              </div>
+            </div>
+            <ul class="schutz-vorteile">
+              <li>Zertifizierte Qualitätsprodukte (GRM zugelassen)</li>
+              <li>Schutz vor Korrosion und UV-Strahlung</li>
+              <li>Schmutz haftet weniger – leichtere Reinigung</li>
+              <li>Graffitischutz auf Anfrage verfügbar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- BODENSCHUTZ: Text links, Bild rechts -->
+      <div class="schutz-card schutz-card-split">
+        <div class="schutz-card-side">
+          <div class="schutz-card-header schutz-card-green">
+            <div>
+              <span class="schutz-card-tag">Für Böden & Innenoberflächen</span>
+              <h3 class="schutz-card-title">Bodenversiegelung & Sanierung</h3>
+            </div>
+          </div>
+          <div class="schutz-card-body">
+            <p class="schutz-card-desc">Abgenutzte Böden müssen nicht ausgetauscht werden. Mit unserer hochwertigen Versiegelung erhalten stark beanspruchte Böden eine neuwertige Optik – kostengünstig, schnell und ohne langen Betriebsunterbruch.</p>
+            <div class="schutz-anwendung">
+              <span class="schutz-anwendung-label">Geeignet für:</span>
+              <div class="schutz-tags-row">
+                <span class="schutz-tag-pill">Linoleum</span>
+                <span class="schutz-tag-pill">PVC</span>
+                <span class="schutz-tag-pill">Kautschuk</span>
+                <span class="schutz-tag-pill">Gumminoppen</span>
+                <span class="schutz-tag-pill">Epoxidharz-Industrieböden</span>
+              </div>
+            </div>
+            <ul class="schutz-vorteile">
+              <li>Neuwertige Optik ohne Belagsaustausch</li>
+              <li>Erhebliche Kosteneinsparung gegenüber Erneuerung</li>
+              <li>Rutschhemmend & chemikalienbeständig</li>
+              <li>Ökologisch – lösungsmittelfrei auf Wasserbasis</li>
+            </ul>
+          </div>
+        </div>
+        <div class="schutz-card-img" style="background-image: url('2KBoden.jpeg');"></div>
+      </div>
+
+    </div>
+
+    <!-- GEMEINSAME VORTEILE – ohne Icons, als Text-Grid -->
+    <div class="schutz-gemeinsam">
+      <div class="schutz-gemeinsam-item">
+        <p class="schutz-gem-title">Schweizer Qualitätsprodukte</p>
+        <p class="schutz-gem-text">Wir setzen ausschliesslich zertifizierte Schutzsysteme ein – geprüft und zugelassen für professionellen Einsatz.</p>
+      </div>
+      <div class="schutz-gemeinsam-item">
+        <p class="schutz-gem-title">Ökologisch & nachhaltig</p>
+        <p class="schutz-gem-text">Unsere Schutzprodukte sind lösungsmittelfrei auf Wasserbasis – schonend für Mensch, Tier und Umwelt.</p>
+      </div>
+      <div class="schutz-gemeinsam-item">
+        <p class="schutz-gem-title">Weniger Kosten, mehr Schutz</p>
+        <p class="schutz-gem-text">Behandelte Flächen sind deutlich einfacher zu unterhalten – das spart langfristig Zeit und Reinigungskosten.</p>
+      </div>
+      <div class="schutz-gemeinsam-item">
+        <p class="schutz-gem-title">Individuell & massgeschneidert</p>
+        <p class="schutz-gem-text">Jede Oberfläche ist anders. Wir beraten Sie persönlich und empfehlen das optimale System für Ihren Fall.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="schutz-cta">
+      <p class="schutz-cta-text">Unsicher welche Schutzbehandlung für Ihre Liegenschaft passt?</p>
+      <a href="kontakt.html" class="schutz-cta-btn">Beratungsgespräch anfragen →</a>
+    </div>
+
   </div>
 
   <!-- EINSATZGEBIETE -->
