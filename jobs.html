@@ -2,39 +2,364 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Sylegro – Jobs</title>
+  <title>Jobs – Sylegro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Kiro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; color: #111827; }
-    header { background: #111827; color: white; padding: 16px 20px; }
-    .header-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .logo-area { display: flex; align-items: center; gap: 12px; }
-    .logo-area img { height: 40px; width: 40px; object-fit: contain; border-radius: 8px; background: white; }
-    .logo-text span:first-child { font-weight: 600; }
-    .logo-text span:last-child { font-size: 0.8rem; opacity: 0.9; }
-    nav a { color: white; text-decoration: none; margin-left: 16px; font-size: 0.9rem; }
-    nav a:hover { text-decoration: underline; }
-    nav { display: flex; flex-wrap: wrap; justify-content: flex-end; }
-    @media (max-width: 800px) { .header-inner { flex-direction: column; align-items: flex-start; } nav { justify-content: flex-start; } nav a { margin-left: 0; margin-right: 12px; } }
-    main { max-width: 1000px; margin: 0 auto; padding: 20px; }
-    .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
-    h1, h2 { margin-top: 0; }
-    footer { text-align: center; font-size: 0.8rem; color: #6b7280; padding: 20px; }
+    * { box-sizing: border-box; }
+    :root {
+      --blue: #0063A5;
+      --green: #17A863;
+      --dark: #0f172a;
+      --bg: #f5f5f5;
+    }
+    body { font-family: "Kiro", system-ui, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--dark); }
+    a { color: inherit; text-decoration: none; }
+
+    /* HEADER */
+    header { background: linear-gradient(to right, var(--blue), var(--green)); color: white; padding: 8px 20px; }
+    .header-inner { max-width: 100%; padding: 0 60px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .logo-area img { height: 80px; width: auto; object-fit: contain; display: block; filter: drop-shadow(0 6px 16px rgba(15,23,42,0.5)); }
+    nav { display: flex; align-items: center; flex-wrap: wrap; gap: 40px; position: relative; }
+    nav a { color: white; font-size: 1.1rem; font-weight: 500; position: relative; padding-bottom: 3px; }
+    nav a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: rgba(255,255,255,0.9); border-radius: 999px; transition: width .18s ease-out; }
+    nav a:hover::after { width: 100%; }
+    .nav-item { position: relative; display: flex; align-items: center; }
+    .submenu { position: absolute; top: 100%; left: 0; background: #fff; color: var(--dark); padding: 8px 0; border-radius: 10px; box-shadow: 0 10px 25px rgba(15,23,42,0.18); min-width: 220px; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity 0.18s ease-out, transform 0.18s ease-out; z-index: 20; }
+    .submenu a { display: block; padding: 8px 16px; font-size: 0.95rem; color: #111827; white-space: nowrap; }
+    .submenu a:hover { background: rgba(0,99,165,0.06); color: var(--blue); }
+    .nav-item.has-submenu:hover .submenu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+    /* HERO */
+    .hero {
+      background: var(--dark);
+      padding: 80px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -80px; left: -80px;
+      width: 450px; height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,99,165,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -60px; right: 10%;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(23,168,99,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .hero-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); display: block; margin-bottom: 16px; }
+    .hero-title { font-size: 3rem; font-weight: 800; color: #fff; line-height: 1.1; margin: 0 0 20px; }
+    .hero-title em { font-style: italic; color: var(--green); }
+    .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.8; margin: 0 0 32px; }
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: "Kiro", sans-serif;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 6px 20px rgba(23,168,99,0.3);
+    }
+    .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(23,168,99,0.45); }
+
+    .hero-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .hero-benefit {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 16px 20px;
+      transition: background 0.2s;
+    }
+    .hero-benefit:hover { background: rgba(255,255,255,0.08); }
+    .hero-benefit-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .hero-benefit-title { font-size: 0.92rem; font-weight: 700; color: #fff; margin: 0 0 3px; }
+    .hero-benefit-text { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin: 0; }
+
+    /* WARUM SYLEGRO */
+    .warum {
+      background: #fff;
+      padding: 80px 60px;
+    }
+    .warum-inner { max-width: 1200px; margin: 0 auto; }
+    .warum-intro { max-width: 600px; margin-bottom: 52px; }
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 12px; }
+    .section-title { font-size: 1.9rem; font-weight: 800; color: var(--dark); line-height: 1.15; margin: 0 0 16px; }
+    .section-title em { font-style: italic; color: var(--blue); }
+    .section-desc { font-size: 0.97rem; color: #4b5563; line-height: 1.75; margin: 0; }
+
+    .warum-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .warum-card {
+      background: var(--bg);
+      border-radius: 18px;
+      padding: 26px 22px;
+      border: 1px solid #e2e8f0;
+      border-top: 3px solid var(--blue);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .warum-card:nth-child(even) { border-top-color: var(--green); }
+    .warum-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(15,23,42,0.09); }
+    .warum-icon { font-size: 1.8rem; display: block; margin-bottom: 14px; }
+    .warum-title { font-size: 0.92rem; font-weight: 700; color: var(--dark); margin: 0 0 8px; }
+    .warum-text { font-size: 0.82rem; color: #4b5563; line-height: 1.65; margin: 0; }
+
+    /* STELLEN */
+    .stellen {
+      background: var(--bg);
+      padding: 80px 60px;
+    }
+    .stellen-inner { max-width: 1200px; margin: 0 auto; }
+    .stellen-intro { max-width: 600px; margin-bottom: 48px; }
+    .stellen-intro .section-label { color: var(--green); }
+    .stellen-intro .section-title em { color: var(--green); }
+
+    /* Jobcloud Widget Container */
+    .jobcloud-container {
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(15,23,42,0.06);
+    }
+
+    .jobcloud-header {
+      background: var(--dark);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .jobcloud-header-title { font-size: 0.85rem; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.1em; margin: 0; }
+    .jobcloud-link { font-size: 0.8rem; color: var(--green); font-weight: 600; display: flex; align-items: center; gap: 6px; transition: opacity 0.15s; }
+    .jobcloud-link:hover { opacity: 0.8; }
+
+    /* Stellenausschreibungen (statisch als Platzhalter bis jobcloud.ch Widget aktiv) */
+    .stelle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px;
+      border-bottom: 1px solid #f1f5f9;
+      gap: 20px;
+      transition: background 0.15s;
+    }
+    .stelle:last-child { border-bottom: none; }
+    .stelle:hover { background: #fafcfe; }
+    .stelle-left { display: flex; align-items: center; gap: 18px; }
+    .stelle-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: rgba(0,99,165,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .stelle-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin: 0 0 4px; }
+    .stelle-meta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .stelle-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #374151;
+      border: 1px solid #e2e8f0;
+    }
+    .stelle-tag.green { background: rgba(23,168,99,0.1); color: var(--green); border-color: rgba(23,168,99,0.2); }
+    .stelle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: "Kiro", sans-serif;
+      white-space: nowrap;
+      transition: transform 0.15s, box-shadow 0.15s;
+      flex-shrink: 0;
+    }
+    .stelle-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,99,165,0.3); }
+
+    .jobcloud-notice {
+      padding: 20px 28px;
+      background: rgba(23,168,99,0.05);
+      border-top: 1px solid rgba(23,168,99,0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .jobcloud-notice p { font-size: 0.82rem; color: #4b5563; margin: 0; line-height: 1.5; }
+    .jobcloud-notice strong { color: var(--green); }
+
+    /* INITIATIVBEWERBUNG */
+    .initiativ {
+      background: #fff;
+      padding: 80px 60px;
+    }
+    .initiativ-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .initiativ-left {}
+    .initiativ-right {}
+
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; letter-spacing: 0.03em; }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-family: "Kiro", sans-serif;
+      color: var(--dark);
+      background: #fff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      appearance: none;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,99,165,0.1);
+    }
+    .form-textarea { min-height: 120px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-file-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border: 1.5px dashed #d1d5db;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #6b7280;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .form-file-label:hover { border-color: var(--blue); background: rgba(0,99,165,0.03); color: var(--blue); }
+    .form-file { display: none; }
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: "Kiro", sans-serif;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 6px 20px rgba(0,99,165,0.25);
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,99,165,0.4); }
+
+    .initiativ-info {
+      background: var(--bg);
+      border-radius: 20px;
+      padding: 32px 28px;
+      margin-top: 32px;
+      border: 1px solid #e2e8f0;
+    }
+    .initiativ-info-title { font-size: 0.88rem; font-weight: 700; color: var(--dark); margin: 0 0 16px; }
+    .initiativ-info-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    .initiativ-info-list li { font-size: 0.83rem; color: #4b5563; padding-left: 18px; position: relative; line-height: 1.5; }
+    .initiativ-info-list li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+    /* FOOTER */
+    .site-footer { background: #111827; color: #fff; padding: 56px 60px 0; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1.5fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-logo { height: 50px; width: auto; display: block; margin-bottom: 20px; filter: brightness(0) invert(1); }
+    .footer-address { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0 0 14px; }
+    .footer-contact { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0; }
+    .footer-links { display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
+    .footer-links a { color: rgba(255,255,255,0.85); font-size: 1rem; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--green); }
+    .footer-partner-badge { display: inline-flex !important; align-items: center; gap: 7px; margin-top: 8px; background: rgba(23,168,99,0.1); border: 1px solid rgba(23,168,99,0.3); border-radius: 999px; padding: 6px 14px !important; font-size: 0.78rem !important; color: rgba(255,255,255,0.7) !important; }
+    .footer-partner-badge:hover { background: rgba(23,168,99,0.2) !important; border-color: var(--green) !important; color: #fff !important; }
+    .footer-claim { display: flex; align-items: center; justify-content: flex-end; }
+    .footer-claim p { font-size: 1rem; color: rgba(255,255,255,0.7); margin: 0; font-style: italic; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 20px 0; }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.4); margin: 0; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes slideInLeft { from { opacity: 0; transform: translateX(-60px); } to { opacity: 1; transform: translateX(0); } }
+    .anim-left { opacity: 0; animation: slideInLeft 0.7s ease 0.2s forwards; }
+
+    @media (max-width: 900px) {
+      .header-inner { flex-direction: column; align-items: flex-start; padding: 0 20px; }
+      nav { gap: 20px; }
+      .hero, .warum, .stellen, .initiativ { padding: 60px 24px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .warum-grid { grid-template-columns: 1fr 1fr; }
+      .initiativ-inner { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .site-footer { padding: 40px 24px 0; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-claim { justify-content: flex-start; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
     <div class="header-inner">
-      <div class="logo-area">
-        <img src="https://via.placeholder.com/80x80?text=Logo" alt="Sylegro Logo">
-        <div class="logo-text">
-          <span>Sylegro</span>
-          <span>Professionelle Dienstleistungen – zuverlässig, persönlich, unkompliziert.</span>
-        </div>
-      </div>
+      <a href="index.html" class="logo-area">
+        <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo">
+      </a>
       <nav>
         <a href="index.html">Startseite</a>
-        <a href="dienstleistungen.html">Dienstleistungen</a>
+        <div class="nav-item has-submenu">
+          <a href="dienstleistungen.html">Dienstleistungen</a>
+          <div class="submenu">
+            <a href="unterhaltsreinigung.html">Unterhaltsreinigung</a>
+            <a href="spezialreinigung.html">Spezialreinigung</a>
+            <a href="hauswartung.html">Hauswartung</a>
+          </div>
+        </div>
         <a href="ueber-uns.html">Über uns</a>
         <a href="jobs.html">Jobs</a>
         <a href="kontakt.html">Kontakt</a>
@@ -42,21 +367,269 @@
     </div>
   </header>
 
-  <main>
-    <div class="card">
-      <h1>Jobs bei Sylegro</h1>
-      <p>Hier kannst du aktuelle Stellen ausschreiben oder allgemein erklären, wie man sich bei euch bewerben kann.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-label anim-left">Karriere bei Sylegro</span>
+        <h1 class="hero-title anim-left">Werde Teil von<br><em>etwas Sauberem.</em></h1>
+        <p class="hero-sub anim-left">Bei Sylegro arbeiten Menschen, die stolz auf ihre Arbeit sind. Wir bieten mehr als einen Job – wir bieten Stabilität, Entwicklung und ein Team, das füreinander einsteht.</p>
+        <a href="#stellen" class="hero-btn anim-left">Offene Stellen ansehen ↓</a>
+      </div>
+      <div class="hero-benefits">
+        <div class="hero-benefit">
+          <span class="hero-benefit-icon">📍</span>
+          <div>
+            <p class="hero-benefit-title">Lokal & stabil</p>
+            <p class="hero-benefit-text">Fester Arbeitsort in der Zentralschweiz – keine langen Pendlerdistanzen.</p>
+          </div>
+        </div>
+        <div class="hero-benefit">
+          <span class="hero-benefit-icon">🤝</span>
+          <div>
+            <p class="hero-benefit-title">Echtes Team</p>
+            <p class="hero-benefit-text">Flache Hierarchien, direkter Kontakt zur Geschäftsleitung, gegenseitiger Respekt.</p>
+          </div>
+        </div>
+        <div class="hero-benefit">
+          <span class="hero-benefit-icon">📈</span>
+          <div>
+            <p class="hero-benefit-title">Entwicklung möglich</p>
+            <p class="hero-benefit-text">Wer Einsatz zeigt, bekommt Verantwortung – interne Förderung ist gewollt.</p>
+          </div>
+        </div>
+        <div class="hero-benefit">
+          <span class="hero-benefit-icon">⏰</span>
+          <div>
+            <p class="hero-benefit-title">Verlässliche Arbeitszeiten</p>
+            <p class="hero-benefit-text">Planbare Einsätze – damit auch das Privatleben nicht zu kurz kommt.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <h2>Aktuelle Stellen</h2>
-      <p>Wenn aktuell keine Stellen frei sind, kannst du z. B. schreiben: „Zurzeit haben wir keine offenen Stellen, freuen uns aber über spontane Bewerbungen.“</p>
+  <!-- WARUM SYLEGRO -->
+  <section class="warum reveal">
+    <div class="warum-inner">
+      <div class="warum-intro">
+        <span class="section-label">Warum Sylegro?</span>
+        <h2 class="section-title">Ein Arbeitgeber,<br>auf den man sich <em>verlassen</em> kann</h2>
+        <p class="section-desc">Wir wissen, dass gute Mitarbeitende der Schlüssel zu guter Arbeit sind. Deshalb investieren wir in unser Team – mit fairen Bedingungen, Wertschätzung und echten Perspektiven.</p>
+      </div>
+      <div class="warum-grid">
+        <div class="warum-card">
+          <span class="warum-icon">💰</span>
+          <p class="warum-title">Faire Entlöhnung</p>
+          <p class="warum-text">Marktgerechte Löhne und pünktliche Zahlung – immer, ohne Ausnahme.</p>
+        </div>
+        <div class="warum-card">
+          <span class="warum-icon">🎓</span>
+          <p class="warum-title">Schulungen & Weiterbildung</p>
+          <p class="warum-text">Wir bilden intern aus und fördern externe Weiterbildungen aktiv.</p>
+        </div>
+        <div class="warum-card">
+          <span class="warum-icon">🛡️</span>
+          <p class="warum-title">Moderne Ausrüstung</p>
+          <p class="warum-text">Professionelles Werkzeug und Schutzausrüstung – damit die Arbeit sicher und effizient ist.</p>
+        </div>
+        <div class="warum-card">
+          <span class="warum-icon">🌍</span>
+          <p class="warum-title">Willkommen, wie du bist</p>
+          <p class="warum-text">Wir schätzen Vielfalt und heissen Menschen mit unterschiedlichen Hintergründen herzlich willkommen.</p>
+        </div>
+      </div>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    © Sylegro <span id="year"></span>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <!-- OFFENE STELLEN -->
+  <section class="stellen reveal" id="stellen">
+    <div class="stellen-inner">
+      <div class="stellen-intro">
+        <span class="section-label" style="color:var(--green)">Offene Stellen</span>
+        <h2 class="section-title" style="--blue:var(--green)">Finde deinen <em style="color:var(--green)">Platz</em> bei uns</h2>
+        <p class="section-desc">Alle aktuellen Stellenangebote werden direkt von jobcloud.ch geladen. Klicke auf eine Stelle, um die vollständige Ausschreibung zu sehen und dich zu bewerben.</p>
+      </div>
+
+      <div class="jobcloud-container">
+        <div class="jobcloud-header">
+          <p class="jobcloud-header-title">Aktuelle Stellenangebote</p>
+          <a href="https://www.jobcloud.ch" target="_blank" class="jobcloud-link">Alle auf jobcloud.ch ansehen →</a>
+        </div>
+
+        <!-- Jobcloud Widget -->
+        <!-- INTEGRATION: Fügen Sie hier Ihren jobcloud.ch Widget-Code ein.
+             Beispiel: <script src="https://www.jobcloud.ch/c/widget/..."></script>
+             Der Widget-Code wird von jobcloud.ch in Ihrem Account bereitgestellt. -->
+
+        <!-- Platzhalter-Stellen bis Widget aktiv ist -->
+        <div class="stelle">
+          <div class="stelle-left">
+            <div class="stelle-icon">🧹</div>
+            <div>
+              <p class="stelle-title">Reinigungsfachkraft (m/w/d)</p>
+              <div class="stelle-meta">
+                <span class="stelle-tag">📍 Hochdorf / Luzern</span>
+                <span class="stelle-tag">⏱ 80–100%</span>
+                <span class="stelle-tag green">● Offen</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://www.jobcloud.ch" target="_blank" class="stelle-btn">Jetzt bewerben →</a>
+        </div>
+        <div class="stelle">
+          <div class="stelle-left">
+            <div class="stelle-icon">🏗️</div>
+            <div>
+              <p class="stelle-title">Spezialist Fassadenreinigung (m/w/d)</p>
+              <div class="stelle-meta">
+                <span class="stelle-tag">📍 Zentralschweiz</span>
+                <span class="stelle-tag">⏱ 100%</span>
+                <span class="stelle-tag green">● Offen</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://www.jobcloud.ch" target="_blank" class="stelle-btn">Jetzt bewerben →</a>
+        </div>
+        <div class="stelle">
+          <div class="stelle-left">
+            <div class="stelle-icon">🔧</div>
+            <div>
+              <p class="stelle-title">Hauswart / Facility Manager (m/w/d)</p>
+              <div class="stelle-meta">
+                <span class="stelle-tag">📍 Hochdorf / Luzern</span>
+                <span class="stelle-tag">⏱ 80–100%</span>
+                <span class="stelle-tag green">● Offen</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://www.jobcloud.ch" target="_blank" class="stelle-btn">Jetzt bewerben →</a>
+        </div>
+
+        <div class="jobcloud-notice">
+          <span style="font-size:1.2rem">ℹ️</span>
+          <p>Diese Stellen werden über <strong>jobcloud.ch</strong> verwaltet. Sobald das Widget aktiviert ist, erscheinen hier automatisch alle aktuellen Inserate aus Ihrem jobcloud.ch-Account.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INITIATIVBEWERBUNG -->
+  <section class="initiativ reveal">
+    <div class="initiativ-inner">
+      <div class="initiativ-left">
+        <span class="section-label">Keine passende Stelle?</span>
+        <h2 class="section-title">Initiativ<em>bewerbung</em></h2>
+        <p style="font-size:0.93rem;color:#4b5563;line-height:1.75;margin:0 0 12px">Auch wenn gerade keine Stelle ausgeschrieben ist, die zu Ihnen passt – wir freuen uns über Initiativbewerbungen. Wir wachsen und suchen laufend motivierte Menschen.</p>
+        <p style="font-size:0.93rem;color:#4b5563;line-height:1.75;margin:0">Senden Sie uns einfach Ihre Unterlagen – wir melden uns, sobald wir etwas Passendes haben.</p>
+
+        <div class="initiativ-info">
+          <p class="initiativ-info-title">Was wir uns wünschen:</p>
+          <ul class="initiativ-info-list">
+            <li>Zuverlässigkeit und Pünktlichkeit</li>
+            <li>Freude an sauberer, gründlicher Arbeit</li>
+            <li>Teamfähigkeit und Kommunikationsbereitschaft</li>
+            <li>Deutschkenntnisse (Niveau A2 oder höher)</li>
+            <li>Fahrausweis Kat. B von Vorteil</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="initiativ-right">
+        <form action="mailto:info@sylegro.ch" method="post" enctype="text/plain">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="vorname">Vorname *</label>
+              <input class="form-input" type="text" id="vorname" name="vorname" placeholder="Max" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="nachname">Nachname *</label>
+              <input class="form-input" type="text" id="nachname" name="nachname" placeholder="Muster" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">E-Mail *</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="max.muster@beispiel.ch" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="telefon">Telefon</label>
+            <input class="form-input" type="tel" id="telefon" name="telefon" placeholder="+41 79 000 00 00">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bereich">Gewünschter Bereich</label>
+            <select class="form-select" id="bereich" name="bereich">
+              <option value="">Bitte wählen...</option>
+              <option>Unterhaltsreinigung</option>
+              <option>Spezialreinigung / Fassade</option>
+              <option>Hauswartung</option>
+              <option>Allgemein / Offen für alles</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="nachricht">Kurze Vorstellung *</label>
+            <textarea class="form-textarea" id="nachricht" name="nachricht" placeholder="Erzählen Sie uns kurz von sich – Erfahrung, Verfügbarkeit, Motivation..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-file-label" for="lebenslauf">
+              📎 &nbsp;Lebenslauf hochladen (PDF, max. 5 MB)
+            </label>
+            <input class="form-file" type="file" id="lebenslauf" name="lebenslauf" accept=".pdf,.doc,.docx">
+          </div>
+          <button type="submit" class="form-submit">Bewerbung absenden →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo" class="footer-logo">
+        <p class="footer-address">Turbistrasse 17<br>6280 Hochdorf</p>
+        <p class="footer-contact">+41 41 555 88 58<br>info@sylegro.ch</p>
+      </div>
+      <div class="footer-links">
+        <a href="dienstleistungen.html">Dienstleistungen</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://my.top-offerten.ch/companies/5775/link-partnership" target="_blank" class="footer-partner-badge">🏅 Verifiziert auf top-offerten.ch</a>
+      </div>
+      <div class="footer-claim">
+        <p>Ihr Partner für Facility Services</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> sylegro</p>
+    </div>
   </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // File input Label aktualisieren
+    document.getElementById('lebenslauf').addEventListener('change', function() {
+      const label = document.querySelector('.form-file-label');
+      label.textContent = this.files[0] ? '✅  ' + this.files[0].name : '📎  Lebenslauf hochladen (PDF, max. 5 MB)';
+    });
+
+    let lastScrollY = window.scrollY;
+    let scrollDirection = 'down';
+    window.addEventListener('scroll', () => {
+      const currentY = window.scrollY;
+      scrollDirection = currentY > lastScrollY ? 'down' : 'up';
+      lastScrollY = currentY;
+    });
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && scrollDirection === 'down') {
+          entry.target.classList.add('reveal-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
