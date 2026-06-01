@@ -346,10 +346,16 @@
     .vorher-nachher-inner { max-width: 1200px; margin: 0 auto; }
 
     .vn-karussell-wrapper {
+      margin-top: 40px;
+    }
+
+    .vn-karussell { width: 100%; }
+
+    .vn-nav {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-top: 40px;
+      justify-content: space-between;
+      margin-top: 28px;
     }
 
     .vn-arrow {
@@ -371,50 +377,77 @@
       transform: scale(1.08);
     }
 
-    .vn-karussell { flex: 1; overflow: hidden; }
+    .vn-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .vn-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .vn-dot.active { background: var(--sylegro-green); transform: scale(1.3); }
 
     .vn-slide {
       display: none;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 60px;
-      align-items: center;
+      flex-direction: column;
+      gap: 32px;
       animation: fadeInCard 0.45s ease;
     }
 
-    .vn-slide.active { display: grid; }
+    .vn-slide.active { display: flex; }
 
-    .vn-bilder { position: relative; height: 460px; }
+    .vn-bilder {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+    }
 
     .vn-bild-wrap {
-      position: absolute;
+      position: relative;
       border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+      aspect-ratio: 4/3;
     }
 
-    .vn-bild-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .vn-bild-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-    .vn-bild-hinten { width: 70%; height: 270px; top: 0; left: 0; z-index: 1; }
-    .vn-bild-vorne  { width: 70%; height: 270px; bottom: 0; right: 0; z-index: 2; border: 3px solid #0f172a; }
+    .vn-bild-hinten { }
+    .vn-bild-vorne  { border: none; }
 
     .vn-tag {
       position: absolute;
-      top: 10px; left: 10px;
+      top: 12px; left: 12px;
       font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 999px;
       z-index: 3;
     }
 
-    .vn-tag-vor { background: rgba(15,23,42,0.8); color: rgba(255,255,255,0.9); }
+    .vn-tag-vor  { background: rgba(15,23,42,0.75); color: rgba(255,255,255,0.9); }
     .vn-tag-nach { background: var(--sylegro-green); color: #ffffff; }
 
-    .vn-nummer { font-size: 0.75rem; font-weight: 700; color: var(--sylegro-green); letter-spacing: 0.1em; margin-bottom: 12px; display: block; }
-    .vn-title { font-size: 1.4rem; font-weight: 700; color: #ffffff; margin: 0 0 16px 0; line-height: 1.3; }
-    .vn-desc { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; }
+    .vn-text { }
+
+    .vn-nummer { font-size: 0.75rem; font-weight: 700; color: var(--sylegro-green); letter-spacing: 0.1em; margin-bottom: 8px; display: block; }
+    .vn-title  { font-size: 1.3rem; font-weight: 700; color: #ffffff; margin: 0 0 10px 0; line-height: 1.3; }
+    .vn-desc   { font-size: 0.93rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; max-width: 680px; }
 
     .vn-dots { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
 
@@ -966,8 +999,8 @@
       <h2 class="section-title">Vorher & <em>Nachher</em></h2>
       <p class="section-desc">Sehen Sie selbst – was wir versprechen, halten wir auch.</p>
       <div class="vn-karussell-wrapper">
-        <button class="vn-arrow vn-prev" id="vnPrev">&#10094;</button>
         <div class="vn-karussell" id="vnKarussell">
+
           <div class="vn-slide active">
             <div class="vn-bilder">
               <div class="vn-bild-wrap vn-bild-hinten"><span class="vn-tag vn-tag-vor">Vorher</span><img src="Fensterreinigung-vorher.jpeg" alt="Fenster vorher"></div>
@@ -975,10 +1008,11 @@
             </div>
             <div class="vn-text">
               <span class="vn-nummer">01 / 05</span>
-              <h3 class="vn-title">Fensterreinigung –<br>kristallklar statt trüb</h3>
+              <h3 class="vn-title">Fensterreinigung – kristallklar statt trüb</h3>
               <p class="vn-desc">Stark verschmutzte Fenster mit Kalkablagerungen, Staub und Witterungsspuren werden von uns streifenfrei und schonend gereinigt.</p>
             </div>
           </div>
+
           <div class="vn-slide">
             <div class="vn-bilder">
               <div class="vn-bild-wrap vn-bild-hinten"><span class="vn-tag vn-tag-vor">Vorher</span><img src="Storenreinigung-vorher.jpeg" alt="Storen vorher"></div>
@@ -986,10 +1020,11 @@
             </div>
             <div class="vn-text">
               <span class="vn-nummer">02 / 05</span>
-              <h3 class="vn-title">Storenreinigung –<br>wie frisch ab Werk</h3>
+              <h3 class="vn-title">Storenreinigung – wie frisch ab Werk</h3>
               <p class="vn-desc">Storen und Jalousien sammeln über die Zeit Staub, Pollen und Schmutz. Mit unserer schonenden Reinigungsmethode erstrahlen sie wieder in neuem Glanz.</p>
             </div>
           </div>
+
           <div class="vn-slide">
             <div class="vn-bilder">
               <div class="vn-bild-wrap vn-bild-hinten"><span class="vn-tag vn-tag-vor">Vorher</span><img src="Boden-Fettfleck-vorher.PNG" alt="Boden vorher"></div>
@@ -997,10 +1032,11 @@
             </div>
             <div class="vn-text">
               <span class="vn-nummer">03 / 05</span>
-              <h3 class="vn-title">Tiefenreinigung Boden –<br>Fettflecken vollständig entfernt</h3>
+              <h3 class="vn-title">Tiefenreinigung Boden – Fettflecken vollständig entfernt</h3>
               <p class="vn-desc">Hartnäckige Fettflecken auf Industrieböden werden mit unseren Spezialreinigungsmitteln und der richtigen Technik rückstandslos entfernt.</p>
             </div>
           </div>
+
           <div class="vn-slide">
             <div class="vn-bilder">
               <div class="vn-bild-wrap vn-bild-hinten"><span class="vn-tag vn-tag-vor">Vorher</span><img src="Moosreinigung-vorher.jpeg" alt="Moos vorher"></div>
@@ -1008,10 +1044,11 @@
             </div>
             <div class="vn-text">
               <span class="vn-nummer">04 / 05</span>
-              <h3 class="vn-title">Moosreinigung –<br>Flächen sicher befreit</h3>
+              <h3 class="vn-title">Moosreinigung – Flächen sicher befreit</h3>
               <p class="vn-desc">Moos und Algenbelag auf Terrassen, Wegen und Fassaden entfernen wir gründlich und schützen die Fläche nachhaltig.</p>
             </div>
           </div>
+
           <div class="vn-slide">
             <div class="vn-bilder">
               <div class="vn-bild-wrap vn-bild-hinten"><span class="vn-tag vn-tag-vor">Vorher</span><img src="Fenstersims-vorher.jpeg" alt="Fenstersims vorher"></div>
@@ -1019,14 +1056,20 @@
             </div>
             <div class="vn-text">
               <span class="vn-nummer">05 / 05</span>
-              <h3 class="vn-title">Fenstersims –<br>makellos sauber</h3>
+              <h3 class="vn-title">Fenstersims – makellos sauber</h3>
               <p class="vn-desc">Fenstersimse werden durch Regen, Staub und Vogelkot stark beansprucht. Unsere gezielte Reinigung entfernt hartnäckige Ablagerungen.</p>
             </div>
           </div>
+
         </div>
-        <button class="vn-arrow vn-next" id="vnNext">&#10095;</button>
+
+        <div class="vn-nav">
+          <button class="vn-arrow vn-prev" id="vnPrev">&#10094;</button>
+          <div class="vn-dots" id="vnDots"></div>
+          <button class="vn-arrow vn-next" id="vnNext">&#10095;</button>
+        </div>
+
       </div>
-      <div class="vn-dots" id="vnDots"></div>
     </div>
   </div>
 
