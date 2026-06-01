@@ -551,6 +551,21 @@
       border-radius: 16px;
       padding: 24px 20px;
       transition: background 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ueber-uns-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
+      border-radius: 16px 16px 0 0;
+    }
+
+    .ueber-uns-card:nth-child(even)::before {
+      background: var(--sylegro-green);
     }
 
     .ueber-uns-card:hover {
@@ -559,9 +574,7 @@
     }
 
     .ueber-uns-card-icon {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-      display: block;
+      display: none;
     }
 
     .ueber-uns-card-title {
@@ -848,7 +861,7 @@
         <p class="hero-subtitle">Professionelle Reinigung, Hauswartung und Facility Services – massgeschneidert für Ihr Unternehmen.</p>
         <div class="hero-buttons">
           <a href="kontakt.html" class="btn-green">Kostenloses Angebot ↗</a>
-          <a href="dienstleistungen.html" class="btn-outline">Unsere Leistungen</a>
+
         </div>
       </div>
       <div class="hero-right">
