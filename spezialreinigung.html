@@ -252,48 +252,64 @@
 
     .leistungen-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .leistung-card {
-      background: #0f172a;
-      padding: 32px 28px;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: #e8edf2;
       border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: transform 0.22s, background 0.22s;
-      position: relative;
       overflow: hidden;
     }
 
-    .leistung-card::after {
+    .leistung-card {
+      background: #fff;
+      padding: 28px 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .leistung-card:hover { background: #f8fafc; }
+
+    .leistung-card::before {
       content: "";
       position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--sylegro-blue), var(--sylegro-green));
+      opacity: 0;
+      transition: opacity 0.2s;
     }
+    .leistung-card:hover::before { opacity: 1; }
 
-    .leistung-card:hover { transform: translateY(-4px); background: #162032; }
-    .leistung-card:hover::after { transform: scaleX(1); }
-    .leistung-card:last-child { grid-column: span 3; background: rgba(23,168,99,0.08); border-color: rgba(23,168,99,0.15); }
+    .leistung-card:last-child {
+      grid-column: span 2;
+      background: #f8fafc;
+      border-top: 1px solid #e8edf2;
+      justify-content: center;
+      text-align: center;
+      padding: 20px 32px;
+    }
+    .leistung-card:last-child::before { display: none; }
 
     .leistung-icon { display: none; }
+    .leistung-num { display: none; }
 
-    .leistung-num {
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: rgba(255,255,255,0.07);
-      display: block;
-      margin-bottom: 12px;
-      line-height: 1;
+    .leistung-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--sylegro-blue);
+      flex-shrink: 0;
+      margin-top: 6px;
     }
+    .leistung-card:nth-child(even) .leistung-dot { background: var(--sylegro-green); }
+    .leistung-card:last-child .leistung-dot { display: none; }
 
-    .leistung-title { font-size: 1rem; font-weight: 700; color: #fff; margin: 0 0 8px 0; }
-    .leistung-text { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin: 0; }
+    .leistung-body {}
+    .leistung-title { font-size: 0.97rem; font-weight: 700; color: #0f172a; margin: 0 0 5px 0; }
+    .leistung-text { font-size: 0.85rem; color: #4b5563; line-height: 1.65; margin: 0; }
+    .leistung-card:last-child .leistung-title { color: var(--sylegro-blue); margin: 0; }
+    .leistung-card:last-child .leistung-text { color: #6b7280; margin: 0; }
 
     /* VORHER / NACHHER KARUSSELL */
     .vorher-nachher-section {
@@ -347,7 +363,7 @@
 
     .vn-slide.active { display: grid; }
 
-    .vn-bilder { position: relative; height: 420px; }
+    .vn-bilder { position: relative; height: 460px; }
 
     .vn-bild-wrap {
       position: absolute;
@@ -358,8 +374,8 @@
 
     .vn-bild-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .vn-bild-hinten { width: 72%; height: 280px; top: 0; left: 0; z-index: 1; }
-    .vn-bild-vorne { width: 72%; height: 280px; bottom: 0; right: 0; z-index: 2; border: 3px solid #0f172a; }
+    .vn-bild-hinten { width: 70%; height: 270px; top: 0; left: 0; z-index: 1; }
+    .vn-bild-vorne  { width: 70%; height: 270px; bottom: 0; right: 0; z-index: 2; border: 3px solid #0f172a; }
 
     .vn-tag {
       position: absolute;
@@ -410,7 +426,7 @@
     }
 
     .sz-hero {
-      background: #f0f6ff;
+      background: #faf9f7;
       padding: 50px 60px 0;
       position: relative;
       overflow: hidden;
@@ -477,7 +493,7 @@
     .sz-tab:hover { color: var(--sylegro-blue); }
     .sz-tab.active { color: var(--sylegro-blue); border-bottom-color: var(--sylegro-blue); }
 
-    .sz-panels { background: #ffffff; padding: 0 60px; }
+    .sz-panels { background: #faf9f7; padding: 0; }
     .sz-panel { display: none; }
     .sz-panel.active { display: block; }
 
@@ -510,7 +526,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: #fff;
+      background: #faf9f7;
     }
 
     .sz-panel-accent {
@@ -659,9 +675,9 @@
 
     /* CTA Schutzbehandlungen */
     .sz-cta-row {
-      background: #f0f6ff;
+      background: #faf9f7;
       padding: 36px 60px;
-      border-top: 1px solid #dde8f5;
+      border-top: 1px solid #e8e4df;
     }
 
     .sz-cta-inner {
@@ -769,6 +785,10 @@
       margin-top: 16px;
       border: 1px solid #e2e8f0;
       transition: transform 0.2s, box-shadow 0.2s;
+      min-height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     .ablauf-step:hover .ablauf-step-card {
@@ -889,39 +909,52 @@
       <p class="section-desc">Für jede Anforderung die passende Lösung – mit Präzision, modernen Methoden und einem Team das weiss was es tut.</p>
       <div class="leistungen-grid">
         <div class="leistung-card">
-          <span class="leistung-num">01</span>
-          <p class="leistung-title">Fassadenreinigung</p>
-          <p class="leistung-text">Professionelle Reinigung von Gebäudefassaden – schonend, gründlich und mit modernster Technik.</p>
+          <span class="leistung-dot"></span>
+          <div class="leistung-body">
+            <p class="leistung-title">Fassadenreinigung</p>
+            <p class="leistung-text">Professionelle Reinigung von Gebäudefassaden – schonend, gründlich und mit modernster Technik.</p>
+          </div>
         </div>
         <div class="leistung-card">
-          <span class="leistung-num">02</span>
-          <p class="leistung-title">Fenster- & Storenreinigung</p>
-          <p class="leistung-text">Streifenfreie Reinigung von Fenstern, Glasfronten und Storen – innen und aussen, für ein klares Bild.</p>
+          <span class="leistung-dot"></span>
+          <div class="leistung-body">
+            <p class="leistung-title">Fenster- & Storenreinigung</p>
+            <p class="leistung-text">Streifenfreie Reinigung von Fenstern, Glasfronten und Storen – innen und aussen, für ein klares Bild.</p>
+          </div>
         </div>
         <div class="leistung-card">
-          <span class="leistung-num">03</span>
-          <p class="leistung-title">Baureinigung</p>
-          <p class="leistung-text">Endreinigung nach Bau- und Renovationsarbeiten – damit Ihr Objekt sofort bezugsbereit ist.</p>
+          <span class="leistung-dot"></span>
+          <div class="leistung-body">
+            <p class="leistung-title">Baureinigung</p>
+            <p class="leistung-text">Endreinigung nach Bau- und Renovationsarbeiten – damit Ihr Objekt sofort bezugsbereit ist.</p>
+          </div>
         </div>
         <div class="leistung-card">
-          <span class="leistung-num">04</span>
-          <p class="leistung-title">Umzugsreinigung</p>
-          <p class="leistung-text">Gründliche Reinigung bei Ein- und Auszug – für eine makellose Übergabe der Liegenschaft.</p>
+          <span class="leistung-dot"></span>
+          <div class="leistung-body">
+            <p class="leistung-title">Umzugsreinigung</p>
+            <p class="leistung-text">Gründliche Reinigung bei Ein- und Auszug – für eine makellose Übergabe der Liegenschaft.</p>
+          </div>
         </div>
         <div class="leistung-card">
-          <span class="leistung-num">05</span>
-          <p class="leistung-title">Graffiti-Entfernung</p>
-          <p class="leistung-text">Fachgerechte Entfernung von Graffiti an Fassaden, Mauern und Oberflächen – rückstandslos und materialschonend.</p>
+          <span class="leistung-dot"></span>
+          <div class="leistung-body">
+            <p class="leistung-title">Graffiti-Entfernung</p>
+            <p class="leistung-text">Fachgerechte Entfernung von Graffiti an Fassaden, Mauern und Oberflächen – rückstandslos und materialschonend.</p>
+          </div>
         </div>
         <div class="leistung-card">
-          <span class="leistung-num">06</span>
-          <p class="leistung-title">Schutzbehandlungen</p>
-          <p class="leistung-text">Wir schützen Oberflächen nachhaltig – von Bodenversiegelungen über UV- und Graffitischutz bis hin zu Imprägnierungen.</p>
+          <span class="leistung-dot"></span>
+          <div class="leistung-body">
+            <p class="leistung-title">Schutzbehandlungen</p>
+            <p class="leistung-text">Wir schützen Oberflächen nachhaltig – von Bodenversiegelungen über UV- und Graffitischutz bis hin zu Imprägnierungen.</p>
+          </div>
         </div>
-        <div class="leistung-card" style="grid-column: span 3; border-bottom: none; background: rgba(23,168,99,0.06);">
-          <span class="leistung-num" style="color: rgba(23,168,99,0.15)">→</span>
-          <p class="leistung-title" style="color: var(--sylegro-green);">Besondere Anforderung?</p>
-          <p class="leistung-text" style="color: rgba(255,255,255,0.45)">Sprechen Sie uns an – wir finden gemeinsam die passende Lösung für Ihr Objekt.</p>
+        <div class="leistung-card">
+          <div class="leistung-body">
+            <p class="leistung-title">Und vieles mehr</p>
+            <p class="leistung-text">Haben Sie eine besondere Anforderung? Kontaktieren Sie uns – wir erarbeiten gemeinsam die passende Lösung.</p>
+          </div>
         </div>
       </div>
     </div>
