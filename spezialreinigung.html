@@ -24,6 +24,31 @@
 
     a { color: inherit; text-decoration: none; }
 
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--sylegro-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 12px 0;
+      line-height: 1.15;
+    }
+    .section-title em { font-style: italic; color: var(--sylegro-blue); }
+    .section-desc {
+      font-size: 1rem;
+      color: #4b5563;
+      line-height: 1.75;
+      margin: 0 0 48px 0;
+      max-width: 560px;
+    }
+
     /* HEADER */
     header {
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
@@ -214,100 +239,66 @@
     /* LEISTUNGEN */
     .leistungen-section {
       background: #ffffff;
-      padding: 70px 60px;
+      padding: 80px 60px;
       width: 100%;
     }
 
-    .leistungen-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .leistungen-inner { max-width: 1200px; margin: 0 auto; }
 
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--sylegro-blue);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #0f172a;
-      margin: 0 0 12px 0;
-      line-height: 1.2;
-    }
-
-    .section-title em { font-style: italic; color: var(--sylegro-blue); }
-
-    .section-desc {
-      font-size: 1rem;
-      color: #4b5563;
-      line-height: 1.7;
-      margin: 0 0 48px 0;
-      max-width: 560px;
-    }
+    .leistungen-section .section-label { color: var(--sylegro-blue); }
+    .leistungen-section .section-title { color: #0f172a; }
+    .leistungen-section .section-title em { color: var(--sylegro-blue); }
+    .leistungen-section .section-desc { color: #4b5563; }
 
     .leistungen-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      overflow: hidden;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
 
     .leistung-card {
-      background: #fff;
+      background: #0f172a;
       padding: 32px 28px;
-      border: none;
-      border-right: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
-      transition: background 0.2s;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.22s, background 0.22s;
       position: relative;
+      overflow: hidden;
     }
 
-    .leistung-card:nth-child(even) { border-right: none; }
-    .leistung-card:nth-last-child(-n+2) { border-bottom: none; }
-    .leistung-card:hover { background: #f8fafc; }
+    .leistung-card::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .leistung-card:hover { transform: translateY(-4px); background: #162032; }
+    .leistung-card:hover::after { transform: scaleX(1); }
+    .leistung-card:last-child { grid-column: span 3; background: rgba(23,168,99,0.08); border-color: rgba(23,168,99,0.15); }
 
     .leistung-icon { display: none; }
 
     .leistung-num {
-      font-size: 0.7rem;
+      font-size: 2.4rem;
       font-weight: 800;
-      color: var(--sylegro-blue);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      color: rgba(255,255,255,0.07);
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      line-height: 1;
     }
 
-    .leistung-card:nth-child(even) .leistung-num { color: var(--sylegro-green); }
-
-    .leistung-card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: var(--sylegro-blue);
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-
-    .leistung-card:nth-child(even)::before { background: var(--sylegro-green); }
-    .leistung-card:hover::before { opacity: 1; }
-
-    .leistung-title { font-size: 1rem; font-weight: 700; color: #0f172a; margin: 0 0 8px 0; }
-    .leistung-text { font-size: 0.88rem; color: #4b5563; line-height: 1.65; margin: 0; }
+    .leistung-title { font-size: 1rem; font-weight: 700; color: #fff; margin: 0 0 8px 0; }
+    .leistung-text { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin: 0; }
 
     /* VORHER / NACHHER KARUSSELL */
     .vorher-nachher-section {
       background: #0f172a;
-      padding: 70px 60px;
+      padding: 80px 60px;
       width: 100%;
     }
 
@@ -356,7 +347,7 @@
 
     .vn-slide.active { display: grid; }
 
-    .vn-bilder { position: relative; height: 440px; }
+    .vn-bilder { position: relative; height: 420px; }
 
     .vn-bild-wrap {
       position: absolute;
@@ -367,8 +358,8 @@
 
     .vn-bild-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .vn-bild-hinten { width: 75%; height: 290px; top: 0; left: 0; z-index: 1; }
-    .vn-bild-vorne { width: 70%; height: 270px; bottom: 0; right: 0; z-index: 2; border: 4px solid #0f172a; }
+    .vn-bild-hinten { width: 72%; height: 280px; top: 0; left: 0; z-index: 1; }
+    .vn-bild-vorne { width: 72%; height: 280px; bottom: 0; right: 0; z-index: 2; border: 3px solid #0f172a; }
 
     .vn-tag {
       position: absolute;
@@ -419,16 +410,13 @@
     }
 
     .sz-hero {
-      background: #1a3a5c;
+      background: #f0f6ff;
       padding: 50px 60px 0;
       position: relative;
       overflow: hidden;
     }
 
-    .sz-hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .sz-hero-inner { max-width: 1200px; margin: 0 auto; }
 
     .sz-hero::before {
       content: "";
@@ -436,7 +424,7 @@
       top: -80px; right: -80px;
       width: 400px; height: 400px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(23,168,99,0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0,99,165,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -445,14 +433,14 @@
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--sylegro-green);
+      color: var(--sylegro-blue);
       margin: 0 0 12px;
     }
 
     .sz-headline {
       font-size: 1.9rem;
       font-weight: 800;
-      color: #fff;
+      color: #0f172a;
       line-height: 1.12;
       margin: 0 0 10px;
     }
@@ -461,7 +449,7 @@
 
     .sz-subtext {
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.6);
+      color: #4b5563;
       line-height: 1.6;
       max-width: 520px;
       margin: 0 0 20px;
@@ -470,26 +458,26 @@
     .sz-tabs {
       display: flex;
       gap: 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 2px solid #e2e8f0;
     }
 
     .sz-tab {
       padding: 14px 28px;
       font-size: 0.9rem;
       font-weight: 600;
-      color: rgba(255,255,255,0.45);
+      color: #6b7280;
       cursor: pointer;
       border-bottom: 3px solid transparent;
-      margin-bottom: -1px;
+      margin-bottom: -2px;
       transition: color 0.2s, border-color 0.2s;
       user-select: none;
       white-space: nowrap;
     }
 
-    .sz-tab:hover { color: rgba(255,255,255,0.8); }
-    .sz-tab.active { color: #fff; border-bottom-color: var(--sylegro-green); }
+    .sz-tab:hover { color: var(--sylegro-blue); }
+    .sz-tab.active { color: var(--sylegro-blue); border-bottom-color: var(--sylegro-blue); }
 
-    .sz-panels { background: #f0f4f8; padding: 0 60px; }
+    .sz-panels { background: #ffffff; padding: 0 60px; }
     .sz-panel { display: none; }
     .sz-panel.active { display: block; }
 
@@ -503,7 +491,7 @@
     .sz-panel-img {
       position: relative;
       overflow: hidden;
-      min-height: 0;
+      min-height: 360px;
     }
 
     .sz-panel-img img {
@@ -518,7 +506,7 @@
     .sz-panel-img:hover img { transform: scale(1.04); }
 
     .sz-panel-content {
-      padding: 20px 28px;
+      padding: 40px 36px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -598,7 +586,7 @@
     .sz-check-icon.green { background: rgba(23,168,99,0.12); color: var(--sylegro-green); }
 
     /* STATS BAR */
-    .sz-stats-bar { background: #1a3a5c; padding: 0 60px; }
+    .sz-stats-bar { background: #0f172a; padding: 0 60px; }
 
     .sz-stats-grid {
       display: grid;
@@ -671,9 +659,9 @@
 
     /* CTA Schutzbehandlungen */
     .sz-cta-row {
-      background: #f0f4f8;
-      padding: 40px 60px;
-      border-top: 1px solid #dde3ea;
+      background: #f0f6ff;
+      padding: 36px 60px;
+      border-top: 1px solid #dde8f5;
     }
 
     .sz-cta-inner {
@@ -726,7 +714,7 @@
     .einsatz-tile-label { position: absolute; bottom: 18px; left: 20px; color: #ffffff; font-size: 1rem; font-weight: 600; }
 
     /* ABLAUF */
-    .ablauf-section { background: #ffffff; padding: 80px 60px; width: 100%; }
+    .ablauf-section { background: var(--bg-light); padding: 80px 60px; width: 100%; }
     .ablauf-inner { max-width: 1200px; margin: 0 auto; }
 
     .ablauf-grid {
@@ -741,28 +729,56 @@
       content: "";
       position: absolute;
       top: 27px; left: calc(12.5%);
-      width: 75%; height: 1px;
+      width: 75%; height: 2px;
       background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
       z-index: 0;
     }
 
-    .ablauf-step { text-align: center; padding: 0 20px; position: relative; z-index: 1; }
+    .ablauf-step {
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
 
     .ablauf-num {
       width: 56px; height: 56px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--sylegro-blue), var(--sylegro-green));
-      color: #ffffff;
+      background: #fff;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      color: var(--sylegro-blue);
       font-size: 1.1rem;
       font-weight: 800;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 20px;
-      box-shadow: 0 4px 16px rgba(0,99,165,0.3);
+      box-shadow: 0 0 0 3px var(--sylegro-blue), 0 8px 20px rgba(0,99,165,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .ablauf-step:hover .ablauf-num {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 3px var(--sylegro-green), 0 12px 28px rgba(23,168,99,0.3);
+      color: var(--sylegro-green);
+    }
+
+    .ablauf-step-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px 16px;
+      margin-top: 16px;
+      border: 1px solid #e2e8f0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .ablauf-step:hover .ablauf-step-card {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(15,23,42,0.09);
     }
 
     .ablauf-icon { display: none; }
-    .ablauf-title { font-size: 0.95rem; font-weight: 700; color: #0f172a; margin: 0 0 8px 0; }
-    .ablauf-text { font-size: 0.83rem; color: #6b7280; line-height: 1.6; margin: 0; }
+    .ablauf-title { font-size: 0.92rem; font-weight: 700; color: #0f172a; margin: 0 0 6px 0; }
+    .ablauf-text { font-size: 0.8rem; color: #6b7280; line-height: 1.6; margin: 0; }
 
     /* CTA BANNER */
     .cta-banner { background: #0f172a; padding: 80px 60px; width: 100%; }
@@ -900,12 +916,12 @@
         <div class="leistung-card">
           <span class="leistung-num">06</span>
           <p class="leistung-title">Schutzbehandlungen</p>
-          <p class="leistung-text">Wir schützen Oberflächen nachhaltig – von Bodenversiegelungen über UV- und Graffitischutz bis hin zu Imprägnierungen für Fassaden und Baustoffe aller Art.</p>
+          <p class="leistung-text">Wir schützen Oberflächen nachhaltig – von Bodenversiegelungen über UV- und Graffitischutz bis hin zu Imprägnierungen.</p>
         </div>
-        <div class="leistung-card" style="grid-column: span 2; border-bottom: none; background: #f0faf5;">
-          <span class="leistung-num" style="color: var(--sylegro-green)">Und vieles mehr</span>
+        <div class="leistung-card" style="grid-column: span 3; border-bottom: none; background: rgba(23,168,99,0.06);">
+          <span class="leistung-num" style="color: rgba(23,168,99,0.15)">→</span>
           <p class="leistung-title" style="color: var(--sylegro-green);">Besondere Anforderung?</p>
-          <p class="leistung-text">Sprechen Sie uns an – wir finden gemeinsam die passende Lösung.</p>
+          <p class="leistung-text" style="color: rgba(255,255,255,0.45)">Sprechen Sie uns an – wir finden gemeinsam die passende Lösung für Ihr Objekt.</p>
         </div>
       </div>
     </div>
@@ -1034,7 +1050,7 @@
       <div class="sz-panel" id="sz-panel-boden">
         <div class="sz-panel-grid">
           <div class="sz-panel-img">
-            <img src="2KBoden.jpg" alt="Bodenversiegelung">
+            <img src="2KBoden.JPG" alt="Bodenversiegelung">
           </div>
           <div class="sz-panel-content">
             <span class="sz-panel-accent green-acc">Für Böden & Innenoberflächen</span>
@@ -1105,10 +1121,34 @@
       <h2 class="section-title">Unser <em>Ablauf</em></h2>
       <p class="section-desc">Von der ersten Anfrage bis zur fertigen Reinigung – unkompliziert, transparent und zuverlässig.</p>
       <div class="ablauf-grid">
-        <div class="ablauf-step"><div class="ablauf-num">1</div><p class="ablauf-title">Anfrage</p><p class="ablauf-text">Sie kontaktieren uns mit Ihrem Anliegen – per Formular, Telefon oder E-Mail.</p></div>
-        <div class="ablauf-step"><div class="ablauf-num">2</div><p class="ablauf-title">Beratung</p><p class="ablauf-text">Wir besichtigen das Objekt und erstellen ein kostenloses, individuelles Angebot.</p></div>
-        <div class="ablauf-step"><div class="ablauf-num">3</div><p class="ablauf-title">Umsetzung</p><p class="ablauf-text">Unser Team führt die Reinigung professionell und termingerecht durch.</p></div>
-        <div class="ablauf-step"><div class="ablauf-num">4</div><p class="ablauf-title">Abnahme</p><p class="ablauf-text">Gemeinsame Kontrolle – erst wenn Sie zufrieden sind, ist unsere Arbeit getan.</p></div>
+        <div class="ablauf-step">
+          <div class="ablauf-num">1</div>
+          <div class="ablauf-step-card">
+            <p class="ablauf-title">Anfrage</p>
+            <p class="ablauf-text">Sie kontaktieren uns mit Ihrem Anliegen – per Formular, Telefon oder E-Mail.</p>
+          </div>
+        </div>
+        <div class="ablauf-step">
+          <div class="ablauf-num">2</div>
+          <div class="ablauf-step-card">
+            <p class="ablauf-title">Beratung</p>
+            <p class="ablauf-text">Wir besichtigen das Objekt und erstellen ein kostenloses, individuelles Angebot.</p>
+          </div>
+        </div>
+        <div class="ablauf-step">
+          <div class="ablauf-num">3</div>
+          <div class="ablauf-step-card">
+            <p class="ablauf-title">Umsetzung</p>
+            <p class="ablauf-text">Unser Team führt die Reinigung professionell und termingerecht durch.</p>
+          </div>
+        </div>
+        <div class="ablauf-step">
+          <div class="ablauf-num">4</div>
+          <div class="ablauf-step-card">
+            <p class="ablauf-title">Abnahme</p>
+            <p class="ablauf-text">Gemeinsame Kontrolle – erst wenn Sie zufrieden sind, ist unsere Arbeit getan.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
