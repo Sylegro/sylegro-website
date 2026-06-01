@@ -260,62 +260,76 @@
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 14px;
-      padding: 30px 26px;
-      transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+      padding: 36px 28px;
+      transition: background 0.28s ease, border-color 0.28s ease, transform 0.2s ease, box-shadow 0.2s ease;
       cursor: default;
       position: relative;
-      overflow: hidden;
     }
 
     .leistung-card:hover {
-      background: var(--sylegro-blue);
-      border-color: var(--sylegro-blue);
-      transform: translateY(-3px);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
     }
 
-    .leistung-card:nth-child(even):hover {
-      background: var(--sylegro-green);
-      border-color: var(--sylegro-green);
-    }
+    /* 6 individuelle Hover-Farben: gleichmässiger Verlauf von Grün → Blau */
+    .leistung-card:nth-child(1):hover { background: rgba(23,168,99,0.12); border-color: rgba(23,168,99,0.35); }
+    .leistung-card:nth-child(2):hover { background: rgba(14,148,114,0.12); border-color: rgba(14,148,114,0.35); }
+    .leistung-card:nth-child(3):hover { background: rgba(8,127,127,0.12); border-color: rgba(8,127,127,0.35); }
+    .leistung-card:nth-child(4):hover { background: rgba(5,106,138,0.12); border-color: rgba(5,106,138,0.35); }
+    .leistung-card:nth-child(5):hover { background: rgba(3,85,151,0.12); border-color: rgba(3,85,151,0.35); }
+    .leistung-card:nth-child(6):hover { background: rgba(0,99,165,0.12); border-color: rgba(0,99,165,0.35); }
 
     .leistung-card:last-child {
       grid-column: span 3;
       background: #f8fafc;
       border-style: dashed;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 28px;
+      text-decoration: none;
     }
 
     .leistung-card:last-child:hover {
-      background: var(--sylegro-blue);
+      background: #0063A5;
+      border-color: #0063A5;
       border-style: solid;
     }
 
     .leistung-icon { display: none; }
-    .leistung-num { display: none; }
-    .leistung-dot { display: none; }
-    .leistung-body {}
+    .leistung-num  { display: none; }
+    .leistung-dot  { display: none; }
 
     .leistung-title {
       font-size: 1rem;
       font-weight: 700;
       color: #0f172a;
-      margin: 0 0 8px 0;
-      transition: color 0.25s ease;
+      margin: 0 0 10px 0;
+      transition: color 0.28s ease;
     }
 
-    .leistung-card:hover .leistung-title { color: #ffffff; }
+    .leistung-card:hover .leistung-title { color: #0f172a; }
+    .leistung-card:nth-child(1):hover .leistung-title { color: #0e6b40; }
+    .leistung-card:nth-child(2):hover .leistung-title { color: #085c48; }
+    .leistung-card:nth-child(3):hover .leistung-title { color: #054f4f; }
+    .leistung-card:nth-child(4):hover .leistung-title { color: #043f55; }
+    .leistung-card:nth-child(5):hover .leistung-title { color: #022f62; }
+    .leistung-card:nth-child(6):hover .leistung-title { color: #003d6b; }
+
+    .leistung-card:hover .leistung-text { color: #374151; }
 
     .leistung-text {
-      font-size: 0.85rem;
+      font-size: 0.87rem;
       color: #6b7280;
-      line-height: 1.6;
+      line-height: 1.65;
       margin: 0;
-      transition: color 0.25s ease;
+      transition: color 0.28s ease;
     }
 
-    .leistung-card:hover .leistung-text { color: rgba(255,255,255,0.82); }
-
-    .leistung-card:last-child .leistung-title { color: var(--sylegro-blue); }
+    .leistung-card:last-child .leistung-title { color: var(--sylegro-blue); margin: 0; }
     .leistung-card:last-child:hover .leistung-title { color: #ffffff; }
+    .leistung-card:last-child .leistung-text { display: none; }
 
     /* VORHER / NACHHER KARUSSELL */
     .vorher-nachher-section {
@@ -938,10 +952,9 @@
           <p class="leistung-title">Schutzbehandlungen</p>
           <p class="leistung-text">Bodenversiegelungen, UV- und Graffitischutz sowie Imprägnierungen aller Art.</p>
         </div>
-        <div class="leistung-card">
-          <p class="leistung-title">Und vieles mehr</p>
-          <p class="leistung-text">Haben Sie eine besondere Anforderung? Wir erarbeiten gemeinsam die passende Lösung.</p>
-        </div>
+        <a href="kontakt.html" class="leistung-card">
+          <p class="leistung-title">Und vieles mehr →</p>
+        </a>
       </div>
     </div>
   </div>
