@@ -831,15 +831,17 @@
     .ablauf-num {
       width: 56px; height: 56px;
       border-radius: 50%;
-      background: #fff;
+      background: var(--bg-light);
       color: var(--sylegro-blue);
       font-size: 1.1rem;
       font-weight: 800;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 0;
       box-shadow: 0 0 0 3px var(--sylegro-blue), 0 8px 20px rgba(0,99,165,0.2);
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s, color 0.2s, background 0.2s;
       grid-row: 1;
+      position: relative;
+      z-index: 2;
     }
 
     .ablauf-step:nth-child(1) .ablauf-num { grid-column: 1; }
