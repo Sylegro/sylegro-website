@@ -556,7 +556,6 @@
       grid-template-columns: 1fr 1fr;
       max-width: 1200px;
       margin: 0 auto;
-      height: 420px;
       align-items: stretch;
     }
 
@@ -564,6 +563,7 @@
       position: relative;
       overflow: hidden;
       border-radius: 14px 0 0 14px;
+      min-height: 100%;
     }
 
     .sz-panel-img img {
@@ -572,13 +572,15 @@
       object-fit: cover;
       object-position: center;
       display: block;
+      position: absolute;
+      inset: 0;
       transition: transform 0.6s ease;
     }
 
     .sz-panel-img:hover img { transform: scale(1.03); }
 
     .sz-panel-content {
-      padding: 36px 40px;
+      padding: 40px 40px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -586,8 +588,12 @@
       border-radius: 0 14px 14px 0;
       border: 1px solid #dce5ef;
       border-left: none;
-      overflow-y: auto;
     }
+
+    /* Beide Panels immer gerendert – inaktives unsichtbar aber hält Höhe */
+    .sz-panels { background: #f4f7fb; padding: 0 60px; position: relative; z-index: 1; }
+    .sz-panel { display: none; }
+    .sz-panel.active { display: block; }
 
     .sz-panel-accent {
       display: inline-flex;
@@ -1289,6 +1295,43 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Beide Panel-Grids gleich hoch machen
+    function equalPanelHeights() {
+      const fassadeGrid = document.querySelector('#sz-panel-fassade .sz-panel-grid');
+      const bodenGrid   = document.querySelector('#sz-panel-boden .sz-panel-grid');
+      if (!fassadeGrid || !bodenGrid) return;
+
+      // Reset
+      fassadeGrid.style.minHeight = '';
+      bodenGrid.style.minHeight   = '';
+
+      // Beide kurz sichtbar machen zum Messen
+      const fassadePanel = document.getElementById('sz-panel-fassade');
+      const bodenPanel   = document.getElementById('sz-panel-boden');
+      const wasActiveFassade = fassadePanel.classList.contains('active');
+
+      fassadePanel.style.display = 'block';
+      bodenPanel.style.display   = 'block';
+
+      const h1 = fassadeGrid.querySelector('.sz-panel-content').scrollHeight;
+      const h2 = bodenGrid.querySelector('.sz-panel-content').scrollHeight;
+      const maxH = Math.max(h1, h2) + 80; // +80 für padding
+
+      fassadeGrid.style.minHeight = maxH + 'px';
+      bodenGrid.style.minHeight   = maxH + 'px';
+
+      // Wieder zurücksetzen
+      fassadePanel.style.display = '';
+      bodenPanel.style.display   = '';
+      if (!wasActiveFassade) {
+        fassadePanel.classList.remove('active');
+        bodenPanel.classList.add('active');
+      }
+    }
+
+    window.addEventListener('load', equalPanelHeights);
+    window.addEventListener('resize', equalPanelHeights);
 
     // SCHUTZBEHANDLUNGEN TABS
     const szStats = {
