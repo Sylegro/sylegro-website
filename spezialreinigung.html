@@ -804,9 +804,11 @@
     .ablauf-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto 1fr;
       gap: 0;
       margin-top: 48px;
       position: relative;
+      align-items: start;
     }
 
     .ablauf-grid::before {
@@ -823,28 +825,27 @@
       padding: 0 20px;
       position: relative;
       z-index: 1;
+      display: contents;
     }
 
     .ablauf-num {
       width: 56px; height: 56px;
       border-radius: 50%;
       background: #fff;
-      border: 2px solid transparent;
-      background-clip: padding-box;
       color: var(--sylegro-blue);
       font-size: 1.1rem;
       font-weight: 800;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
+      margin: 0 auto 0;
       box-shadow: 0 0 0 3px var(--sylegro-blue), 0 8px 20px rgba(0,99,165,0.2);
       transition: transform 0.2s, box-shadow 0.2s;
+      grid-row: 1;
     }
 
-    .ablauf-step:hover .ablauf-num {
-      transform: scale(1.1);
-      box-shadow: 0 0 0 3px var(--sylegro-green), 0 12px 28px rgba(23,168,99,0.3);
-      color: var(--sylegro-green);
-    }
+    .ablauf-step:nth-child(1) .ablauf-num { grid-column: 1; }
+    .ablauf-step:nth-child(2) .ablauf-num { grid-column: 2; }
+    .ablauf-step:nth-child(3) .ablauf-num { grid-column: 3; }
+    .ablauf-step:nth-child(4) .ablauf-num { grid-column: 4; }
 
     .ablauf-step-card {
       background: #fff;
@@ -853,13 +854,16 @@
       margin-top: 16px;
       border: 1px solid #e2e8f0;
       transition: transform 0.2s, box-shadow 0.2s;
-      min-height: 100px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      grid-row: 2;
+      align-self: stretch;
     }
 
-    .ablauf-step:hover .ablauf-step-card {
+    .ablauf-step:nth-child(1) .ablauf-step-card { grid-column: 1; }
+    .ablauf-step:nth-child(2) .ablauf-step-card { grid-column: 2; }
+    .ablauf-step:nth-child(3) .ablauf-step-card { grid-column: 3; }
+    .ablauf-step:nth-child(4) .ablauf-step-card { grid-column: 4; }
+
+    .ablauf-step-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 24px rgba(15,23,42,0.09);
     }
