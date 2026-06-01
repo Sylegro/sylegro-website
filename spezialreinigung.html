@@ -667,32 +667,31 @@
     .sz-check-icon.blue { background: rgba(0,99,165,0.1); color: var(--sylegro-blue); }
     .sz-check-icon.green { background: rgba(23,168,99,0.12); color: var(--sylegro-green); }
 
-    /* Stats Bar – im hellen Schutzbehandlungen-Bereich */
-    .sz-stats-bar { background: transparent; padding: 0 60px; position: relative; z-index: 1; }
+    /* Stats Bar – dunkler Hintergrund */
+    .sz-stats-bar { background: #0f172a; padding: 0 60px; position: relative; z-index: 1; }
 
     .sz-stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid #dce5ef;
-      border-bottom: 1px solid #dce5ef;
+      border-top: 1px solid rgba(255,255,255,0.07);
       max-width: 1200px;
       margin: 0 auto;
     }
 
     .sz-stat {
       padding: 28px 20px;
-      border-right: 1px solid #dce5ef;
+      border-right: 1px solid rgba(255,255,255,0.07);
       transition: background 0.2s;
       cursor: default;
     }
 
     .sz-stat:last-child { border-right: none; }
-    .sz-stat:hover { background: rgba(0,99,165,0.04); }
+    .sz-stat:hover { background: rgba(255,255,255,0.03); }
 
     .sz-stat-num {
       font-size: 2rem;
       font-weight: 800;
-      color: #0f172a;
+      color: #ffffff;
       line-height: 1;
       margin: 0 0 6px;
       transition: opacity 0.25s;
@@ -702,7 +701,7 @@
 
     .sz-stat-label {
       font-size: 0.78rem;
-      color: #6b7280;
+      color: rgba(255,255,255,0.45);
       line-height: 1.4;
       margin: 0;
       transition: opacity 0.25s;
