@@ -140,11 +140,11 @@
     }
 
     .page-hero-title {
-      font-size: 3rem;
-      font-weight: 700;
+      font-size: 4.5rem;
+      font-weight: 800;
       color: #ffffff;
       margin: 0;
-      line-height: 1.2;
+      line-height: 1.1;
       opacity: 0;
       animation: slideInLeft 0.7s ease 0.3s forwards;
     }
@@ -253,27 +253,56 @@
 
     .leistungen-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      overflow: hidden;
     }
 
     .leistung-card {
-      background: #f8fafc;
-      border-radius: 16px;
-      padding: 28px 24px;
-      border: 1px solid #e2e8f0;
-      border-top: 3px solid var(--sylegro-blue);
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: #fff;
+      padding: 32px 28px;
+      border: none;
+      border-right: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      transition: background 0.2s;
+      position: relative;
     }
 
-    .leistung-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgba(15,23,42,0.1);
+    .leistung-card:nth-child(even) { border-right: none; }
+    .leistung-card:nth-last-child(-n+2) { border-bottom: none; }
+    .leistung-card:hover { background: #f8fafc; }
+
+    .leistung-icon { display: none; }
+
+    .leistung-num {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--sylegro-blue);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
     }
 
-    .leistung-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
+    .leistung-card:nth-child(even) .leistung-num { color: var(--sylegro-green); }
+
+    .leistung-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--sylegro-blue);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .leistung-card:nth-child(even)::before { background: var(--sylegro-green); }
+    .leistung-card:hover::before { opacity: 1; }
+
     .leistung-title { font-size: 1rem; font-weight: 700; color: #0f172a; margin: 0 0 8px 0; }
-    .leistung-text { font-size: 0.9rem; color: #4b5563; line-height: 1.6; margin: 0; }
+    .leistung-text { font-size: 0.88rem; color: #4b5563; line-height: 1.65; margin: 0; }
 
     /* VORHER / NACHHER KARUSSELL */
     .vorher-nachher-section {
@@ -327,7 +356,7 @@
 
     .vn-slide.active { display: grid; }
 
-    .vn-bilder { position: relative; height: 360px; }
+    .vn-bilder { position: relative; height: 440px; }
 
     .vn-bild-wrap {
       position: absolute;
@@ -338,8 +367,8 @@
 
     .vn-bild-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .vn-bild-hinten { width: 72%; height: 230px; top: 0; left: 0; z-index: 1; }
-    .vn-bild-vorne { width: 68%; height: 215px; bottom: 0; right: 0; z-index: 2; border: 4px solid #0f172a; }
+    .vn-bild-hinten { width: 75%; height: 290px; top: 0; left: 0; z-index: 1; }
+    .vn-bild-vorne { width: 70%; height: 270px; bottom: 0; right: 0; z-index: 2; border: 4px solid #0f172a; }
 
     .vn-tag {
       position: absolute;
@@ -390,8 +419,8 @@
     }
 
     .sz-hero {
-      background: var(--dark);
-      padding: 30px 60px 0;
+      background: #1a3a5c;
+      padding: 50px 60px 0;
       position: relative;
       overflow: hidden;
     }
@@ -460,7 +489,7 @@
     .sz-tab:hover { color: rgba(255,255,255,0.8); }
     .sz-tab.active { color: #fff; border-bottom-color: var(--sylegro-green); }
 
-    .sz-panels { background: var(--light); padding: 0 60px; }
+    .sz-panels { background: #f0f4f8; padding: 0 60px; }
     .sz-panel { display: none; }
     .sz-panel.active { display: block; }
 
@@ -569,7 +598,7 @@
     .sz-check-icon.green { background: rgba(23,168,99,0.12); color: var(--sylegro-green); }
 
     /* STATS BAR */
-    .sz-stats-bar { background: #0f172a; padding: 0 60px; }
+    .sz-stats-bar { background: #1a3a5c; padding: 0 60px; }
 
     .sz-stats-grid {
       display: grid;
@@ -640,12 +669,11 @@
     .sz-vorteil-title { font-size: 0.88rem; font-weight: 700; color: #0f172a; margin: 0 0 6px; }
     .sz-vorteil-text { font-size: 0.78rem; color: #6b7280; line-height: 1.55; margin: 0; }
 
-    /* CTA */
+    /* CTA Schutzbehandlungen */
     .sz-cta-row {
-      background: var(--sylegro-blue);
-      padding: 20px 60px;
-      position: relative;
-      overflow: hidden;
+      background: #f0f4f8;
+      padding: 40px 60px;
+      border-top: 1px solid #dde3ea;
     }
 
     .sz-cta-inner {
@@ -658,44 +686,34 @@
       flex-wrap: wrap;
     }
 
-    .sz-cta-row::before {
-      content: "";
-      position: absolute;
-      right: -60px; top: -60px;
-      width: 240px; height: 240px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
-      pointer-events: none;
-    }
-
-    .sz-cta-text { font-size: 1rem; font-weight: 600; color: #fff; margin: 0; }
-    .sz-cta-sub { font-size: 0.82rem; color: rgba(255,255,255,0.65); margin: 4px 0 0; }
+    .sz-cta-text { font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 0; }
+    .sz-cta-sub { font-size: 0.88rem; color: #4b5563; margin: 4px 0 0; }
 
     .sz-cta-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #fff;
-      color: var(--sylegro-blue);
-      padding: 12px 24px;
+      background: var(--sylegro-blue);
+      color: #fff;
+      padding: 13px 28px;
       border-radius: 999px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 700;
       font-family: "Kiro", sans-serif;
       text-decoration: none;
       transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 6px 20px rgba(0,99,165,0.25);
       flex-shrink: 0;
     }
 
-    .sz-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .sz-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,99,165,0.4); }
 
     @media (max-width: 900px) {
       .sz-hero { padding: 50px 24px 0; }
       .sz-panel-grid { grid-template-columns: 1fr; }
       .sz-panel-img { min-height: 260px; }
-      .sz-stats-bar, .sz-vorteile-strip, .sz-cta-row { padding-left: 24px; padding-right: 24px; }
+      .sz-stats-bar, .sz-cta-row { padding-left: 24px; padding-right: 24px; }
       .sz-stats-grid { grid-template-columns: 1fr 1fr; }
-      .sz-vorteile-grid { grid-template-columns: 1fr 1fr; }
       .sz-cta-row { flex-direction: column; text-align: center; }
     }
 
@@ -708,22 +726,64 @@
     .einsatz-tile-label { position: absolute; bottom: 18px; left: 20px; color: #ffffff; font-size: 1rem; font-weight: 600; }
 
     /* ABLAUF */
-    .ablauf-section { background: #ffffff; padding: 70px 60px; width: 100%; }
+    .ablauf-section { background: #ffffff; padding: 80px 60px; width: 100%; }
     .ablauf-inner { max-width: 1200px; margin: 0 auto; }
-    .ablauf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
-    .ablauf-step { text-align: center; padding: 28px 16px; background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; }
-    .ablauf-num { width: 44px; height: 44px; border-radius: 50%; background: var(--sylegro-blue); color: #ffffff; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
-    .ablauf-icon { font-size: 1.6rem; margin-bottom: 10px; display: block; }
-    .ablauf-title { font-size: 0.95rem; font-weight: 700; color: #0f172a; margin: 0 0 6px 0; }
-    .ablauf-text { font-size: 0.85rem; color: #6b7280; line-height: 1.5; margin: 0; }
+
+    .ablauf-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 48px;
+      position: relative;
+    }
+
+    .ablauf-grid::before {
+      content: "";
+      position: absolute;
+      top: 27px; left: calc(12.5%);
+      width: 75%; height: 1px;
+      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
+      z-index: 0;
+    }
+
+    .ablauf-step { text-align: center; padding: 0 20px; position: relative; z-index: 1; }
+
+    .ablauf-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sylegro-blue), var(--sylegro-green));
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 16px rgba(0,99,165,0.3);
+    }
+
+    .ablauf-icon { display: none; }
+    .ablauf-title { font-size: 0.95rem; font-weight: 700; color: #0f172a; margin: 0 0 8px 0; }
+    .ablauf-text { font-size: 0.83rem; color: #6b7280; line-height: 1.6; margin: 0; }
 
     /* CTA BANNER */
-    .cta-banner { background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green)); padding: 70px 60px; width: 100%; }
-    .cta-banner-inner { max-width: 1200px; margin: 0 auto; }
-    .cta-banner-title { font-size: 2rem; font-weight: 700; color: #ffffff; margin: 0 0 16px 0; line-height: 1.2; }
-    .cta-banner-sub { font-size: 1.05rem; color: rgba(255,255,255,0.85); margin: 0 0 36px 0; line-height: 1.6; }
-    .cta-banner-btn { display: inline-block; background: #ffffff; color: var(--sylegro-blue); padding: 14px 32px; border-radius: 999px; font-size: 1rem; font-weight: 600; font-family: "Kiro", sans-serif; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
-    .cta-banner-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
+    .cta-banner { background: #0f172a; padding: 80px 60px; width: 100%; }
+    .cta-banner-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+    .cta-banner-title { font-size: 2.2rem; font-weight: 800; color: #ffffff; margin: 0 0 16px 0; line-height: 1.2; }
+    .cta-banner-title em { font-style: italic; color: var(--sylegro-green); }
+    .cta-banner-sub { font-size: 1rem; color: rgba(255,255,255,0.65); margin: 0 0 32px 0; line-height: 1.7; }
+    .cta-banner-btn {
+      display: inline-block;
+      background: var(--sylegro-green);
+      color: #ffffff;
+      padding: 15px 36px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: "Kiro", sans-serif;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 6px 20px rgba(23,168,99,0.3);
+    }
+    .cta-banner-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(23,168,99,0.45); }
 
     /* FOOTER */
     .site-footer { background: #111827; color: #ffffff; padding: 56px 60px 0; }
@@ -813,39 +873,39 @@
       <p class="section-desc">Für jede Anforderung die passende Lösung – mit Präzision, modernen Methoden und einem Team das weiss was es tut.</p>
       <div class="leistungen-grid">
         <div class="leistung-card">
-          <span class="leistung-icon">🏗️</span>
+          <span class="leistung-num">01</span>
           <p class="leistung-title">Fassadenreinigung</p>
           <p class="leistung-text">Professionelle Reinigung von Gebäudefassaden – schonend, gründlich und mit modernster Technik.</p>
         </div>
         <div class="leistung-card">
-          <span class="leistung-icon">🪟</span>
+          <span class="leistung-num">02</span>
           <p class="leistung-title">Fenster- & Storenreinigung</p>
           <p class="leistung-text">Streifenfreie Reinigung von Fenstern, Glasfronten und Storen – innen und aussen, für ein klares Bild.</p>
         </div>
         <div class="leistung-card">
-          <span class="leistung-icon">🏚️</span>
+          <span class="leistung-num">03</span>
           <p class="leistung-title">Baureinigung</p>
           <p class="leistung-text">Endreinigung nach Bau- und Renovationsarbeiten – damit Ihr Objekt sofort bezugsbereit ist.</p>
         </div>
         <div class="leistung-card">
-          <span class="leistung-icon">📦</span>
+          <span class="leistung-num">04</span>
           <p class="leistung-title">Umzugsreinigung</p>
           <p class="leistung-text">Gründliche Reinigung bei Ein- und Auszug – für eine makellose Übergabe der Liegenschaft.</p>
         </div>
         <div class="leistung-card">
-          <span class="leistung-icon">🚫</span>
+          <span class="leistung-num">05</span>
           <p class="leistung-title">Graffiti-Entfernung</p>
           <p class="leistung-text">Fachgerechte Entfernung von Graffiti an Fassaden, Mauern und Oberflächen – rückstandslos und materialschonend.</p>
         </div>
         <div class="leistung-card">
-          <span class="leistung-icon">🛡️</span>
+          <span class="leistung-num">06</span>
           <p class="leistung-title">Schutzbehandlungen</p>
           <p class="leistung-text">Wir schützen Oberflächen nachhaltig – von Bodenversiegelungen über UV- und Graffitischutz bis hin zu Imprägnierungen für Fassaden und Baustoffe aller Art.</p>
         </div>
-        <div class="leistung-card" style="border-top-color: var(--sylegro-green); background: #f0faf5;">
-          <span class="leistung-icon">✨</span>
-          <p class="leistung-title" style="color: var(--sylegro-green);">Und vieles mehr</p>
-          <p class="leistung-text">Haben Sie eine besondere Anforderung? Sprechen Sie uns an – wir finden gemeinsam die passende Lösung.</p>
+        <div class="leistung-card" style="grid-column: span 2; border-bottom: none; background: #f0faf5;">
+          <span class="leistung-num" style="color: var(--sylegro-green)">Und vieles mehr</span>
+          <p class="leistung-title" style="color: var(--sylegro-green);">Besondere Anforderung?</p>
+          <p class="leistung-text">Sprechen Sie uns an – wir finden gemeinsam die passende Lösung.</p>
         </div>
       </div>
     </div>
@@ -934,8 +994,8 @@
         <h2 class="sz-headline">Reinigen. Schützen.<br><em>Werterhalt.</em></h2>
         <p class="sz-subtext">Professionelle Reinigung ist der erste Schritt – der zweite ist der nachhaltige Schutz. Mit zertifizierten Systemen verlängern wir die Lebensdauer Ihrer Oberflächen.</p>
         <div class="sz-tabs">
-          <div class="sz-tab active" data-tab="fassade">🏢 &nbsp;Fassadenschutz & Versiegelung</div>
-          <div class="sz-tab" data-tab="boden">⬛ &nbsp;Bodenversiegelung & Sanierung</div>
+          <div class="sz-tab active" data-tab="fassade">Fassadenschutz & Versiegelung</div>
+          <div class="sz-tab" data-tab="boden">Bodenversiegelung & Sanierung</div>
         </div>
       </div>
     </div>
@@ -1021,31 +1081,7 @@
       </div>
     </div>
 
-    <!-- Vorteile -->
-    <div class="sz-vorteile-strip">
-      <div class="sz-vorteile-grid">
-        <div class="sz-vorteil">
-          <span class="sz-vorteil-icon">🏅</span>
-          <p class="sz-vorteil-title">Schweizer Qualitätsprodukte</p>
-          <p class="sz-vorteil-text">Ausschliesslich zertifizierte Schutzsysteme – geprüft für professionellen Einsatz.</p>
-        </div>
-        <div class="sz-vorteil">
-          <span class="sz-vorteil-icon">🌿</span>
-          <p class="sz-vorteil-title">Ökologisch & nachhaltig</p>
-          <p class="sz-vorteil-text">Lösungsmittelfrei auf Wasserbasis – schonend für Mensch, Tier und Umwelt.</p>
-        </div>
-        <div class="sz-vorteil">
-          <span class="sz-vorteil-icon">💰</span>
-          <p class="sz-vorteil-title">Weniger Kosten, mehr Schutz</p>
-          <p class="sz-vorteil-text">Behandelte Flächen sind deutlich einfacher zu unterhalten – spart Zeit und Geld.</p>
-        </div>
-        <div class="sz-vorteil">
-          <span class="sz-vorteil-icon">🎯</span>
-          <p class="sz-vorteil-title">Individuell & massgeschneidert</p>
-          <p class="sz-vorteil-text">Jede Oberfläche ist anders. Wir beraten persönlich und empfehlen das optimale System.</p>
-        </div>
-      </div>
-    </div>
+
 
     <!-- CTA -->
     <div class="sz-cta-row">
@@ -1060,22 +1096,7 @@
 
   </div>
 
-  <!-- EINSATZGEBIETE -->
-  <div class="einsatz-section reveal">
-    <div class="einsatz-inner">
-      <span class="section-label">Wo wir tätig sind</span>
-      <h2 class="section-title">Unsere <em>Einsatzgebiete</em></h2>
-      <p class="section-desc">Wir reinigen überall dort, wo besondere Anforderungen gelten – von der Industrie bis zur Klinik.</p>
-      <div class="einsatz-grid">
-        <div class="einsatz-tile" style="background-image: url('AdobeStock_482143067.jpeg');"><div class="einsatz-tile-label">Fassaden & Gebäude</div></div>
-        <div class="einsatz-tile" style="background-image: url('Büro.jpg');"><div class="einsatz-tile-label">Büros & Gewerbe</div></div>
-        <div class="einsatz-tile" style="background-image: url('Produktion.jpg');"><div class="einsatz-tile-label">Industrie & Produktion</div></div>
-        <div class="einsatz-tile" style="background-image: url('Klinik.jpg');"><div class="einsatz-tile-label">Kliniken & Praxen</div></div>
-        <div class="einsatz-tile" style="background-image: url('Einkaufen.jpg');"><div class="einsatz-tile-label">Einkaufszentren</div></div>
-        <div class="einsatz-tile" style="background-image: url('Foto_SR_Eldin.JPG');"><div class="einsatz-tile-label">Und vieles mehr</div></div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- ABLAUF -->
   <div class="ablauf-section reveal">
@@ -1084,10 +1105,10 @@
       <h2 class="section-title">Unser <em>Ablauf</em></h2>
       <p class="section-desc">Von der ersten Anfrage bis zur fertigen Reinigung – unkompliziert, transparent und zuverlässig.</p>
       <div class="ablauf-grid">
-        <div class="ablauf-step"><div class="ablauf-num">1</div><span class="ablauf-icon">📋</span><p class="ablauf-title">Anfrage</p><p class="ablauf-text">Sie kontaktieren uns mit Ihrem Anliegen – per Formular, Telefon oder E-Mail.</p></div>
-        <div class="ablauf-step"><div class="ablauf-num">2</div><span class="ablauf-icon">🤝</span><p class="ablauf-title">Beratung</p><p class="ablauf-text">Wir besichtigen das Objekt und erstellen ein kostenloses, individuelles Angebot.</p></div>
-        <div class="ablauf-step"><div class="ablauf-num">3</div><span class="ablauf-icon">🧹</span><p class="ablauf-title">Umsetzung</p><p class="ablauf-text">Unser Team führt die Reinigung professionell und termingerecht durch.</p></div>
-        <div class="ablauf-step"><div class="ablauf-num">4</div><span class="ablauf-icon">✅</span><p class="ablauf-title">Abnahme</p><p class="ablauf-text">Gemeinsame Kontrolle – erst wenn Sie zufrieden sind, ist unsere Arbeit getan.</p></div>
+        <div class="ablauf-step"><div class="ablauf-num">1</div><p class="ablauf-title">Anfrage</p><p class="ablauf-text">Sie kontaktieren uns mit Ihrem Anliegen – per Formular, Telefon oder E-Mail.</p></div>
+        <div class="ablauf-step"><div class="ablauf-num">2</div><p class="ablauf-title">Beratung</p><p class="ablauf-text">Wir besichtigen das Objekt und erstellen ein kostenloses, individuelles Angebot.</p></div>
+        <div class="ablauf-step"><div class="ablauf-num">3</div><p class="ablauf-title">Umsetzung</p><p class="ablauf-text">Unser Team führt die Reinigung professionell und termingerecht durch.</p></div>
+        <div class="ablauf-step"><div class="ablauf-num">4</div><p class="ablauf-title">Abnahme</p><p class="ablauf-text">Gemeinsame Kontrolle – erst wenn Sie zufrieden sind, ist unsere Arbeit getan.</p></div>
       </div>
     </div>
   </div>
@@ -1095,8 +1116,8 @@
   <!-- CTA BANNER -->
   <section class="cta-banner reveal">
     <div class="cta-banner-inner">
-      <h2 class="cta-banner-title">Bereit für ein saubereres Morgen?</h2>
-      <p class="cta-banner-sub">Kontaktieren Sie uns für ein kostenloses, unverbindliches Angebot.</p>
+      <h2 class="cta-banner-title">Bereit für ein <em>saubereres</em> Morgen?</h2>
+      <p class="cta-banner-sub">Kontaktieren Sie uns für ein kostenloses, unverbindliches Angebot – wir melden uns innerhalb von 24 Stunden.</p>
       <a href="kontakt.html" class="cta-banner-btn">Jetzt Angebot anfragen →</a>
     </div>
   </section>
