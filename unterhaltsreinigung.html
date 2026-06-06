@@ -261,6 +261,64 @@
     .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 20px 0; }
     .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.4); margin: 0; }
 
+    /* ── PROZESS BALKEN ── */
+    .prozess-balken-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .prozess-balken {
+      padding: 48px 28px;
+      background: rgba(255,255,255,0.05);
+      border-right: 1px solid rgba(255,255,255,0.08);
+      cursor: default;
+      transition: background 0.3s ease;
+      position: relative;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .prozess-balken:last-child { border-right: none; }
+    .prozess-balken-num {
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.12);
+      line-height: 1;
+      position: absolute;
+      top: 24px; left: 24px;
+      transition: color 0.3s;
+    }
+    .prozess-balken-hover { opacity: 0; transform: translateY(10px); transition: opacity 0.25s, transform 0.25s; }
+    .prozess-balken:hover .prozess-balken-hover { opacity: 1; transform: translateY(0); }
+    .prozess-balken:hover .prozess-balken-num { color: rgba(255,255,255,0.3); }
+    .prozess-balken-title { font-size: 1rem; font-weight: 800; color: #fff; margin: 0 0 8px; }
+    .prozess-balken-text { font-size: 0.84rem; color: rgba(255,255,255,0.75); line-height: 1.65; margin: 0; }
+
+    /* ── KREISLAUF ── */
+    .kreislauf-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 48px; }
+    .kreislauf-diagram { position: relative; }
+    #kreislauf-svg { width: 100%; max-width: 400px; display: block; margin: 0 auto; }
+    .ks { cursor: pointer; transition: opacity 0.2s; }
+    .ks:hover, .ks.active { opacity: 1 !important; filter: brightness(1.3); }
+    .kreislauf-liste { display: flex; flex-direction: column; gap: 12px; }
+    .kl-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+      cursor: pointer;
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+    }
+    .kl-item.active { transform: translateX(4px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .kl-item:hover { transform: translateX(4px); }
+    .kl-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .kl-title { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin: 0 0 3px; }
+    .kl-text { font-size: 0.82rem; color: #4b5563; line-height: 1.55; margin: 0; }
+
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal-visible { opacity: 1; transform: translateY(0); }
 
@@ -317,13 +375,8 @@
     <img class="hero-img" src="Büro.jpg" alt="Unterhaltsreinigung Sylegro">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <span class="hero-label">Dienstleistung</span>
-      <h1 class="hero-title">Unterhalts-<br><em>reinigung</em></h1>
+      <h1 class="hero-title" style="color:#fff;font-style:normal;">Unterhaltsreinigung</h1>
       <p class="hero-sub">Sauberkeit, auf die Sie sich jeden Tag verlassen können. Professionell, diskret und exakt auf Ihre Räumlichkeiten abgestimmt.</p>
-      <div class="hero-actions">
-        <a href="kontakt.html" class="btn-primary">Angebot anfragen →</a>
-        <a href="#leistungen" class="btn-outline-white">Leistungen entdecken</a>
-      </div>
     </div>
   </section>
 
@@ -379,23 +432,8 @@
         <p class="intro-text" style="margin-bottom:0">Ob Büro, Klinik, Schule oder Industriebetrieb: Wir entwickeln für jedes Objekt einen massgeschneiderten Reinigungsplan und führen ihn professionell aus.</p>
         <a href="kontakt.html" class="intro-link" style="margin-top:24px;display:inline-flex">Kostenloses Angebot anfragen →</a>
       </div>
-      <div class="stats-grid">
-        <div class="stat-box">
-          <p class="stat-num">50<em>+</em></p>
-          <p class="stat-lbl">Jahre gemeinsame Teamerfahrung</p>
-        </div>
-        <div class="stat-box">
-          <p class="stat-num">20<em>+</em></p>
-          <p class="stat-lbl">Zufriedene Kunden in der Zentralschweiz</p>
-        </div>
-        <div class="stat-box">
-          <p class="stat-num">100<em>%</em></p>
-          <p class="stat-lbl">Kundenzufriedenheit als oberstes Ziel</p>
-        </div>
-        <div class="stat-box">
-          <p class="stat-num" style="font-size:1.6rem">CH</p>
-          <p class="stat-lbl">Zertifizierte Schweizer Qualitätsprodukte</p>
-        </div>
+      <div style="border-radius:18px;overflow:hidden;box-shadow:0 8px 32px rgba(15,23,42,0.12);height:100%;min-height:340px;">
+        <img src="UHR_Dame_mit_Logo.jpg" alt="Sylegro Unterhaltsreinigung" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
       </div>
     </div>
   </section>
@@ -429,42 +467,31 @@
             <span class="einsatz-tab-dot"></span>
             <span class="einsatz-tab-label">Schulen & Bildung</span>
           </div>
+          <div class="einsatz-tab" data-panel="mehr">
+            <span class="einsatz-tab-dot"></span>
+            <span class="einsatz-tab-label">Und vieles mehr</span>
+          </div>
         </div>
         <div class="einsatz-panels">
           <div class="einsatz-panel active" id="panel-buero">
-            <img class="einsatz-panel-img" src="Büro.jpg" alt="Büroreinigung">
+            <img class="einsatz-panel-img" src="Unterhaltsreinigung_zwei_damen.jpeg" alt="Büroreinigung">
             <div class="einsatz-panel-body">
               <p class="einsatz-panel-title">Büros & Verwaltungsgebäude</p>
-              <p class="einsatz-panel-text">Schreibtische, Böden, Sanitäranlagen und Gemeinschaftsbereiche – täglich sauber und repräsentativ. Auch ausserhalb der Bürozeiten, diskret und zuverlässig.</p>
-              <div class="einsatz-panel-tags">
-                <span class="einsatz-tag">Tagesreinigung</span>
-                <span class="einsatz-tag">Abendreinigung</span>
-                <span class="einsatz-tag">Grundreinigung</span>
-              </div>
+              <p class="einsatz-panel-text">Schreibtische, Böden, Sanitäranlagen und Gemeinschaftsbereiche – täglich sauber und repräsentativ. Wir reinigen flexibel nach Ihrem Zeitplan: vor, während oder nach den Bürozeiten – diskret, zuverlässig und ohne Ihren Betrieb zu stören.</p>
             </div>
           </div>
           <div class="einsatz-panel" id="panel-klinik">
-            <img class="einsatz-panel-img" src="Klinik.jpg" alt="Klinikreinigung">
+            <img class="einsatz-panel-img" src="patientenzimmer.jpg" alt="Klinikreinigung">
             <div class="einsatz-panel-body">
               <p class="einsatz-panel-title">Kliniken & Arztpraxen</p>
-              <p class="einsatz-panel-text">Hygienische Reinigung nach medizinischen Standards – mit den richtigen Desinfektionsmitteln, geschultem Personal und strenger Qualitätskontrolle.</p>
-              <div class="einsatz-panel-tags">
-                <span class="einsatz-tag">Hygienestandards</span>
-                <span class="einsatz-tag">Desinfektion</span>
-                <span class="einsatz-tag">Diskretion</span>
-              </div>
+              <p class="einsatz-panel-text">In medizinischen Einrichtungen gelten besondere Anforderungen – an Hygiene, Verhalten und Diskretion. Unser Personal wird gezielt für den Einsatz in Praxis- und Klinikbereichen geschult: von korrekten Desinfektionsverfahren über das richtige Verhalten im Patientenumfeld bis hin zum Schutz sensibler Bereiche. Alle Mitarbeitenden unterliegen einer Geheimhaltungsverpflichtung und sind im Umgang mit vertraulichen Umgebungen vertraut.</p>
             </div>
           </div>
           <div class="einsatz-panel" id="panel-industrie">
-            <img class="einsatz-panel-img" src="Produktion.jpg" alt="Industriereinigung">
+            <img class="einsatz-panel-img" src="Industrie.jpg" alt="Industriereinigung">
             <div class="einsatz-panel-body">
-              <p class="einsatz-panel-title">Industrie & Produktionsflächen</p>
-              <p class="einsatz-panel-text">Reinigung von Hallen, Sozialbereichen und Lagerflächen – angepasst an Ihre Schicht- und Betriebszeiten, ohne Betriebsunterbruch.</p>
-              <div class="einsatz-panel-tags">
-                <span class="einsatz-tag">Schichtbetrieb</span>
-                <span class="einsatz-tag">Hallenflächen</span>
-                <span class="einsatz-tag">Sozialbereiche</span>
-              </div>
+              <p class="einsatz-panel-title">Industrie & Produktion</p>
+              <p class="einsatz-panel-text">In Produktionsbetrieben reinigen wir Flächen, die höchste Ansprüche stellen: Wir schonen Maschinen, Geräte und produzierte Ware, halten uns strikt an betriebliche Anweisungen und Sicherheitsregeln und unterstützen unsere Kunden dabei, trotz hohem Verschmutzungsgrad, eingeschränkter Zugänglichkeit oder zeitlichem Druck saubere Arbeitsbedingungen zu gewährleisten. Auch Labore und Reinräume reinigen wir – mit fundiertem Wissen zu den jeweiligen Klassifizierungen und Normen (z. B. ISO 5), damit keine Anforderung übersehen wird.</p>
             </div>
           </div>
           <div class="einsatz-panel" id="panel-einkauf">
@@ -480,15 +507,21 @@
             </div>
           </div>
           <div class="einsatz-panel" id="panel-schule">
-            <img class="einsatz-panel-img" src="AdobeStock_482143067.jpeg" alt="Schulreinigung">
+            <img class="einsatz-panel-img" src="Sylegro reinigung Schule UHR.PNG" alt="Schulreinigung">
             <div class="einsatz-panel-body">
               <p class="einsatz-panel-title">Schulen & Bildungseinrichtungen</p>
-              <p class="einsatz-panel-text">Klassenzimmer, Turnhallen, Korridore – täglich gepflegt, mit Grundreinigungen in den Ferien für einen frischen Start ins neue Schuljahr.</p>
-              <div class="einsatz-panel-tags">
-                <span class="einsatz-tag">Unterhaltsreinigung</span>
-                <span class="einsatz-tag">Ferienreinigung</span>
-                <span class="einsatz-tag">Turnhallen</span>
-              </div>
+              <p class="einsatz-panel-text">Klassenzimmer, Korridore und Gemeinschaftsbereiche werden täglich professionell gereinigt – für eine hygienische Lernumgebung. Sportböden reinigen wir fachgerecht nach DIN 18032 mit materialschonenden, norm-konformen Verfahren, die den Belag langfristig schützen. Dabei setzen wir ausschliesslich nachhaltige, schulmittelgeprüfte Reinigungsprodukte ein, die sicher für Mensch und Umwelt sind.</p>
+            </div>
+          </div>
+          <div class="einsatz-panel" id="panel-mehr">
+            <div class="einsatz-panel-img" style="background:linear-gradient(135deg,#0063A5,#17A863);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+              <p style="color:#fff;font-size:1.1rem;font-weight:700;margin:0;text-align:center;padding:0 20px;">Weitere Einsatzgebiete auf Anfrage</p>
+            </div>
+            <div class="einsatz-panel-body">
+              <p class="einsatz-panel-title">Und vieles mehr</p>
+              <p class="einsatz-panel-text">Kein Objekt gleicht dem anderen – und genau das ist unsere Stärke. Ob Parkhäuser, Sporthallen, Hotels oder öffentliche Gebäude: Wir erarbeiten gemeinsam mit Ihnen die passende Lösung für jede Anforderung.</p>
+              <a href="kontakt.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:10px 22px;border-radius:999px;font-size:0.88rem;font-weight:700;font-family:Kiro,sans-serif;margin-top:8px;transition:transform 0.15s;">Zum Kontaktformular →</a>
             </div>
           </div>
         </div>
@@ -496,208 +529,139 @@
     </div>
   </section>
 
-  <!-- LEISTUNGEN – Akkordeon + Sticky Bild -->
-  <section class="leistungen reveal" id="leistungen">
-    <div class="leistungen-inner">
-      <div class="leistungen-sticky">
-        <span class="section-label">Was wir leisten</span>
-        <h2 class="section-title" style="margin-bottom:14px">Unsere <em>Leistungen</em></h2>
-        <p style="font-size:0.95rem;color:#4b5563;line-height:1.75;margin:0 0 24px">Klicken Sie auf einen Bereich, um mehr zu erfahren.</p>
-        <img class="leistungen-img" src="sauberes-open_office.jpg" alt="Unterhaltsreinigung Sylegro" onerror="this.src='Büro.jpg'">
-      </div>
-      <div>
-        <div class="akkordeon">
-          <div class="akk-item">
-            <button class="akk-header open" onclick="toggleAkk(this)">
-              <span class="akk-num">01</span>
-              <span class="akk-title">Büro- & Arbeitsplatzbereiche</span>
-              <span class="akk-arrow">›</span>
-            </button>
-            <div class="akk-body open">
-              <div class="akk-body-inner">Schreibtische, Böden, Fenster, Sanitäranlagen und Küchen – wir reinigen alle Arbeitsbereiche gründlich und sorgen für eine hygienische Atmosphäre, die die Produktivität fördert.</div>
-            </div>
+  <!-- PROZESS – Horizontale Balken -->
+  <section class="prozess reveal" id="prozess-section">
+    <div class="prozess-inner" style="display:block;max-width:1200px;margin:0 auto;">
+      <span class="section-label" style="color:rgba(255,255,255,0.4)">So starten wir</span>
+      <h2 class="section-title" style="color:#fff;margin-bottom:14px">Von der Anfrage zur <em style="color:var(--green)">Partnerschaft</em></h2>
+      <p class="section-desc" style="color:rgba(255,255,255,0.55);margin-bottom:40px">Fahren Sie mit der Maus über jeden Schritt, um mehr zu erfahren.</p>
+      <div class="prozess-balken-grid">
+        <div class="prozess-balken" data-color="#17A863" onmouseenter="hoverBalken(this)" onmouseleave="leaveBalken(this)">
+          <div class="prozess-balken-num">01</div>
+          <div class="prozess-balken-hover">
+            <p class="prozess-balken-title">Anfrage</p>
+            <p class="prozess-balken-text">Kontaktieren Sie uns per Telefon, E-Mail oder Formular – wir melden uns innert 24 Stunden.</p>
           </div>
-          <div class="akk-item">
-            <button class="akk-header" onclick="toggleAkk(this)">
-              <span class="akk-num">02</span>
-              <span class="akk-title">Sanitär- & Nassräume</span>
-              <span class="akk-arrow">›</span>
-            </button>
-            <div class="akk-body">
-              <div class="akk-body-inner">Gründliche Desinfektion und Reinigung von Toiletten, Duschen und Umkleideräumen – mit geprüften Hygienmitteln und höchsten Standards.</div>
-            </div>
+        </div>
+        <div class="prozess-balken" data-color="#0E9472" onmouseenter="hoverBalken(this)" onmouseleave="leaveBalken(this)">
+          <div class="prozess-balken-num">02</div>
+          <div class="prozess-balken-hover">
+            <p class="prozess-balken-title">Besichtigung</p>
+            <p class="prozess-balken-text">Wir besichtigen Ihr Objekt, nehmen alle Wünsche auf und definieren gemeinsam den Leistungsumfang.</p>
           </div>
-          <div class="akk-item">
-            <button class="akk-header" onclick="toggleAkk(this)">
-              <span class="akk-num">03</span>
-              <span class="akk-title">Gemeinschaftsbereiche & Eingangszone</span>
-              <span class="akk-arrow">›</span>
-            </button>
-            <div class="akk-body">
-              <div class="akk-body-inner">Empfang, Sitzungsräume, Korridore und Pausenräume – die Visitenkarte Ihres Unternehmens ist täglich makellos gepflegt.</div>
-            </div>
+        </div>
+        <div class="prozess-balken" data-color="#087F7F" onmouseenter="hoverBalken(this)" onmouseleave="leaveBalken(this)">
+          <div class="prozess-balken-num">03</div>
+          <div class="prozess-balken-hover">
+            <p class="prozess-balken-title">Offerte</p>
+            <p class="prozess-balken-text">Sie erhalten ein transparentes, massgeschneidertes Angebot – ohne versteckte Kosten.</p>
           </div>
-          <div class="akk-item">
-            <button class="akk-header" onclick="toggleAkk(this)">
-              <span class="akk-num">04</span>
-              <span class="akk-title">Bodenbeläge & Oberflächen</span>
-              <span class="akk-arrow">›</span>
-            </button>
-            <div class="akk-body">
-              <div class="akk-body-inner">Hartböden, Teppiche, Parkett – jeder Bodenbelag erhält die passende Pflege. Auf Wunsch auch regelmässige Grundreinigung und Versiegelung.</div>
-            </div>
-          </div>
-          <div class="akk-item">
-            <button class="akk-header" onclick="toggleAkk(this)">
-              <span class="akk-num">05</span>
-              <span class="akk-title">Aussenanlagen & Eingangsbereiche</span>
-              <span class="akk-arrow">›</span>
-            </button>
-            <div class="akk-body">
-              <div class="akk-body-inner">Eingangsmatten, Treppenhäuser, Parkplätze – auf Wunsch übernehmen wir auch die regelmässige Pflege der Aussenbereiche Ihres Objekts.</div>
-            </div>
-          </div>
-          <div class="akk-item">
-            <button class="akk-header" onclick="toggleAkk(this)">
-              <span class="akk-num">06</span>
-              <span class="akk-title">Grundreinigungen & Sonderreinigungen</span>
-              <span class="akk-arrow">›</span>
-            </button>
-            <div class="akk-body">
-              <div class="akk-body-inner">Tiefenreinigungen nach Bedarf – saisonal, vor besonderen Anlässen oder nach Renovationsarbeiten. Immer termingerecht und gründlich.</div>
-            </div>
+        </div>
+        <div class="prozess-balken" data-color="#0063A5" onmouseenter="hoverBalken(this)" onmouseleave="leaveBalken(this)">
+          <div class="prozess-balken-num">04</div>
+          <div class="prozess-balken-hover">
+            <p class="prozess-balken-title">Start & Betreuung</p>
+            <p class="prozess-balken-text">Wir starten – mit Qualitätskontrollen, direktem Ansprechpartner und flexibler Anpassung.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROZESS – Vertikale Timeline -->
-  <section class="prozess reveal">
-    <div class="prozess-inner">
-      <div>
-        <span class="section-label">So starten wir</span>
-        <h2 class="section-title">Von der Anfrage zur <em>Partnerschaft</em></h2>
-        <p class="section-desc">Unkompliziert, transparent und schnell – in 4 Schritten zur regelmässigen Zusammenarbeit.</p>
-      </div>
-      <div class="prozess-steps">
-        <div class="prozess-step active" onclick="activateProzess(this)">
-          <div class="prozess-step-left">
-            <div class="prozess-num-circle">1</div>
-            <div class="prozess-connector"></div>
-          </div>
-          <div class="prozess-step-content">
-            <p class="prozess-step-title">Anfrage</p>
-            <p class="prozess-step-text">Kontaktieren Sie uns per Telefon, E-Mail oder Formular – wir melden uns innert 24 Stunden.</p>
-          </div>
-        </div>
-        <div class="prozess-step" onclick="activateProzess(this)">
-          <div class="prozess-step-left">
-            <div class="prozess-num-circle">2</div>
-            <div class="prozess-connector"></div>
-          </div>
-          <div class="prozess-step-content">
-            <p class="prozess-step-title">Besichtigung</p>
-            <p class="prozess-step-text">Wir besichtigen Ihr Objekt, nehmen alle Wünsche auf und definieren gemeinsam den Leistungsumfang.</p>
-          </div>
-        </div>
-        <div class="prozess-step" onclick="activateProzess(this)">
-          <div class="prozess-step-left">
-            <div class="prozess-num-circle">3</div>
-            <div class="prozess-connector"></div>
-          </div>
-          <div class="prozess-step-content">
-            <p class="prozess-step-title">Offerte</p>
-            <p class="prozess-step-text">Sie erhalten ein transparentes, massgeschneidertes Angebot – ohne versteckte Kosten.</p>
-          </div>
-        </div>
-        <div class="prozess-step" onclick="activateProzess(this)">
-          <div class="prozess-step-left">
-            <div class="prozess-num-circle">4</div>
-            <div class="prozess-connector"></div>
-          </div>
-          <div class="prozess-step-content">
-            <p class="prozess-step-title">Start & laufende Betreuung</p>
-            <p class="prozess-step-text">Wir starten – mit regelmässigen Qualitätskontrollen, direktem Ansprechpartner und flexibler Anpassung.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUALITÄT – Karten mit SVG-Icons -->
+  <!-- QUALITÄT – Kreislauf -->
   <section class="qualitaet reveal">
     <div class="qualitaet-inner">
       <span class="section-label">Qualitätssicherung</span>
       <h2 class="section-title">Qualität ist kein <em>Zufall</em></h2>
-      <p class="section-desc">Klare Prozesse, geschultes Personal und konsequente Kontrolle – das ist unser Rezept.</p>
-      <div class="qualitaet-grid">
-        <div class="q-card">
-          <div class="q-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0063A5" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          </div>
-          <p class="q-card-title">Individuelle Reinigungspläne</p>
-          <p class="q-card-text">Jedes Objekt erhält einen schriftlichen, massgeschneiderten Reinigungsplan – damit nichts dem Zufall überlassen bleibt.</p>
+      <p class="section-desc">Ein kontinuierlicher Kreislauf – jeder Schritt verbessert den nächsten, Qualität wächst mit jeder Runde.</p>
+      <div class="kreislauf-wrap">
+        <div class="kreislauf-diagram">
+          <svg id="kreislauf-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+            <!-- Hintergrundkreis -->
+            <circle cx="200" cy="200" r="170" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+            <circle cx="200" cy="200" r="110" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+            <!-- Segmente (6 Stück, je 60°) -->
+            <path class="ks" id="ks1" d="M200,200 L200,30 A170,170 0 0,1 347.2,115 Z" fill="rgba(23,168,99,0.15)" stroke="#17A863" stroke-width="1.5" data-idx="0"/>
+            <path class="ks" id="ks2" d="M200,200 L347.2,115 A170,170 0 0,1 347.2,285 Z" fill="rgba(14,148,114,0.12)" stroke="#0E9472" stroke-width="1.5" data-idx="1"/>
+            <path class="ks" id="ks3" d="M200,200 L347.2,285 A170,170 0 0,1 200,370 Z" fill="rgba(8,127,127,0.12)" stroke="#087F7F" stroke-width="1.5" data-idx="2"/>
+            <path class="ks" id="ks4" d="M200,200 L200,370 A170,170 0 0,1 52.8,285 Z" fill="rgba(5,106,138,0.12)" stroke="#056A8A" stroke-width="1.5" data-idx="3"/>
+            <path class="ks" id="ks5" d="M200,200 L52.8,285 A170,170 0 0,1 52.8,115 Z" fill="rgba(3,85,151,0.12)" stroke="#035597" stroke-width="1.5" data-idx="4"/>
+            <path class="ks" id="ks6" d="M200,200 L52.8,115 A170,170 0 0,1 200,30 Z" fill="rgba(0,99,165,0.12)" stroke="#0063A5" stroke-width="1.5" data-idx="5"/>
+            <!-- Pfeilbogen (Kreisrichtung) -->
+            <path d="M 200,28 A 172,172 0 0,1 350,117" fill="none" stroke="#17A863" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrowG)"/>
+            <defs>
+              <marker id="arrowG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#17A863"/>
+              </marker>
+            </defs>
+            <!-- Mittelkreis -->
+            <circle cx="200" cy="200" r="70" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+            <text x="200" y="192" text-anchor="middle" font-family="Kiro,system-ui" font-size="12" font-weight="800" fill="#0f172a">QUALITÄT</text>
+            <text x="200" y="210" text-anchor="middle" font-family="Kiro,system-ui" font-size="10" fill="#6b7280">Kontinuierlich</text>
+            <text x="200" y="224" text-anchor="middle" font-family="Kiro,system-ui" font-size="10" fill="#6b7280">verbessert</text>
+            <!-- Icons auf den Segmenten -->
+            <text x="200" y="76" text-anchor="middle" font-size="20">📋</text>
+            <text x="310" y="170" text-anchor="middle" font-size="20">🎓</text>
+            <text x="310" y="248" text-anchor="middle" font-size="20">🔍</text>
+            <text x="200" y="336" text-anchor="middle" font-size="20">💬</text>
+            <text x="90" y="248" text-anchor="middle" font-size="20">🌿</text>
+            <text x="90" y="170" text-anchor="middle" font-size="20">👤</text>
+          </svg>
         </div>
-        <div class="q-card">
-          <div class="q-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <div class="kreislauf-liste">
+          <div class="kl-item active" data-idx="0">
+            <div class="kl-dot" style="background:#17A863"></div>
+            <div>
+              <p class="kl-title">Individuelle Reinigungspläne</p>
+              <p class="kl-text">Jedes Objekt erhält einen schriftlichen, massgeschneiderten Plan – nichts bleibt dem Zufall überlassen.</p>
+            </div>
           </div>
-          <p class="q-card-title">Regelmässige Schulungen</p>
-          <p class="q-card-text">Unser Team wird laufend in Technik, Produkten und Sicherheitsstandards weitergebildet – intern und extern.</p>
-        </div>
-        <div class="q-card">
-          <div class="q-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0063A5" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <div class="kl-item" data-idx="1">
+            <div class="kl-dot" style="background:#0E9472"></div>
+            <div>
+              <p class="kl-title">Regelmässige Schulungen</p>
+              <p class="kl-text">Unser Team wird laufend in Technik, Produkten und Sicherheit weitergebildet.</p>
+            </div>
           </div>
-          <p class="q-card-title">Laufende Qualitätskontrolle</p>
-          <p class="q-card-text">Regelmässige Kontrollen durch Vorarbeiter und gemeinsame Rundgänge mit dem Kunden – Qualität, die Sie sehen.</p>
-        </div>
-        <div class="q-card">
-          <div class="q-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <div class="kl-item" data-idx="2">
+            <div class="kl-dot" style="background:#087F7F"></div>
+            <div>
+              <p class="kl-title">Laufende Qualitätskontrolle</p>
+              <p class="kl-text">Kontrollen durch Vorarbeiter und gemeinsame Rundgänge mit dem Kunden.</p>
+            </div>
           </div>
-          <p class="q-card-title">Offene Kommunikation</p>
-          <p class="q-card-text">Wir reagieren schnell auf Feedback und passen unsere Leistung kontinuierlich an Ihre Bedürfnisse an.</p>
-        </div>
-        <div class="q-card">
-          <div class="q-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0063A5" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div class="kl-item" data-idx="3">
+            <div class="kl-dot" style="background:#056A8A"></div>
+            <div>
+              <p class="kl-title">Offene Kommunikation</p>
+              <p class="kl-text">Schnelle Reaktion auf Feedback – wir passen uns kontinuierlich an Ihre Bedürfnisse an.</p>
+            </div>
           </div>
-          <p class="q-card-title">Zertifizierte Produkte</p>
-          <p class="q-card-text">Wir setzen ausschliesslich geprüfte, umweltfreundliche Reinigungsmittel ein – gut für Mensch, Tier und Natur.</p>
-        </div>
-        <div class="q-card">
-          <div class="q-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <div class="kl-item" data-idx="4">
+            <div class="kl-dot" style="background:#035597"></div>
+            <div>
+              <p class="kl-title">Nachhaltige Produkte</p>
+              <p class="kl-text">Ausschliesslich geprüfte, umweltfreundliche Reinigungsmittel – gut für Mensch und Natur.</p>
+            </div>
           </div>
-          <p class="q-card-title">Direkter Ansprechpartner</p>
-          <p class="q-card-text">Kein Callcenter – Sie haben immer eine direkte Ansprechperson, die Ihr Objekt und Ihre Anforderungen kennt.</p>
+          <div class="kl-item" data-idx="5">
+            <div class="kl-dot" style="background:#0063A5"></div>
+            <div>
+              <p class="kl-title">Direkter Ansprechpartner</p>
+              <p class="kl-text">Kein Callcenter – immer die Person, die Ihr Objekt kennt.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA mit Eldin -->
+  <!-- CTA -->
   <section class="cta-section reveal">
-    <div class="cta-inner">
-      <div>
-        <h2 class="cta-title">Bereit für <em>sauberere</em> Räume?</h2>
-        <p class="cta-sub">Kontaktieren Sie uns für ein kostenloses, unverbindliches Angebot – wir melden uns innerhalb von 24 Stunden.</p>
-        <div class="cta-contact">
-          <a href="tel:+41418558858">📞 +41 41 55 88 58</a>
-          <a href="tel:+41768407472">📱 +41 76 840 74 72</a>
-          <a href="mailto:info@sylegro.ch">✉️ info@sylegro.ch</a>
-        </div>
-        <a href="kontakt.html" class="cta-btn">Jetzt Angebot anfragen →</a>
-      </div>
-      <div class="cta-person">
-        <img class="cta-person-img" src="Portrait-Eldin.JPG" alt="Eldin Sylejmani">
-        <div>
-          <p class="cta-person-name">Eldin Sylejmani</p>
-          <p class="cta-person-role">Gründer & Inhaber</p>
-        </div>
-      </div>
+    <div style="max-width:700px;margin:0 auto;text-align:center;">
+      <h2 class="cta-title">Gehen wir gemeinsam eine <em>Partnerschaft</em> ein.</h2>
+      <p class="cta-sub">Überzeugen Sie sich selbst – wir erstellen Ihnen kostenlos und unverbindlich ein massgeschneidertes Angebot für Ihr Objekt.</p>
+      <a href="kontakt.html" class="cta-btn">Jetzt Angebot anfragen →</a>
     </div>
   </section>
 
@@ -743,11 +707,41 @@
       if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
     }
 
-    // Prozess Steps
-    function activateProzess(step) {
-      document.querySelectorAll('.prozess-step').forEach(s => s.classList.remove('active'));
-      step.classList.add('active');
+    // Prozess Balken: Hintergrund der Section wechselt mit
+    const prozessSection = document.getElementById('prozess-section');
+    const defaultBg = '#0f172a';
+    function hoverBalken(el) {
+      const color = el.dataset.color;
+      prozessSection.style.background = color;
+      prozessSection.style.transition = 'background 0.4s ease';
+      el.style.background = 'rgba(255,255,255,0.12)';
     }
+    function leaveBalken(el) {
+      prozessSection.style.background = defaultBg;
+      el.style.background = '';
+    }
+
+    // Kreislauf Interaktion
+    const segments = document.querySelectorAll('.ks');
+    const klItems = document.querySelectorAll('.kl-item');
+    function activateKreislauf(idx) {
+      segments.forEach((s,i) => s.style.opacity = i === idx ? '1' : '0.5');
+      klItems.forEach((k,i) => k.classList.toggle('active', i === idx));
+    }
+    segments.forEach(s => {
+      s.addEventListener('mouseenter', () => activateKreislauf(+s.dataset.idx));
+      s.addEventListener('mouseleave', () => { segments.forEach(x => x.style.opacity = '1'); });
+    });
+    klItems.forEach(k => {
+      k.addEventListener('click', () => activateKreislauf(+k.dataset.idx));
+    });
+
+    // Auto-rotate Kreislauf
+    let kreislaufIdx = 0;
+    setInterval(() => {
+      kreislaufIdx = (kreislaufIdx + 1) % 6;
+      klItems.forEach((k,i) => k.classList.toggle('active', i === kreislaufIdx));
+    }, 2500);
 
     // Scroll Reveal
     let lastScrollY = window.scrollY;
