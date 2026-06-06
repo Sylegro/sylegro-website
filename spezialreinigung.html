@@ -471,325 +471,106 @@
     /* ============================================
        SCHUTZBEHANDLUNGEN – NEUES DESIGN
        ============================================ */
-    .sz-section {
-      position: relative;
-      overflow: hidden;
+    /* ============================================
+       SCHUTZBEHANDLUNGEN – NEU
+       ============================================ */
+    .sz-section { background: #f4f7fb; width: 100%; }
+
+    /* INTRO */
+    .sz-intro { padding: 70px 60px 40px; }
+    .sz-intro-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
     }
-
-    /* Hintergrund mit geometrischem Muster in Sylegro-Farben */
-    .sz-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 800px 600px at 10% 20%, rgba(0,99,165,0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 600px 500px at 90% 80%, rgba(23,168,99,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 400px 400px at 50% 50%, rgba(0,99,165,0.04) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .sz-hero {
-      background: #f4f7fb;
-      padding: 50px 60px 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    .sz-hero-inner { max-width: 1200px; margin: 0 auto; }
-
-    .sz-eyebrow {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--sylegro-blue);
-      margin: 0 0 12px;
-    }
-
-    .sz-headline {
-      font-size: 1.9rem;
-      font-weight: 800;
-      color: #0f172a;
-      line-height: 1.12;
-      margin: 0 0 10px;
-    }
-
+    .sz-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sylegro-blue); display: block; margin-bottom: 10px; }
+    .sz-headline { font-size: 2rem; font-weight: 800; color: #0f172a; line-height: 1.12; margin: 0 0 12px; }
     .sz-headline em { font-style: italic; color: var(--sylegro-green); }
+    .sz-subtext { font-size: 0.95rem; color: #4b5563; line-height: 1.75; margin: 0 0 24px; }
 
-    .sz-subtext {
-      font-size: 0.9rem;
-      color: #4b5563;
-      line-height: 1.6;
-      max-width: 520px;
-      margin: 0 0 20px;
-    }
-
-    .sz-tabs {
-      display: flex;
-      gap: 0;
-      border-bottom: 2px solid #dce5ef;
-    }
-
+    /* TABS */
+    .sz-tabs { display: flex; gap: 8px; }
     .sz-tab {
-      padding: 14px 28px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #6b7280;
-      cursor: pointer;
-      border-bottom: 3px solid transparent;
-      margin-bottom: -2px;
-      transition: color 0.2s, border-color 0.2s;
-      user-select: none;
-      white-space: nowrap;
+      padding: 9px 20px; border-radius: 999px;
+      font-size: 0.85rem; font-weight: 600;
+      border: 1.5px solid #dce5ef;
+      background: #fff; color: #6b7280;
+      cursor: pointer; transition: all 0.2s;
+      font-family: "Kiro", sans-serif;
+    }
+    .sz-tab:hover { border-color: var(--sylegro-blue); color: var(--sylegro-blue); }
+    .sz-tab.active { background: var(--sylegro-blue); border-color: var(--sylegro-blue); color: #fff; }
+
+    /* DUNKLE STATS RECHTS */
+    .sz-intro-stats-dark {
+      background: #0f172a;
+      border-radius: 20px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; overflow: hidden;
+      border: 1px solid #0f172a;
+    }
+    .sz-intro-stat-dark {
+      background: #0f172a; padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 6px;
+      transition: background 0.2s;
+    }
+    .sz-intro-stat-dark:hover { background: #1a2d45; }
+    .sz-stat-big {
+      font-size: 2rem; font-weight: 800;
+      color: #fff; line-height: 1;
+      transition: opacity 0.2s;
+    }
+    .sz-stat-big em { font-style: normal; color: var(--sylegro-green); font-size: 1.3rem; }
+    .sz-stat-big-lbl {
+      font-size: 0.78rem; color: rgba(255,255,255,0.45);
+      line-height: 1.4;
+      transition: opacity 0.2s;
     }
 
-    .sz-tab:hover { color: var(--sylegro-blue); }
-    .sz-tab.active { color: var(--sylegro-blue); border-bottom-color: var(--sylegro-blue); }
-
-    .sz-panels { background: #f4f7fb; padding: 0 60px 50px; position: relative; z-index: 1; }
-    .sz-panel { display: none; }
-    .sz-panel.active { display: block; }
-
-    .sz-panel-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      max-width: 1200px;
-      margin: 0 auto;
-      align-items: stretch;
+    /* BEIDE KARTEN */
+    .sz-cards { padding: 0 60px 0; }
+    .sz-cards-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
+    .sz-card { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid #dce5ef; box-shadow: 0 4px 20px rgba(15,23,42,0.06); display: flex; flex-direction: column; }
+    .sz-card-img { position: relative; height: 240px; overflow: hidden; flex-shrink: 0; }
+    .sz-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.5s ease; }
+    .sz-card:hover .sz-card-img img { transform: scale(1.04); }
+    .sz-card-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.55) 0%, transparent 60%); }
+    .sz-card-badge { position: absolute; bottom: 16px; left: 16px; background: var(--sylegro-blue); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 6px 14px; border-radius: 999px; }
+    .sz-card-badge-green { background: var(--sylegro-green); }
+    .sz-card-body { padding: 28px 28px; flex: 1; display: flex; flex-direction: column; gap: 16px; }
+    .sz-card-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sylegro-blue); background: rgba(0,99,165,0.08); padding: 4px 12px; border-radius: 999px; width: fit-content; }
+    .sz-card-tag-green { color: var(--sylegro-green); background: rgba(23,168,99,0.1); }
+    .sz-card-desc { font-size: 0.88rem; color: #4b5563; line-height: 1.75; margin: 0; }
 
-    .sz-panel-img {
-      position: relative;
-      overflow: hidden;
-      border-radius: 14px 0 0 14px;
-      min-height: 100%;
-    }
-
-    .sz-panel-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      position: absolute;
-      inset: 0;
-      transition: transform 0.6s ease;
-    }
-
-    .sz-panel-img:hover img { transform: scale(1.03); }
-
-    .sz-panel-content {
-      padding: 40px 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: #ffffff;
-      border-radius: 0 14px 14px 0;
-      border: 1px solid #dce5ef;
-      border-left: none;
-    }
-
-    /* Beide Panels immer gerendert – inaktives unsichtbar aber hält Höhe */
-    .sz-panels { background: #f4f7fb; padding: 0 60px; position: relative; z-index: 1; }
-    .sz-panel { display: none; }
-    .sz-panel.active { display: block; }
-
-    .sz-panel-accent {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0,99,165,0.08);
-      color: var(--sylegro-blue);
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      padding: 5px 12px;
-      border-radius: 999px;
-      margin-bottom: 18px;
-      width: fit-content;
-    }
-
-    .sz-panel-accent.green-acc {
-      background: rgba(23,168,99,0.1);
-      color: var(--sylegro-green);
-    }
-
-    .sz-panel-title {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #0f172a;
-      line-height: 1.2;
-      margin: 0 0 14px;
-    }
-
-    .sz-panel-desc {
-      font-size: 0.9rem;
-      color: #4b5563;
-      line-height: 1.75;
-      margin: 0 0 24px;
-    }
-
-    .sz-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
-
-    .sz-chip {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: #374151;
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
-      padding: 4px 10px;
-      border-radius: 999px;
-    }
-
+    .sz-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .sz-chip { font-size: 0.75rem; font-weight: 500; color: #374151; background: #f1f5f9; border: 1px solid #e2e8f0; padding: 4px 10px; border-radius: 999px; }
     .sz-checks { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
-
-    .sz-check {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 0.875rem;
-      color: #374151;
-      line-height: 1.5;
-    }
-
-    .sz-check-icon {
-      width: 20px; height: 20px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
+    .sz-check { display: flex; align-items: flex-start; gap: 10px; font-size: 0.875rem; color: #374151; line-height: 1.5; }
+    .sz-check-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; font-size: 12px; font-weight: 700; }
     .sz-check-icon.blue { background: rgba(0,99,165,0.1); color: var(--sylegro-blue); }
     .sz-check-icon.green { background: rgba(23,168,99,0.12); color: var(--sylegro-green); }
 
-    /* Stats Bar – dunkler Hintergrund */
-    .sz-stats-bar { background: #0f172a; padding: 0 60px; position: relative; z-index: 1; }
-
-    .sz-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid rgba(255,255,255,0.07);
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .sz-stat {
-      padding: 28px 20px;
-      border-right: 1px solid rgba(255,255,255,0.07);
-      transition: background 0.2s;
-      cursor: default;
-    }
-
-    .sz-stat:last-child { border-right: none; }
-    .sz-stat:hover { background: rgba(255,255,255,0.03); }
-
-    .sz-stat-num {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1;
-      margin: 0 0 6px;
-      transition: opacity 0.25s;
-    }
-
-    .sz-stat-num span { color: var(--sylegro-green); font-size: 1.4rem; }
-
-    .sz-stat-label {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.45);
-      line-height: 1.4;
-      margin: 0;
-      transition: opacity 0.25s;
-    }
-
-    /* VORTEILE */
-    .sz-vorteile-strip { background: var(--bg-light); padding: 24px 60px; }
-
-    .sz-vorteile-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .sz-vorteil {
-      background: #fff;
-      border-radius: 14px;
-      padding: 14px 16px;
-      border: 1px solid #e8edf2;
-      border-top: 3px solid var(--sylegro-blue);
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: default;
-    }
-
-    .sz-vorteil:nth-child(even) { border-top-color: var(--sylegro-green); }
-
-    .sz-vorteil:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(15,23,42,0.1);
-    }
-
-    .sz-vorteil-icon { font-size: 1.4rem; display: block; margin-bottom: 12px; }
-    .sz-vorteil-title { font-size: 0.88rem; font-weight: 700; color: #0f172a; margin: 0 0 6px; }
-    .sz-vorteil-text { font-size: 0.78rem; color: #6b7280; line-height: 1.55; margin: 0; }
-
-    /* CTA Schutzbehandlungen */
-    .sz-cta-row {
-      background: transparent;
-      padding: 36px 60px 56px;
-      border-top: 1px solid #dce5ef;
-      position: relative;
-      z-index: 1;
-    }
-
-    .sz-cta-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .sz-cta-text { font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 0; }
-    .sz-cta-sub { font-size: 0.88rem; color: #4b5563; margin: 4px 0 0; }
-
-    .sz-cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--sylegro-blue);
-      color: #fff;
-      padding: 13px 28px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      font-family: "Kiro", sans-serif;
-      text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.15s;
-      box-shadow: 0 6px 20px rgba(0,99,165,0.25);
-      flex-shrink: 0;
-    }
-
+    /* CTA */
+    .sz-cta-row { background: #fff; padding: 28px 60px; border-top: 1px solid #dce5ef; margin-top: 24px; }
+    .sz-cta-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .sz-cta-text { font-size: 1rem; font-weight: 700; color: #0f172a; margin: 0; }
+    .sz-cta-sub { font-size: 0.85rem; color: #6b7280; margin: 3px 0 0; }
+    .sz-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--sylegro-blue); color: #fff; padding: 13px 28px; border-radius: 999px; font-size: 0.9rem; font-weight: 700; font-family: "Kiro", sans-serif; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 6px 20px rgba(0,99,165,0.25); flex-shrink: 0; }
     .sz-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,99,165,0.4); }
 
     @media (max-width: 900px) {
-      .sz-hero { padding: 50px 24px 0; }
-      .sz-panel-grid { grid-template-columns: 1fr; }
-      .sz-panel-img { min-height: 260px; }
-      .sz-stats-bar, .sz-cta-row { padding-left: 24px; padding-right: 24px; }
-      .sz-stats-grid { grid-template-columns: 1fr 1fr; }
-      .sz-cta-row { flex-direction: column; text-align: center; }
+      .sz-intro { padding: 50px 24px 32px; }
+      .sz-intro-inner { grid-template-columns: 1fr; gap: 32px; }
+      .sz-cards { padding: 0 24px; }
+      .sz-cards-inner { grid-template-columns: 1fr; }
+      .sz-cta-row { padding: 28px 24px; flex-direction: column; }
     }
 
-    /* EINSATZGEBIETE */
+        /* EINSATZGEBIETE */
     .einsatz-section { background: var(--bg-light); padding: 70px 60px; width: 100%; }
     .einsatz-inner { max-width: 1200px; margin: 0 auto; }
     .einsatz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
@@ -1105,60 +886,61 @@
   </div>
 
   <!-- ============================================
-       SCHUTZBEHANDLUNGEN – NEUES DESIGN
+       SCHUTZBEHANDLUNGEN – NEU
        ============================================ -->
   <div class="sz-section reveal">
 
-    <!-- Dekoratives SVG-Hintergrundmuster -->
-    <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="sz-grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-          <circle cx="30" cy="30" r="1" fill="rgba(0,99,165,0.08)"/>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#sz-grid)"/>
-      <!-- Grosse dekorative Kreise -->
-      <circle cx="5%" cy="30%" r="260" fill="none" stroke="rgba(0,99,165,0.06)" stroke-width="1"/>
-      <circle cx="5%" cy="30%" r="160" fill="none" stroke="rgba(0,99,165,0.05)" stroke-width="1"/>
-      <circle cx="96%" cy="70%" r="300" fill="none" stroke="rgba(23,168,99,0.06)" stroke-width="1"/>
-      <circle cx="96%" cy="70%" r="180" fill="none" stroke="rgba(23,168,99,0.05)" stroke-width="1"/>
-      <!-- Diagonale Linie oben rechts -->
-      <line x1="60%" y1="0" x2="100%" y2="40%" stroke="rgba(0,99,165,0.05)" stroke-width="1"/>
-      <line x1="65%" y1="0" x2="100%" y2="35%" stroke="rgba(0,99,165,0.04)" stroke-width="1"/>
-    </svg>
-
-    <!-- Hero mit Tabs -->
-    <div class="sz-hero">
-      <div class="sz-hero-inner">
-        <p class="sz-eyebrow">Schutzbehandlungen</p>
-        <h2 class="sz-headline">Reinigen. Schützen.<br><em>Werterhalt.</em></h2>
-        <p class="sz-subtext">Professionelle Reinigung ist der erste Schritt – der zweite ist der nachhaltige Schutz. Mit zertifizierten Systemen verlängern wir die Lebensdauer Ihrer Oberflächen.</p>
-        <div class="sz-tabs">
-          <div class="sz-tab active" data-tab="fassade">Fassadenschutz & Versiegelung</div>
-          <div class="sz-tab" data-tab="boden">Bodenversiegelung & Sanierung</div>
+    <!-- Intro -->
+    <div class="sz-intro">
+      <div class="sz-intro-inner">
+        <div>
+          <p class="sz-eyebrow">Schutzbehandlungen</p>
+          <h2 class="sz-headline">Reinigen. Schützen.<br><em>Werterhalt.</em></h2>
+          <p class="sz-subtext">Professionelle Reinigung ist der erste Schritt – der zweite ist der nachhaltige Schutz. Mit zertifizierten Systemen verlängern wir die Lebensdauer Ihrer Oberflächen dauerhaft.</p>
+        </div>
+    <!-- Intro mit Tabs + dynamischen Stats -->
+    <div class="sz-intro">
+      <div class="sz-intro-inner">
+        <div>
+          <p class="sz-eyebrow">Schutzbehandlungen</p>
+          <h2 class="sz-headline">Reinigen. Schützen.<br><em>Werterhalt.</em></h2>
+          <p class="sz-subtext">Professionelle Reinigung ist der erste Schritt – der zweite ist der nachhaltige Schutz. Mit zertifizierten Systemen verlängern wir die Lebensdauer Ihrer Oberflächen dauerhaft.</p>
+          <!-- Tabs -->
+          <div class="sz-tabs">
+            <button class="sz-tab active" data-tab="fassade">Fassadenschutz & Versiegelung</button>
+            <button class="sz-tab" data-tab="boden">Bodenversiegelung & Sanierung</button>
+          </div>
+        </div>
+        <!-- Stats – wechseln je nach Tab -->
+        <div class="sz-intro-stats-dark">
+          <div class="sz-intro-stat-dark"><span class="sz-stat-big" id="s1-num">10<em>+</em></span><span class="sz-stat-big-lbl" id="s1-lbl">Jahre Schutz bei Lackoberflächen</span></div>
+          <div class="sz-intro-stat-dark"><span class="sz-stat-big" id="s2-num">GRM<em> ✓</em></span><span class="sz-stat-big-lbl" id="s2-lbl">Zertifizierte Produkte</span></div>
+          <div class="sz-intro-stat-dark"><span class="sz-stat-big" id="s3-num">100<em>%</em></span><span class="sz-stat-big-lbl" id="s3-lbl">Wasserbasis – ökologisch</span></div>
+          <div class="sz-intro-stat-dark"><span class="sz-stat-big" id="s4-num">CH</span><span class="sz-stat-big-lbl" id="s4-lbl">Schweizer Qualitätsprodukte</span></div>
         </div>
       </div>
     </div>
 
-    <!-- Panels -->
-    <div class="sz-panels">
+    <!-- Beide Panels nebeneinander -->
+    <div class="sz-cards">
+      <div class="sz-cards-inner">
 
-      <!-- FASSADE -->
-      <div class="sz-panel active" id="sz-panel-fassade">
-        <div class="sz-panel-grid">
-          <div class="sz-panel-img">
+        <!-- FASSADE -->
+        <div class="sz-card">
+          <div class="sz-card-img">
             <img src="AdobeStock_482143067.jpeg" alt="Fassadenschutz">
+            <div class="sz-card-img-overlay"></div>
+            <span class="sz-card-badge">Fassadenschutz & Versiegelung</span>
           </div>
-          <div class="sz-panel-content">
-            <span class="sz-panel-accent">Für Fassaden & Aussenflächen</span>
-            <h3 class="sz-panel-title">Fassadenschutz &<br>Versiegelung</h3>
-            <p class="sz-panel-desc">Fassaden sind täglich Witterung, Schmutz und Umwelteinflüssen ausgesetzt. Unsere Schutzsysteme bilden eine unsichtbare Barriere – die Fläche bleibt länger sauber, zukünftige Reinigungen werden deutlich einfacher.</p>
+          <div class="sz-card-body">
+            <span class="sz-card-tag">Für Fassaden & Aussenflächen</span>
+            <p class="sz-card-desc">Fassaden sind täglich Witterung, Schmutz und Umwelteinflüssen ausgesetzt. Unsere Schutzsysteme bilden eine unsichtbare Barriere – die Fläche bleibt länger sauber, zukünftige Reinigungen werden deutlich einfacher.</p>
             <div class="sz-chips">
               <span class="sz-chip">Aluminium</span>
               <span class="sz-chip">Metall</span>
               <span class="sz-chip">Naturstein</span>
               <span class="sz-chip">Beton & Mörtel</span>
-              <span class="sz-chip">Organisch beschichtete Oberflächen</span>
+              <span class="sz-chip">Organisch beschichtet</span>
             </div>
             <ul class="sz-checks">
               <li class="sz-check"><span class="sz-check-icon blue">✓</span>Zertifizierte Qualitätsprodukte (GRM zugelassen)</li>
@@ -1168,24 +950,23 @@
             </ul>
           </div>
         </div>
-      </div>
 
-      <!-- BODEN -->
-      <div class="sz-panel" id="sz-panel-boden">
-        <div class="sz-panel-grid">
-          <div class="sz-panel-img">
+        <!-- BODEN -->
+        <div class="sz-card">
+          <div class="sz-card-img">
             <img src="2KBoden.JPG" alt="Bodenversiegelung">
+            <div class="sz-card-img-overlay"></div>
+            <span class="sz-card-badge sz-card-badge-green">Bodenversiegelung & Sanierung</span>
           </div>
-          <div class="sz-panel-content">
-            <span class="sz-panel-accent green-acc">Für Böden & Innenoberflächen</span>
-            <h3 class="sz-panel-title">Bodenversiegelung &<br>Sanierung</h3>
-            <p class="sz-panel-desc">Abgenutzte Böden müssen nicht ausgetauscht werden. Mit unserer hochwertigen Versiegelung erhalten stark beanspruchte Böden eine neuwertige Optik – kostengünstig, schnell und ohne langen Betriebsunterbruch.</p>
+          <div class="sz-card-body">
+            <span class="sz-card-tag sz-card-tag-green">Für Böden & Innenoberflächen</span>
+            <p class="sz-card-desc">Abgenutzte Böden müssen nicht ausgetauscht werden. Mit unserer hochwertigen Versiegelung erhalten stark beanspruchte Böden eine neuwertige Optik – kostengünstig, schnell und ohne langen Betriebsunterbruch.</p>
             <div class="sz-chips">
               <span class="sz-chip">Linoleum</span>
               <span class="sz-chip">PVC</span>
               <span class="sz-chip">Kautschuk</span>
               <span class="sz-chip">Gumminoppen</span>
-              <span class="sz-chip">Epoxidharz-Industrieböden</span>
+              <span class="sz-chip">Epoxidharz</span>
             </div>
             <ul class="sz-checks">
               <li class="sz-check"><span class="sz-check-icon green">✓</span>Neuwertige Optik ohne Belagsaustausch</li>
@@ -1195,29 +976,7 @@
             </ul>
           </div>
         </div>
-      </div>
 
-    </div>
-
-    <!-- Stats Bar -->
-    <div class="sz-stats-bar">
-      <div class="sz-stats-grid">
-        <div class="sz-stat">
-          <p class="sz-stat-num" id="s1-num">10<span>+</span></p>
-          <p class="sz-stat-label" id="s1-lbl">Jahre Schutz bei<br>Lackoberflächen</p>
-        </div>
-        <div class="sz-stat">
-          <p class="sz-stat-num" id="s2-num">GRM<span> ✓</span></p>
-          <p class="sz-stat-label" id="s2-lbl">Zertifizierte<br>Produkte</p>
-        </div>
-        <div class="sz-stat">
-          <p class="sz-stat-num" id="s3-num">100<span>%</span></p>
-          <p class="sz-stat-label" id="s3-lbl">Wasserbasis –<br>ökologisch</p>
-        </div>
-        <div class="sz-stat">
-          <p class="sz-stat-num" id="s4-num">CH</p>
-          <p class="sz-stat-label" id="s4-lbl">Schweizer<br>Qualitätsprodukte</p>
-        </div>
       </div>
     </div>
 
@@ -1311,56 +1070,19 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Beide Panel-Grids gleich hoch machen
-    function equalPanelHeights() {
-      const fassadeGrid = document.querySelector('#sz-panel-fassade .sz-panel-grid');
-      const bodenGrid   = document.querySelector('#sz-panel-boden .sz-panel-grid');
-      if (!fassadeGrid || !bodenGrid) return;
-
-      // Reset
-      fassadeGrid.style.minHeight = '';
-      bodenGrid.style.minHeight   = '';
-
-      // Beide kurz sichtbar machen zum Messen
-      const fassadePanel = document.getElementById('sz-panel-fassade');
-      const bodenPanel   = document.getElementById('sz-panel-boden');
-      const wasActiveFassade = fassadePanel.classList.contains('active');
-
-      fassadePanel.style.display = 'block';
-      bodenPanel.style.display   = 'block';
-
-      const h1 = fassadeGrid.querySelector('.sz-panel-content').scrollHeight;
-      const h2 = bodenGrid.querySelector('.sz-panel-content').scrollHeight;
-      const maxH = Math.max(h1, h2) + 80; // +80 für padding
-
-      fassadeGrid.style.minHeight = maxH + 'px';
-      bodenGrid.style.minHeight   = maxH + 'px';
-
-      // Wieder zurücksetzen
-      fassadePanel.style.display = '';
-      bodenPanel.style.display   = '';
-      if (!wasActiveFassade) {
-        fassadePanel.classList.remove('active');
-        bodenPanel.classList.add('active');
-      }
-    }
-
-    window.addEventListener('load', equalPanelHeights);
-    window.addEventListener('resize', equalPanelHeights);
-
-    // SCHUTZBEHANDLUNGEN TABS
+    // SCHUTZBEHANDLUNGEN TABS – Stats wechseln
     const szStats = {
       fassade: [
-        { num: '10<span>+</span>',   lbl: 'Jahre Schutz bei<br>Lackoberflächen' },
-        { num: 'GRM<span> ✓</span>', lbl: 'Zertifizierte<br>Produkte' },
-        { num: '100<span>%</span>',  lbl: 'Wasserbasis –<br>ökologisch' },
-        { num: 'CH',                  lbl: 'Schweizer<br>Qualitätsprodukte' }
+        { num: '10<em>+</em>',    lbl: 'Jahre Schutz bei Lackoberflächen' },
+        { num: 'GRM<em> ✓</em>', lbl: 'Zertifizierte Produkte' },
+        { num: '100<em>%</em>',  lbl: 'Wasserbasis – ökologisch' },
+        { num: 'CH',              lbl: 'Schweizer Qualitätsprodukte' }
       ],
       boden: [
-        { num: '2K<span>✓</span>',   lbl: 'Zwei-Komponenten-<br>Versiegelung' },
-        { num: '0<span>%</span>',    lbl: 'Lösungsmittel –<br>rein Wasserbasis' },
-        { num: 'rutsch<span>↑</span>', lbl: 'hemmend &<br>chemikalienresistent' },
-        { num: 'Kosten<span>↓</span>', lbl: 'vs. Belagsaustausch' }
+        { num: '2K<em>✓</em>',     lbl: 'Zwei-Komponenten-Versiegelung' },
+        { num: '0<em>%</em>',      lbl: 'Lösungsmittel – rein Wasserbasis' },
+        { num: 'rutsch<em>↑</em>', lbl: 'hemmend & chemikalienresistent' },
+        { num: 'Kosten<em>↓</em>', lbl: 'vs. Belagsaustausch' }
       ]
     };
 
@@ -1375,18 +1097,15 @@
           lblEl.innerHTML = szStats[tab][i].lbl;
           numEl.style.opacity = '1';
           lblEl.style.opacity = '1';
-        }, 200);
+        }, 180);
       });
     }
 
     document.querySelectorAll('.sz-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.sz-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.sz-panel').forEach(p => p.classList.remove('active'));
         tab.classList.add('active');
-        const key = tab.dataset.tab;
-        document.getElementById('sz-panel-' + key).classList.add('active');
-        szUpdateStats(key);
+        szUpdateStats(tab.dataset.tab);
       });
     });
 
@@ -1437,3 +1156,4 @@
 
 </body>
 </html>
+      
