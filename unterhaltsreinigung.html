@@ -2,326 +2,301 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Sylegro – Unterhaltsreinigung</title>
+  <title>Unterhaltsreinigung – Sylegro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Schrift Kiro -->
-  <link href="https://fonts.googleapis.com/css2?family=Kiro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Kiro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
+    :root { --blue: #0063A5; --green: #17A863; --dark: #0f172a; --bg: #f5f5f5; }
+    body { font-family: "Kiro", system-ui, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--dark); }
+    a { color: inherit; text-decoration: none; }
 
-    :root {
-      --sylegro-blue: #0063A5;
-      --sylegro-green: #17A863;
-      --bg-light: #f5f5f5;
-    }
+    /* ── HEADER ── */
+    header { background: linear-gradient(to right, var(--blue), var(--green)); padding: 8px 20px; }
+    .header-inner { padding: 0 60px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .logo-area img { height: 80px; width: auto; display: block; filter: drop-shadow(0 6px 16px rgba(15,23,42,0.5)); }
+    nav { display: flex; align-items: center; gap: 40px; }
+    nav a { color: #fff; font-size: 1.1rem; font-weight: 500; position: relative; padding-bottom: 3px; }
+    nav a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: rgba(255,255,255,0.9); border-radius: 999px; transition: width .18s; }
+    nav a:hover::after { width: 100%; }
+    .nav-item { position: relative; display: flex; align-items: center; }
+    .submenu { position: absolute; top: 100%; left: 0; background: #fff; color: var(--dark); padding: 8px 0; border-radius: 10px; box-shadow: 0 10px 25px rgba(15,23,42,0.18); min-width: 220px; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity 0.18s, transform 0.18s; z-index: 20; }
+    .submenu a { display: block; padding: 8px 16px; font-size: 0.95rem; color: #111827; white-space: nowrap; }
+    .submenu a:hover { background: rgba(0,99,165,0.06); color: var(--blue); }
+    .nav-item.has-submenu:hover .submenu { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
-    body {
-      font-family: "Kiro", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: var(--bg-light);
-      color: #0f172a;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* HEADER */
-    header {
-      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
-      color: white;
-      padding: 8px 20px;
-    }
-
-    .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo-area img {
-      height: 220px;
-      width: auto;
-      object-fit: contain;
-      display: block;
-      filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.5));
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
+    /* ── HERO – Vollbild mit Overlay ── */
+    .hero {
       position: relative;
-    }
-
-    nav a {
-      color: white;
-      font-size: 0.98rem;
-      font-weight: 500;
-      position: relative;
-      padding-bottom: 3px;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 999px;
-      transition: width .18s ease-out;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    /* Dropdown für Dienstleistungen */
-    .nav-item {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .submenu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #ffffff;
-      color: #0f172a;
-      padding: 8px 0;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
-      min-width: 220px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(8px);
-      transition: opacity 0.18s ease-out, transform 0.18s ease-out;
-      z-index: 20;
-    }
-
-    .submenu a {
-      display: block;
-      padding: 8px 16px;
-      font-size: 0.95rem;
-      color: #111827;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .submenu a:hover {
-      background: rgba(0, 99, 165, 0.06);
-      color: var(--sylegro-blue);
-    }
-
-    .nav-item.has-submenu:hover .submenu {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    /* MAIN */
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 20px 32px;
-    }
-
-    h1, h2, h3 {
-      margin-top: 0;
-      font-weight: 600;
-    }
-
-    h1 {
-      font-size: 1.9rem;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-    }
-
-    p {
-      line-height: 1.6;
-      font-size: 0.98rem;
-      margin-bottom: 10px;
-    }
-
-    /* Karten allgemein */
-    .card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 24px 24px 22px;
-      margin-bottom: 24px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-      border-top: 4px solid var(--sylegro-blue);
-    }
-
-    .hero-card {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(6px);
-      border-top-color: var(--sylegro-green);
-    }
-
-    .hero-card h1 {
-      margin-bottom: 4px;
-    }
-
-    .hero-subtitle {
-      color: var(--sylegro-blue);
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    /* Einsatzgebiet */
-    .area-card h2 {
-      color: var(--sylegro-green);
-      margin-bottom: 16px;
-    }
-
-    .area-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
-    }
-
-    .area-tile {
-      position: relative;
-      border-radius: 14px;
+      height: 75vh;
       overflow: hidden;
-      min-height: 210px; /* grösser */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
     }
-
-    .area-tile::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.45);
+    .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(15,23,42,0.75) 0%, rgba(0,99,165,0.35) 50%, rgba(15,23,42,0.2) 100%);
     }
-
-    .area-tile-inner {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
+    .hero-content {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
       justify-content: center;
-      text-align: center;
-      padding: 12px;
-      color: #f9fafb;
-      font-size: 1.05rem;
-      font-weight: 500;
+      padding: 0 60px;
+      max-width: 680px;
     }
-
-    /* Gradient-Info (3-Zeiler zentriert) */
-    .gradient-info-card {
-      background: linear-gradient(to right, var(--sylegro-blue), var(--sylegro-green));
-      color: #ffffff;
-      border-top-color: rgba(255,255,255,0.7);
-      text-align: center;
+    .hero-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--green); display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+      opacity: 0; animation: fadeUp 0.6s ease 0.1s forwards;
     }
-
-    .gradient-info-card p {
-      margin: 3px 0;          /* sehr kleiner Abstand */
-      line-height: 1.25;      /* kompakt, aber lesbar */
-      font-size: 0.98rem;
+    .hero-label::before { content: ""; width: 32px; height: 2px; background: var(--green); display: block; }
+    .hero-title {
+      font-size: 3.8rem; font-weight: 800; color: #fff; line-height: 1.05; margin: 0 0 20px;
+      opacity: 0; animation: fadeUp 0.6s ease 0.25s forwards;
     }
-
-    /* CTA */
-    .cta-card {
-      background: #ffffff;
-      border-top-color: var(--sylegro-green);
+    .hero-title em { font-style: italic; color: var(--green); }
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(255,255,255,0.72); line-height: 1.75; margin: 0 0 36px;
+      opacity: 0; animation: fadeUp 0.6s ease 0.4s forwards;
     }
+    .hero-actions {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.6s ease 0.55s forwards;
+    }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #fff; padding: 14px 28px; border-radius: 999px; font-size: 0.95rem; font-weight: 700; font-family: "Kiro", sans-serif; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 6px 20px rgba(23,168,99,0.35); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(23,168,99,0.5); }
+    .btn-outline-white { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #fff; padding: 13px 28px; border-radius: 999px; font-size: 0.95rem; font-weight: 600; font-family: "Kiro", sans-serif; border: 1.5px solid rgba(255,255,255,0.4); transition: background 0.2s, border-color 0.2s; }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
 
-    .cta-card h2 {
-      color: var(--sylegro-blue);
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── FEATURE STRIP (inspiriert von ISS) – Icons + kurze Aussagen ── */
+    .feature-strip { background: var(--dark); padding: 0 60px; }
+    .feature-strip-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .feature-item {
+      padding: 28px 20px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: background 0.2s;
+    }
+    .feature-item:last-child { border-right: none; }
+    .feature-item:hover { background: rgba(255,255,255,0.03); }
+    .feature-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(23,168,99,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .feature-icon svg { width: 18px; height: 18px; }
+    .feature-title { font-size: 0.88rem; font-weight: 700; color: #fff; margin: 0 0 3px; }
+    .feature-text { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.5; margin: 0; }
+
+    /* ── INTRO + STATS (zweispaltig) ── */
+    .intro { background: #fff; padding: 80px 60px; }
+    .intro-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
+    .intro-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 12px; }
+    .intro-title { font-size: 2rem; font-weight: 800; color: var(--dark); line-height: 1.15; margin: 0 0 16px; }
+    .intro-title em { font-style: italic; color: var(--blue); }
+    .intro-text { font-size: 0.97rem; color: #4b5563; line-height: 1.8; margin: 0 0 28px; }
+    .intro-link { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-weight: 700; font-size: 0.9rem; transition: gap 0.2s; }
+    .intro-link:hover { gap: 14px; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #e2e8f0; border-radius: 18px; overflow: hidden; border: 1px solid #e2e8f0; }
+    .stat-box { background: var(--bg); padding: 28px 24px; transition: background 0.2s; }
+    .stat-box:hover { background: #edf2f7; }
+    .stat-num { font-size: 2.2rem; font-weight: 800; color: var(--dark); line-height: 1; margin-bottom: 6px; }
+    .stat-num em { font-style: normal; color: var(--green); }
+    .stat-lbl { font-size: 0.82rem; color: #6b7280; line-height: 1.4; }
+
+    /* ── EINSATZGEBIETE – Interaktiver Selektor (neu erfunden) ── */
+    .einsatz { background: var(--bg); padding: 80px 60px; }
+    .einsatz-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 10px; }
+    .section-title { font-size: 1.9rem; font-weight: 800; color: var(--dark); line-height: 1.15; margin: 0 0 12px; }
+    .section-title em { font-style: italic; color: var(--blue); }
+    .section-desc { font-size: 0.97rem; color: #4b5563; line-height: 1.75; margin: 0 0 40px; max-width: 560px; }
+
+    .einsatz-layout { display: grid; grid-template-columns: 280px 1fr; gap: 0; border-radius: 18px; overflow: hidden; box-shadow: 0 8px 32px rgba(15,23,42,0.1); }
+    .einsatz-tabs { background: var(--dark); display: flex; flex-direction: column; }
+    .einsatz-tab {
+      padding: 20px 24px; cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: background 0.18s, border-color 0.18s;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .einsatz-tab:hover { background: rgba(255,255,255,0.05); }
+    .einsatz-tab.active { background: rgba(0,99,165,0.15); border-left-color: var(--blue); }
+    .einsatz-tab-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); flex-shrink: 0; transition: background 0.18s; }
+    .einsatz-tab.active .einsatz-tab-dot { background: var(--green); }
+    .einsatz-tab-label { font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.6); transition: color 0.18s; }
+    .einsatz-tab.active .einsatz-tab-label { color: #fff; }
+
+    .einsatz-panels { position: relative; }
+    .einsatz-panel { display: none; height: 100%; }
+    .einsatz-panel.active { display: block; }
+    .einsatz-panel-img { width: 100%; height: 320px; object-fit: cover; object-position: center; display: block; }
+    .einsatz-panel-body { padding: 28px 32px; background: #fff; }
+    .einsatz-panel-title { font-size: 1.15rem; font-weight: 800; color: var(--dark); margin: 0 0 8px; }
+    .einsatz-panel-text { font-size: 0.88rem; color: #4b5563; line-height: 1.7; margin: 0 0 16px; }
+    .einsatz-panel-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .einsatz-tag { font-size: 0.75rem; font-weight: 500; color: var(--blue); background: rgba(0,99,165,0.08); padding: 4px 10px; border-radius: 999px; }
+
+    /* ── LEISTUNGEN – Akkordeon (inspiriert von Honegger) ── */
+    .leistungen { background: #fff; padding: 80px 60px; }
+    .leistungen-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .leistungen-sticky { position: sticky; top: 80px; }
+    .leistungen-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 16px; display: block; }
+    .leistungen-img-caption { font-size: 0.8rem; color: #9ca3af; margin-top: 10px; }
+
+    .akkordeon { display: flex; flex-direction: column; gap: 0; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; }
+    .akk-item { border-bottom: 1px solid #e2e8f0; }
+    .akk-item:last-child { border-bottom: none; }
+    .akk-header {
+      width: 100%; background: none; border: none; cursor: pointer;
+      padding: 20px 22px; display: flex; align-items: center; gap: 14px;
+      text-align: left; font-family: "Kiro", sans-serif; transition: background 0.15s;
+    }
+    .akk-header:hover { background: #f8fafc; }
+    .akk-header.open { background: #f0f8ff; }
+    .akk-num { font-size: 0.72rem; font-weight: 800; color: var(--blue); letter-spacing: 0.08em; min-width: 24px; }
+    .akk-header.open .akk-num { color: var(--green); }
+    .akk-title { font-size: 0.95rem; font-weight: 700; color: var(--dark); flex: 1; }
+    .akk-arrow { font-size: 0.85rem; color: #9ca3af; transition: transform 0.2s; flex-shrink: 0; }
+    .akk-header.open .akk-arrow { transform: rotate(90deg); color: var(--blue); }
+    .akk-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .akk-body.open { max-height: 200px; }
+    .akk-body-inner { padding: 0 22px 18px 60px; font-size: 0.85rem; color: #4b5563; line-height: 1.7; }
+
+    /* ── PROZESS – Timeline (neu: vertikal mit aktivem Schritt) ── */
+    .prozess { background: var(--dark); padding: 80px 60px; }
+    .prozess-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .prozess-inner .section-label { color: rgba(255,255,255,0.4); }
+    .prozess-inner .section-title { color: #fff; }
+    .prozess-inner .section-title em { color: var(--green); }
+    .prozess-inner .section-desc { color: rgba(255,255,255,0.55); margin-bottom: 0; }
+
+    .prozess-steps { display: flex; flex-direction: column; gap: 0; }
+    .prozess-step {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .prozess-step:last-child { border-bottom: none; }
+    .prozess-step-left { display: flex; flex-direction: column; align-items: center; gap: 0; flex-shrink: 0; }
+    .prozess-num-circle {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.4);
+      font-size: 0.95rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      flex-shrink: 0;
+    }
+    .prozess-step.active .prozess-num-circle { border-color: var(--green); color: var(--dark); background: var(--green); }
+    .prozess-connector { width: 1px; flex: 1; min-height: 20px; background: rgba(255,255,255,0.07); margin: 6px 0; }
+    .prozess-step:last-child .prozess-connector { display: none; }
+    .prozess-step-content { padding-top: 10px; }
+    .prozess-step-title { font-size: 0.95rem; font-weight: 700; color: rgba(255,255,255,0.5); margin: 0 0 4px; transition: color 0.2s; }
+    .prozess-step.active .prozess-step-title { color: #fff; }
+    .prozess-step-text { font-size: 0.83rem; color: rgba(255,255,255,0.35); line-height: 1.65; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, color 0.2s; }
+    .prozess-step.active .prozess-step-text { max-height: 100px; color: rgba(255,255,255,0.55); }
+
+    /* ── QUALITÄT – Zweispaltig mit Badges (inspiriert von ISS "Warum uns") ── */
+    .qualitaet { background: var(--bg); padding: 80px 60px; }
+    .qualitaet-inner { max-width: 1200px; margin: 0 auto; }
+    .qualitaet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+    .q-card {
+      background: #fff; border-radius: 16px; padding: 28px 24px;
+      border: 1px solid #e2e8f0;
+      position: relative; overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .q-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--blue); }
+    .q-card:nth-child(even)::before { background: var(--green); }
+    .q-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(15,23,42,0.09); }
+    .q-card-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: rgba(0,99,165,0.08);
+      display: flex; align-items: center; justify-content: center;
       margin-bottom: 14px;
     }
+    .q-card:nth-child(even) .q-card-icon { background: rgba(23,168,99,0.1); }
+    .q-card-icon svg { width: 20px; height: 20px; }
+    .q-card-title { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin: 0 0 8px; }
+    .q-card-text { font-size: 0.84rem; color: #4b5563; line-height: 1.65; margin: 0; }
 
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
+    /* ── CTA – mit Eldin-Bild ── */
+    .cta-section { background: var(--dark); padding: 80px 60px; }
+    .cta-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; }
+    .cta-title { font-size: 2.2rem; font-weight: 800; color: #fff; margin: 0 0 14px; line-height: 1.15; }
+    .cta-title em { font-style: italic; color: var(--green); }
+    .cta-sub { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin: 0 0 10px; }
+    .cta-contact { display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px; }
+    .cta-contact a { color: rgba(255,255,255,0.8); font-size: 0.9rem; display: flex; align-items: center; gap: 8px; transition: color 0.15s; }
+    .cta-contact a:hover { color: #fff; }
+    .cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #fff; padding: 14px 30px; border-radius: 999px; font-size: 0.95rem; font-weight: 700; font-family: "Kiro", sans-serif; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 6px 20px rgba(23,168,99,0.3); }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(23,168,99,0.45); }
+    .cta-person { display: flex; flex-direction: column; align-items: center; gap: 12px; flex-shrink: 0; }
+    .cta-person-img { width: 160px; height: 200px; border-radius: 14px; object-fit: cover; object-position: center top; border: 3px solid rgba(255,255,255,0.1); }
+    .cta-person-name { font-size: 0.9rem; font-weight: 700; color: #fff; margin: 0; }
+    .cta-person-role { font-size: 0.77rem; color: rgba(255,255,255,0.45); margin: 0; }
 
-    .cta-button {
-      display: inline-block;
-      padding: 6px 22px;
-      border-radius: 999px;
-      background: var(--sylegro-green);
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 0.98rem;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
-    }
+    /* ── FOOTER ── */
+    .site-footer { background: #111827; color: #fff; padding: 56px 60px 0; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1.5fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-logo { height: 50px; width: auto; display: block; margin-bottom: 20px; filter: brightness(0) invert(1); }
+    .footer-address { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0 0 14px; }
+    .footer-contact { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0; }
+    .footer-links { display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
+    .footer-links a { color: rgba(255,255,255,0.85); font-size: 1rem; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--green); }
+    .footer-partner-badge { display: inline-flex !important; align-items: center; gap: 7px; margin-top: 8px; background: rgba(23,168,99,0.1); border: 1px solid rgba(23,168,99,0.3); border-radius: 999px; padding: 6px 14px !important; font-size: 0.78rem !important; color: rgba(255,255,255,0.7) !important; }
+    .footer-partner-badge:hover { background: rgba(23,168,99,0.2) !important; border-color: var(--green) !important; color: #fff !important; }
+    .footer-claim { display: flex; align-items: center; justify-content: flex-end; }
+    .footer-claim p { font-size: 1rem; color: rgba(255,255,255,0.7); margin: 0; font-style: italic; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 20px 0; }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.4); margin: 0; }
 
-    .cta-button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
-      background: #139255;
-    }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-visible { opacity: 1; transform: translateY(0); }
 
-    /* Scroll-Reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    footer {
-      text-align: center;
-      padding: 18px 20px 26px;
-      font-size: 0.85rem;
-      color: #6b7280;
-    }
-
-    @media (max-width: 700px) {
-      .cta-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    @media (max-width: 900px) {
+      .header-inner { flex-direction: column; align-items: flex-start; padding: 0 20px; }
+      nav { gap: 20px; }
+      .hero-content { padding: 0 24px; max-width: 100%; }
+      .hero-title { font-size: 2.4rem; }
+      .feature-strip { padding: 0 24px; }
+      .feature-strip-inner { grid-template-columns: 1fr 1fr; }
+      .intro, .einsatz, .leistungen, .prozess, .qualitaet, .cta-section { padding: 60px 24px; }
+      .intro-inner { grid-template-columns: 1fr; gap: 40px; }
+      .einsatz-layout { grid-template-columns: 1fr; }
+      .einsatz-tabs { flex-direction: row; flex-wrap: wrap; }
+      .einsatz-tab { border-left: none; border-bottom: 3px solid transparent; }
+      .einsatz-tab.active { border-bottom-color: var(--blue); border-left: none; }
+      .leistungen-inner { grid-template-columns: 1fr; }
+      .leistungen-sticky { position: static; }
+      .prozess-inner { grid-template-columns: 1fr; }
+      .qualitaet-grid { grid-template-columns: 1fr; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .cta-person { flex-direction: row; justify-content: flex-start; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-claim { justify-content: flex-start; }
+      .site-footer { padding: 40px 24px 0; }
     }
   </style>
 </head>
-
 <body>
 
   <!-- HEADER -->
   <header>
     <div class="header-inner">
-      <div class="logo-area">
-        <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo mit Claim">
-      </div>
-
+      <a href="index.html" class="logo-area"><img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo"></a>
       <nav>
         <a href="index.html">Startseite</a>
-
         <div class="nav-item has-submenu">
           <a href="dienstleistungen.html">Dienstleistungen</a>
           <div class="submenu">
@@ -330,7 +305,6 @@
             <a href="hauswartung.html">Hauswartung</a>
           </div>
         </div>
-
         <a href="ueber-uns.html">Über uns</a>
         <a href="jobs.html">Jobs</a>
         <a href="kontakt.html">Kontakt</a>
@@ -338,107 +312,451 @@
     </div>
   </header>
 
-  <!-- MAIN -->
-  <main>
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-img" src="Büro.jpg" alt="Unterhaltsreinigung Sylegro">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-label">Dienstleistung</span>
+      <h1 class="hero-title">Unterhalts-<br><em>reinigung</em></h1>
+      <p class="hero-sub">Sauberkeit, auf die Sie sich jeden Tag verlassen können. Professionell, diskret und exakt auf Ihre Räumlichkeiten abgestimmt.</p>
+      <div class="hero-actions">
+        <a href="kontakt.html" class="btn-primary">Angebot anfragen →</a>
+        <a href="#leistungen" class="btn-outline-white">Leistungen entdecken</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Hero / Einleitung -->
-    <section class="card hero-card reveal">
-      <h1>Unterhaltsreinigung</h1>
-      <h2 class="hero-subtitle">Sauberkeit, auf die Sie sich verlassen können</h2>
-      <p>
-        Sauberkeit mit System: Unsere Fachkräfte sorgen täglich für gepflegte und hygienische Räume –
-        mit umweltfreundlichen Reinigungsmitteln und modernster Technik schaffen wir eine Umgebung,
-        in der sich Ihre Mitarbeitenden wohlfühlen, Besuchende beeindruckt sind und alles professionell gepflegt bleibt.
-      </p>
-    </section>
+  <!-- FEATURE STRIP (ISS-inspiriert) -->
+  <div class="feature-strip">
+    <div class="feature-strip-inner">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        </div>
+        <div>
+          <p class="feature-title">Qualitätsgarantie</p>
+          <p class="feature-text">Regelmässige Kontrollen durch unsere Vorarbeiter</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <p class="feature-title">Flexibel & angepasst</p>
+          <p class="feature-text">Reinigung nach Ihrem Zeitplan und Ihren Anforderungen</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <p class="feature-title">Zertifizierte Produkte</p>
+          <p class="feature-text">Umweltschonende, geprüfte Reinigungsmittel</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <p class="feature-title">Direkter Ansprechpartner</p>
+          <p class="feature-text">Kein Callcenter – immer die richtige Person</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Einsatzgebiet -->
-    <section class="card area-card reveal">
-      <h2>Unser Einsatzgebiet umfasst:</h2>
+  <!-- INTRO + STATS -->
+  <section class="intro reveal">
+    <div class="intro-inner">
+      <div>
+        <span class="intro-label">Warum Sylegro</span>
+        <h2 class="intro-title">Täglich im <em>besten Zustand.</em></h2>
+        <p class="intro-text">Unsere Unterhaltsreinigung sorgt dafür, dass Ihre Räumlichkeiten täglich sauber, gepflegt und einladend sind. Wir kennen Ihre Anforderungen genau – und erfüllen sie zuverlässig, diskret und mit höchstem Qualitätsanspruch.</p>
+        <p class="intro-text" style="margin-bottom:0">Ob Büro, Klinik, Schule oder Industriebetrieb: Wir entwickeln für jedes Objekt einen massgeschneiderten Reinigungsplan und führen ihn professionell aus.</p>
+        <a href="kontakt.html" class="intro-link" style="margin-top:24px;display:inline-flex">Kostenloses Angebot anfragen →</a>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <p class="stat-num">50<em>+</em></p>
+          <p class="stat-lbl">Jahre gemeinsame Teamerfahrung</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-num">20<em>+</em></p>
+          <p class="stat-lbl">Zufriedene Kunden in der Zentralschweiz</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-num">100<em>%</em></p>
+          <p class="stat-lbl">Kundenzufriedenheit als oberstes Ziel</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-num" style="font-size:1.6rem">CH</p>
+          <p class="stat-lbl">Zertifizierte Schweizer Qualitätsprodukte</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="area-grid">
-        <div class="area-tile" style="background-image: url('Büro.jpg');">
-          <div class="area-tile-inner">
-            Büro- und Verwaltungsgebäude
+  <!-- EINSATZGEBIETE – Interaktiver Selektor -->
+  <section class="einsatz reveal">
+    <div class="einsatz-inner">
+      <span class="section-label">Wo wir tätig sind</span>
+      <h2 class="section-title">Unsere <em>Einsatzgebiete</em></h2>
+      <p class="section-desc">Wir reinigen dort, wo es zählt – in der ganzen Zentralschweiz, angepasst an Ihre Anforderungen.</p>
+
+      <div class="einsatz-layout">
+        <div class="einsatz-tabs">
+          <div class="einsatz-tab active" data-panel="buero">
+            <span class="einsatz-tab-dot"></span>
+            <span class="einsatz-tab-label">Büros & Verwaltung</span>
+          </div>
+          <div class="einsatz-tab" data-panel="klinik">
+            <span class="einsatz-tab-dot"></span>
+            <span class="einsatz-tab-label">Kliniken & Praxen</span>
+          </div>
+          <div class="einsatz-tab" data-panel="industrie">
+            <span class="einsatz-tab-dot"></span>
+            <span class="einsatz-tab-label">Industrie & Produktion</span>
+          </div>
+          <div class="einsatz-tab" data-panel="einkauf">
+            <span class="einsatz-tab-dot"></span>
+            <span class="einsatz-tab-label">Einkaufszentren</span>
+          </div>
+          <div class="einsatz-tab" data-panel="schule">
+            <span class="einsatz-tab-dot"></span>
+            <span class="einsatz-tab-label">Schulen & Bildung</span>
           </div>
         </div>
-
-        <div class="area-tile" style="background-image: url('Schule.jpg');">
-          <div class="area-tile-inner">
-            Schulen und Universitäten
+        <div class="einsatz-panels">
+          <div class="einsatz-panel active" id="panel-buero">
+            <img class="einsatz-panel-img" src="Büro.jpg" alt="Büroreinigung">
+            <div class="einsatz-panel-body">
+              <p class="einsatz-panel-title">Büros & Verwaltungsgebäude</p>
+              <p class="einsatz-panel-text">Schreibtische, Böden, Sanitäranlagen und Gemeinschaftsbereiche – täglich sauber und repräsentativ. Auch ausserhalb der Bürozeiten, diskret und zuverlässig.</p>
+              <div class="einsatz-panel-tags">
+                <span class="einsatz-tag">Tagesreinigung</span>
+                <span class="einsatz-tag">Abendreinigung</span>
+                <span class="einsatz-tag">Grundreinigung</span>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="area-tile" style="background-image: url('Einkaufen.jpg');">
-          <div class="area-tile-inner">
-            Einkaufszentren und Verkaufslokale
+          <div class="einsatz-panel" id="panel-klinik">
+            <img class="einsatz-panel-img" src="Klinik.jpg" alt="Klinikreinigung">
+            <div class="einsatz-panel-body">
+              <p class="einsatz-panel-title">Kliniken & Arztpraxen</p>
+              <p class="einsatz-panel-text">Hygienische Reinigung nach medizinischen Standards – mit den richtigen Desinfektionsmitteln, geschultem Personal und strenger Qualitätskontrolle.</p>
+              <div class="einsatz-panel-tags">
+                <span class="einsatz-tag">Hygienestandards</span>
+                <span class="einsatz-tag">Desinfektion</span>
+                <span class="einsatz-tag">Diskretion</span>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="area-tile" style="background-image: url('Klinik.jpg');">
-          <div class="area-tile-inner">
-            Kliniken und Arztpraxen
+          <div class="einsatz-panel" id="panel-industrie">
+            <img class="einsatz-panel-img" src="Produktion.jpg" alt="Industriereinigung">
+            <div class="einsatz-panel-body">
+              <p class="einsatz-panel-title">Industrie & Produktionsflächen</p>
+              <p class="einsatz-panel-text">Reinigung von Hallen, Sozialbereichen und Lagerflächen – angepasst an Ihre Schicht- und Betriebszeiten, ohne Betriebsunterbruch.</p>
+              <div class="einsatz-panel-tags">
+                <span class="einsatz-tag">Schichtbetrieb</span>
+                <span class="einsatz-tag">Hallenflächen</span>
+                <span class="einsatz-tag">Sozialbereiche</span>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="area-tile" style="background-image: url('Produktion.jpg');">
-          <div class="area-tile-inner">
-            Produktions- und Industrieflächen
+          <div class="einsatz-panel" id="panel-einkauf">
+            <img class="einsatz-panel-img" src="Einkaufen.jpg" alt="Einkaufszentrumreinigung">
+            <div class="einsatz-panel-body">
+              <p class="einsatz-panel-title">Einkaufszentren & Verkaufslokale</p>
+              <p class="einsatz-panel-text">Repräsentative Sauberkeit für Ihre Kundschaft – vor, während und nach den Öffnungszeiten, flexibel und reaktionsschnell.</p>
+              <div class="einsatz-panel-tags">
+                <span class="einsatz-tag">Öffnungszeiten</span>
+                <span class="einsatz-tag">Frequenzreinigung</span>
+                <span class="einsatz-tag">Sanitäranlagen</span>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="area-tile" style="background-image: url('freundliches Reinigen (1).jpg');">
-          <div class="area-tile-inner">
-            Und vieles mehr.
+          <div class="einsatz-panel" id="panel-schule">
+            <img class="einsatz-panel-img" src="AdobeStock_482143067.jpeg" alt="Schulreinigung">
+            <div class="einsatz-panel-body">
+              <p class="einsatz-panel-title">Schulen & Bildungseinrichtungen</p>
+              <p class="einsatz-panel-text">Klassenzimmer, Turnhallen, Korridore – täglich gepflegt, mit Grundreinigungen in den Ferien für einen frischen Start ins neue Schuljahr.</p>
+              <div class="einsatz-panel-tags">
+                <span class="einsatz-tag">Unterhaltsreinigung</span>
+                <span class="einsatz-tag">Ferienreinigung</span>
+                <span class="einsatz-tag">Turnhallen</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- 3-Zeiler mit Farbverlauf, zentriert -->
-    <section class="card gradient-info-card reveal">
-      <p>Regelmässige Unterhaltsreinigung schützt Oberflächen und verlängert die Lebensdauer Ihrer Infrastruktur.</p>
-      <p>Dank klarer Prozesse und geschulten Mitarbeitenden bleiben Büros, Verkehrsflächen und Sanitäranlagen zuverlässig sauber.</p>
-      <p>So schaffen Sie ein gepflegtes Umfeld, in dem sich Mitarbeitende und Besuchende rundum wohlfühlen.</p>
-    </section>
-
-    <!-- CTA -->
-    <section class="card cta-card reveal">
-      <h2>Effizient, Nachhaltig &amp; Massgeschneidert</h2>
-
-      <div class="cta-row">
-        <span>Kontaktieren Sie uns</span>
-        <a href="kontakt.html">
-          <button class="cta-button" type="button">Jetzt</button>
-        </a>
-        <span>und verlangen Sie ein kostenloses Angebot.</span>
+  <!-- LEISTUNGEN – Akkordeon + Sticky Bild -->
+  <section class="leistungen reveal" id="leistungen">
+    <div class="leistungen-inner">
+      <div class="leistungen-sticky">
+        <span class="section-label">Was wir leisten</span>
+        <h2 class="section-title" style="margin-bottom:14px">Unsere <em>Leistungen</em></h2>
+        <p style="font-size:0.95rem;color:#4b5563;line-height:1.75;margin:0 0 24px">Klicken Sie auf einen Bereich, um mehr zu erfahren.</p>
+        <img class="leistungen-img" src="sauberes-open_office.jpg" alt="Unterhaltsreinigung Sylegro" onerror="this.src='Büro.jpg'">
       </div>
+      <div>
+        <div class="akkordeon">
+          <div class="akk-item">
+            <button class="akk-header open" onclick="toggleAkk(this)">
+              <span class="akk-num">01</span>
+              <span class="akk-title">Büro- & Arbeitsplatzbereiche</span>
+              <span class="akk-arrow">›</span>
+            </button>
+            <div class="akk-body open">
+              <div class="akk-body-inner">Schreibtische, Böden, Fenster, Sanitäranlagen und Küchen – wir reinigen alle Arbeitsbereiche gründlich und sorgen für eine hygienische Atmosphäre, die die Produktivität fördert.</div>
+            </div>
+          </div>
+          <div class="akk-item">
+            <button class="akk-header" onclick="toggleAkk(this)">
+              <span class="akk-num">02</span>
+              <span class="akk-title">Sanitär- & Nassräume</span>
+              <span class="akk-arrow">›</span>
+            </button>
+            <div class="akk-body">
+              <div class="akk-body-inner">Gründliche Desinfektion und Reinigung von Toiletten, Duschen und Umkleideräumen – mit geprüften Hygienmitteln und höchsten Standards.</div>
+            </div>
+          </div>
+          <div class="akk-item">
+            <button class="akk-header" onclick="toggleAkk(this)">
+              <span class="akk-num">03</span>
+              <span class="akk-title">Gemeinschaftsbereiche & Eingangszone</span>
+              <span class="akk-arrow">›</span>
+            </button>
+            <div class="akk-body">
+              <div class="akk-body-inner">Empfang, Sitzungsräume, Korridore und Pausenräume – die Visitenkarte Ihres Unternehmens ist täglich makellos gepflegt.</div>
+            </div>
+          </div>
+          <div class="akk-item">
+            <button class="akk-header" onclick="toggleAkk(this)">
+              <span class="akk-num">04</span>
+              <span class="akk-title">Bodenbeläge & Oberflächen</span>
+              <span class="akk-arrow">›</span>
+            </button>
+            <div class="akk-body">
+              <div class="akk-body-inner">Hartböden, Teppiche, Parkett – jeder Bodenbelag erhält die passende Pflege. Auf Wunsch auch regelmässige Grundreinigung und Versiegelung.</div>
+            </div>
+          </div>
+          <div class="akk-item">
+            <button class="akk-header" onclick="toggleAkk(this)">
+              <span class="akk-num">05</span>
+              <span class="akk-title">Aussenanlagen & Eingangsbereiche</span>
+              <span class="akk-arrow">›</span>
+            </button>
+            <div class="akk-body">
+              <div class="akk-body-inner">Eingangsmatten, Treppenhäuser, Parkplätze – auf Wunsch übernehmen wir auch die regelmässige Pflege der Aussenbereiche Ihres Objekts.</div>
+            </div>
+          </div>
+          <div class="akk-item">
+            <button class="akk-header" onclick="toggleAkk(this)">
+              <span class="akk-num">06</span>
+              <span class="akk-title">Grundreinigungen & Sonderreinigungen</span>
+              <span class="akk-arrow">›</span>
+            </button>
+            <div class="akk-body">
+              <div class="akk-body-inner">Tiefenreinigungen nach Bedarf – saisonal, vor besonderen Anlässen oder nach Renovationsarbeiten. Immer termingerecht und gründlich.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <p>Wir freuen uns auf Sie!</p>
-    </section>
+  <!-- PROZESS – Vertikale Timeline -->
+  <section class="prozess reveal">
+    <div class="prozess-inner">
+      <div>
+        <span class="section-label">So starten wir</span>
+        <h2 class="section-title">Von der Anfrage zur <em>Partnerschaft</em></h2>
+        <p class="section-desc">Unkompliziert, transparent und schnell – in 4 Schritten zur regelmässigen Zusammenarbeit.</p>
+      </div>
+      <div class="prozess-steps">
+        <div class="prozess-step active" onclick="activateProzess(this)">
+          <div class="prozess-step-left">
+            <div class="prozess-num-circle">1</div>
+            <div class="prozess-connector"></div>
+          </div>
+          <div class="prozess-step-content">
+            <p class="prozess-step-title">Anfrage</p>
+            <p class="prozess-step-text">Kontaktieren Sie uns per Telefon, E-Mail oder Formular – wir melden uns innert 24 Stunden.</p>
+          </div>
+        </div>
+        <div class="prozess-step" onclick="activateProzess(this)">
+          <div class="prozess-step-left">
+            <div class="prozess-num-circle">2</div>
+            <div class="prozess-connector"></div>
+          </div>
+          <div class="prozess-step-content">
+            <p class="prozess-step-title">Besichtigung</p>
+            <p class="prozess-step-text">Wir besichtigen Ihr Objekt, nehmen alle Wünsche auf und definieren gemeinsam den Leistungsumfang.</p>
+          </div>
+        </div>
+        <div class="prozess-step" onclick="activateProzess(this)">
+          <div class="prozess-step-left">
+            <div class="prozess-num-circle">3</div>
+            <div class="prozess-connector"></div>
+          </div>
+          <div class="prozess-step-content">
+            <p class="prozess-step-title">Offerte</p>
+            <p class="prozess-step-text">Sie erhalten ein transparentes, massgeschneidertes Angebot – ohne versteckte Kosten.</p>
+          </div>
+        </div>
+        <div class="prozess-step" onclick="activateProzess(this)">
+          <div class="prozess-step-left">
+            <div class="prozess-num-circle">4</div>
+            <div class="prozess-connector"></div>
+          </div>
+          <div class="prozess-step-content">
+            <p class="prozess-step-title">Start & laufende Betreuung</p>
+            <p class="prozess-step-text">Wir starten – mit regelmässigen Qualitätskontrollen, direktem Ansprechpartner und flexibler Anpassung.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </main>
+  <!-- QUALITÄT – Karten mit SVG-Icons -->
+  <section class="qualitaet reveal">
+    <div class="qualitaet-inner">
+      <span class="section-label">Qualitätssicherung</span>
+      <h2 class="section-title">Qualität ist kein <em>Zufall</em></h2>
+      <p class="section-desc">Klare Prozesse, geschultes Personal und konsequente Kontrolle – das ist unser Rezept.</p>
+      <div class="qualitaet-grid">
+        <div class="q-card">
+          <div class="q-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0063A5" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <p class="q-card-title">Individuelle Reinigungspläne</p>
+          <p class="q-card-text">Jedes Objekt erhält einen schriftlichen, massgeschneiderten Reinigungsplan – damit nichts dem Zufall überlassen bleibt.</p>
+        </div>
+        <div class="q-card">
+          <div class="q-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <p class="q-card-title">Regelmässige Schulungen</p>
+          <p class="q-card-text">Unser Team wird laufend in Technik, Produkten und Sicherheitsstandards weitergebildet – intern und extern.</p>
+        </div>
+        <div class="q-card">
+          <div class="q-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0063A5" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <p class="q-card-title">Laufende Qualitätskontrolle</p>
+          <p class="q-card-text">Regelmässige Kontrollen durch Vorarbeiter und gemeinsame Rundgänge mit dem Kunden – Qualität, die Sie sehen.</p>
+        </div>
+        <div class="q-card">
+          <div class="q-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <p class="q-card-title">Offene Kommunikation</p>
+          <p class="q-card-text">Wir reagieren schnell auf Feedback und passen unsere Leistung kontinuierlich an Ihre Bedürfnisse an.</p>
+        </div>
+        <div class="q-card">
+          <div class="q-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0063A5" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <p class="q-card-title">Zertifizierte Produkte</p>
+          <p class="q-card-text">Wir setzen ausschliesslich geprüfte, umweltfreundliche Reinigungsmittel ein – gut für Mensch, Tier und Natur.</p>
+        </div>
+        <div class="q-card">
+          <div class="q-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <p class="q-card-title">Direkter Ansprechpartner</p>
+          <p class="q-card-text">Kein Callcenter – Sie haben immer eine direkte Ansprechperson, die Ihr Objekt und Ihre Anforderungen kennt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA mit Eldin -->
+  <section class="cta-section reveal">
+    <div class="cta-inner">
+      <div>
+        <h2 class="cta-title">Bereit für <em>sauberere</em> Räume?</h2>
+        <p class="cta-sub">Kontaktieren Sie uns für ein kostenloses, unverbindliches Angebot – wir melden uns innerhalb von 24 Stunden.</p>
+        <div class="cta-contact">
+          <a href="tel:+41418558858">📞 +41 41 55 88 58</a>
+          <a href="tel:+41768407472">📱 +41 76 840 74 72</a>
+          <a href="mailto:info@sylegro.ch">✉️ info@sylegro.ch</a>
+        </div>
+        <a href="kontakt.html" class="cta-btn">Jetzt Angebot anfragen →</a>
+      </div>
+      <div class="cta-person">
+        <img class="cta-person-img" src="Portrait-Eldin.JPG" alt="Eldin Sylejmani">
+        <div>
+          <p class="cta-person-name">Eldin Sylejmani</p>
+          <p class="cta-person-role">Gründer & Inhaber</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
-  <footer>
-    © Sylegro <span id="year"></span>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo" class="footer-logo">
+        <p class="footer-address">Turbistrasse 17<br>6280 Hochdorf</p>
+        <p class="footer-contact">+41 41 55 88 58<br>info@sylegro.ch</p>
+      </div>
+      <div class="footer-links">
+        <a href="dienstleistungen.html">Dienstleistungen</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://my.top-offerten.ch/companies/5775/link-partnership" target="_blank" class="footer-partner-badge">🏅 Verifiziert auf top-offerten.ch</a>
+      </div>
+      <div class="footer-claim"><p>Ihr Partner für Facility Services</p></div>
+    </div>
+    <div class="footer-bottom"><p>© <span id="year"></span> sylegro</p></div>
   </footer>
 
-  <!-- Scroll-Reveal Logik -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    // Einsatzgebiete Selektor
+    document.querySelectorAll('.einsatz-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.einsatz-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.einsatz-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        const panel = document.getElementById('panel-' + tab.dataset.panel);
+        if (panel) panel.classList.add('active');
+      });
+    });
+
+    // Akkordeon
+    function toggleAkk(header) {
+      const body = header.nextElementSibling;
+      const isOpen = header.classList.contains('open');
+      document.querySelectorAll('.akk-header').forEach(h => { h.classList.remove('open'); h.nextElementSibling.classList.remove('open'); });
+      if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
+    }
+
+    // Prozess Steps
+    function activateProzess(step) {
+      document.querySelectorAll('.prozess-step').forEach(s => s.classList.remove('active'));
+      step.classList.add('active');
+    }
+
+    // Scroll Reveal
     let lastScrollY = window.scrollY;
     let scrollDirection = 'down';
-
     window.addEventListener('scroll', () => {
       const currentY = window.scrollY;
       scrollDirection = currentY > lastScrollY ? 'down' : 'up';
       lastScrollY = currentY;
     });
-
-    const revealElements = document.querySelectorAll('.reveal');
-
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && scrollDirection === 'down') {
@@ -446,10 +764,8 @@
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
-
-    revealElements.forEach(el => observer.observe(el));
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
-
 </body>
 </html>
