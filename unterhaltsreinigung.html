@@ -70,14 +70,14 @@
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
     /* ── FEATURE STRIP (inspiriert von ISS) – Icons + kurze Aussagen ── */
-    .feature-strip { background: var(--dark); padding: 0 60px; }
+    .feature-strip { background: var(--dark); padding: 8px 60px; }
     .feature-strip-inner {
       max-width: 1200px; margin: 0 auto;
       display: grid; grid-template-columns: repeat(4, 1fr);
       border-top: 1px solid rgba(255,255,255,0.06);
     }
     .feature-item {
-      padding: 28px 20px;
+      padding: 34px 24px;
       border-right: 1px solid rgba(255,255,255,0.06);
       display: flex; align-items: flex-start; gap: 14px;
       transition: background 0.2s;
@@ -270,30 +270,34 @@
       overflow: hidden;
     }
     .prozess-balken {
-      padding: 48px 28px;
+      padding: 32px 24px 28px;
       background: rgba(255,255,255,0.05);
       border-right: 1px solid rgba(255,255,255,0.08);
       cursor: default;
       transition: background 0.3s ease;
-      position: relative;
       min-height: 200px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      gap: 16px;
     }
     .prozess-balken:last-child { border-right: none; }
     .prozess-balken-num {
-      font-size: 3rem;
+      font-size: 2.6rem;
       font-weight: 800;
-      color: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.18);
       line-height: 1;
-      position: absolute;
-      top: 24px; left: 24px;
+      margin: 0 0 auto 0;
+      align-self: flex-start;
       transition: color 0.3s;
+      flex-shrink: 0;
     }
-    .prozess-balken-hover { opacity: 0; transform: translateY(10px); transition: opacity 0.25s, transform 0.25s; }
+    .prozess-balken-hover {
+      opacity: 0; transform: translateY(8px);
+      transition: opacity 0.25s, transform 0.25s;
+      margin-top: auto;
+    }
     .prozess-balken:hover .prozess-balken-hover { opacity: 1; transform: translateY(0); }
-    .prozess-balken:hover .prozess-balken-num { color: rgba(255,255,255,0.3); }
+    .prozess-balken:hover .prozess-balken-num { color: rgba(255,255,255,0.35); }
     .prozess-balken-title { font-size: 1rem; font-weight: 800; color: #fff; margin: 0 0 8px; }
     .prozess-balken-text { font-size: 0.84rem; color: rgba(255,255,255,0.75); line-height: 1.65; margin: 0; }
 
@@ -318,6 +322,44 @@
     .kl-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
     .kl-title { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin: 0 0 3px; }
     .kl-text { font-size: 0.82rem; color: #4b5563; line-height: 1.55; margin: 0; }
+
+    /* ── QUALITÄT TIMELINE ── */
+    .ql-layout { display: grid; grid-template-columns: 340px 1fr; gap: 60px; align-items: start; margin-top: 48px; }
+    .ql-timeline { display: flex; flex-direction: column; align-items: flex-start; }
+    .ql-node {
+      display: flex; align-items: center; gap: 14px;
+      cursor: pointer; padding: 8px 12px;
+      border-radius: 10px; width: 100%;
+      transition: background 0.18s;
+    }
+    .ql-node:hover { background: rgba(0,99,165,0.05); }
+    .ql-node.active .ql-label { font-weight: 700; }
+    .ql-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 2px solid #ccc; background: #fff;
+      flex-shrink: 0; transition: background 0.2s, transform 0.2s;
+    }
+    .ql-node.active .ql-dot, .ql-node:hover .ql-dot { transform: scale(1.3); }
+    .ql-node.active .ql-dot { background: currentColor; }
+    .ql-label { font-size: 0.88rem; color: #4b5563; line-height: 1.4; transition: color 0.2s; }
+    .ql-node.active .ql-label { color: #0f172a; }
+    .ql-line {
+      width: 2px; height: 36px; margin-left: 18px;
+      opacity: 0.3; transition: opacity 0.3s;
+    }
+    .ql-line.lit { opacity: 1; }
+    .ql-logo-node {
+      display: flex; align-items: center; gap: 14px;
+      padding: 8px 12px; cursor: pointer;
+    }
+    .ql-logo-img { height: 28px; width: auto; display: block; filter: brightness(0) saturate(100%) invert(27%) sepia(93%) saturate(1352%) hue-rotate(200deg); }
+
+    .ql-info-box { position: sticky; top: 100px; }
+    .ql-info-panel { display: none; }
+    .ql-info-panel.active { display: block; animation: fadeUp 0.3s ease; }
+    .ql-info-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 999px; margin-bottom: 14px; }
+    .ql-info-title { font-size: 1.3rem; font-weight: 800; color: #0f172a; margin: 0 0 14px; line-height: 1.25; }
+    .ql-info-text { font-size: 0.92rem; color: #4b5563; line-height: 1.8; margin: 0; }
 
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal-visible { opacity: 1; transform: translateY(0); }
@@ -376,7 +418,6 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1 class="hero-title" style="color:#fff;font-style:normal;">Unterhaltsreinigung</h1>
-      <p class="hero-sub">Sauberkeit, auf die Sie sich jeden Tag verlassen können. Professionell, diskret und exakt auf Ihre Räumlichkeiten abgestimmt.</p>
     </div>
   </section>
 
@@ -428,9 +469,9 @@
       <div>
         <span class="intro-label">Warum Sylegro</span>
         <h2 class="intro-title">Täglich im <em>besten Zustand.</em></h2>
-        <p class="intro-text">Unsere Unterhaltsreinigung sorgt dafür, dass Ihre Räumlichkeiten täglich sauber, gepflegt und einladend sind. Wir kennen Ihre Anforderungen genau – und erfüllen sie zuverlässig, diskret und mit höchstem Qualitätsanspruch.</p>
-        <p class="intro-text" style="margin-bottom:0">Ob Büro, Klinik, Schule oder Industriebetrieb: Wir entwickeln für jedes Objekt einen massgeschneiderten Reinigungsplan und führen ihn professionell aus.</p>
-        <a href="kontakt.html" class="intro-link" style="margin-top:24px;display:inline-flex">Kostenloses Angebot anfragen →</a>
+        <p class="intro-text">Unsere Unterhaltsreinigung sorgt dafür, dass Ihre Räumlichkeiten täglich sauber, gepflegt und einladend sind. Wir kennen Ihre Anforderungen genau und erfüllen sie zuverlässig, transparent und mit höchstem Qualitätsanspruch.</p>
+        <p class="intro-text" style="margin-bottom:0">Ob Büro, Klinik, Schule oder Industriebetrieb, wir entwickeln für jedes Objekt einen massgeschneiderten Reinigungsplan und führen ihn professionell aus.</p>
+        <a href="kontakt.html" style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#fff;padding:14px 28px;border-radius:999px;font-size:0.95rem;font-weight:700;font-family:Kiro,sans-serif;box-shadow:0 6px 20px rgba(0,99,165,0.25);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(0,99,165,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(0,99,165,0.25)'">Kostenloses Angebot anfragen →</a>
       </div>
       <div style="border-radius:18px;overflow:hidden;box-shadow:0 8px 32px rgba(15,23,42,0.12);height:100%;min-height:340px;">
         <img src="UHR_Dame_mit_Logo.jpg" alt="Sylegro Unterhaltsreinigung" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
@@ -477,51 +518,45 @@
             <img class="einsatz-panel-img" src="Unterhaltsreinigung_zwei_damen.jpeg" alt="Büroreinigung">
             <div class="einsatz-panel-body">
               <p class="einsatz-panel-title">Büros & Verwaltungsgebäude</p>
-              <p class="einsatz-panel-text">Schreibtische, Böden, Sanitäranlagen und Gemeinschaftsbereiche – täglich sauber und repräsentativ. Wir reinigen flexibel nach Ihrem Zeitplan: vor, während oder nach den Bürozeiten – diskret, zuverlässig und ohne Ihren Betrieb zu stören.</p>
+              <p class="einsatz-panel-text">Schreibtische, Böden, Sanitäranlagen und Gemeinschaftsbereiche – täglich sauber und repräsentativ. Wir reinigen flexibel nach Ihrem Zeitplan: vor, während oder nach den Bürozeiten – transparent, zuverlässig und ohne Ihren Betrieb zu stören.</p>
             </div>
           </div>
           <div class="einsatz-panel" id="panel-klinik">
             <img class="einsatz-panel-img" src="patientenzimmer.jpg" alt="Klinikreinigung">
             <div class="einsatz-panel-body">
               <p class="einsatz-panel-title">Kliniken & Arztpraxen</p>
-              <p class="einsatz-panel-text">In medizinischen Einrichtungen gelten besondere Anforderungen – an Hygiene, Verhalten und Diskretion. Unser Personal wird gezielt für den Einsatz in Praxis- und Klinikbereichen geschult: von korrekten Desinfektionsverfahren über das richtige Verhalten im Patientenumfeld bis hin zum Schutz sensibler Bereiche. Alle Mitarbeitenden unterliegen einer Geheimhaltungsverpflichtung und sind im Umgang mit vertraulichen Umgebungen vertraut.</p>
+              <p class="einsatz-panel-text">In medizinischen Einrichtungen stellen wir höchste Anforderungen an Hygiene, Verhalten und Vertraulichkeit. Unser Personal wird gezielt für den Einsatz in Praxis- und Klinikbereichen ausgebildet. Das umfasst korrekte Desinfektionsverfahren, professionelles Verhalten im Patientenumfeld sowie den Schutz sensibler Bereiche. Alle Mitarbeitenden unterliegen einer Geheimhaltungsverpflichtung und sind im Umgang mit vertraulichen Umgebungen vertraut.</p>
             </div>
           </div>
           <div class="einsatz-panel" id="panel-industrie">
             <img class="einsatz-panel-img" src="Industrie.jpg" alt="Industriereinigung">
             <div class="einsatz-panel-body">
               <p class="einsatz-panel-title">Industrie & Produktion</p>
-              <p class="einsatz-panel-text">In Produktionsbetrieben reinigen wir Flächen, die höchste Ansprüche stellen: Wir schonen Maschinen, Geräte und produzierte Ware, halten uns strikt an betriebliche Anweisungen und Sicherheitsregeln und unterstützen unsere Kunden dabei, trotz hohem Verschmutzungsgrad, eingeschränkter Zugänglichkeit oder zeitlichem Druck saubere Arbeitsbedingungen zu gewährleisten. Auch Labore und Reinräume reinigen wir – mit fundiertem Wissen zu den jeweiligen Klassifizierungen und Normen (z. B. ISO 5), damit keine Anforderung übersehen wird.</p>
+              <p class="einsatz-panel-text">Produktionsbetriebe stellen hohe Anforderungen an die Reinigung. Wir schonen Maschinen, Geräte und produzierte Waren, halten uns konsequent an betriebliche Regeln und unterstützen unsere Kunden dabei, auch bei hohem Verschmutzungsgrad und zeitlichem Druck saubere Bedingungen zu gewährleisten. Labore und Reinräume reinigen wir mit fundiertem Wissen zu den geltenden Klassifizierungen und Normen, sodass keine Anforderung übersehen wird.</p>
             </div>
           </div>
           <div class="einsatz-panel" id="panel-einkauf">
             <img class="einsatz-panel-img" src="Einkaufen.jpg" alt="Einkaufszentrumreinigung">
             <div class="einsatz-panel-body">
               <p class="einsatz-panel-title">Einkaufszentren & Verkaufslokale</p>
-              <p class="einsatz-panel-text">Repräsentative Sauberkeit für Ihre Kundschaft – vor, während und nach den Öffnungszeiten, flexibel und reaktionsschnell.</p>
-              <div class="einsatz-panel-tags">
-                <span class="einsatz-tag">Öffnungszeiten</span>
-                <span class="einsatz-tag">Frequenzreinigung</span>
-                <span class="einsatz-tag">Sanitäranlagen</span>
-              </div>
+              <p class="einsatz-panel-text">In Bereichen mit hohem Publikumsverkehr ist Sauberkeit ein entscheidender Faktor für das Wohlbefinden der Kundschaft und das Image Ihres Hauses. Wir reinigen flexibel rund um Ihre Öffnungszeiten, passen uns Ihren Frequenzen und Spitzenzeiten an und sorgen dafür, dass Verkaufsflächen, Eingangsbereiche, Liftanlagen, Sanitäranlagen und Umkleidekabinen jederzeit in einem gepflegten Zustand sind. Unsere Teams arbeiten unauffällig und reaktionsschnell, damit Ihr Betrieb zu keinem Zeitpunkt gestört wird.</p>
             </div>
           </div>
           <div class="einsatz-panel" id="panel-schule">
             <img class="einsatz-panel-img" src="Sylegro reinigung Schule UHR.PNG" alt="Schulreinigung">
             <div class="einsatz-panel-body">
               <p class="einsatz-panel-title">Schulen & Bildungseinrichtungen</p>
-              <p class="einsatz-panel-text">Klassenzimmer, Korridore und Gemeinschaftsbereiche werden täglich professionell gereinigt – für eine hygienische Lernumgebung. Sportböden reinigen wir fachgerecht nach DIN 18032 mit materialschonenden, norm-konformen Verfahren, die den Belag langfristig schützen. Dabei setzen wir ausschliesslich nachhaltige, schulmittelgeprüfte Reinigungsprodukte ein, die sicher für Mensch und Umwelt sind.</p>
+              <p class="einsatz-panel-text">Alle Bereiche einer Schule oder Bildungseinrichtung reinigen wir täglich professionell und sorgfältig: Klassenzimmer, Korridore, Turnhallen, Sanitäranlagen und Gemeinschaftsräume. Wir setzen materialschonende Reinigungschemie ein, die auf die jeweiligen Oberflächen abgestimmt ist und dabei sicher für Mensch und Umwelt ist.</p>
             </div>
           </div>
           <div class="einsatz-panel" id="panel-mehr">
-            <div class="einsatz-panel-img" style="background:linear-gradient(135deg,#0063A5,#17A863);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
-              <p style="color:#fff;font-size:1.1rem;font-weight:700;margin:0;text-align:center;padding:0 20px;">Weitere Einsatzgebiete auf Anfrage</p>
-            </div>
-            <div class="einsatz-panel-body">
-              <p class="einsatz-panel-title">Und vieles mehr</p>
-              <p class="einsatz-panel-text">Kein Objekt gleicht dem anderen – und genau das ist unsere Stärke. Ob Parkhäuser, Sporthallen, Hotels oder öffentliche Gebäude: Wir erarbeiten gemeinsam mit Ihnen die passende Lösung für jede Anforderung.</p>
-              <a href="kontakt.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:10px 22px;border-radius:999px;font-size:0.88rem;font-weight:700;font-family:Kiro,sans-serif;margin-top:8px;transition:transform 0.15s;">Zum Kontaktformular →</a>
+            <div style="background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 40px;text-align:center;gap:20px;">
+              <div style="width:64px;height:64px;border-radius:50%;background:rgba(0,99,165,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0063A5" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              </div>
+              <p style="font-size:1.5rem;font-weight:800;color:#0f172a;margin:0;line-height:1.2;">Und vieles mehr</p>
+              <p style="font-size:0.95rem;color:#4b5563;line-height:1.75;margin:0;max-width:440px;">Kein Objekt gleicht dem anderen – und genau das ist unsere Stärke. Ob Parkhäuser, Sporthallen, Hotels oder öffentliche Gebäude: Wir erarbeiten gemeinsam mit Ihnen die passende Lösung.</p>
+              <a href="kontakt.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:13px 28px;border-radius:999px;font-size:0.92rem;font-weight:700;font-family:Kiro,sans-serif;box-shadow:0 6px 20px rgba(0,99,165,0.25);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">Zum Kontaktformular →</a>
             </div>
           </div>
         </div>
@@ -533,7 +568,7 @@
   <section class="prozess reveal" id="prozess-section">
     <div class="prozess-inner" style="display:block;max-width:1200px;margin:0 auto;">
       <span class="section-label" style="color:rgba(255,255,255,0.4)">So starten wir</span>
-      <h2 class="section-title" style="color:#fff;margin-bottom:14px">Von der Anfrage zur <em style="color:var(--green)">Partnerschaft</em></h2>
+      <h2 class="section-title" style="color:#fff;margin-bottom:14px" id="prozess-headline">Von der Anfrage zur <em style="color:var(--green)" id="prozess-em">Partnerschaft</em></h2>
       <p class="section-desc" style="color:rgba(255,255,255,0.55);margin-bottom:40px">Fahren Sie mit der Maus über jeden Schritt, um mehr zu erfahren.</p>
       <div class="prozess-balken-grid">
         <div class="prozess-balken" data-color="#17A863" onmouseenter="hoverBalken(this)" onmouseleave="leaveBalken(this)">
@@ -568,88 +603,78 @@
     </div>
   </section>
 
-  <!-- QUALITÄT – Kreislauf -->
+  <!-- QUALITÄT – Vertikale Timeline wie Broschüre -->
   <section class="qualitaet reveal">
     <div class="qualitaet-inner">
       <span class="section-label">Qualitätssicherung</span>
       <h2 class="section-title">Qualität ist kein <em>Zufall</em></h2>
-      <p class="section-desc">Ein kontinuierlicher Kreislauf – jeder Schritt verbessert den nächsten, Qualität wächst mit jeder Runde.</p>
-      <div class="kreislauf-wrap">
-        <div class="kreislauf-diagram">
-          <svg id="kreislauf-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-            <!-- Hintergrundkreis -->
-            <circle cx="200" cy="200" r="170" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
-            <circle cx="200" cy="200" r="110" fill="none" stroke="#e2e8f0" stroke-width="1"/>
-            <!-- Segmente (6 Stück, je 60°) -->
-            <path class="ks" id="ks1" d="M200,200 L200,30 A170,170 0 0,1 347.2,115 Z" fill="rgba(23,168,99,0.15)" stroke="#17A863" stroke-width="1.5" data-idx="0"/>
-            <path class="ks" id="ks2" d="M200,200 L347.2,115 A170,170 0 0,1 347.2,285 Z" fill="rgba(14,148,114,0.12)" stroke="#0E9472" stroke-width="1.5" data-idx="1"/>
-            <path class="ks" id="ks3" d="M200,200 L347.2,285 A170,170 0 0,1 200,370 Z" fill="rgba(8,127,127,0.12)" stroke="#087F7F" stroke-width="1.5" data-idx="2"/>
-            <path class="ks" id="ks4" d="M200,200 L200,370 A170,170 0 0,1 52.8,285 Z" fill="rgba(5,106,138,0.12)" stroke="#056A8A" stroke-width="1.5" data-idx="3"/>
-            <path class="ks" id="ks5" d="M200,200 L52.8,285 A170,170 0 0,1 52.8,115 Z" fill="rgba(3,85,151,0.12)" stroke="#035597" stroke-width="1.5" data-idx="4"/>
-            <path class="ks" id="ks6" d="M200,200 L52.8,115 A170,170 0 0,1 200,30 Z" fill="rgba(0,99,165,0.12)" stroke="#0063A5" stroke-width="1.5" data-idx="5"/>
-            <!-- Pfeilbogen (Kreisrichtung) -->
-            <path d="M 200,28 A 172,172 0 0,1 350,117" fill="none" stroke="#17A863" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrowG)"/>
-            <defs>
-              <marker id="arrowG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#17A863"/>
-              </marker>
-            </defs>
-            <!-- Mittelkreis -->
-            <circle cx="200" cy="200" r="70" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
-            <text x="200" y="192" text-anchor="middle" font-family="Kiro,system-ui" font-size="12" font-weight="800" fill="#0f172a">QUALITÄT</text>
-            <text x="200" y="210" text-anchor="middle" font-family="Kiro,system-ui" font-size="10" fill="#6b7280">Kontinuierlich</text>
-            <text x="200" y="224" text-anchor="middle" font-family="Kiro,system-ui" font-size="10" fill="#6b7280">verbessert</text>
-            <!-- Icons auf den Segmenten -->
-            <text x="200" y="76" text-anchor="middle" font-size="20">📋</text>
-            <text x="310" y="170" text-anchor="middle" font-size="20">🎓</text>
-            <text x="310" y="248" text-anchor="middle" font-size="20">🔍</text>
-            <text x="200" y="336" text-anchor="middle" font-size="20">💬</text>
-            <text x="90" y="248" text-anchor="middle" font-size="20">🌿</text>
-            <text x="90" y="170" text-anchor="middle" font-size="20">👤</text>
-          </svg>
+      <p class="section-desc">Ein kontinuierlicher Kreislauf, der sich immer wiederholt und stetig verbessert wird.</p>
+
+      <div class="ql-layout">
+        <!-- Linke Timeline -->
+        <div class="ql-timeline" id="ql-timeline">
+          <div class="ql-node active" data-idx="0" data-color="#17A863">
+            <div class="ql-dot" style="border-color:#17A863;background:#17A863;"></div>
+            <span class="ql-label">Qualität durch klare Prozesse</span>
+          </div>
+          <div class="ql-line" id="ql-line-0" style="background:linear-gradient(to bottom,#17A863,#0E9472);"></div>
+          <div class="ql-node" data-idx="1" data-color="#0E9472">
+            <div class="ql-dot" style="border-color:#0E9472;"></div>
+            <span class="ql-label">Flexibilität & Kundenorientierung</span>
+          </div>
+          <div class="ql-line" id="ql-line-1" style="background:linear-gradient(to bottom,#0E9472,#087F7F);"></div>
+          <div class="ql-node" data-idx="2" data-color="#087F7F">
+            <div class="ql-dot" style="border-color:#087F7F;"></div>
+            <span class="ql-label">Erfassung & Auswertung der Kundenzufriedenheit</span>
+          </div>
+          <div class="ql-line" id="ql-line-2" style="background:linear-gradient(to bottom,#087F7F,#056A8A);"></div>
+          <div class="ql-node" data-idx="3" data-color="#056A8A">
+            <div class="ql-dot" style="border-color:#056A8A;"></div>
+            <span class="ql-label">Arbeitssicherheit & Gesundheitsschutz</span>
+          </div>
+          <div class="ql-line" id="ql-line-3" style="background:linear-gradient(to bottom,#056A8A,#0063A5);"></div>
+          <div class="ql-node" data-idx="4" data-color="#0063A5">
+            <div class="ql-dot" style="border-color:#0063A5;"></div>
+            <span class="ql-label">Aus- & Weiterbildung der Mitarbeitenden</span>
+          </div>
+          <div class="ql-line" id="ql-line-4" style="background:linear-gradient(to bottom,#0063A5,#17A863);"></div>
+          <!-- Logo-Abschluss -->
+          <div class="ql-logo-node" data-idx="5">
+            <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro" class="ql-logo-img" style="filter:none;">
+          </div>
         </div>
-        <div class="kreislauf-liste">
-          <div class="kl-item active" data-idx="0">
-            <div class="kl-dot" style="background:#17A863"></div>
-            <div>
-              <p class="kl-title">Individuelle Reinigungspläne</p>
-              <p class="kl-text">Jedes Objekt erhält einen schriftlichen, massgeschneiderten Plan – nichts bleibt dem Zufall überlassen.</p>
-            </div>
+
+        <!-- Rechte Info-Box -->
+        <div class="ql-info-box">
+          <div class="ql-info-panel active" data-idx="0">
+            <div class="ql-info-tag" style="color:#17A863;background:rgba(23,168,99,0.1)">Klare Prozesse</div>
+            <h3 class="ql-info-title">Qualität durch klare Prozesse</h3>
+            <p class="ql-info-text">Bei Sylegro arbeiten wir nach klar definierten Abläufen. Jeder Auftrag wird strukturiert geplant, durchgeführt und dokumentiert. So stellen wir sicher, dass jede Reinigung reproduzierbar auf hohem Niveau durchgeführt wird – unabhängig vom Objekt oder vom eingesetzten Team.</p>
           </div>
-          <div class="kl-item" data-idx="1">
-            <div class="kl-dot" style="background:#0E9472"></div>
-            <div>
-              <p class="kl-title">Regelmässige Schulungen</p>
-              <p class="kl-text">Unser Team wird laufend in Technik, Produkten und Sicherheit weitergebildet.</p>
-            </div>
+          <div class="ql-info-panel" data-idx="1">
+            <div class="ql-info-tag" style="color:#0E9472;background:rgba(14,148,114,0.1)">Kundenorientierung</div>
+            <h3 class="ql-info-title">Flexibilität & Kundenorientierung</h3>
+            <p class="ql-info-text">Kein Kunde ist wie der andere. Wir passen unsere Leistungen flexibel an die Bedürfnisse, Betriebszeiten und Anforderungen Ihres Objekts an. Änderungen kommunizieren wir direkt und schnell – Ihre Zufriedenheit hat dabei stets oberste Priorität.</p>
           </div>
-          <div class="kl-item" data-idx="2">
-            <div class="kl-dot" style="background:#087F7F"></div>
-            <div>
-              <p class="kl-title">Laufende Qualitätskontrolle</p>
-              <p class="kl-text">Kontrollen durch Vorarbeiter und gemeinsame Rundgänge mit dem Kunden.</p>
-            </div>
+          <div class="ql-info-panel" data-idx="2">
+            <div class="ql-info-tag" style="color:#087F7F;background:rgba(8,127,127,0.1)">Kundenzufriedenheit</div>
+            <h3 class="ql-info-title">Erfassung & Auswertung der Kundenzufriedenheit</h3>
+            <p class="ql-info-text">Wir messen regelmässig die Zufriedenheit unserer Kunden und werten die Rückmeldungen systematisch aus. Das ermöglicht uns, frühzeitig auf Verbesserungspotenziale zu reagieren und unsere Dienstleistung kontinuierlich weiterzuentwickeln.</p>
           </div>
-          <div class="kl-item" data-idx="3">
-            <div class="kl-dot" style="background:#056A8A"></div>
-            <div>
-              <p class="kl-title">Offene Kommunikation</p>
-              <p class="kl-text">Schnelle Reaktion auf Feedback – wir passen uns kontinuierlich an Ihre Bedürfnisse an.</p>
-            </div>
+          <div class="ql-info-panel" data-idx="3">
+            <div class="ql-info-tag" style="color:#056A8A;background:rgba(5,106,138,0.1)">Sicherheit</div>
+            <h3 class="ql-info-title">Arbeitssicherheit & Gesundheitsschutz</h3>
+            <p class="ql-info-text">Die Sicherheit unserer Mitarbeitenden hat für uns höchste Priorität. Wir schulen unser Team regelmässig in sicherheitsgerechtem Arbeiten, stellen die notwendigen Schutzausrüstungen bereit und halten alle gesetzlichen Vorgaben konsequent ein.</p>
           </div>
-          <div class="kl-item" data-idx="4">
-            <div class="kl-dot" style="background:#035597"></div>
-            <div>
-              <p class="kl-title">Nachhaltige Produkte</p>
-              <p class="kl-text">Ausschliesslich geprüfte, umweltfreundliche Reinigungsmittel – gut für Mensch und Natur.</p>
-            </div>
+          <div class="ql-info-panel" data-idx="4">
+            <div class="ql-info-tag" style="color:#0063A5;background:rgba(0,99,165,0.1)">Weiterbildung</div>
+            <h3 class="ql-info-title">Aus- & Weiterbildung der Mitarbeitenden</h3>
+            <p class="ql-info-text">Unsere Mitarbeitenden sind unser wichtigstes Kapital. Wir investieren gezielt in deren Aus- und Weiterbildung, damit jedes Teammitglied stets auf dem neuesten Stand der Reinigungstechnik, Produktkunde und Hygieneanforderungen ist – zum Vorteil unserer Kunden.</p>
           </div>
-          <div class="kl-item" data-idx="5">
-            <div class="kl-dot" style="background:#0063A5"></div>
-            <div>
-              <p class="kl-title">Direkter Ansprechpartner</p>
-              <p class="kl-text">Kein Callcenter – immer die Person, die Ihr Objekt kennt.</p>
-            </div>
+          <div class="ql-info-panel" data-idx="5">
+            <div class="ql-info-tag" style="color:#17A863;background:rgba(23,168,99,0.1)">Kreislauf</div>
+            <h3 class="ql-info-title">Qualität, die sich stetig verbessert</h3>
+            <p class="ql-info-text">Der Kreislauf schliesst sich: Alles was wir lernen, messen und erfahren, fliesst direkt zurück in unsere Prozesse. So entsteht eine kontinuierliche Verbesserung, die mit jedem Durchlauf spürbarer wird – für Sie und Ihr Objekt.</p>
           </div>
         </div>
       </div>
@@ -707,41 +732,56 @@
       if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
     }
 
-    // Prozess Balken: Hintergrund der Section wechselt mit
+    // Prozess Balken: Hintergrund der Section wechselt, Partnerschaft wird weiss
     const prozessSection = document.getElementById('prozess-section');
+    const prozessEm = document.getElementById('prozess-em');
     const defaultBg = '#0f172a';
     function hoverBalken(el) {
-      const color = el.dataset.color;
-      prozessSection.style.background = color;
+      prozessSection.style.background = el.dataset.color;
       prozessSection.style.transition = 'background 0.4s ease';
-      el.style.background = 'rgba(255,255,255,0.12)';
+      if (prozessEm) { prozessEm.style.color = '#ffffff'; prozessEm.style.transition = 'color 0.3s'; }
     }
     function leaveBalken(el) {
       prozessSection.style.background = defaultBg;
-      el.style.background = '';
+      if (prozessEm) prozessEm.style.color = 'var(--green)';
     }
 
-    // Kreislauf Interaktion
-    const segments = document.querySelectorAll('.ks');
-    const klItems = document.querySelectorAll('.kl-item');
-    function activateKreislauf(idx) {
-      segments.forEach((s,i) => s.style.opacity = i === idx ? '1' : '0.5');
-      klItems.forEach((k,i) => k.classList.toggle('active', i === idx));
+    // Qualität Timeline
+    const qlNodes = document.querySelectorAll('.ql-node, .ql-logo-node');
+    const qlPanels = document.querySelectorAll('.ql-info-panel');
+    const qlLines = document.querySelectorAll('.ql-line');
+
+    function activateQl(idx) {
+      qlNodes.forEach(n => n.classList.remove('active'));
+      qlPanels.forEach(p => p.classList.remove('active'));
+      // Zeige den aktiven Node
+      const activeNode = document.querySelector(`.ql-node[data-idx="${idx}"], .ql-logo-node[data-idx="${idx}"]`);
+      if (activeNode) activeNode.classList.add('active');
+      const activePanel = document.querySelector(`.ql-info-panel[data-idx="${idx}"]`);
+      if (activePanel) activePanel.classList.add('active');
+      // Linien bis zum aktiven Node aufleuchten
+      qlLines.forEach((line, i) => line.classList.toggle('lit', i < idx));
     }
-    segments.forEach(s => {
-      s.addEventListener('mouseenter', () => activateKreislauf(+s.dataset.idx));
-      s.addEventListener('mouseleave', () => { segments.forEach(x => x.style.opacity = '1'); });
-    });
-    klItems.forEach(k => {
-      k.addEventListener('click', () => activateKreislauf(+k.dataset.idx));
+
+    qlNodes.forEach(node => {
+      node.addEventListener('mouseenter', () => activateQl(+node.dataset.idx));
     });
 
-    // Auto-rotate Kreislauf
-    let kreislaufIdx = 0;
-    setInterval(() => {
-      kreislaufIdx = (kreislaufIdx + 1) % 6;
-      klItems.forEach((k,i) => k.classList.toggle('active', i === kreislaufIdx));
-    }, 2500);
+    // Scroll-Animation: Timeline zeichnet sich beim Scrollen
+    const qualSection = document.querySelector('.qualitaet');
+    let qlAnimDone = false;
+    const qlObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !qlAnimDone) {
+        qlAnimDone = true;
+        let i = 0;
+        const tick = setInterval(() => {
+          activateQl(i);
+          i++;
+          if (i > 5) clearInterval(tick);
+        }, 500);
+      }
+    }, { threshold: 0.3 });
+    if (qualSection) qlObserver.observe(qualSection);
 
     // Scroll Reveal
     let lastScrollY = window.scrollY;
