@@ -25,81 +25,37 @@
     .submenu a:hover { background: rgba(0,99,165,0.06); color: var(--blue); }
     .nav-item.has-submenu:hover .submenu { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
-    /* HERO – Dreigeteiltes Layout */
+    /* HERO – Vollbild wie Spezialreinigung/Unterhaltsreinigung */
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 68vh;
-    }
-    .hero-left {
-      background: var(--dark);
-      padding: 80px 60px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       position: relative;
+      height: 62vh;
       overflow: hidden;
     }
-    .hero-left::after {
-      content: "";
-      position: absolute;
-      bottom: -120px; right: -120px;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,99,165,0.15) 0%, transparent 70%);
-      pointer-events: none;
+    .hero-img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 30%;
+      display: block;
     }
-    .hero-eyebrow {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--green);
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 20px;
-      opacity: 0; animation: fadeUp 0.6s ease 0.1s forwards;
-    }
-    .hero-eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--green); }
-    .hero-title {
-      font-size: 3.4rem; font-weight: 800; color: #fff;
-      line-height: 1.08; margin: 0 0 20px;
-      opacity: 0; animation: fadeUp 0.6s ease 0.25s forwards;
-    }
-    .hero-title em { font-style: italic; color: var(--green); }
-    .hero-sub {
-      font-size: 1rem; color: rgba(255,255,255,0.65);
-      line-height: 1.8; margin: 0;
-      max-width: 440px;
-      opacity: 0; animation: fadeUp 0.6s ease 0.4s forwards;
-    }
-    .hero-right {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-    }
-    .hero-img-top {
-      position: relative; overflow: hidden;
-    }
-    .hero-img-top img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 6s ease; }
-    .hero-img-top:hover img { transform: scale(1.04); }
-    .hero-img-top-overlay {
+    .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(15,23,42,0.2), rgba(15,23,42,0.05));
+      background: linear-gradient(105deg, rgba(15,23,42,0.72) 0%, rgba(0,99,165,0.3) 50%, rgba(15,23,42,0.15) 100%);
     }
-    .hero-stats {
-      background: #fff;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0;
+    .hero-content {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 60px 56px;
     }
-    .hero-stat {
-      padding: 28px 24px;
-      border-right: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
-      transition: background 0.18s;
+    .hero-title {
+      font-size: 4.5rem; font-weight: 800; color: #fff;
+      line-height: 1.05; margin: 0;
+      opacity: 0; animation: slideInLeft 0.7s ease 0.3s forwards;
     }
-    .hero-stat:nth-child(even) { border-right: none; }
-    .hero-stat:nth-child(3), .hero-stat:nth-child(4) { border-bottom: none; }
-    .hero-stat:hover { background: #f8fafc; }
-    .hero-stat-num { font-size: 1.8rem; font-weight: 800; color: var(--dark); line-height: 1; margin-bottom: 5px; }
-    .hero-stat-num em { font-style: normal; color: var(--green); }
-    .hero-stat-lbl { font-size: 0.78rem; color: #6b7280; line-height: 1.4; }
 
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-80px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
     /* FEATURE STRIP */
@@ -118,6 +74,14 @@
     .section-title { font-size: 1.9rem; font-weight: 800; color: var(--dark); line-height: 1.15; margin: 0 0 12px; }
     .section-title em { font-style: italic; color: var(--blue); }
     .section-desc { font-size: 0.97rem; color: #4b5563; line-height: 1.75; margin: 0 0 40px; max-width: 560px; }
+
+    /* INTRO */
+    .intro { background: #fff; padding: 80px 60px; }
+    .intro-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
+    .intro-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 12px; }
+    .intro-title { font-size: 2rem; font-weight: 800; color: var(--dark); line-height: 1.15; margin: 0 0 16px; }
+    .intro-title em { font-style: italic; color: var(--blue); }
+    .intro-text { font-size: 0.97rem; color: #4b5563; line-height: 1.8; margin: 0 0 16px; }
 
     /* LEISTUNGEN – Zweispaltig mit Hover-Highlight */
     .leistungen { background: #fff; padding: 80px 60px; }
@@ -280,12 +244,13 @@
     @media (max-width: 900px) {
       .header-inner { flex-direction: column; align-items: flex-start; padding: 0 20px; }
       nav { gap: 20px; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-right { grid-template-rows: 240px auto; }
-      .hero-left { padding: 60px 24px; }
+      .hero { height: 50vw; min-height: 300px; }
+      .hero-content { padding: 0 24px 36px; }
       .hero-title { font-size: 2.4rem; }
       .feature-strip { padding: 0 24px; }
       .feature-strip-inner { grid-template-columns: 1fr 1fr; }
+      .intro { padding: 60px 24px; }
+      .intro-inner { grid-template-columns: 1fr; gap: 40px; }
       .leistungen, .saison, .vorteile, .einsatz, .cta-section { padding: 60px 24px; }
       .leistungen-grid { grid-template-columns: 1fr; }
       .saison-panel.active { grid-template-columns: 1fr; }
@@ -324,41 +289,72 @@
     </div>
   </header>
 
-  <!-- HERO – Split: Text + Bild/Stats -->
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-left">
-      <span class="hero-eyebrow">Dienstleistung</span>
+    <img class="hero-img" src="HW_Foto_Aleks.jpg" alt="Hauswartung Sylegro">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
       <h1 class="hero-title">Hauswartung</h1>
-      <p class="hero-sub">Wir kümmern uns ganzjährig um Ihre Liegenschaft – proaktiv, zuverlässig und mit einem Team, das weiss, was es tut. Damit Sie sich auf das Wesentliche konzentrieren können.</p>
-    </div>
-    <div class="hero-right">
-      <div class="hero-img-top">
-        <img src="HW_Foto_Aleks.jpg" alt="Hauswartung Sylegro">
-        <div class="hero-img-top-overlay"></div>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <p class="hero-stat-num">365</p>
-          <p class="hero-stat-lbl">Tage im Jahr für Sie da</p>
-        </div>
-        <div class="hero-stat">
-          <p class="hero-stat-num">100<em>%</em></p>
-          <p class="hero-stat-lbl">Verlässlichkeit & Pünktlichkeit</p>
-        </div>
-        <div class="hero-stat">
-          <p class="hero-stat-num">∞</p>
-          <p class="hero-stat-lbl">Lösungen für jede Liegenschaft</p>
-        </div>
-        <div class="hero-stat">
-          <p class="hero-stat-num">CH</p>
-          <p class="hero-stat-lbl">Schweizer Qualitätsstandards</p>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- FEATURE STRIP -->
+  <!-- STATS STRIP -->
   <div class="feature-strip">
+    <div class="feature-strip-inner">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <p class="feature-title">Ganzjährige Betreuung</p>
+          <p class="feature-text">Sommer wie Winter – wir sind immer da</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <div>
+          <p class="feature-title">Proaktive Betreuung</p>
+          <p class="feature-text">Probleme erkennen, bevor sie entstehen</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <p class="feature-title">Direkter Ansprechpartner</p>
+          <p class="feature-text">Für Mieter, Eigentümer und Handwerker</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#17A863" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+        </div>
+        <div>
+          <p class="feature-title">Transparente Dokumentation</p>
+          <p class="feature-text">Alle Arbeiten klar erfasst und nachvollziehbar</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="intro reveal">
+    <div class="intro-inner">
+      <div>
+        <span class="intro-label">Warum Sylegro</span>
+        <h2 class="intro-title">Ihre Liegenschaft in <em>besten Händen.</em></h2>
+        <p class="intro-text">Wir kümmern uns ganzjährig um Ihre Immobilie – proaktiv, zuverlässig und mit einem Team, das weiss was es tut. Ob Gartenpflege, Winterdienst, Kleinreparaturen oder Liegenschaftsbetreuung, wir decken alles ab und halten Ihr Objekt stets in einwandfreiem Zustand.</p>
+        <p class="intro-text" style="margin-bottom:0">Ob Mehrfamilienhaus, Geschäftsgebäude oder öffentliche Liegenschaft, wir entwickeln einen massgeschneiderten Betreuungsplan und führen ihn verlässlich aus.</p>
+        <a href="kontakt.html" style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#fff;padding:14px 28px;border-radius:999px;font-size:0.95rem;font-weight:700;font-family:Kiro,sans-serif;box-shadow:0 6px 20px rgba(0,99,165,0.25);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(0,99,165,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(0,99,165,0.25)'">Kostenloses Angebot anfragen →</a>
+      </div>
+      <div style="border-radius:18px;overflow:hidden;box-shadow:0 8px 32px rgba(15,23,42,0.12);height:100%;min-height:340px;">
+        <img src="Gartenarbeit.jpg" alt="Sylegro Hauswartung" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+      </div>
+    </div>
+  </section>
     <div class="feature-strip-inner">
       <div class="feature-item">
         <div class="feature-icon">
