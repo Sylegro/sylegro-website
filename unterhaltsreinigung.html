@@ -324,42 +324,130 @@
     .kl-text { font-size: 0.82rem; color: #4b5563; line-height: 1.55; margin: 0; }
 
     /* ── QUALITÄT TIMELINE ── */
-    .ql-layout { display: grid; grid-template-columns: 340px 1fr; gap: 60px; align-items: start; margin-top: 48px; }
-    .ql-timeline { display: flex; flex-direction: column; align-items: flex-start; }
-    .ql-node {
-      display: flex; align-items: center; gap: 14px;
-      cursor: pointer; padding: 8px 12px;
-      border-radius: 10px; width: 100%;
-      transition: background 0.18s;
+    .ql-layout { display: grid; grid-template-columns: 380px 1fr; gap: 0; align-items: stretch; margin-top: 48px; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(15,23,42,0.1); }
+
+    .ql-timeline {
+      background: #0f172a;
+      padding: 32px 0;
+      display: flex; flex-direction: column;
     }
-    .ql-node:hover { background: rgba(0,99,165,0.05); }
-    .ql-node.active .ql-label { font-weight: 700; }
+
+    .ql-node {
+      display: flex; align-items: center; gap: 0;
+      cursor: pointer;
+      position: relative;
+      padding: 0;
+      transition: background 0.2s;
+    }
+
+    .ql-node:hover { background: rgba(255,255,255,0.04); }
+    .ql-node.active { background: rgba(255,255,255,0.06); }
+
+    .ql-node-inner {
+      display: flex; align-items: center; gap: 16px;
+      padding: 14px 24px;
+      width: 100%;
+    }
+
+    .ql-dot-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      flex-shrink: 0; width: 20px;
+    }
+
     .ql-dot {
       width: 14px; height: 14px; border-radius: 50%;
-      border: 2px solid #ccc; background: #fff;
-      flex-shrink: 0; transition: background 0.2s, transform 0.2s;
+      border: 2px solid rgba(255,255,255,0.2);
+      background: transparent;
+      flex-shrink: 0;
+      transition: border-color 0.3s, background 0.3s, transform 0.2s;
+      z-index: 1;
     }
-    .ql-node.active .ql-dot, .ql-node:hover .ql-dot { transform: scale(1.3); }
-    .ql-node.active .ql-dot { background: currentColor; }
-    .ql-label { font-size: 0.88rem; color: #4b5563; line-height: 1.4; transition: color 0.2s; }
-    .ql-node.active .ql-label { color: #0f172a; }
-    .ql-line {
-      width: 2px; height: 36px; margin-left: 18px;
-      opacity: 0.3; transition: opacity 0.3s;
-    }
-    .ql-line.lit { opacity: 1; }
-    .ql-logo-node {
-      display: flex; align-items: center; gap: 14px;
-      padding: 8px 12px; cursor: pointer;
-    }
-    .ql-logo-img { height: 28px; width: auto; display: block; filter: brightness(0) saturate(100%) invert(27%) sepia(93%) saturate(1352%) hue-rotate(200deg); }
+    .ql-node.active .ql-dot { transform: scale(1.3); }
 
-    .ql-info-box { position: sticky; top: 100px; }
-    .ql-info-panel { display: none; }
-    .ql-info-panel.active { display: block; animation: fadeUp 0.3s ease; }
-    .ql-info-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 999px; margin-bottom: 14px; }
-    .ql-info-title { font-size: 1.3rem; font-weight: 800; color: #0f172a; margin: 0 0 14px; line-height: 1.25; }
-    .ql-info-text { font-size: 0.92rem; color: #4b5563; line-height: 1.8; margin: 0; }
+    .ql-label {
+      font-size: 0.88rem; font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.4;
+      transition: color 0.3s, font-weight 0.2s;
+    }
+    .ql-node.active .ql-label { color: #fff; font-weight: 700; }
+    .ql-node:hover .ql-label { color: rgba(255,255,255,0.8); }
+
+    /* Verbindungslinie zwischen Nodes */
+    .ql-connector {
+      display: flex; align-items: center;
+      padding: 0 24px;
+    }
+    .ql-connector-line {
+      width: 2px; height: 32px;
+      background: rgba(255,255,255,0.1);
+      margin-left: 33px; /* align with dot center */
+      border-radius: 1px;
+      transition: background 0.4s;
+      position: relative;
+    }
+    .ql-connector-line::after {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 0%;
+      border-radius: 1px;
+      transition: height 0.4s ease;
+    }
+    .ql-connector-line.lit::after { height: 100%; }
+
+    /* Logo am Ende */
+    .ql-logo-node {
+      display: flex; align-items: center; gap: 16px;
+      padding: 14px 24px; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .ql-logo-node:hover { background: rgba(255,255,255,0.04); }
+    .ql-logo-node.active { background: rgba(255,255,255,0.06); }
+    .ql-logo-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.2);
+      background: transparent;
+      flex-shrink: 0;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .ql-logo-img {
+      height: 22px; width: auto; display: block;
+      opacity: 0.35;
+      transition: opacity 0.3s;
+    }
+    .ql-logo-node.active .ql-logo-img { opacity: 0.9; }
+    .ql-logo-node.active .ql-logo-dot { border-color: #17A863; background: #17A863; }
+
+    /* Fortschrittsbalken oben */
+    .ql-progress-bar {
+      height: 3px;
+      background: rgba(255,255,255,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .ql-progress-fill {
+      position: absolute; top: 0; left: 0; height: 100%;
+      background: linear-gradient(to right, #17A863, #0063A5);
+      transition: width 0.1s linear;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* Rechte Info-Box */
+    .ql-info-box {
+      background: #fff;
+      padding: 48px 44px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .ql-info-panel { display: none; animation: fadeUp 0.35s ease; }
+    .ql-info-panel.active { display: block; }
+    .ql-info-tag {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      padding: 4px 12px; border-radius: 999px; margin-bottom: 16px;
+    }
+    .ql-info-title { font-size: 1.35rem; font-weight: 800; color: #0f172a; margin: 0 0 16px; line-height: 1.25; }
+    .ql-info-text { font-size: 0.93rem; color: #4b5563; line-height: 1.8; margin: 0; }
 
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal-visible { opacity: 1; transform: translateY(0); }
@@ -608,39 +696,59 @@
     <div class="qualitaet-inner">
       <span class="section-label">Qualitätssicherung</span>
       <h2 class="section-title">Qualität ist kein <em>Zufall</em></h2>
-      <p class="section-desc">Ein kontinuierlicher Kreislauf, der sich immer wiederholt und stetig verbessert wird.</p>
+      <p class="section-desc">Fünf Grundsätze, die ineinandergreifen und gemeinsam für gleichbleibend hohe Qualität sorgen.</p>
 
       <div class="ql-layout">
         <!-- Linke Timeline -->
-        <div class="ql-timeline" id="ql-timeline">
+        <div class="ql-timeline">
+          <!-- Fortschrittsbalken -->
+          <div class="ql-progress-bar"><div class="ql-progress-fill" id="ql-progress"></div></div>
+
           <div class="ql-node active" data-idx="0" data-color="#17A863">
-            <div class="ql-dot" style="border-color:#17A863;background:#17A863;"></div>
-            <span class="ql-label">Qualität durch klare Prozesse</span>
+            <div class="ql-node-inner">
+              <div class="ql-dot-wrap"><div class="ql-dot" style="border-color:#17A863;background:#17A863;"></div></div>
+              <span class="ql-label">Qualität durch klare Prozesse</span>
+            </div>
           </div>
-          <div class="ql-line" id="ql-line-0" style="background:linear-gradient(to bottom,#17A863,#0E9472);"></div>
+          <div class="ql-connector"><div class="ql-connector-line lit" id="ql-line-0" style="--line-color:#17A863;"></div></div>
+
           <div class="ql-node" data-idx="1" data-color="#0E9472">
-            <div class="ql-dot" style="border-color:#0E9472;"></div>
-            <span class="ql-label">Flexibilität & Kundenorientierung</span>
+            <div class="ql-node-inner">
+              <div class="ql-dot-wrap"><div class="ql-dot" style="border-color:#0E9472;"></div></div>
+              <span class="ql-label">Flexibilität & Kundenorientierung</span>
+            </div>
           </div>
-          <div class="ql-line" id="ql-line-1" style="background:linear-gradient(to bottom,#0E9472,#087F7F);"></div>
+          <div class="ql-connector"><div class="ql-connector-line" id="ql-line-1" style="--line-color:#0E9472;"></div></div>
+
           <div class="ql-node" data-idx="2" data-color="#087F7F">
-            <div class="ql-dot" style="border-color:#087F7F;"></div>
-            <span class="ql-label">Erfassung & Auswertung der Kundenzufriedenheit</span>
+            <div class="ql-node-inner">
+              <div class="ql-dot-wrap"><div class="ql-dot" style="border-color:#087F7F;"></div></div>
+              <span class="ql-label">Erfassung & Auswertung der Kundenzufriedenheit</span>
+            </div>
           </div>
-          <div class="ql-line" id="ql-line-2" style="background:linear-gradient(to bottom,#087F7F,#056A8A);"></div>
+          <div class="ql-connector"><div class="ql-connector-line" id="ql-line-2" style="--line-color:#087F7F;"></div></div>
+
           <div class="ql-node" data-idx="3" data-color="#056A8A">
-            <div class="ql-dot" style="border-color:#056A8A;"></div>
-            <span class="ql-label">Arbeitssicherheit & Gesundheitsschutz</span>
+            <div class="ql-node-inner">
+              <div class="ql-dot-wrap"><div class="ql-dot" style="border-color:#056A8A;"></div></div>
+              <span class="ql-label">Arbeitssicherheit & Gesundheitsschutz</span>
+            </div>
           </div>
-          <div class="ql-line" id="ql-line-3" style="background:linear-gradient(to bottom,#056A8A,#0063A5);"></div>
+          <div class="ql-connector"><div class="ql-connector-line" id="ql-line-3" style="--line-color:#056A8A;"></div></div>
+
           <div class="ql-node" data-idx="4" data-color="#0063A5">
-            <div class="ql-dot" style="border-color:#0063A5;"></div>
-            <span class="ql-label">Aus- & Weiterbildung der Mitarbeitenden</span>
+            <div class="ql-node-inner">
+              <div class="ql-dot-wrap"><div class="ql-dot" style="border-color:#0063A5;"></div></div>
+              <span class="ql-label">Aus- & Weiterbildung der Mitarbeitenden</span>
+            </div>
           </div>
-          <div class="ql-line" id="ql-line-4" style="background:linear-gradient(to bottom,#0063A5,#17A863);"></div>
-          <!-- Logo-Abschluss -->
+          <div class="ql-connector"><div class="ql-connector-line" id="ql-line-4" style="--line-color:#17A863;"></div></div>
+
           <div class="ql-logo-node" data-idx="5">
-            <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro" class="ql-logo-img" style="filter:none;">
+            <div class="ql-dot-wrap" style="padding:14px 0 14px 24px;">
+              <div class="ql-logo-dot"></div>
+            </div>
+            <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro" class="ql-logo-img">
           </div>
         </div>
 
@@ -669,12 +777,12 @@
           <div class="ql-info-panel" data-idx="4">
             <div class="ql-info-tag" style="color:#0063A5;background:rgba(0,99,165,0.1)">Weiterbildung</div>
             <h3 class="ql-info-title">Aus- & Weiterbildung der Mitarbeitenden</h3>
-            <p class="ql-info-text">Unsere Mitarbeitenden sind unser wichtigstes Kapital. Wir investieren gezielt in deren Aus- und Weiterbildung, damit jedes Teammitglied stets auf dem neuesten Stand der Reinigungstechnik, Produktkunde und Hygieneanforderungen ist – zum Vorteil unserer Kunden.</p>
+            <p class="ql-info-text">Unsere Mitarbeitenden sind unser wichtigstes Kapital. Wir investieren gezielt in deren Aus- und Weiterbildung, damit jedes Teammitglied stets auf dem neuesten Stand der Reinigungstechnik, Produktkunde und Hygieneanforderungen ist.</p>
           </div>
           <div class="ql-info-panel" data-idx="5">
-            <div class="ql-info-tag" style="color:#17A863;background:rgba(23,168,99,0.1)">Kreislauf</div>
-            <h3 class="ql-info-title">Qualität, die sich stetig verbessert</h3>
-            <p class="ql-info-text">Der Kreislauf schliesst sich: Alles was wir lernen, messen und erfahren, fliesst direkt zurück in unsere Prozesse. So entsteht eine kontinuierliche Verbesserung, die mit jedem Durchlauf spürbarer wird – für Sie und Ihr Objekt.</p>
+            <div class="ql-info-tag" style="color:#17A863;background:rgba(23,168,99,0.1)">Sylegro</div>
+            <h3 class="ql-info-title">Qualität, die Sie spüren</h3>
+            <p class="ql-info-text">Diese fünf Grundsätze sind keine abstrakten Werte, sondern gelebte Praxis bei jedem Einsatz. Alles was wir lernen und messen, fliesst direkt zurück in unsere Arbeit – damit Ihre Räumlichkeiten jeden Tag besser gepflegt sind als am Tag zuvor.</p>
           </div>
         </div>
       </div>
@@ -746,42 +854,95 @@
       if (prozessEm) prozessEm.style.color = 'var(--green)';
     }
 
-    // Qualität Timeline
-    const qlNodes = document.querySelectorAll('.ql-node, .ql-logo-node');
+    // Qualität Timeline Karussell
+    const qlNodeEls = document.querySelectorAll('.ql-node');
+    const qlLogoNode = document.querySelector('.ql-logo-node');
     const qlPanels = document.querySelectorAll('.ql-info-panel');
-    const qlLines = document.querySelectorAll('.ql-line');
+    const qlLines = document.querySelectorAll('.ql-connector-line');
+    const qlProgress = document.getElementById('ql-progress');
+    const QL_INTERVAL = 3000;
+    let qlIdx = 0;
+    let qlTimer = null;
+    let qlPaused = false;
+    let qlFill = 0;
+    let qlFillTimer = null;
+    const allQlColors = ['#17A863','#0E9472','#087F7F','#056A8A','#0063A5','#17A863'];
 
     function activateQl(idx) {
-      qlNodes.forEach(n => n.classList.remove('active'));
+      qlIdx = idx;
+      qlNodeEls.forEach(n => { n.classList.remove('active'); const d = n.querySelector('.ql-dot'); if(d) d.style.transform=''; });
+      if (qlLogoNode) qlLogoNode.classList.remove('active');
+
+      if (idx < 5) {
+        const node = document.querySelector('.ql-node[data-idx="'+idx+'"]');
+        if (node) { node.classList.add('active'); const d = node.querySelector('.ql-dot'); if(d) d.style.transform='scale(1.3)'; }
+      } else {
+        if (qlLogoNode) qlLogoNode.classList.add('active');
+      }
+
+      qlNodeEls.forEach(n => {
+        const dot = n.querySelector('.ql-dot');
+        const ni = +n.dataset.idx;
+        if (!dot) return;
+        if (ni <= idx) { dot.style.background = allQlColors[ni]; dot.style.borderColor = allQlColors[ni]; }
+        else { dot.style.background = 'transparent'; dot.style.borderColor = 'rgba(255,255,255,0.2)'; }
+      });
+
+      if (qlLogoNode) {
+        const logoDot = qlLogoNode.querySelector('.ql-logo-dot');
+        const logoImg = qlLogoNode.querySelector('.ql-logo-img');
+        if (idx >= 5) { if(logoDot){logoDot.style.background='#17A863';logoDot.style.borderColor='#17A863';} if(logoImg) logoImg.style.opacity='0.9'; }
+        else { if(logoDot){logoDot.style.background='transparent';logoDot.style.borderColor='rgba(255,255,255,0.2)';} if(logoImg) logoImg.style.opacity='0.35'; }
+      }
+
+      qlLines.forEach((l, i) => {
+        if (i < idx) { l.classList.add('lit'); l.style.background = 'linear-gradient(to bottom,'+allQlColors[i]+','+allQlColors[i+1]+')'; }
+        else { l.classList.remove('lit'); l.style.background = 'rgba(255,255,255,0.1)'; }
+      });
+
       qlPanels.forEach(p => p.classList.remove('active'));
-      // Zeige den aktiven Node
-      const activeNode = document.querySelector(`.ql-node[data-idx="${idx}"], .ql-logo-node[data-idx="${idx}"]`);
-      if (activeNode) activeNode.classList.add('active');
-      const activePanel = document.querySelector(`.ql-info-panel[data-idx="${idx}"]`);
-      if (activePanel) activePanel.classList.add('active');
-      // Linien bis zum aktiven Node aufleuchten
-      qlLines.forEach((line, i) => line.classList.toggle('lit', i < idx));
+      const ap = document.querySelector('.ql-info-panel[data-idx="'+idx+'"]');
+      if (ap) ap.classList.add('active');
     }
 
-    qlNodes.forEach(node => {
-      node.addEventListener('mouseenter', () => activateQl(+node.dataset.idx));
+    function startFill() {
+      qlFill = 0;
+      clearInterval(qlFillTimer);
+      if (qlProgress) qlProgress.style.width = '0%';
+      qlFillTimer = setInterval(() => {
+        if (!qlPaused) {
+          qlFill += 100 / (QL_INTERVAL / 50);
+          if (qlProgress) qlProgress.style.width = Math.min(qlFill, 100) + '%';
+        }
+      }, 50);
+    }
+
+    function nextQl() {
+      if (!qlPaused) {
+        qlIdx = (qlIdx + 1) % 6;
+        activateQl(qlIdx);
+        startFill();
+      }
+    }
+
+    function startTimer() { clearInterval(qlTimer); qlTimer = setInterval(nextQl, QL_INTERVAL); startFill(); }
+
+    const allQlInteractive = [...qlNodeEls, ...(qlLogoNode ? [qlLogoNode] : [])];
+    allQlInteractive.forEach(node => {
+      node.addEventListener('mouseenter', () => {
+        qlPaused = true;
+        const idx = node.dataset && node.dataset.idx !== undefined ? +node.dataset.idx : 5;
+        activateQl(idx);
+        if (qlProgress) qlProgress.style.width = '100%';
+      });
+      node.addEventListener('mouseleave', () => { qlPaused = false; startTimer(); });
     });
 
-    // Scroll-Animation: Timeline zeichnet sich beim Scrollen
     const qualSection = document.querySelector('.qualitaet');
-    let qlAnimDone = false;
     const qlObserver = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && !qlAnimDone) {
-        qlAnimDone = true;
-        let i = 0;
-        const tick = setInterval(() => {
-          activateQl(i);
-          i++;
-          if (i > 5) clearInterval(tick);
-        }, 500);
-      }
-    }, { threshold: 0.3 });
-    if (qualSection) qlObserver.observe(qualSection);
+      if (entries[0].isIntersecting) { activateQl(0); startTimer(); qlObserver.disconnect(); }
+    }, { threshold: 0.2 });
+    if (qualSection) qlObserver.observe(qualSection); else { activateQl(0); startTimer(); }
 
     // Scroll Reveal
     let lastScrollY = window.scrollY;
