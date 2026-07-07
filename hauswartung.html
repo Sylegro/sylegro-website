@@ -27,7 +27,7 @@
 
     /* HERO – identisch Spezialreinigung */
     .hero { width: 100%; height: 62vh; position: relative; overflow: hidden; }
-    .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; display: block; }
+    .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 100%); }
     .hero-content { position: absolute; top: 50%; left: 60px; transform: translateY(-50%); }
     .hero-title { font-size: 4.5rem; font-weight: 800; color: #fff; line-height: 1.1; margin: 0; opacity: 0; animation: slideInLeft 0.7s ease 0.3s forwards; }
@@ -44,7 +44,8 @@
     .intro-btn { margin-top: 28px; display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: #fff; padding: 14px 28px; border-radius: 999px; font-size: 0.95rem; font-weight: 700; font-family: "Kiro", sans-serif; box-shadow: 0 6px 20px rgba(0,99,165,0.25); transition: transform 0.15s, box-shadow 0.15s; }
     .intro-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,99,165,0.4); }
 
-    /* Intro Visual Neu */
+    .intro-photo { border-radius: 18px; overflow: hidden; height: 100%; min-height: 380px; }
+    /* Intro Visual Neu (unused) */
     .intro-visual-new { display: flex; flex-direction: column; gap: 16px; }
     .ivn-icon-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .ivn-icon-block { background: var(--bg); border-radius: 14px; padding: 18px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; border: 1px solid #dde3ea; transition: background 0.2s, transform 0.2s; }
@@ -298,46 +299,8 @@
         <p class="intro-text" style="margin-bottom:0">Ob Mehrfamilienhaus, Geschäftsgebäude oder öffentliche Liegenschaft, wir entwickeln einen massgeschneiderten Betreuungsplan und führen ihn verlässlich aus.</p>
         <a href="kontakt.html" class="intro-btn">Kostenloses Angebot anfragen →</a>
       </div>
-      <div class="intro-visual-new">
-        <div class="ivn-icon-row">
-          <div class="ivn-icon-block">
-            <div class="ivn-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <span class="ivn-label">Ganzjährige Betreuung</span>
-          </div>
-          <div class="ivn-icon-block">
-            <div class="ivn-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-            </div>
-            <span class="ivn-label">Winterdienst & Gartenpflege</span>
-          </div>
-          <div class="ivn-icon-block">
-            <div class="ivn-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <span class="ivn-label">Direkter Ansprechpartner</span>
-          </div>
-        </div>
-        <div class="ivn-highlight">
-          <svg class="ivn-bg-svg" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="hwGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#0063A5;stop-opacity:1"/>
-                <stop offset="100%" style="stop-color:#17A863;stop-opacity:1"/>
-              </linearGradient>
-            </defs>
-            <rect width="400" height="220" rx="16" fill="url(#hwGrad)"/>
-            <circle cx="340" cy="40" r="80" fill="rgba(255,255,255,0.06)"/>
-            <circle cx="60" cy="180" r="60" fill="rgba(255,255,255,0.05)"/>
-            <circle cx="340" cy="40" r="50" fill="rgba(255,255,255,0.05)"/>
-          </svg>
-          <div class="ivn-highlight-content">
-            <p class="ivn-tagline">Ihre Liegenschaft.</p>
-            <p class="ivn-tagline ivn-tagline-bold">Unser Einsatz.</p>
-            <p class="ivn-tagline-sub">Proaktiv. Zuverlässig. Ganzjährig.</p>
-          </div>
-        </div>
+      <div class="intro-photo">
+        <img src="Gartenarbeit.jpg" alt="Hauswartung Sylegro" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:18px;box-shadow:0 8px 32px rgba(15,23,42,0.12);">
       </div>
     </div>
   </section>
@@ -350,34 +313,28 @@
       <p class="section-desc">Von der Gartenarbeit bis zur Liegenschaftsbetreuung – wir decken alles ab, was Ihre Immobilie braucht.</p>
       <div class="leis-grid">
         <div class="leis-item">
-          <div>
-            <p class="leis-title">Gartenpflege</p>
-            <p class="leis-text">Rasenmähen, Heckenschnitt, Laubentfernung und Pflege der Aussenanlagen – gepflegt durch alle vier Jahreszeiten.</p>
+          <p class="leis-title">Gartenpflege</p>
+          <p class="leis-text">Rasenmähen, Heckenschnitt, Laubentfernung und Pflege der Aussenanlagen – gepflegt durch alle vier Jahreszeiten.</p>
         </div>
         <div class="leis-item">
-          <div>
-            <p class="leis-title">Winterdienst</p>
-            <p class="leis-text">Schneeräumung, Salzen und Streuen von Wegen, Einfahrten und Zugängen – zuverlässig und pünktlich, bevor Sie starten.</p>
+          <p class="leis-title">Winterdienst</p>
+          <p class="leis-text">Schneeräumung, Salzen und Streuen von Wegen, Einfahrten und Zugängen – zuverlässig und pünktlich, bevor Sie starten.</p>
         </div>
         <div class="leis-item">
-          <div>
-            <p class="leis-title">Treppenhausreinigung</p>
-            <p class="leis-text">Regelmässige Reinigung von Treppenhäusern, Eingangsbereichen und Gemeinschaftsflächen – immer repräsentativ.</p>
+          <p class="leis-title">Treppenhausreinigung</p>
+          <p class="leis-text">Regelmässige Reinigung von Treppenhäusern, Eingangsbereichen und Gemeinschaftsflächen – immer repräsentativ.</p>
         </div>
         <div class="leis-item">
-          <div>
-            <p class="leis-title">Kleinreparaturen</p>
-            <p class="leis-text">Behebung kleiner Schäden und Mängel – schnell, unkompliziert und ohne langen Vorlauf, bevor Grosses entsteht.</p>
+          <p class="leis-title">Kleinreparaturen</p>
+          <p class="leis-text">Behebung kleiner Schäden und Mängel – schnell, unkompliziert und ohne langen Vorlauf, bevor Grosses entsteht.</p>
         </div>
         <div class="leis-item">
-          <div>
-            <p class="leis-title">Entsorgung & Kehricht</p>
-            <p class="leis-text">Organisation der Abfallbehälter, Bereitstellung an Kehrichttagen und Reinigung der Entsorgungsbereiche.</p>
+          <p class="leis-title">Entsorgung & Kehricht</p>
+          <p class="leis-text">Organisation der Abfallbehälter, Bereitstellung an Kehrichttagen und Reinigung der Entsorgungsbereiche.</p>
         </div>
         <div class="leis-item">
-          <div>
-            <p class="leis-title">Liegenschaftsbetreuung</p>
-            <p class="leis-text">Gesamtbetreuung als Ansprechperson für Mieter, Eigentümer und Handwerker – koordiniert und verlässlich.</p>
+          <p class="leis-title">Liegenschaftsbetreuung</p>
+          <p class="leis-text">Gesamtbetreuung als Ansprechperson für Mieter, Eigentümer und Handwerker – koordiniert und verlässlich.</p>
         </div>
       </div>
     </div>
@@ -452,30 +409,30 @@
       <span class="section-label">Ihr Vorteil</span>
       <h2 class="section-title">Was Sie mit Sylegro <em>gewinnen</em></h2>
       <p class="section-desc">Eine professionelle Hauswartung ist keine Ausgabe – sie ist eine Investition, die sich täglich auszahlt.</p>
-      <div class="vorteil-row">
-        <div class="vorteil-col">
-          <div class="vorteil-circle">01</div>
-          <div><p class="vorteil-title">Kosten sparen</p>
-          <p class="vorteil-text">Früh erkannte Schäden kosten einen Bruchteil – wir handeln bevor es teuer wird.</p>
-          </div>
+      <div class="ic-grid">
+        <div class="ic-card">
+          <div class="ic-glow"></div>
+          <p class="ic-keyword">Finanzen</p>
+          <p class="ic-title">Kosten sparen</p>
+          <p class="ic-text">Früh erkannte Schäden kosten einen Bruchteil – wir handeln bevor es teuer wird.</p>
         </div>
-        <div class="vorteil-col">
-          <div class="vorteil-circle">02</div>
-          <div><p class="vorteil-title">Stress eliminieren</p>
-          <p class="vorteil-text">Kein Koordinieren mehr – ein Ansprechpartner für Mieter, Handwerker und Verwaltung.</p>
-          </div>
+        <div class="ic-card">
+          <div class="ic-glow"></div>
+          <p class="ic-keyword">Komfort</p>
+          <p class="ic-title">Stress eliminieren</p>
+          <p class="ic-text">Kein Koordinieren mehr – ein Ansprechpartner für Mieter, Handwerker und Verwaltung.</p>
         </div>
-        <div class="vorteil-col">
-          <div class="vorteil-circle">03</div>
-          <div><p class="vorteil-title">Wert erhalten</p>
-          <p class="vorteil-text">Gepflegte Liegenschaften erzielen höhere Mieterträge und verlieren nicht an Substanz.</p>
-          </div>
+        <div class="ic-card">
+          <div class="ic-glow"></div>
+          <p class="ic-keyword">Immobilie</p>
+          <p class="ic-title">Wert erhalten</p>
+          <p class="ic-text">Gepflegte Liegenschaften erzielen mehr Ertrag und verlieren nicht an Substanz.</p>
         </div>
-        <div class="vorteil-col">
-          <div class="vorteil-circle">04</div>
-          <div><p class="vorteil-title">Zeit gewinnen</p>
-          <p class="vorteil-text">Sie konzentrieren sich aufs Wesentliche – wir kümmern uns um den Rest, täglich.</p>
-          </div>
+        <div class="ic-card">
+          <div class="ic-glow"></div>
+          <p class="ic-keyword">Alltag</p>
+          <p class="ic-title">Zeit gewinnen</p>
+          <p class="ic-text">Konzentrieren Sie sich aufs Wesentliche – den Rest übernehmen wir täglich.</p>
         </div>
       </div>
     </div>
