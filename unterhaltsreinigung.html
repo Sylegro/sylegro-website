@@ -245,7 +245,55 @@
     .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 20px 0; }
     .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.4); margin: 0; }
 
-    /* (prozess-balken entfernt – nicht mehr verwendet) */
+    /* ── QUALITÄT GRID ── */
+    .qualitaet { background: var(--bg); padding: 80px 60px; }
+    .qualitaet-inner { max-width: 1200px; margin: 0 auto; }
+    .qualitaet-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .q-item {
+      display: flex; flex-direction: column; align-items: flex-start;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 26px 22px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .q-item:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,23,42,0.09); }
+    .q-item::before {
+      content: ""; position: absolute; top: 0; left: 0; bottom: 0; width: 5px;
+      background: var(--green); border-radius: 14px 0 0 14px;
+    }
+    .q-item:nth-child(2)::before { background: var(--blue); }
+    .q-item:nth-child(3)::before { background: linear-gradient(to bottom, var(--green), var(--blue)); }
+    .q-item:nth-child(4)::before { background: var(--blue); }
+    .q-item:nth-child(5)::before { background: var(--green); }
+    .q-item-tag {
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 8px;
+    }
+    .q-item:nth-child(2) .q-item-tag,
+    .q-item:nth-child(4) .q-item-tag { color: var(--blue); }
+    .q-item-title { font-size: 0.92rem; font-weight: 700; color: var(--dark); margin-bottom: 7px; }
+    .q-item-text  { font-size: 0.79rem; color: #4b5563; line-height: 1.65; }
+    .q-item-highlight {
+      align-items: center; justify-content: center; text-align: center;
+    }
+    .q-item-highlight::before { background: var(--green) !important; }
+    .q-item-highlight:hover { box-shadow: 0 8px 24px rgba(15,23,42,0.08); }
+    .q-item-highlight .q-pct {
+      font-size: 3.2rem; font-weight: 800; color: var(--green); line-height: 1; margin-bottom: 20px;
+    }
+    .q-item-highlight .q-logo-wrap {
+      border-top: 1px solid #e2e8f0; padding-top: 16px; width: 100%;
+      display: flex; justify-content: center;
+    }
+    .q-item-highlight .q-logo-wrap img { height: 30px; width: auto; }
 
     /* ── KREISLAUF ── */
     .kreislauf-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 48px; }
