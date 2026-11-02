@@ -158,9 +158,9 @@
     .akk-body.open { max-height: 200px; }
     .akk-body-inner { padding: 0 22px 18px 60px; font-size: 0.85rem; color: #4b5563; line-height: 1.7; }
 
-    /* ── PROZESS – Timeline (neu: vertikal mit aktivem Schritt) ── */
+    /* ── PROZESS – Timeline B (alle Inhalte sofort sichtbar) ── */
     .prozess { background: var(--dark); padding: 80px 60px; }
-    .prozess-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .prozess-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .prozess-inner .section-label { color: rgba(255,255,255,0.4); }
     .prozess-inner .section-title { color: #fff; }
     .prozess-inner .section-title em { color: var(--green); }
@@ -169,30 +169,25 @@
     .prozess-steps { display: flex; flex-direction: column; gap: 0; }
     .prozess-step {
       display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px 0;
+      padding: 22px 0;
       border-bottom: 1px solid rgba(255,255,255,0.07);
-      cursor: pointer;
-      transition: background 0.15s;
     }
     .prozess-step:last-child { border-bottom: none; }
     .prozess-step-left { display: flex; flex-direction: column; align-items: center; gap: 0; flex-shrink: 0; }
     .prozess-num-circle {
       width: 44px; height: 44px; border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.4);
-      font-size: 0.95rem; font-weight: 800;
+      border: 2px solid var(--green);
+      background: rgba(23,168,99,0.12);
+      color: var(--green);
+      font-size: 0.9rem; font-weight: 800;
       display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
       flex-shrink: 0;
     }
-    .prozess-step.active .prozess-num-circle { border-color: var(--green); color: var(--dark); background: var(--green); }
-    .prozess-connector { width: 1px; flex: 1; min-height: 20px; background: rgba(255,255,255,0.07); margin: 6px 0; }
+    .prozess-connector { width: 2px; flex: 1; min-height: 20px; background: rgba(23,168,99,0.2); margin: 6px 0; }
     .prozess-step:last-child .prozess-connector { display: none; }
     .prozess-step-content { padding-top: 10px; }
-    .prozess-step-title { font-size: 0.95rem; font-weight: 700; color: rgba(255,255,255,0.5); margin: 0 0 4px; transition: color 0.2s; }
-    .prozess-step.active .prozess-step-title { color: #fff; }
-    .prozess-step-text { font-size: 0.83rem; color: rgba(255,255,255,0.35); line-height: 1.65; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, color 0.2s; }
-    .prozess-step.active .prozess-step-text { max-height: 100px; color: rgba(255,255,255,0.55); }
+    .prozess-step-title { font-size: 0.95rem; font-weight: 700; color: #fff; margin: 0 0 6px; }
+    .prozess-step-text { font-size: 0.83rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin: 0; }
 
     /* ── QUALITÄT – Zweispaltig mit Badges (inspiriert von ISS "Warum uns") ── */
     .qualitaet { background: var(--bg); padding: 80px 60px; }
@@ -250,45 +245,7 @@
     .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 20px 0; }
     .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.4); margin: 0; }
 
-    /* ── PROZESS BALKEN ── */
-    .prozess-balken-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .prozess-balken {
-      padding: 32px 24px 28px;
-      background: rgba(255,255,255,0.05);
-      border-right: 1px solid rgba(255,255,255,0.08);
-      cursor: default;
-      transition: background 0.3s ease;
-      min-height: 200px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .prozess-balken:last-child { border-right: none; }
-    .prozess-balken-num {
-      font-size: 2.6rem;
-      font-weight: 800;
-      color: rgba(255,255,255,0.18);
-      line-height: 1;
-      margin: 0 0 auto 0;
-      align-self: flex-start;
-      transition: color 0.3s;
-      flex-shrink: 0;
-    }
-    .prozess-balken-hover {
-      opacity: 0; transform: translateY(8px);
-      transition: opacity 0.25s, transform 0.25s;
-      margin-top: auto;
-    }
-    .prozess-balken:hover .prozess-balken-hover { opacity: 1; transform: translateY(0); }
-    .prozess-balken:hover .prozess-balken-num { color: rgba(255,255,255,0.35); }
-    .prozess-balken-title { font-size: 1rem; font-weight: 800; color: #fff; margin: 0 0 8px; }
-    .prozess-balken-text { font-size: 0.84rem; color: rgba(255,255,255,0.75); line-height: 1.65; margin: 0; }
+    /* (prozess-balken entfernt – nicht mehr verwendet) */
 
     /* ── KREISLAUF ── */
     .kreislauf-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 48px; }
@@ -602,6 +559,58 @@
           <p style="font-size:1rem;font-weight:800;color:var(--dark);margin:0 0 8px;">Und vieles mehr</p>
           <p style="font-size:0.84rem;color:#4b5563;line-height:1.6;margin:0 0 18px;">Hotels, öffentliche Gebäude, Sporthallen und mehr – sprechen Sie uns an.</p>
           <a href="kontakt.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#fff;padding:10px 22px;border-radius:999px;font-size:0.85rem;font-weight:700;font-family:Kiro,sans-serif;">Anfragen →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROZESS -->
+  <section class="prozess reveal">
+    <div class="prozess-inner">
+      <div>
+        <span class="section-label">So starten wir</span>
+        <h2 class="section-title">Von der Anfrage zur <em>Partnerschaft</em></h2>
+        <p class="section-desc">Vier klare Schritte von Ihrer ersten Kontaktaufnahme bis zum ersten Reinigungstag – transparent, unkompliziert und zuverlässig.</p>
+      </div>
+      <div class="prozess-steps">
+        <div class="prozess-step">
+          <div class="prozess-step-left">
+            <div class="prozess-num-circle">01</div>
+            <div class="prozess-connector"></div>
+          </div>
+          <div class="prozess-step-content">
+            <p class="prozess-step-title">Anfrage stellen</p>
+            <p class="prozess-step-text">Kontaktieren Sie uns per Telefon, E-Mail oder über das Kontaktformular. Wir melden uns innerhalb von 24 Stunden.</p>
+          </div>
+        </div>
+        <div class="prozess-step">
+          <div class="prozess-step-left">
+            <div class="prozess-num-circle">02</div>
+            <div class="prozess-connector"></div>
+          </div>
+          <div class="prozess-step-content">
+            <p class="prozess-step-title">Begehung vor Ort</p>
+            <p class="prozess-step-text">Wir besichtigen Ihr Objekt, nehmen alle Wünsche auf und definieren gemeinsam den Leistungsumfang.</p>
+          </div>
+        </div>
+        <div class="prozess-step">
+          <div class="prozess-step-left">
+            <div class="prozess-num-circle">03</div>
+            <div class="prozess-connector"></div>
+          </div>
+          <div class="prozess-step-content">
+            <p class="prozess-step-title">Offerte erhalten</p>
+            <p class="prozess-step-text">Sie erhalten ein transparentes, massgeschneidertes Angebot.</p>
+          </div>
+        </div>
+        <div class="prozess-step">
+          <div class="prozess-step-left">
+            <div class="prozess-num-circle">04</div>
+          </div>
+          <div class="prozess-step-content">
+            <p class="prozess-step-title">Reinigung startet</p>
+            <p class="prozess-step-text">Wir beginnen pünktlich und professionell – für eine langfristige, verlässliche Zusammenarbeit.</p>
+          </div>
         </div>
       </div>
     </div>
