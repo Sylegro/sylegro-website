@@ -73,26 +73,26 @@
     .leis-item {
       background: #fff; padding: 32px 28px;
       border-radius: 16px; border: 1px solid #e2e8f0;
-      transition: background 0.28s ease, border-color 0.28s ease, transform 0.2s ease, box-shadow 0.2s ease;
-      cursor: default; position: relative; overflow: hidden;
+      transition: background 0.28s, border-color 0.28s, transform 0.2s, box-shadow 0.2s;
+      cursor: default;
     }
     .leis-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
-    .leis-item:nth-child(1):hover { background: rgba(23,168,99,0.10); border-color: rgba(23,168,99,0.3); }
-    .leis-item:nth-child(2):hover { background: rgba(14,148,114,0.10); border-color: rgba(14,148,114,0.3); }
-    .leis-item:nth-child(3):hover { background: rgba(8,127,127,0.10); border-color: rgba(8,127,127,0.3); }
-    .leis-item:nth-child(4):hover { background: rgba(5,106,138,0.10); border-color: rgba(5,106,138,0.3); }
-    .leis-item:nth-child(5):hover { background: rgba(3,85,151,0.10); border-color: rgba(3,85,151,0.3); }
-    .leis-item:nth-child(6):hover { background: rgba(0,99,165,0.10); border-color: rgba(0,99,165,0.3); }
-    .leis-num { display: none; }
-    .leis-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin: 0 0 8px; transition: color 0.28s; }
-    .leis-item:nth-child(1):hover .leis-title { color: #0e6b40; }
-    .leis-item:nth-child(2):hover .leis-title { color: #085c48; }
-    .leis-item:nth-child(3):hover .leis-title { color: #054f4f; }
-    .leis-item:nth-child(4):hover .leis-title { color: #043f55; }
-    .leis-item:nth-child(5):hover .leis-title { color: #022f62; }
-    .leis-item:nth-child(6):hover .leis-title { color: #003d6b; }
-    .leis-text { font-size: 0.87rem; color: #6b7280; line-height: 1.65; margin: 0; transition: color 0.28s; }
-    .leis-item:hover .leis-text { color: #374151; }
+    .leis-item:nth-child(1):hover { background: rgba(23,168,99,0.07); border-color: rgba(23,168,99,0.3); }
+    .leis-item:nth-child(2):hover { background: rgba(14,148,114,0.07); border-color: rgba(14,148,114,0.3); }
+    .leis-item:nth-child(3):hover { background: rgba(8,127,127,0.07); border-color: rgba(8,127,127,0.3); }
+    .leis-item:nth-child(4):hover { background: rgba(5,106,138,0.07); border-color: rgba(5,106,138,0.3); }
+    .leis-item:nth-child(5):hover { background: rgba(0,99,165,0.07); border-color: rgba(0,99,165,0.3); }
+    .leis-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin: 0 0 8px; }
+    .leis-text { font-size: 0.87rem; color: #6b7280; line-height: 1.65; margin: 0; }
+    .leis-mehr {
+      display: block; margin-top: 14px;
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 16px;
+      padding: 20px 28px; text-align: center;
+      font-size: 0.97rem; font-weight: 700; color: var(--blue);
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .leis-mehr:hover { background: rgba(0,99,165,0.04); border-color: rgba(0,99,165,0.3); }
 
     /* SAISON – Neue Variante: Akkordeon-Cards horizontal */
     .saison { background: #fff; padding: 80px 60px; }
@@ -313,30 +313,28 @@
       <p class="section-desc">Von der Gartenarbeit bis zur Liegenschaftsbetreuung – wir decken alles ab, was Ihre Immobilie braucht.</p>
       <div class="leis-grid">
         <div class="leis-item">
-          <p class="leis-title">Gartenpflege</p>
-          <p class="leis-text">Rasenmähen, Heckenschnitt, Laubentfernung und Pflege der Aussenanlagen – gepflegt durch alle vier Jahreszeiten.</p>
+          <p class="leis-title">Hauswartung</p>
+          <p class="leis-text">Treppenhausreinigung, Gemeinschaftsflächen und Koordination – ein Ansprechpartner für Mieter, Eigentümer und Handwerker.</p>
+        </div>
+        <div class="leis-item">
+          <p class="leis-title">Arealreinigung</p>
+          <p class="leis-text">Eingangsbereich, Parkplätze, Wege und Aussenanlagen – gepflegt und repräsentativ zu jeder Jahreszeit.</p>
         </div>
         <div class="leis-item">
           <p class="leis-title">Winterdienst</p>
           <p class="leis-text">Schneeräumung, Salzen und Streuen von Wegen, Einfahrten und Zugängen – zuverlässig und pünktlich, bevor Sie starten.</p>
         </div>
         <div class="leis-item">
-          <p class="leis-title">Treppenhausreinigung</p>
-          <p class="leis-text">Regelmässige Reinigung von Treppenhäusern, Eingangsbereichen und Gemeinschaftsflächen – immer repräsentativ.</p>
+          <p class="leis-title">Funktionsprüfung Anlagen</p>
+          <p class="leis-text">Regelmässige Kontrolle von Heizung, Lüftung, Beleuchtung und Notausgängen – Ausfälle werden erkannt bevor sie entstehen.</p>
         </div>
         <div class="leis-item">
-          <p class="leis-title">Kleinreparaturen</p>
-          <p class="leis-text">Behebung kleiner Schäden und Mängel – schnell, unkompliziert und ohne langen Vorlauf, bevor Grosses entsteht.</p>
-        </div>
-        <div class="leis-item">
-          <p class="leis-title">Entsorgung & Kehricht</p>
-          <p class="leis-text">Organisation der Abfallbehälter, Bereitstellung an Kehrichttagen und Reinigung der Entsorgungsbereiche.</p>
-        </div>
-        <div class="leis-item">
-          <p class="leis-title">Liegenschaftsbetreuung</p>
-          <p class="leis-text">Gesamtbetreuung als Ansprechperson für Mieter, Eigentümer und Handwerker – koordiniert und verlässlich.</p>
+          <p class="leis-title">Grünpflege & Kleinreparaturen</p>
+          <p class="leis-text">Rasenmähen, Heckenschnitt, Laubentfernung und schnelle Behebung kleiner Schäden – alles aus einer Hand.</p>
         </div>
       </div>
+
+      <a href="kontakt.html" class="leis-mehr">Und vieles mehr →</a>
     </div>
   </section>
 
