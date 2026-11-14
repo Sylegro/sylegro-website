@@ -94,29 +94,24 @@
     }
     .leis-mehr:hover { background: rgba(0,99,165,0.04); border-color: rgba(0,99,165,0.3); }
 
-    /* SAISON – Neue Variante: Akkordeon-Cards horizontal */
+    /* SAISON – Statische Karten */
     .saison { background: #fff; padding: 80px 60px; }
     .saison-inner { max-width: 1200px; margin: 0 auto; }
     .saison-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 40px; }
     .saison-card {
       border-radius: 16px; overflow: hidden; position: relative;
-      min-height: 360px; cursor: pointer;
-      transition: flex 0.35s ease;
+      min-height: 400px;
       display: flex; flex-direction: column; justify-content: flex-end;
       border: 1px solid #dde3ea;
     }
     .saison-card-bg {
       position: absolute; inset: 0;
       background-size: cover; background-position: center;
-      transition: transform 0.5s ease, opacity 0.35s ease;
     }
     .saison-card::before {
       content: ""; position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to top, rgba(15,23,42,0.88) 0%, rgba(15,23,42,0.3) 50%, transparent 100%);
-      transition: background 0.35s;
+      background: linear-gradient(to top, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.5) 55%, rgba(15,23,42,0.15) 100%);
     }
-    .saison-card:hover::before { background: linear-gradient(to top, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.5) 60%, rgba(15,23,42,0.1) 100%); }
-    .saison-card:hover .saison-card-bg { transform: scale(1.04); }
     .saison-card-body { position: relative; z-index: 2; padding: 24px 22px; }
     .saison-tag {
       display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
@@ -124,10 +119,9 @@
       background: rgba(23,168,99,0.15); border: 1px solid rgba(23,168,99,0.3);
       padding: 3px 10px; border-radius: 999px; margin-bottom: 10px;
     }
-    .saison-title { font-size: 1.05rem; font-weight: 800; color: #fff; margin: 0 0 10px; }
-    .saison-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease; }
-    .saison-card:hover .saison-list { max-height: 200px; opacity: 1; }
-    .saison-li { display: flex; align-items: flex-start; gap: 8px; font-size: 0.82rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+    .saison-title { font-size: 1.05rem; font-weight: 800; color: #fff; margin: 0 0 12px; }
+    .saison-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+    .saison-li { display: flex; align-items: flex-start; gap: 8px; font-size: 0.82rem; color: rgba(255,255,255,0.85); line-height: 1.5; }
     .saison-li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
     /* VORTEILE – Neu: Horizontale Zeitleiste mit Zahlen */
