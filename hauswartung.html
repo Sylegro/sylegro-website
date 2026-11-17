@@ -94,46 +94,40 @@
     }
     .leis-mehr:hover { background: rgba(0,99,165,0.04); border-color: rgba(0,99,165,0.3); }
 
-    /* SAISON – Apple-Stil: durchgehende Karten */
+    /* SAISON – Apple Variante 1: Bild oben, Titel im Bild, Liste darunter */
     .saison { background: var(--bg); padding: 80px 60px; }
     .saison-inner { max-width: 1200px; margin: 0 auto; }
 
-    .saison-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 40px; }
+    .saison-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 40px; }
     .saison-card {
-      border-radius: 18px; overflow: hidden;
+      border-radius: 20px; overflow: hidden;
       background: #fff;
-      box-shadow: 0 2px 12px rgba(15,23,42,0.07);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
       display: flex; flex-direction: column;
     }
     .saison-card-img {
-      width: 100%; height: 190px;
+      width: 100%; height: 200px;
       background-size: cover; background-position: center;
+      position: relative; display: flex; align-items: flex-end;
       flex-shrink: 0;
     }
-    .saison-card-body { padding: 20px 20px 24px; flex: 1; }
-    .saison-title {
-      font-size: 0.95rem; font-weight: 800; color: var(--dark);
-      margin: 0 0 14px; letter-spacing: 0.01em;
+    .saison-img-label {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 55%);
+      display: flex; align-items: flex-end; padding: 16px 18px;
     }
-    .saison-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    .saison-season { font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
+    .saison-card-body { padding: 18px 18px 22px; flex: 1; }
+    .saison-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
     .saison-li {
-      font-size: 0.8rem; color: #374151; line-height: 1.5;
-      padding-left: 14px; position: relative;
+      font-size: 0.78rem; color: #3a3a3c; line-height: 1.5;
+      display: flex; gap: 9px; align-items: flex-start;
     }
-    .saison-li::before {
-      content: ""; position: absolute; left: 0; top: 6px;
-      width: 5px; height: 5px; border-radius: 50%;
-    }
-    .saison-card:nth-child(1) .saison-li::before { background: var(--green); }
-    .saison-card:nth-child(2) .saison-li::before { background: #d4a800; }
-    .saison-card:nth-child(3) .saison-li::before { background: #c2410c; }
-    .saison-card:nth-child(4) .saison-li::before { background: var(--blue); }
-
-    /* Farbiger Akzentstreifen oben */
-    .saison-card:nth-child(1) .saison-card-img { border-top: 3px solid var(--green); }
-    .saison-card:nth-child(2) .saison-card-img { border-top: 3px solid #d4a800; }
-    .saison-card:nth-child(3) .saison-card-img { border-top: 3px solid #c2410c; }
-    .saison-card:nth-child(4) .saison-card-img { border-top: 3px solid var(--blue); }
+    .saison-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .saison-card:nth-child(1) .saison-dot { background: var(--green); }
+    .saison-card:nth-child(2) .saison-dot { background: #d4a800; }
+    .saison-card:nth-child(3) .saison-dot { background: #c2410c; }
+    .saison-card:nth-child(4) .saison-dot { background: var(--blue); }
 
     /* VORTEILE – Neu: Horizontale Zeitleiste mit Zahlen */
     .vorteile { background: var(--bg); padding: 80px 60px; }
@@ -352,60 +346,64 @@
 
       <div class="saison-cards">
         <div class="saison-card">
-          <div class="saison-card-img" style="background-image:url('saison_fruehling.png')"></div>
+          <div class="saison-card-img" style="background-image:url('saison_fruehling.png')">
+            <div class="saison-img-label"><span class="saison-season">Frühling</span></div>
+          </div>
           <div class="saison-card-body">
-            <p class="saison-title">Frühling</p>
             <ul class="saison-list">
-              <li class="saison-li">Winterschäden prüfen: Fassade, Wege, Treppen und Aussenbeläge</li>
-              <li class="saison-li">Dachrinnen, Lichtschächte und Aussenabläufe reinigen</li>
-              <li class="saison-li">Streusalzreste entfernen, Wege und Eingänge reinigen</li>
-              <li class="saison-li">Hecken und Sträucher erstmals schneiden</li>
-              <li class="saison-li">Heizung warten, Gartenwasser und Bewässerung in Betrieb nehmen</li>
-              <li class="saison-li">Pikettdienst: Bereitschaft rund um die Uhr</li>
+              <li class="saison-li"><span class="saison-dot"></span>Winterschäden prüfen: Fassade, Wege, Treppen und Aussenbeläge</li>
+              <li class="saison-li"><span class="saison-dot"></span>Dachrinnen, Lichtschächte und Aussenabläufe reinigen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Streusalzreste entfernen, Wege und Eingänge reinigen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Hecken und Sträucher erstmals schneiden</li>
+              <li class="saison-li"><span class="saison-dot"></span>Heizung warten, Gartenwasser und Bewässerung in Betrieb nehmen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Pikettdienst: Bereitschaft rund um die Uhr</li>
             </ul>
           </div>
         </div>
         <div class="saison-card">
-          <div class="saison-card-img" style="background-image:url('saison_sommer.png')"></div>
+          <div class="saison-card-img" style="background-image:url('saison_sommer.png')">
+            <div class="saison-img-label"><span class="saison-season">Sommer</span></div>
+          </div>
           <div class="saison-card-body">
-            <p class="saison-title">Sommer</p>
             <ul class="saison-list">
-              <li class="saison-li">Regelmässiger Rasenschnitt und Kantenschnitt</li>
-              <li class="saison-li">Heckenschnitt und Strauchpflege</li>
-              <li class="saison-li">Unkrautentfernung auf Wegen, Plätzen und Beeten</li>
-              <li class="saison-li">Bewässerung der Grünflächen</li>
-              <li class="saison-li">Fassaden und Fenster reinigen</li>
-              <li class="saison-li">Dach kontrollieren, Heizung für die nächste Saison warten lassen</li>
-              <li class="saison-li">Pikettdienst: Bereitschaft rund um die Uhr</li>
+              <li class="saison-li"><span class="saison-dot"></span>Regelmässiger Rasenschnitt und Kantenschnitt</li>
+              <li class="saison-li"><span class="saison-dot"></span>Heckenschnitt und Strauchpflege</li>
+              <li class="saison-li"><span class="saison-dot"></span>Unkrautentfernung auf Wegen, Plätzen und Beeten</li>
+              <li class="saison-li"><span class="saison-dot"></span>Bewässerung der Grünflächen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Fassaden und Fenster reinigen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Dach kontrollieren, Heizung für die nächste Saison warten lassen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Pikettdienst: Bereitschaft rund um die Uhr</li>
             </ul>
           </div>
         </div>
         <div class="saison-card">
-          <div class="saison-card-img" style="background-image:url('saison_herbst.png')"></div>
+          <div class="saison-card-img" style="background-image:url('saison_herbst.png')">
+            <div class="saison-img-label"><span class="saison-season">Herbst</span></div>
+          </div>
           <div class="saison-card-body">
-            <p class="saison-title">Herbst</p>
             <ul class="saison-list">
-              <li class="saison-li">Laubentfernung von Wegen, Plätzen und Zugängen</li>
-              <li class="saison-li">Dachrinnen und Lichtschächte nach dem Laubfall reinigen</li>
-              <li class="saison-li">Hecken ein letztes Mal in Form bringen</li>
-              <li class="saison-li">Fenster und Türen auf Dichtungen prüfen</li>
-              <li class="saison-li">Aussenwasserleitungen absperren, Salz und Splitt bereitstellen</li>
-              <li class="saison-li">Heizung testen und hochfahren</li>
-              <li class="saison-li">Pikettdienst: Bereitschaft rund um die Uhr</li>
+              <li class="saison-li"><span class="saison-dot"></span>Laubentfernung von Wegen, Plätzen und Zugängen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Dachrinnen und Lichtschächte nach dem Laubfall reinigen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Hecken ein letztes Mal in Form bringen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Fenster und Türen auf Dichtungen prüfen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Aussenwasserleitungen absperren, Salz und Splitt bereitstellen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Heizung testen und hochfahren</li>
+              <li class="saison-li"><span class="saison-dot"></span>Pikettdienst: Bereitschaft rund um die Uhr</li>
             </ul>
           </div>
         </div>
         <div class="saison-card">
-          <div class="saison-card-img" style="background-image:url('saison_winter.png')"></div>
+          <div class="saison-card-img" style="background-image:url('saison_winter.png')">
+            <div class="saison-img-label"><span class="saison-season">Winter</span></div>
+          </div>
           <div class="saison-card-body">
-            <p class="saison-title">Winter</p>
             <ul class="saison-list">
-              <li class="saison-li">Schneeräumung von Wegen, Einfahrten, Treppen und Zugängen</li>
-              <li class="saison-li">Salzen und Streuen bei Glatteis</li>
-              <li class="saison-li">Dach auf Schneelast und Eiszapfen kontrollieren</li>
-              <li class="saison-li">Frostgefährdete Leitungen und Anlagen schützen</li>
-              <li class="saison-li">Heizung überwachen, Lüftung auf Winterbetrieb einstellen</li>
-              <li class="saison-li">Pikettdienst: Bereitschaft rund um die Uhr</li>
+              <li class="saison-li"><span class="saison-dot"></span>Schneeräumung von Wegen, Einfahrten, Treppen und Zugängen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Salzen und Streuen bei Glatteis</li>
+              <li class="saison-li"><span class="saison-dot"></span>Dach auf Schneelast und Eiszapfen kontrollieren</li>
+              <li class="saison-li"><span class="saison-dot"></span>Frostgefährdete Leitungen und Anlagen schützen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Heizung überwachen, Lüftung auf Winterbetrieb einstellen</li>
+              <li class="saison-li"><span class="saison-dot"></span>Pikettdienst: Bereitschaft rund um die Uhr</li>
             </ul>
           </div>
         </div>
