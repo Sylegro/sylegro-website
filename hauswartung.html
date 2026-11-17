@@ -134,60 +134,26 @@
     .saison-card:nth-child(3) .saison-dot { background: #c2410c; }
     .saison-card:nth-child(4) .saison-dot { background: var(--blue); }
 
-    /* VORTEILE – Neu: Horizontale Zeitleiste mit Zahlen */
-    .vorteile { background: var(--bg); padding: 80px 60px; }
+    /* VORTEILE – Dark Tinted */
+    .vorteile { background: var(--dark); padding: 80px 60px; }
     .vorteile-inner { max-width: 1200px; margin: 0 auto; }
-    .vorteile-inner .section-label { color: var(--blue); }
-    .vorteile-inner .section-title { color: var(--dark); }
-    .vorteile-inner .section-title em { color: var(--blue); }
-    .vorteile-inner .section-desc { color: #4b5563; margin-bottom: 48px; }
+    .vorteile-inner .section-label { color: var(--green); }
+    .vorteile-inner .section-title { color: #fff; }
+    .vorteile-inner .section-title em { color: var(--green); }
+    .vorteile-inner .section-desc { color: rgba(255,255,255,0.45); margin-bottom: 48px; max-width: 600px; }
 
-    /* Variante I-C: Glow von oben + leuchtender Aussenrand */
-    .ic-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .ic-card {
-      height: 200px; border-radius: 16px;
-      background: #fff; border: 1px solid #e2e8f0;
-      position: relative; overflow: hidden; cursor: default;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 24px 22px; transition: background 0.35s, border-color 0.35s, transform 0.2s;
+    .vt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .vt-card {
+      border-radius: 20px;
+      display: flex; flex-direction: column;
+      padding: 32px 28px; cursor: default;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .ic-card:hover { transform: translateY(-4px); }
-    .ic-card:nth-child(1):hover { background: rgba(23,168,99,0.04); border-color: rgba(23,168,99,0.5); }
-    .ic-card:nth-child(2):hover { background: rgba(14,148,114,0.04); border-color: rgba(14,148,114,0.5); }
-    .ic-card:nth-child(3):hover { background: rgba(5,106,138,0.04); border-color: rgba(5,106,138,0.5); }
-    .ic-card:nth-child(4):hover { background: rgba(0,99,165,0.04); border-color: rgba(0,99,165,0.5); }
-    .ic-card::after {
-      content: ""; position: absolute; inset: -2px;
-      border-radius: 17px; opacity: 0;
-      transition: opacity 0.35s; pointer-events: none;
-    }
-    .ic-card:nth-child(1)::after { box-shadow: 0 0 22px 5px rgba(23,168,99,0.22); }
-    .ic-card:nth-child(2)::after { box-shadow: 0 0 22px 5px rgba(14,148,114,0.22); }
-    .ic-card:nth-child(3)::after { box-shadow: 0 0 22px 5px rgba(5,106,138,0.22); }
-    .ic-card:nth-child(4)::after { box-shadow: 0 0 22px 5px rgba(0,99,165,0.22); }
-    .ic-card:hover::after { opacity: 1; }
-    .ic-glow {
-      position: absolute; width: 130px; height: 130px;
-      border-radius: 50%; top: -70px; left: 50%; transform: translateX(-50%);
-      opacity: 0; filter: blur(38px);
-      transition: opacity 0.4s, top 0.4s; pointer-events: none;
-    }
-    .ic-card:nth-child(1) .ic-glow { background: #17A863; }
-    .ic-card:nth-child(2) .ic-glow { background: #0E9472; }
-    .ic-card:nth-child(3) .ic-glow { background: #056A8A; }
-    .ic-card:nth-child(4) .ic-glow { background: #0063A5; }
-    .ic-card:hover .ic-glow { opacity: 0.22; top: -15px; }
-    .ic-keyword {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; margin: 0 0 8px; position: relative; z-index: 1;
-    }
-    .ic-card:nth-child(1) .ic-keyword { color: #17A863; }
-    .ic-card:nth-child(2) .ic-keyword { color: #0E9472; }
-    .ic-card:nth-child(3) .ic-keyword { color: #056A8A; }
-    .ic-card:nth-child(4) .ic-keyword { color: #0063A5; }
-    .ic-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin: 0 0 7px; position: relative; z-index: 1; }
-    .ic-text { font-size: 0.84rem; color: #6b7280; line-height: 1.6; margin: 0; position: relative; z-index: 1; transition: color 0.3s; }
-    .ic-card:hover .ic-text { color: #374151; }
+    .vt-card:nth-child(odd) { background: rgba(23,168,99,0.12); border: 1px solid rgba(23,168,99,0.2); }
+    .vt-card:nth-child(even) { background: rgba(0,99,165,0.15); border: 1px solid rgba(0,99,165,0.25); }
+    .vt-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+    .vt-title { font-size: 1rem; font-weight: 800; color: #fff; margin: 0 0 9px; line-height: 1.3; }
+    .vt-text { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.65; margin: 0; }
 
     /* CTA – Neu: Persönlich & direkt */
     .cta-section { background: var(--bg); padding: 80px 60px; }
@@ -251,6 +217,7 @@
       .leis-item:nth-last-child(-n+2) { border-bottom: 1px solid #dde3ea; }
       .leis-item:last-child { border-bottom: none; }
       .saison-cards { grid-template-columns: 1fr 1fr; }
+      .vt-grid { grid-template-columns: 1fr 1fr; }
       .vorteil-row { grid-template-columns: 1fr 1fr; gap: 40px; }
       .vorteil-row::before { display: none; }
       .cta-card { grid-template-columns: 1fr; }
@@ -421,37 +388,78 @@
     </div>
   </section>
 
-  <!-- VORTEILE – Horizontale Timeline -->
+  <!-- VORTEILE -->
   <section class="vorteile reveal">
     <div class="vorteile-inner">
-      <span class="section-label">Ihr Vorteil</span>
-      <h2 class="section-title">Was Sie mit Sylegro <em>gewinnen</em></h2>
-      <p class="section-desc">Eine professionelle Hauswartung ist keine Ausgabe – sie ist eine Investition, die sich täglich auszahlt.</p>
-      <div class="ic-grid">
-        <div class="ic-card">
-          <div class="ic-glow"></div>
-          <p class="ic-keyword">Finanzen</p>
-          <p class="ic-title">Kosten sparen</p>
-          <p class="ic-text">Früh erkannte Schäden kosten einen Bruchteil – wir handeln bevor es teuer wird.</p>
+      <span class="section-label">Warum Sylegro</span>
+      <h2 class="section-title">Was unsere Kunden <em>wirklich schätzen</em></h2>
+      <p class="section-desc">Wir hören oft: «Seit Sylegro kümmere ich mich nicht mehr darum.» Das ist kein Zufall – es ist unser Versprechen.</p>
+      <div class="vt-grid">
+
+        <div class="vt-card">
+          <div class="vt-icon" style="background:rgba(23,168,99,0.1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#17A863"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <p class="vt-title">Kosten im Griff</p>
+          <p class="vt-text">Schäden die früh erkannt werden, kosten einen Bruchteil. Wir schauen bevor es teuer wird – das zahlt sich aus.</p>
         </div>
-        <div class="ic-card">
-          <div class="ic-glow"></div>
-          <p class="ic-keyword">Komfort</p>
-          <p class="ic-title">Stress eliminieren</p>
-          <p class="ic-text">Kein Koordinieren mehr – ein Ansprechpartner für Mieter, Handwerker und Verwaltung.</p>
+
+        <div class="vt-card">
+          <div class="vt-icon" style="background:rgba(0,99,165,0.09);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0063A5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <p class="vt-title">Direkter Draht</p>
+          <p class="vt-text">Kein Telefon-Pingpong. Kein Warten auf Rückmeldung. Sie erreichen uns – und bekommen eine Antwort.</p>
         </div>
-        <div class="ic-card">
-          <div class="ic-glow"></div>
-          <p class="ic-keyword">Immobilie</p>
-          <p class="ic-title">Wert erhalten</p>
-          <p class="ic-text">Gepflegte Liegenschaften erzielen mehr Ertrag und verlieren nicht an Substanz.</p>
+
+        <div class="vt-card">
+          <div class="vt-icon" style="background:rgba(23,168,99,0.1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#17A863"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <p class="vt-title">Ein Ansprechpartner</p>
+          <p class="vt-text">Mieter, Verwaltung, Handwerker – alles läuft über uns. Für Sie bleibt nur eine Nummer, die wirklich funktioniert.</p>
         </div>
-        <div class="ic-card">
-          <div class="ic-glow"></div>
-          <p class="ic-keyword">Alltag</p>
-          <p class="ic-title">Zeit gewinnen</p>
-          <p class="ic-text">Konzentrieren Sie sich aufs Wesentliche – den Rest übernehmen wir täglich.</p>
+
+        <div class="vt-card">
+          <div class="vt-icon" style="background:rgba(0,99,165,0.09);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0063A5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <p class="vt-title">Werterhalt der Immobilie</p>
+          <p class="vt-text">Gepflegte Liegenschaften behalten ihren Wert – und sehen es auch aus. Das schützt Ihr Kapital langfristig.</p>
         </div>
+
+        <div class="vt-card">
+          <div class="vt-icon" style="background:rgba(23,168,99,0.1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#17A863"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <p class="vt-title">Freiraum für Ihr Kerngeschäft</p>
+          <p class="vt-text">Sie investieren Ihre Zeit dort, wo Sie wirklich gebraucht werden. Um den Rest kümmern wir uns – täglich und zuverlässig.</p>
+        </div>
+
+        <div class="vt-card">
+          <div class="vt-icon" style="background:rgba(0,99,165,0.09);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0063A5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <p class="vt-title">Volle Transparenz</p>
+          <p class="vt-text">Sie wissen immer, was gemacht wurde und was als Nächstes ansteht. Keine Überraschungen – nur klare Kommunikation.</p>
+        </div>
+
+        <div class="vt-card">
+          <div class="vt-icon" style="background:rgba(23,168,99,0.1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#17A863"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <p class="vt-title">Proaktiver Schutz</p>
+          <p class="vt-text">Wir machen Sie aufmerksam auf Schutzmassnahmen – bevor Verwitterung oder Verschleiss sichtbar wird. Prävention statt Reparatur.</p>
+        </div>
+
+        <div class="vt-card">
+          <div class="vt-icon" style="background:rgba(0,99,165,0.09);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0063A5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <p class="vt-title">Fachwissen & Qualität</p>
+          <p class="vt-text">Hinter jeder Arbeit steckt echtes Handwerk. Wir wissen was wir tun – und das merken Sie an jedem Detail.</p>
+        </div>
+
       </div>
     </div>
   </section>
