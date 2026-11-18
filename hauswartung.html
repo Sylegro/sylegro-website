@@ -36,9 +36,9 @@
 
     /* INTRO – Text + Stats-Visual statt Bild */
     .intro { background: #fff; padding: 80px 60px; }
-    .intro-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .intro-inner { max-width: 860px; margin: 0 auto; }
     .intro-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 12px; }
-    .intro-title { font-size: 2rem; font-weight: 800; color: var(--dark); line-height: 1.15; margin: 0 0 16px; }
+    .intro-title { font-size: 2.5rem; font-weight: 800; color: var(--dark); line-height: 1.15; margin: 0 0 20px; }
     .intro-title em { font-style: italic; color: var(--blue); }
     .intro-text { font-size: 0.97rem; color: #4b5563; line-height: 1.8; margin: 0 0 16px; }
     .intro-btn { margin-top: 28px; display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: #fff; padding: 14px 28px; border-radius: 999px; font-size: 0.95rem; font-weight: 700; font-family: "Kiro", sans-serif; box-shadow: 0 6px 20px rgba(0,99,165,0.25); transition: transform 0.15s, box-shadow 0.15s; }
@@ -84,6 +84,16 @@
     .leis-item:nth-child(5):hover { background: rgba(0,99,165,0.07); border-color: rgba(0,99,165,0.3); }
     .leis-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin: 0 0 8px; }
     .leis-text { font-size: 0.87rem; color: #6b7280; line-height: 1.65; margin: 0; }
+    .leis-mehr-card {
+      background: rgba(0,99,165,0.04) !important;
+      border: 1.5px dashed rgba(0,99,165,0.25) !important;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; justify-content: center; gap: 10px;
+    }
+    .leis-mehr-card:hover { background: rgba(0,99,165,0.08) !important; border-color: rgba(0,99,165,0.4) !important; }
+    .leis-mehr-plus { width: 44px; height: 44px; border-radius: 50%; background: rgba(0,99,165,0.1); border: 1px solid rgba(0,99,165,0.25); color: var(--blue); font-size: 1.4rem; font-weight: 300; display: flex; align-items: center; justify-content: center; }
+    .leis-mehr-btn { display: inline-flex; align-items: center; margin-top: 6px; background: var(--blue); color: #fff; padding: 10px 24px; border-radius: 999px; font-size: 0.88rem; font-weight: 700; font-family: "Kiro", sans-serif; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 14px rgba(0,99,165,0.25); }
+    .leis-mehr-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,99,165,0.35); }
     .leis-mehr {
       display: block; margin-top: 14px;
       background: #fff; border: 1px solid #e2e8f0; border-radius: 16px;
@@ -261,16 +271,11 @@
   <!-- INTRO -->
   <section class="intro reveal">
     <div class="intro-inner">
-      <div>
-        <span class="intro-label">Warum Sylegro</span>
-        <h2 class="intro-title">Ihre Liegenschaft in <em>besten Händen.</em></h2>
-        <p class="intro-text">Wir kümmern uns ganzjährig um Ihre Immobilie – proaktiv, zuverlässig und mit einem Team, das weiss was es tut. Ob Gartenpflege, Winterdienst, Kleinreparaturen oder Liegenschaftsbetreuung, wir decken alles ab und halten Ihr Objekt stets in einwandfreiem Zustand.</p>
-        <p class="intro-text" style="margin-bottom:0">Ob Mehrfamilienhaus, Geschäftsgebäude oder öffentliche Liegenschaft, wir entwickeln einen massgeschneiderten Betreuungsplan und führen ihn verlässlich aus.</p>
-        <a href="kontakt.html" class="intro-btn">Kostenloses Angebot anfragen →</a>
-      </div>
-      <div class="intro-photo">
-        <img src="Gartenarbeit.jpg" alt="Hauswartung Sylegro" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:18px;box-shadow:0 8px 32px rgba(15,23,42,0.12);">
-      </div>
+      <span class="intro-label">Warum Sylegro</span>
+      <h2 class="intro-title">Ihre Liegenschaft in <em>besten Händen.</em></h2>
+      <p class="intro-text">Wir kümmern uns ganzjährig um Ihre Immobilie – proaktiv, zuverlässig und mit einem Team, das weiss was es tut. Ob Gartenpflege, Winterdienst, Kleinreparaturen oder Liegenschaftsbetreuung, wir decken alles ab und halten Ihr Objekt stets in einwandfreiem Zustand.</p>
+      <p class="intro-text" style="margin-bottom:0">Ob Mehrfamilienhaus, Geschäftsgebäude oder öffentliche Liegenschaft, wir entwickeln einen massgeschneiderten Betreuungsplan und führen ihn verlässlich aus.</p>
+      <a href="kontakt.html" class="intro-btn">Kostenloses Angebot anfragen →</a>
     </div>
   </section>
 
@@ -301,9 +306,13 @@
           <p class="leis-title">Grünpflege & Kleinreparaturen</p>
           <p class="leis-text">Rasenmähen, Heckenschnitt, Laubentfernung und schnelle Behebung kleiner Schäden – alles aus einer Hand.</p>
         </div>
+        <div class="leis-item leis-mehr-card">
+          <div class="leis-mehr-plus">+</div>
+          <p class="leis-title">Und vieles mehr</p>
+          <p class="leis-text">Pikettdienst, Liegenschaftsbetreuung, Schutzmassnahmen und individuelle Betreuungskonzepte – sprechen Sie uns an.</p>
+          <a href="kontakt.html" class="leis-mehr-btn">Anfragen →</a>
+        </div>
       </div>
-
-      <a href="kontakt.html" class="leis-mehr">Und vieles mehr →</a>
     </div>
   </section>
 
