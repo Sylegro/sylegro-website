@@ -193,21 +193,6 @@
 
     .btn-green:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(23,168,99,0.4); }
 
-    .btn-outline {
-      background: transparent;
-      color: #0f172a;
-      padding: 14px 28px;
-      border-radius: 999px;
-      font-size: 1rem;
-      font-weight: 600;
-      font-family: "Kiro", sans-serif;
-      border: 2px solid #d1d5db;
-      text-decoration: none;
-      transition: border-color 0.15s ease, transform 0.15s ease;
-    }
-
-    .btn-outline:hover { border-color: var(--sylegro-blue); transform: translateY(-2px); }
-
     .hero-right { flex: 1; min-width: 280px; }
 
     .stats-grid {
@@ -489,8 +474,6 @@
       align-items: center;
     }
 
-    .ueber-uns-left {}
-
     .ueber-uns-label {
       font-size: 0.75rem;
       font-weight: 700;
@@ -509,10 +492,7 @@
       margin: 0 0 20px 0;
     }
 
-    .ueber-uns-title em {
-      font-style: italic;
-      color: var(--sylegro-green);
-    }
+    .ueber-uns-title em { font-style: italic; color: var(--sylegro-green); }
 
     .ueber-uns-text {
       font-size: 1rem;
@@ -564,18 +544,14 @@
       border-radius: 16px 16px 0 0;
     }
 
-    .ueber-uns-card:nth-child(even)::before {
-      background: var(--sylegro-green);
-    }
+    .ueber-uns-card:nth-child(even)::before { background: var(--sylegro-green); }
 
     .ueber-uns-card:hover {
       background: rgba(23,168,99,0.08);
       border-color: rgba(23,168,99,0.3);
     }
 
-    .ueber-uns-card-icon {
-      display: none;
-    }
+    .ueber-uns-card-icon { display: none; }
 
     .ueber-uns-card-title {
       font-size: 0.95rem;
@@ -861,7 +837,6 @@
         <p class="hero-subtitle">Professionelle Reinigung, Hauswartung und Facility Services – massgeschneidert für Ihr Unternehmen.</p>
         <div class="hero-buttons">
           <a href="kontakt.html" class="btn-green">Kostenloses Angebot ↗</a>
-
         </div>
       </div>
       <div class="hero-right">
@@ -913,7 +888,8 @@
           </div>
         </a>
         <a class="kachel" href="hauswartung.html">
-          <div class="kachel-img" style="background-image: url('HW_Foto_Aleks.jpg');"></div>
+          <!-- Korrekter Dateiname aus Projektdateien -->
+          <div class="kachel-img" style="background-image: url('Titelbild_HW_Alex.JPG');"></div>
           <div class="kachel-overlay"></div>
           <div class="kachel-hover-layer">
             <h3 class="kachel-hover-title">Hauswartung</h3>
@@ -974,37 +950,30 @@
   <!-- ÜBER UNS VORSCHAU -->
   <div class="ueber-uns-section reveal">
     <div class="ueber-uns-inner">
-
       <div class="ueber-uns-left">
         <span class="ueber-uns-label">Über uns</span>
         <h2 class="ueber-uns-title">Menschen, die sich<br>wirklich <em>kümmern</em></h2>
         <p class="ueber-uns-text">Hinter Sylegro steckt ein Team mit Leidenschaft für Sauberkeit, Verlässlichkeit und echten Beziehungen zu unseren Kunden. Wir sind nicht einfach ein Reinigungsunternehmen – wir sind Ihr Partner.</p>
         <a href="ueber-uns.html" class="ueber-uns-btn">Mehr über uns erfahren →</a>
       </div>
-
       <div class="ueber-uns-right">
         <div class="ueber-uns-card">
-          <span class="ueber-uns-card-icon">🤝</span>
           <p class="ueber-uns-card-title">Persönlich</p>
           <p class="ueber-uns-card-text">Direkter Kontakt, kurze Wege, echte Ansprechpersonen.</p>
         </div>
         <div class="ueber-uns-card">
-          <span class="ueber-uns-card-icon">📍</span>
           <p class="ueber-uns-card-title">Lokal verwurzelt</p>
           <p class="ueber-uns-card-text">Wir kennen die Region und sind schnell vor Ort.</p>
         </div>
         <div class="ueber-uns-card">
-          <span class="ueber-uns-card-icon">💪</span>
           <p class="ueber-uns-card-title">Erfahren</p>
           <p class="ueber-uns-card-text">Über 50 Jahre gebündeltes Know-how im Team.</p>
         </div>
         <div class="ueber-uns-card">
-          <span class="ueber-uns-card-icon">♻️</span>
           <p class="ueber-uns-card-title">Nachhaltig</p>
           <p class="ueber-uns-card-text">Umweltfreundliche Mittel und bewusster Ressourceneinsatz.</p>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -1041,14 +1010,6 @@
           </div>
           <div class="rez-card">
             <div class="rez-header">
-              <div class="rez-avatar" style="background:#9C27B0;">E</div>
-              <div><div class="rez-name">Elias Lehner</div><div class="rez-badge">4 Rezensionen</div></div>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
-            </div>
-            <div class="rez-sterne">★★★★★</div>
-          </div>
-          <div class="rez-card">
-            <div class="rez-header">
               <div class="rez-avatar" style="background:#FF5722;">K</div>
               <div><div class="rez-name">Küng Natalie</div><div class="rez-badge">1 Rezension</div></div>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
@@ -1067,22 +1028,6 @@
           </div>
           <div class="rez-card">
             <div class="rez-header">
-              <div class="rez-avatar" style="background:#0063A5;">2</div>
-              <div><div class="rez-name">23curver</div><div class="rez-badge">13 Rezensionen</div></div>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
-            </div>
-            <div class="rez-sterne">★★★★★</div>
-          </div>
-          <div class="rez-card">
-            <div class="rez-header">
-              <div class="rez-avatar" style="background:#17A863;">R</div>
-              <div><div class="rez-name">Robin Kälin</div><div class="rez-badge">2 Rezensionen</div></div>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
-            </div>
-            <div class="rez-sterne">★★★★★</div>
-          </div>
-          <div class="rez-card">
-            <div class="rez-header">
               <div class="rez-avatar" style="background:#FF9800;">A</div>
               <div><div class="rez-name">Alen Hofmann</div><div class="rez-badge">1 Rezension</div></div>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
@@ -1097,6 +1042,7 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png" class="rez-google-logo" alt="Google">
             </div>
             <div class="rez-sterne">★★★★★</div>
+            <p class="rez-text">Sehr freundlich, professionell und zuverlässig – wir sind rundum zufrieden mit dem Service von Sylegro.</p>
           </div>
         </div>
         <button class="rez-arrow rez-next" id="rezNext">&#10095;</button>
@@ -1120,7 +1066,7 @@
       <div class="footer-col footer-brand">
         <img src="logo-mit-claim-weiss-rgb.png" alt="Sylegro Logo" class="footer-logo">
         <p class="footer-address">Turbistrasse 17<br>6280 Hochdorf</p>
-        <p class="footer-contact">+41 41 555 88 58<br>info@sylegro.ch</p>
+        <p class="footer-contact">+41 41 55 88 58<br>info@sylegro.ch</p>
       </div>
       <div class="footer-col footer-links">
         <a href="dienstleistungen.html">Dienstleistungen</a>
@@ -1144,7 +1090,6 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // REZENSIONEN KARUSSELL
     const rezCards = document.querySelectorAll('.rez-card');
     const rezDotsContainer = document.getElementById('rezDots');
     let rezCurrent = 0;
@@ -1168,7 +1113,6 @@
     document.getElementById('rezNext').addEventListener('click', () => goToRez(rezCurrent + 1));
     setInterval(() => goToRez(rezCurrent + 1), 8000);
 
-    // ZÄHL-ANIMATION
     function animateCounter(el) {
       const target = parseInt(el.getAttribute("data-target"));
       const suffix = el.getAttribute("data-suffix") || "";
@@ -1182,24 +1126,6 @@
       }, stepTime);
     }
 
-    // PULL-TO-REFRESH
-    let touchStartY = 0;
-    let isPulling = false;
-    document.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; }, { passive: true });
-    document.addEventListener('touchmove', (e) => {
-      if (window.scrollY === 0 && e.touches[0].clientY - touchStartY > 80) isPulling = true;
-    }, { passive: true });
-    document.addEventListener('touchend', () => { if (isPulling) { isPulling = false; window.location.reload(); } });
-
-    let wheelUpCount = 0;
-    window.addEventListener('wheel', (e) => {
-      if (window.scrollY === 0 && e.deltaY < 0) {
-        wheelUpCount++;
-        if (wheelUpCount >= 3) { wheelUpCount = 0; window.location.reload(); }
-      } else { wheelUpCount = 0; }
-    });
-
-    // SCROLL REVEAL + COUNTER
     let lastScrollY = window.scrollY;
     let scrollDirection = 'down';
     window.addEventListener('scroll', () => {
